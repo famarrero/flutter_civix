@@ -549,6 +549,166 @@ class S {
       args: [],
     );
   }
+
+  /// `General Prosecutor of the Republic`
+  String get fgr {
+    return Intl.message(
+      'General Prosecutor of the Republic',
+      name: 'fgr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter subject`
+  String get enterSubject {
+    return Intl.message(
+      'Enter subject',
+      name: 'enterSubject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter statement`
+  String get enterStatement {
+    return Intl.message(
+      'Enter statement',
+      name: 'enterStatement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write statement`
+  String get writeStatement {
+    return Intl.message(
+      'Write statement',
+      name: 'writeStatement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add promoter`
+  String get addPromoter {
+    return Intl.message(
+      'Add promoter',
+      name: 'addPromoter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First name`
+  String get firstName {
+    return Intl.message(
+      'First name',
+      name: 'firstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Second name`
+  String get secondName {
+    return Intl.message(
+      'Second name',
+      name: 'secondName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First last name`
+  String get firstLastName {
+    return Intl.message(
+      'First last name',
+      name: 'firstLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Second last name`
+  String get secondLastName {
+    return Intl.message(
+      'Second last name',
+      name: 'secondLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ID`
+  String get id {
+    return Intl.message(
+      'ID',
+      name: 'id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get phone {
+    return Intl.message(
+      'Phone',
+      name: 'phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Province`
+  String get province {
+    return Intl.message(
+      'Province',
+      name: 'province',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Municipality`
+  String get municipality {
+    return Intl.message(
+      'Municipality',
+      name: 'municipality',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message(
+      'Address',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message(
+      'Send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attachments`
+  String get attachments {
+    return Intl.message(
+      'Attachments',
+      name: 'attachments',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

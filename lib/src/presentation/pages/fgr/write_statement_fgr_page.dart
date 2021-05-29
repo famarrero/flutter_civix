@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_civix/src/domain/entities/promovente_fgr.dart';
+import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
-class WriteStatmentFgrPage extends StatefulWidget {
+class WriteStatementFgrPage extends StatefulWidget {
   @override
-  _WriteStatmentFgrPageState createState() =>
-      _WriteStatmentFgrPageState();
+  _WriteStatementFgrPageState createState() => _WriteStatementFgrPageState();
 }
 
-class _WriteStatmentFgrPageState
-    extends State<WriteStatmentFgrPage> {
-  String? _asunto;
+class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
+  String? _subject;
+  String? _statement;
 
-  String? _planteamiento;
+  List<PromoterFRG> _promoters = [
+    PromoterFRG(provincia: 'La Habana', municipio: 'Centro Habana')
+  ];
 
-  List<PromoventeFRG> _promoventes = [];
+  _deletePromoter(int index){
+    setState(() {
+      _promoters.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-        appBar: _buildAppBar(),
-        body: _buildBody(context));
+    return Scaffold(appBar: _buildAppBar(), body: _buildBody(context));
   }
 
   _buildAppBar() {
@@ -31,17 +33,16 @@ class _WriteStatmentFgrPageState
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Redactar planteamiento'),
+          Text(S().writeStatement),
           SizedBox(height: 4),
-          Text('Fiscalia General de la República',
+          Text(S().fgr,
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
     );
   }
 
-  _buildBody(
-      BuildContext context) {
+  _buildBody(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -51,6 +52,7 @@ class _WriteStatmentFgrPageState
               shrinkWrap: true,
               physics: ClampingScrollPhysics(),
               children: [
+                SizedBox(height: 15),
                 TextField(
                   autofocus: true,
                   textInputAction: TextInputAction.next,
@@ -61,12 +63,11 @@ class _WriteStatmentFgrPageState
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    labelText: 'AppTexts.asunto',
-                    hintText: 'AppTexts.intrduzcaAsunto',
+                    labelText: S().enterSubject,
                     icon: Icon(Icons.short_text),
                   ),
                   onChanged: (valor) {
-                    _asunto = valor;
+                    _subject = valor;
                   },
                 ),
                 SizedBox(height: 20),
@@ -80,35 +81,32 @@ class _WriteStatmentFgrPageState
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    labelText: 'AppTexts.planteamiento',
-                    hintText: 'AppTexts.intrduzcaPlanteamiento',
+                    labelText: S().enterStatement,
                     icon: Icon(Icons.wrap_text),
                   ),
                   onChanged: (valor) {
-                    _planteamiento = valor;
+                    _statement = valor;
                   },
                 ),
                 SizedBox(height: 20),
-                _ShowPromoventes(_promoventes),
+                _ShowPromoter(_promoters, _deletePromoter),
                 ElevatedButton(
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ))),
-                  onPressed:
-                  (_promoventes.length >=
-                          1)
+                    borderRadius: BorderRadius.circular(20),
+                  ))),
+                  onPressed: (_promoters.length >= 1)
                       ? null
                       : () => showDialog<void>(
-                      context: context,
-                      builder: (BuildContext dialogContext) =>
-                          _AddPromoventeDialog(
-                            context: context,
-                            addPromovente: () {},
-                          )),
+                          context: context,
+                          builder: (BuildContext dialogContext) =>
+                              _AddPromoterDialog(
+                                context: context,
+                                promoters: _promoters,
+                              )),
                   child: Text(
-                    'AppTexts.adicionarPromovente',
+                    S().addPromoter,
                     style: TextStyle(color: Colors.white),
                   ),
                 )
@@ -127,23 +125,23 @@ class _WriteStatmentFgrPageState
               children: [
                 FloatingActionButton(
                   backgroundColor: Colors.blue,
-                  tooltip: 'AppTexts.adjuntar',
+                  tooltip: S().attachments,
                   onPressed: () {},
                   elevation: 0,
                   child: Icon(Icons.attach_file),
                 ),
                 FloatingActionButton(
                   backgroundColor: Colors.blue,
-                  tooltip: 'AppTexts.camara',
+                  tooltip: S().camera,
                   onPressed: () {},
                   elevation: 0,
                   child: Icon(FontAwesomeIcons.camera),
                 ),
                 FloatingActionButton(
                   backgroundColor: Colors.blue,
-                  tooltip:' AppTexts.enviar',
+                  tooltip: S().send,
                   onPressed: () {
-                    _enviarPlanteamiento();
+                    _sendStatement();
                   },
                   elevation: 0,
                   child: Icon(Icons.send_rounded),
@@ -156,15 +154,11 @@ class _WriteStatmentFgrPageState
     );
   }
 
-  _enviarPlanteamiento() {
+  _sendStatement() {
+    if (_subject != null && _statement != null) {
 
-    if (_asunto != null && _planteamiento != null) {
-
-      // planteamientoFGRService.planteamientoFGR
-      //     .copyWith(asunto: "_asunto!", planteamiento: "_planteamiento!");
-
-      _asunto = _asunto!;
-      _planteamiento = _planteamiento!;
+      _subject = _subject!;
+      _statement = _statement!;
       // print('${planteamientoFGRService.planteamientoFGR.toString()}');
 
     } else {
@@ -173,29 +167,28 @@ class _WriteStatmentFgrPageState
   }
 }
 
-class _AddPromoventeDialog extends StatelessWidget {
+class _AddPromoterDialog extends StatelessWidget {
   final BuildContext context;
-  final Function() addPromovente;
+  final List<PromoterFRG> promoters;
 
-  _AddPromoventeDialog({required this.context, required this.addPromovente});
+  _AddPromoterDialog({required this.context, required this.promoters});
 
   @override
   Widget build(BuildContext context) {
-    List<PromoventeFRG> _promoventes = [];
 
-    String? _primerNombre;
-    String? _segundoNombre;
-    String? _primerApellido;
-    String? _segundoApellido;
-    int? _ci;
-    String? _telefono;
+    String? _firstName;
+    String? _secondName;
+    String? _firstLastName;
+    String? _secondLastName;
+    int? _id;
+    String? _phone;
     String? _email;
-    String? _provincia;
-    String? _municipio;
-    String? _direccion;
+    String? _province;
+    String? _municipality;
+    String? _address;
 
     return AlertDialog(
-      title: Text('AppTexts.adicionarPromovente'),
+      title: Text(S().addPromoter),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
       insetPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
@@ -215,12 +208,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 10,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.primerNombre',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().firstName,
                 suffixIcon: Icon(Icons.person),
               ),
               onChanged: (valor) {
-                _primerNombre = valor;
+                _firstName = valor;
               },
             ),
             SizedBox(height: 8),
@@ -233,12 +226,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 10,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.segundoNombre',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().secondName,
                 suffixIcon: Icon(Icons.person),
               ),
               onChanged: (valor) {
-                _segundoNombre = valor;
+                _secondName = valor;
               },
             ),
             SizedBox(height: 8),
@@ -251,12 +244,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 10,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.primerApellido',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().firstLastName,
                 suffixIcon: Icon(Icons.person),
               ),
               onChanged: (valor) {
-                _primerApellido = valor;
+                _firstLastName = valor;
               },
             ),
             SizedBox(height: 8),
@@ -269,12 +262,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 10,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.segundoApellido',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().secondLastName,
                 suffixIcon: Icon(Icons.person),
               ),
               onChanged: (valor) {
-                _segundoApellido = valor;
+                _secondLastName = valor;
               },
             ),
             SizedBox(height: 8),
@@ -288,12 +281,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 11,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.carneIdentidad',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().id,
                 suffixIcon: Icon(Icons.person),
               ),
               onChanged: (valor) {
-                _ci = valor as int;
+                _id = valor as int;
               },
             ),
             SizedBox(height: 8),
@@ -306,12 +299,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 8,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.telefono',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().phone,
                 suffixIcon: Icon(Icons.phone),
               ),
               onChanged: (valor) {
-                _telefono = valor;
+                _phone = valor;
               },
             ),
             TextField(
@@ -323,8 +316,8 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 25,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.correoElectronico',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().email,
                 suffixIcon: Icon(Icons.alternate_email),
               ),
               onChanged: (valor) {
@@ -341,12 +334,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 15,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.provincia',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().province,
                 suffixIcon: Icon(Icons.location_city),
               ),
               onChanged: (valor) {
-                _provincia = valor;
+                _province = valor;
               },
             ),
             SizedBox(height: 8),
@@ -359,12 +352,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 15,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.municipio',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().municipality,
                 suffixIcon: Icon(Icons.location_city),
               ),
               onChanged: (valor) {
-                _municipio = valor;
+                _municipality = valor;
               },
             ),
             SizedBox(height: 8),
@@ -377,13 +370,12 @@ class _AddPromoventeDialog extends StatelessWidget {
               maxLength: 25,
               decoration: InputDecoration(
                 border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: 'AppTexts.direccion',
-                hintText: 'AppTexts.direccion',
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: S().address,
                 suffixIcon: Icon(Icons.location_on),
               ),
               onChanged: (valor) {
-                _direccion = valor;
+                _address = valor;
               },
             ),
           ],
@@ -392,40 +384,40 @@ class _AddPromoventeDialog extends StatelessWidget {
       actions: [
         TextButton(
             onPressed: () => {Navigator.of(context).pop()},
-            child: Text('AppTexts.cancelar')),
+            child: Text(S().cancel)),
         TextButton(
             onPressed: () => {
-              if (_provincia == null)
-                {print('La provincia no puede ser null')}
-              else if (_municipio == null)
-                {print('El municipio no puede ser null')}
-              else
-                {
-                  _promoventes.add(new PromoventeFRG(
-                      primerNombre: _primerNombre,
-                      segundoNombre: _segundoNombre,
-                      primerApellido: _primerApellido,
-                      segundoApellido: _segundoApellido,
-                      ci: _ci.toString(),
-                      telefono: _telefono,
-                      email: _email,
-                      provincia: _provincia!,
-                      municipio: _municipio!,
-                      direccion: _direccion)),
-
-                  Navigator.of(context).pop()
-                }
-            },
-            child: Text('AppTexts.ok')),
+                  if (_province == null)
+                    {print('La provincia no puede ser null')}
+                  else if (_municipality == null)
+                    {print('El municipio no puede ser null')}
+                  else
+                    {
+                      promoters.add(new PromoterFRG(
+                          primerNombre: _firstName,
+                          segundoNombre: _secondName,
+                          primerApellido: _firstLastName,
+                          segundoApellido: _secondLastName,
+                          ci: _id.toString(),
+                          telefono: _phone,
+                          email: _email,
+                          provincia: _province!,
+                          municipio: _municipality!,
+                          direccion: _address)),
+                      Navigator.of(context).pop()
+                    }
+                },
+            child: Text(S().ok)),
       ],
     );
   }
 }
 
-class _ShowPromoventes extends StatelessWidget {
-  List<PromoventeFRG> _promoventes;
+class _ShowPromoter extends StatelessWidget {
+  final List<PromoterFRG> _promoter;
+  final Function (int) _deletePromoter;
 
-  _ShowPromoventes(this._promoventes);
+  _ShowPromoter(this._promoter, this._deletePromoter);
 
   @override
   Widget build(BuildContext context) {
@@ -433,65 +425,48 @@ class _ShowPromoventes extends StatelessWidget {
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
         padding: EdgeInsets.all(4),
-        itemCount: _promoventes.length,
+        itemCount: _promoter.length,
         itemBuilder: (BuildContext context, int index) {
           String title = '';
-          if (_promoventes[index].primerNombre != null) {
-            title = '${_promoventes[index].primerNombre} ';
+          if (_promoter[index].primerNombre != null) {
+            title = '${_promoter[index].primerNombre} ';
           }
-          if (_promoventes[index].primerApellido != null) {
-            title += '${_promoventes[index].primerApellido!}';
+          if (_promoter[index].primerApellido != null) {
+            title += '${_promoter[index].primerApellido!}';
           }
-          return _ItemPromovente(_promoventes[index]);
-        });
-  }
-}
-
-class _ItemPromovente extends StatelessWidget {
-  PromoventeFRG _promovente;
-
-  _ItemPromovente(this._promovente);
-
-  @override
-  Widget build(BuildContext context) {
-    String _nombre = '';
-    if (_promovente.primerNombre != null) {
-      _nombre = '${_promovente.primerNombre} ';
-    }
-    if (_promovente.primerApellido != null) {
-      _nombre += '${_promovente.primerApellido!}';
-    }
-
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Row(
-        children: [
-          Icon(FontAwesomeIcons.addressBook, size: 25, color: Colors.blue),
-          SizedBox(width: 18),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          return Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
               children: [
-                if (_nombre != '')
-                  Text(_nombre,
-                      style: TextStyle(fontSize: 14, color: Colors.black54)),
-                SizedBox(height: 2),
-                Text('${_promovente.municipio}, ${_promovente.provincia}',
-                    style: TextStyle(fontSize: 14, color: Colors.black54)),
+                Icon(FontAwesomeIcons.addressBook, size: 25, color: Colors.blue),
+                SizedBox(width: 18),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (title != '')
+                        Text(title,
+                            style: TextStyle(fontSize: 14, color: Colors.black54)),
+                      SizedBox(height: 2),
+                      Text('${_promoter[index].municipio}, ${_promoter[index].provincia}',
+                          style: TextStyle(fontSize: 14, color: Colors.black54)),
+                    ],
+                  ),
+                ),
+                InkWell(
+                  child: Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
+                  onTap: () {},
+                ),
+                SizedBox(width: 10),
+                InkWell(
+                  child: Icon(FontAwesomeIcons.trash, size: 25, color: Colors.red),
+                  onTap: () {
+                    _deletePromoter(index);
+                  },
+                )
               ],
             ),
-          ),
-          InkWell(
-            child: Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
-            onTap: () {},
-          ),
-          SizedBox(width: 10),
-          InkWell(
-            child: Icon(FontAwesomeIcons.trash, size: 25, color: Colors.red),
-            onTap: () {},
-          )
-        ],
-      ),
-    );
+          );
+        });
   }
 }

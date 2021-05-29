@@ -21,8 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addPromoter": MessageLookupByLibrary.simpleMessage("Add promoter"),
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
+        "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
         "call": MessageLookupByLibrary.simpleMessage("Call"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -43,14 +46,24 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email is invalid"),
         "emptyValidator":
             MessageLookupByLibrary.simpleMessage("A value is required"),
+        "enterStatement":
+            MessageLookupByLibrary.simpleMessage("Enter statement"),
+        "enterSubject": MessageLookupByLibrary.simpleMessage("Enter subject"),
         "expire": MessageLookupByLibrary.simpleMessage("Expire"),
+        "fgr": MessageLookupByLibrary.simpleMessage(
+            "General Prosecutor of the Republic"),
         "finish": MessageLookupByLibrary.simpleMessage("Finish"),
+        "firstLastName":
+            MessageLookupByLibrary.simpleMessage("First last name"),
+        "firstName": MessageLookupByLibrary.simpleMessage("First name"),
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "id": MessageLookupByLibrary.simpleMessage("ID"),
         "info": MessageLookupByLibrary.simpleMessage("Information"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Language"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Main FGR"),
+        "municipality": MessageLookupByLibrary.simpleMessage("Municipality"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
@@ -61,10 +74,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password Confirmation"),
         "passwordValidator":
             MessageLookupByLibrary.simpleMessage("Passwords must match"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "province": MessageLookupByLibrary.simpleMessage("Province"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Search.."),
+        "secondLastName":
+            MessageLookupByLibrary.simpleMessage("Second last name"),
+        "secondName": MessageLookupByLibrary.simpleMessage("Second name"),
+        "send": MessageLookupByLibrary.simpleMessage("Send"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Dark Theme"),
@@ -74,6 +93,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade"),
         "warning": MessageLookupByLibrary.simpleMessage("Warning!!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "writeStatement":
+            MessageLookupByLibrary.simpleMessage("Write statement"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

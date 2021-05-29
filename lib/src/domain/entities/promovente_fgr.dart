@@ -1,4 +1,4 @@
-class PromoventeFRG {
+class PromoterFRG {
   final String? primerNombre;
   final String? segundoNombre;
   final String? primerApellido;
@@ -10,7 +10,7 @@ class PromoventeFRG {
   final String municipio;
   final String? direccion;
 
-  PromoventeFRG(
+  PromoterFRG(
       {this.primerNombre,
       this.segundoNombre,
       this.primerApellido,

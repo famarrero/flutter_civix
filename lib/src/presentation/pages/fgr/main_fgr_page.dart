@@ -28,7 +28,7 @@ class _MainFGRPageState extends State<MainFGRPage> {
               title: Text('Write statement to FGR'),
               trailing: Image(image: Assets.images.marcaAguaFgr),
               onTap: (){
-                AutoRouter.of(context).push(WriteStatmentFgrPageRoute());
+                AutoRouter.of(context).push(WriteStatementFgrPageRoute());
               },
             )
           ],

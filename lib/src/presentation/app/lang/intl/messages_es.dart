@@ -21,8 +21,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addPromoter":
+            MessageLookupByLibrary.simpleMessage("Adicionar promovente"),
+        "address": MessageLookupByLibrary.simpleMessage("Dirección"),
         "all": MessageLookupByLibrary.simpleMessage("Todas"),
         "amount": MessageLookupByLibrary.simpleMessage("Cantidad"),
+        "attachments": MessageLookupByLibrary.simpleMessage("Adjuntos"),
         "call": MessageLookupByLibrary.simpleMessage("Llamar"),
         "camera": MessageLookupByLibrary.simpleMessage("Camara"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
@@ -38,19 +42,30 @@ class MessageLookup extends MessageLookupByLibrary {
         "description": MessageLookupByLibrary.simpleMessage("Descripción"),
         "done": MessageLookupByLibrary.simpleMessage("Finalizar"),
         "edit": MessageLookupByLibrary.simpleMessage("Editar"),
-        "email": MessageLookupByLibrary.simpleMessage("Correo"),
+        "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
         "emailValidator": MessageLookupByLibrary.simpleMessage(
             "El correo electrónico no es válido"),
         "emptyValidator":
             MessageLookupByLibrary.simpleMessage("Se requiere un valor"),
+        "enterStatement":
+            MessageLookupByLibrary.simpleMessage("Introduzca planteamiento"),
+        "enterSubject":
+            MessageLookupByLibrary.simpleMessage("Introduzca asunto"),
         "expire": MessageLookupByLibrary.simpleMessage("Vence"),
+        "fgr": MessageLookupByLibrary.simpleMessage(
+            "Fiscalía General de la República"),
         "finish": MessageLookupByLibrary.simpleMessage("Finalizar"),
+        "firstLastName":
+            MessageLookupByLibrary.simpleMessage("Primer apellido"),
+        "firstName": MessageLookupByLibrary.simpleMessage("Primer nombre"),
         "gallery": MessageLookupByLibrary.simpleMessage("Galería"),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "home": MessageLookupByLibrary.simpleMessage("Inicio"),
+        "id": MessageLookupByLibrary.simpleMessage("Carné de identidad"),
         "info": MessageLookupByLibrary.simpleMessage("Información"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Idioma"),
         "later": MessageLookupByLibrary.simpleMessage("Después"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Principal FGR"),
+        "municipality": MessageLookupByLibrary.simpleMessage("Municipio"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "ok": MessageLookupByLibrary.simpleMessage("Entendí"),
@@ -61,10 +76,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirmación de contraseña"),
         "passwordValidator": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas deben coincidir"),
+        "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
         "price": MessageLookupByLibrary.simpleMessage("Precio"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
+        "province": MessageLookupByLibrary.simpleMessage("Provincia"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Buscar.."),
+        "secondLastName":
+            MessageLookupByLibrary.simpleMessage("Segundo apellido"),
+        "secondName": MessageLookupByLibrary.simpleMessage("Segundo nombre"),
+        "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "share": MessageLookupByLibrary.simpleMessage("Compartir"),
         "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Tema oscuro"),
@@ -74,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "upgrade": MessageLookupByLibrary.simpleMessage("Mejorar"),
         "warning": MessageLookupByLibrary.simpleMessage("Alerta!!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Bienvenido"),
+        "writeStatement":
+            MessageLookupByLibrary.simpleMessage("Redactar planteamiento"),
         "yes": MessageLookupByLibrary.simpleMessage("Si")
       };
 }
