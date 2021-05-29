@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/routes.gr.dart';
+import 'file:///C:/Android/Flutter/Proyectos/flutter_civix/lib/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 

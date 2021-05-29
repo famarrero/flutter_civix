@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_civix/src/domain/entities/promovente_fgr.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:oktoast/oktoast.dart';
 
 class WriteStatementFgrPage extends StatefulWidget {
   @override
@@ -17,7 +18,13 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
     PromoterFRG(provincia: 'La Habana', municipio: 'Centro Habana')
   ];
 
-  _deletePromoter(int index){
+  _addPromoter(PromoterFRG promoterFRG) {
+    setState(() {
+      _promoters.add(promoterFRG);
+    });
+  }
+
+  _deletePromoter(int index) {
     setState(() {
       _promoters.removeAt(index);
     });
@@ -102,9 +109,9 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                           context: context,
                           builder: (BuildContext dialogContext) =>
                               _AddPromoterDialog(
-                                context: context,
-                                promoters: _promoters,
-                              )),
+                                  context: context,
+                                  promoters: _promoters,
+                                  addPromoter: _addPromoter)),
                   child: Text(
                     S().addPromoter,
                     style: TextStyle(color: Colors.white),
@@ -156,7 +163,6 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
 
   _sendStatement() {
     if (_subject != null && _statement != null) {
-
       _subject = _subject!;
       _statement = _statement!;
       // print('${planteamientoFGRService.planteamientoFGR.toString()}');
@@ -170,12 +176,15 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
 class _AddPromoterDialog extends StatelessWidget {
   final BuildContext context;
   final List<PromoterFRG> promoters;
+  final Function(PromoterFRG) addPromoter;
 
-  _AddPromoterDialog({required this.context, required this.promoters});
+  _AddPromoterDialog(
+      {required this.context,
+      required this.promoters,
+      required this.addPromoter});
 
   @override
   Widget build(BuildContext context) {
-
     String? _firstName;
     String? _secondName;
     String? _firstLastName;
@@ -388,12 +397,22 @@ class _AddPromoterDialog extends StatelessWidget {
         TextButton(
             onPressed: () => {
                   if (_province == null)
-                    {print('La provincia no puede ser null')}
+                    {
+                      print('La provincia no puede ser null'),
+                      showToast('La provincia no puede estar vacia',
+                          duration: Duration(seconds: 2),
+                          position: ToastPosition.bottom,
+                          backgroundColor: Colors.black.withOpacity(0.4))
+                    }
                   else if (_municipality == null)
-                    {print('El municipio no puede ser null')}
+                    {print('El municipio no puede ser null'),
+                      showToast('El municipio no puede estar vacio',
+                          duration: Duration(seconds: 2),
+                          position: ToastPosition.bottom,
+                          backgroundColor: Colors.black.withOpacity(0.4))}
                   else
                     {
-                      promoters.add(new PromoterFRG(
+                      addPromoter(PromoterFRG(
                           primerNombre: _firstName,
                           segundoNombre: _secondName,
                           primerApellido: _firstLastName,
@@ -415,7 +434,7 @@ class _AddPromoterDialog extends StatelessWidget {
 
 class _ShowPromoter extends StatelessWidget {
   final List<PromoterFRG> _promoter;
-  final Function (int) _deletePromoter;
+  final Function(int) _deletePromoter;
 
   _ShowPromoter(this._promoter, this._deletePromoter);
 
@@ -438,7 +457,8 @@ class _ShowPromoter extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Row(
               children: [
-                Icon(FontAwesomeIcons.addressBook, size: 25, color: Colors.blue),
+                Icon(FontAwesomeIcons.addressBook,
+                    size: 25, color: Colors.blue),
                 SizedBox(width: 18),
                 Expanded(
                   child: Column(
@@ -446,20 +466,25 @@ class _ShowPromoter extends StatelessWidget {
                     children: [
                       if (title != '')
                         Text(title,
-                            style: TextStyle(fontSize: 14, color: Colors.black54)),
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.black54)),
                       SizedBox(height: 2),
-                      Text('${_promoter[index].municipio}, ${_promoter[index].provincia}',
-                          style: TextStyle(fontSize: 14, color: Colors.black54)),
+                      Text(
+                          '${_promoter[index].municipio}, ${_promoter[index].provincia}',
+                          style:
+                              TextStyle(fontSize: 14, color: Colors.black54)),
                     ],
                   ),
                 ),
                 InkWell(
-                  child: Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
+                  child:
+                      Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
                   onTap: () {},
                 ),
                 SizedBox(width: 10),
                 InkWell(
-                  child: Icon(FontAwesomeIcons.trash, size: 25, color: Colors.red),
+                  child:
+                      Icon(FontAwesomeIcons.trash, size: 25, color: Colors.red),
                   onTap: () {
                     _deletePromoter(index);
                   },

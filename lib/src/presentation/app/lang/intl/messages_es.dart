@@ -68,7 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "municipality": MessageLookupByLibrary.simpleMessage("Municipio"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
-        "ok": MessageLookupByLibrary.simpleMessage("Entendí"),
+        "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "options": MessageLookupByLibrary.simpleMessage("Opciones"),
         "or": MessageLookupByLibrary.simpleMessage("Ó"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
