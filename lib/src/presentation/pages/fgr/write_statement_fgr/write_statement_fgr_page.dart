@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/core/utils/utils.dart';
 import 'package:flutter_civix/src/domain/entities/promovente_fgr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
@@ -34,12 +35,6 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
     setState(() {
       _promoters.removeAt(index);
     });
-  }
-
-  _deleteFile(int index) {
-    // setState(() {
-    // Provider.of(context).watch<WriteStatementFgrCubit>().deleteFile(index);
-    // });
   }
 
   @override
@@ -77,10 +72,10 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
           Navigator.of(context).pop();
         }
         if (state.stateOfFiles.error != null) {
-          showToast('No image tacked',
-              duration: Duration(seconds: 2),
+          showToast(state.stateOfFiles.error!,
+              duration: Duration(seconds: 5),
               position: ToastPosition.bottom,
-              backgroundColor: Colors.black.withOpacity(0.4));
+              backgroundColor: Colors.black.withOpacity(0.8));
         }
       }, builder: (context, state) {
         return Padding(
@@ -330,7 +325,7 @@ class _ShowFiles extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text('1.5 MB',
+                    Text(_getFileSize(file),
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),
                     SizedBox(width: 10),
@@ -351,6 +346,11 @@ class _ShowFiles extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _getFileSize(File file){
+    final u = Utils();
+    return u.formatBytes(file.readAsBytesSync().lengthInBytes, 2);
   }
 }
 

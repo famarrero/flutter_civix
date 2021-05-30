@@ -44,7 +44,7 @@ Future<void> initializeDependencies() async {
   // );
 
   // Blocs
-  injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit(injector()));
+  injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit(injector(), injector(), injector()));
 }
 
 Future<void> registerDir() async {
