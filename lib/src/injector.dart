@@ -1,14 +1,13 @@
 import 'dart:io';
 
+import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart';
+import 'package:flutter_civix/src/core/services_manager/file_picker_manager_impl.dart';
+import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager_impl.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
-
-import 'core/services_manager/file_picker_manager.dart';
-import 'core/services_manager/file_picker_manager_impl.dart';
-import 'core/services_manager/image_picker_manager.dart';
 
 final injector = GetIt.instance;
 
@@ -45,7 +44,7 @@ Future<void> initializeDependencies() async {
   // );
 
   // Blocs
-  injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit());
+  injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit(injector()));
 }
 
 Future<void> registerDir() async {

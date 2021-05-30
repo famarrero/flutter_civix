@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/Android/Flutter/Proyectos/flutter_civix/lib/src/core/routes/routes.gr.dart';
+import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

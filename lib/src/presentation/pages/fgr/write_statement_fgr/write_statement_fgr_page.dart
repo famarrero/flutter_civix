@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_civix/src/domain/entities/promovente_fgr.dart';
+import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/widgets/dialog_progress_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -14,9 +18,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
   String? _subject;
   String? _statement;
 
-  List<PromoterFRG> _promoters = [
-    PromoterFRG(provincia: 'La Habana', municipio: 'Centro Habana')
-  ];
+  List<PromoterFRG> _promoters = [];
 
   _addPromoter(PromoterFRG promoterFRG) {
     setState(() {
@@ -50,114 +52,179 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
   }
 
   _buildBody(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              shrinkWrap: true,
-              physics: ClampingScrollPhysics(),
-              children: [
-                SizedBox(height: 15),
-                TextField(
-                  autofocus: true,
-                  textInputAction: TextInputAction.next,
-                  textCapitalization: TextCapitalization.sentences,
-                  keyboardType: TextInputType.text,
-                  maxLines: 1,
-                  maxLength: 150,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    labelText: S().enterSubject,
-                    icon: Icon(Icons.short_text),
-                  ),
-                  onChanged: (valor) {
-                    _subject = valor;
-                  },
+    return BlocProvider(
+      create: (context) => injector<WriteStatementFgrCubit>(),
+      child: BlocConsumer<WriteStatementFgrCubit, WriteStatementFgrState>(
+          listener: (context, state) {
+        if (state.stateOfFiles.isLoading) {
+          showDialog<void>(
+              context: context,
+              barrierDismissible: false,
+              builder: (BuildContext dialogContext) =>
+                  DialogProgressWidget('Processing image'));
+        }
+        if (state.stateOfFiles.done) {
+          Navigator.of(context).pop();
+        }
+      }, builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  children: [
+                    SizedBox(height: 15),
+                    TextField(
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.text,
+                      maxLines: 1,
+                      maxLength: 150,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().enterSubject,
+                        icon: Icon(Icons.short_text),
+                      ),
+                      onChanged: (valor) {
+                        _subject = valor;
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    TextField(
+                      textInputAction: TextInputAction.newline,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.multiline,
+                      minLines: 6,
+                      maxLines: null,
+                      maxLength: 3000,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().enterStatement,
+                        icon: Icon(Icons.wrap_text),
+                      ),
+                      onChanged: (valor) {
+                        _statement = valor;
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    _ShowPromoter(_promoters, _deletePromoter),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ))),
+                      onPressed: (_promoters.length >= 1)
+                          ? null
+                          : () => showDialog<void>(
+                              context: context,
+                              builder: (BuildContext dialogContext) =>
+                                  _AddPromoterDialog(
+                                      context: context,
+                                      promoters: _promoters,
+                                      addPromoter: _addPromoter)),
+                      child: Text(
+                        S().addPromoter,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )
+                  ],
                 ),
-                SizedBox(height: 20),
-                TextField(
-                  textInputAction: TextInputAction.newline,
-                  textCapitalization: TextCapitalization.sentences,
-                  keyboardType: TextInputType.multiline,
-                  minLines: 6,
-                  maxLines: null,
-                  maxLength: 3000,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    labelText: S().enterStatement,
-                    icon: Icon(Icons.wrap_text),
-                  ),
-                  onChanged: (valor) {
-                    _statement = valor;
-                  },
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 16),
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    FloatingActionButton(
+                      heroTag: 'attachments',
+                      backgroundColor: Colors.blue,
+                      tooltip: S().attachments,
+                      onPressed: () {
+                        showModalBottomSheet(
+                          elevation: 0,
+                            context: context,
+                            builder: (_) {
+                              return Container(
+                                height: 100,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    FloatingActionButton(
+                                      heroTag: 'gallery',
+                                      backgroundColor: Colors.red,
+                                      tooltip: S().gallery,
+                                      onPressed: () {},
+                                      elevation: 0,
+                                      child: Icon(FontAwesomeIcons.fileImage),
+                                    ),
+                                    FloatingActionButton(
+                                      heroTag: 'documents',
+                                      backgroundColor: Colors.green,
+                                      tooltip: S().document,
+                                      onPressed: () => BlocProvider.of<
+                                              WriteStatementFgrCubit>(context)
+                                          .takeImageFormCamera(),
+                                      elevation: 0,
+                                      child: Icon(FontAwesomeIcons.fileAlt),
+                                    ),
+                                    FloatingActionButton(
+                                      heroTag: 'location',
+                                      backgroundColor: Colors.blueAccent,
+                                      tooltip: S().location,
+                                      onPressed: () => BlocProvider.of<
+                                              WriteStatementFgrCubit>(context)
+                                          .takeImageFormCamera(),
+                                      elevation: 0,
+                                      child: Icon(FontAwesomeIcons.locationArrow),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            });
+                      },
+                      elevation: 0,
+                      child: Icon(Icons.attach_file),
+                    ),
+                    FloatingActionButton(
+                      heroTag: 'camera',
+                      backgroundColor: Colors.blue,
+                      tooltip: S().camera,
+                      onPressed: () =>
+                          BlocProvider.of<WriteStatementFgrCubit>(context)
+                              .takeImageFormCamera(),
+                      elevation: 0,
+                      child: Icon(FontAwesomeIcons.camera),
+                    ),
+                    FloatingActionButton(
+                      heroTag: 'send',
+                      backgroundColor: Colors.blue,
+                      tooltip: S().send,
+                      onPressed: () {
+                        _sendStatement();
+                      },
+                      elevation: 0,
+                      child: Icon(Icons.send_rounded),
+                    )
+                  ],
                 ),
-                SizedBox(height: 20),
-                _ShowPromoter(_promoters, _deletePromoter),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ))),
-                  onPressed: (_promoters.length >= 1)
-                      ? null
-                      : () => showDialog<void>(
-                          context: context,
-                          builder: (BuildContext dialogContext) =>
-                              _AddPromoterDialog(
-                                  context: context,
-                                  promoters: _promoters,
-                                  addPromoter: _addPromoter)),
-                  child: Text(
-                    S().addPromoter,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-          Container(
-            margin: EdgeInsets.only(top: 16),
-            height: 50,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(20)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FloatingActionButton(
-                  backgroundColor: Colors.blue,
-                  tooltip: S().attachments,
-                  onPressed: () {},
-                  elevation: 0,
-                  child: Icon(Icons.attach_file),
-                ),
-                FloatingActionButton(
-                  backgroundColor: Colors.blue,
-                  tooltip: S().camera,
-                  onPressed: () {},
-                  elevation: 0,
-                  child: Icon(FontAwesomeIcons.camera),
-                ),
-                FloatingActionButton(
-                  backgroundColor: Colors.blue,
-                  tooltip: S().send,
-                  onPressed: () {
-                    _sendStatement();
-                  },
-                  elevation: 0,
-                  child: Icon(Icons.send_rounded),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+        );
+      }),
     );
   }
 
@@ -405,11 +472,13 @@ class _AddPromoterDialog extends StatelessWidget {
                           backgroundColor: Colors.black.withOpacity(0.4))
                     }
                   else if (_municipality == null)
-                    {print('El municipio no puede ser null'),
+                    {
+                      print('El municipio no puede ser null'),
                       showToast('El municipio no puede estar vacio',
                           duration: Duration(seconds: 2),
                           position: ToastPosition.bottom,
-                          backgroundColor: Colors.black.withOpacity(0.4))}
+                          backgroundColor: Colors.black.withOpacity(0.4))
+                    }
                   else
                     {
                       addPromoter(PromoterFRG(

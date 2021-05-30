@@ -64,5 +64,7 @@
     "municipality": "Municipio",
     "address": "Dirección",
     "send": "Enviar",
-    "attachments": "Adjuntos"
+    "attachments": "Adjuntos",
+    "document": "Documento",
+    "location": "Ubicación"
 }
