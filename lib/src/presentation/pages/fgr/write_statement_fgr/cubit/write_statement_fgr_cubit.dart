@@ -14,7 +14,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   List<File> _files = [];
 
-  Future<void> takeImageFormCamera() async {
+  Future<void> getImageFormCamera() async {
     final response = await _imagePicker.getImageFromCamera();
     emit(state.copyWith(
         stateOfFiles:
@@ -23,9 +23,23 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       await Future.delayed(Duration(seconds: 5));
       _files.add(response);
       print(response.path);
+    } else {
+      emit(state.copyWith(
+          stateOfFiles: FileListState(
+              isLoading: false,
+              pickedFiles: _files,
+              done: false,
+              error: 'No image tacked')));
     }
     emit(state.copyWith(
         stateOfFiles:
             FileListState(isLoading: false, pickedFiles: _files, done: true)));
+  }
+
+  Future<void> deleteFile(int index) async {
+    _files.removeAt(index);
+    emit(state.copyWith(
+        stateOfFiles:
+            FileListState(isLoading: false, pickedFiles: _files, done: false)));
   }
 }

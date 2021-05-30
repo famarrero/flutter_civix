@@ -6,9 +6,7 @@ class WriteStatementFgrState extends Equatable {
   const WriteStatementFgrState({required this.stateOfFiles});
 
   factory WriteStatementFgrState.initial() =>
-      WriteStatementFgrState(
-          stateOfFiles: FileListState.initial()
-      );
+      WriteStatementFgrState(stateOfFiles: FileListState.initial());
 
   WriteStatementFgrState copyWith({FileListState? stateOfFiles}) {
     return WriteStatementFgrState(
@@ -23,26 +21,27 @@ class FileListState extends Equatable {
   final bool isLoading;
   final List<File> pickedFiles;
   final bool done;
+  final String? error;
 
   const FileListState(
-      {required this.isLoading, required this.pickedFiles, required this.done});
+      {required this.isLoading,
+      required this.pickedFiles,
+      required this.done,
+      this.error});
 
-  factory FileListState.initial() =>
-      FileListState(
-        isLoading: false,
-        pickedFiles: [],
-        done: false,
-      );
+  factory FileListState.initial() => FileListState(
+      isLoading: false, pickedFiles: [], done: false, error: null);
 
   FileListState copyWith(
-      {bool? isLoading, List<File>? pickedFiles, bool? done}) {
+      {bool? isLoading, List<File>? pickedFiles, bool? done, String? error}) {
     return FileListState(
       isLoading: isLoading ?? this.isLoading,
       pickedFiles: pickedFiles ?? this.pickedFiles,
       done: done ?? this.done,
+      error: error ?? this.error,
     );
   }
 
   @override
-  List<Object?> get props => [isLoading, pickedFiles, done];
+  List<Object?> get props => [isLoading, pickedFiles, done, error];
 }
