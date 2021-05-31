@@ -37,14 +37,6 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
     });
   }
 
-  _deleteFile(int index) {
-    setState(() {
-      BlocProvider.of<WriteStatementFgrCubit>(context,
-          listen: false)
-          .deleteFile(index);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: _buildAppBar(), body: _buildBody(context));
@@ -69,7 +61,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
       create: (context) => injector<WriteStatementFgrCubit>(),
       child: BlocConsumer<WriteStatementFgrCubit, WriteStatementFgrState>(
           listener: (context, state) {
-            print(state);
+        print(state);
         if (state.stateOfFiles.isLoading) {
           showDialog<void>(
               context: context,
@@ -174,76 +166,11 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                       tooltip: S().attachments,
                       onPressed: () {
                         showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
                             elevation: 0,
                             context: context,
                             builder: (_) {
-                              return Container(
-                                height: 100,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    FloatingActionButton(
-                                      heroTag: 'gallery',
-                                      tooltip: S().gallery,
-                                      backgroundColor: (state.stateOfFiles
-                                                  .pickedFiles.length <
-                                              3)
-                                          ? Colors.red
-                                          : Colors.black.withOpacity(0.1),
-                                      onPressed: (state.stateOfFiles.pickedFiles
-                                                  .length <
-                                              3)
-                                          ? () {
-                                              BlocProvider.of<
-                                                          WriteStatementFgrCubit>(
-                                                      context)
-                                                  .getImageFormCameraOrGallery(
-                                                      source: 'gallery');
-                                              Navigator.of(context).pop();
-                                            }
-                                          : null,
-                                      elevation: 0,
-                                      child: Icon(FontAwesomeIcons.fileImage),
-                                    ),
-                                    FloatingActionButton(
-                                      heroTag: 'documents',
-                                      tooltip: S().document,
-                                      backgroundColor: (state.stateOfFiles
-                                                  .pickedFiles.length <
-                                              3)
-                                          ? Colors.green
-                                          : Colors.black.withOpacity(0.1),
-                                      onPressed: (state.stateOfFiles.pickedFiles
-                                                  .length <
-                                              3)
-                                          ? () {
-                                              BlocProvider.of<
-                                                          WriteStatementFgrCubit>(
-                                                      context)
-                                                  .getDocument();
-                                              Navigator.of(context).pop();
-                                            }
-                                          : null,
-                                      elevation: 0,
-                                      child: Icon(FontAwesomeIcons.fileAlt),
-                                    ),
-                                    FloatingActionButton(
-                                      heroTag: 'location',
-                                      tooltip: S().location,
-                                      backgroundColor: Colors.orange,
-                                      onPressed: (state.stateOfFiles.pickedFiles
-                                                  .length <
-                                              3)
-                                          ? () {}
-                                          : null,
-                                      elevation: 0,
-                                      child:
-                                          Icon(FontAwesomeIcons.locationArrow),
-                                    ),
-                                  ],
-                                ),
-                              );
+                              return _MenuBottomSheet(context, state.stateOfFiles.pickedFiles);
                             });
                       },
                       elevation: 0,
@@ -285,9 +212,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
   }
 
   _sendStatement() {
-    setState(() {
-
-    });
+    setState(() {});
     if (_subject != null && _statement != null) {
       _subject = _subject!;
       _statement = _statement!;
@@ -296,6 +221,68 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
     } else {
       print('Debe espscificar un asunto y planteamiento');
     }
+  }
+}
+
+class _MenuBottomSheet extends StatelessWidget {
+
+  final BuildContext blocContext;
+  final BuiltList<File> files;
+
+  const _MenuBottomSheet(this.blocContext, this.files);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(20)),
+      margin: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton(
+            heroTag: 'gallery',
+            tooltip: S().gallery,
+            backgroundColor:
+                (files.length < 3) ? Colors.red : Colors.black.withOpacity(0.1),
+            onPressed: (files.length < 3)
+                ? () {
+                    BlocProvider.of<WriteStatementFgrCubit>(blocContext)
+                        .getImageFormCameraOrGallery(source: 'gallery');
+                    Navigator.of(context).pop();
+                  }
+                : null,
+            elevation: 0,
+            child: Icon(FontAwesomeIcons.fileImage),
+          ),
+          FloatingActionButton(
+            heroTag: 'documents',
+            tooltip: S().document,
+            backgroundColor: (files.length < 3)
+                ? Colors.green
+                : Colors.black.withOpacity(0.1),
+            onPressed: (files.length < 3)
+                ? () {
+                    BlocProvider.of<WriteStatementFgrCubit>(blocContext)
+                        .getDocument();
+                    Navigator.of(context).pop();
+                  }
+                : null,
+            elevation: 0,
+            child: Icon(FontAwesomeIcons.fileAlt),
+          ),
+          FloatingActionButton(
+            heroTag: 'location',
+            tooltip: S().location,
+            backgroundColor: Colors.orange,
+            onPressed: (files.length < 3) ? () {} : null,
+            elevation: 0,
+            child: Icon(FontAwesomeIcons.locationArrow),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -427,7 +414,7 @@ class _ShowFiles extends StatelessWidget {
                     InkWell(
                         onTap: () {
                           BlocProvider.of<WriteStatementFgrCubit>(context,
-                              listen: false)
+                                  listen: false)
                               .deleteFile(index);
                         },
                         child: Icon(FontAwesomeIcons.trash,

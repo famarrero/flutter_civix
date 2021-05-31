@@ -46,11 +46,12 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         emit(state.copyWith(
             stateOfFiles: FileListState(
                 isLoading: true, pickedFiles: _files, done: false)));
+
+        var nameFile = file.path.split('/').last.split('.').first;
+        int quality = 75;
         /**
          * If size of image is more than 1 MB, compress image
          **/
-        var nameFile = file.path.split('/').last.split('.').first;
-        int quality = 75;
         if (file.readAsBytesSync().lengthInBytes / 1024 / 1024 > 1) {
           quality = 50;
         }
