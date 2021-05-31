@@ -6,12 +6,16 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class Utils {
+
+  ///
+  /// Compress image and convert to .webp format
+  ///
   Future<Either<String, File>> compressImage(
-      File file, String targetPath) async {
+      File file, String targetPath, int quality) async {
     try {
       var result = await FlutterImageCompress.compressAndGetFile(
           file.absolute.path, targetPath,
-          format: CompressFormat.webp, quality: 50);
+          format: CompressFormat.webp, quality: quality);
       if (result != null) {
         return right(result);
       } else {
@@ -22,6 +26,9 @@ class Utils {
     }
   }
 
+  ///
+  /// Get size of file like (1.5 KB, 4.3 MG)
+  ///
   String formatBytes(int bytes, int decimals) {
     if (bytes <= 0) return "0 B";
     const suffixes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];

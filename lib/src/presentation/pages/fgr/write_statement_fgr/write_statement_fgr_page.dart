@@ -12,7 +12,7 @@ import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cub
 import 'package:flutter_civix/src/presentation/widgets/dialog_progress_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:provider/provider.dart';
+import 'package:built_collection/built_collection.dart';
 
 class WriteStatementFgrPage extends StatefulWidget {
   @override
@@ -34,6 +34,14 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
   _deletePromoter(int index) {
     setState(() {
       _promoters.removeAt(index);
+    });
+  }
+
+  _deleteFile(int index) {
+    setState(() {
+      BlocProvider.of<WriteStatementFgrCubit>(context,
+          listen: false)
+          .deleteFile(index);
     });
   }
 
@@ -61,6 +69,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
       create: (context) => injector<WriteStatementFgrCubit>(),
       child: BlocConsumer<WriteStatementFgrCubit, WriteStatementFgrState>(
           listener: (context, state) {
+            print(state);
         if (state.stateOfFiles.isLoading) {
           showDialog<void>(
               context: context,
@@ -73,9 +82,9 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
         }
         if (state.stateOfFiles.error != null) {
           showToast(state.stateOfFiles.error!,
-              duration: Duration(seconds: 5),
+              duration: Duration(seconds: 3),
               position: ToastPosition.bottom,
-              backgroundColor: Colors.black.withOpacity(0.8));
+              backgroundColor: Colors.black.withOpacity(0.7));
         }
       }, builder: (context, state) {
         return Padding(
@@ -185,10 +194,14 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                                       onPressed: (state.stateOfFiles.pickedFiles
                                                   .length <
                                               3)
-                                          ? () => BlocProvider.of<
-                                                      WriteStatementFgrCubit>(
-                                                  context)
-                                              .getImageFormCamera()
+                                          ? () {
+                                              BlocProvider.of<
+                                                          WriteStatementFgrCubit>(
+                                                      context)
+                                                  .getImageFormCameraOrGallery(
+                                                      source: 'gallery');
+                                              Navigator.of(context).pop();
+                                            }
                                           : null,
                                       elevation: 0,
                                       child: Icon(FontAwesomeIcons.fileImage),
@@ -204,10 +217,13 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                                       onPressed: (state.stateOfFiles.pickedFiles
                                                   .length <
                                               3)
-                                          ? () => BlocProvider.of<
-                                                      WriteStatementFgrCubit>(
-                                                  context)
-                                              .getImageFormCamera()
+                                          ? () {
+                                              BlocProvider.of<
+                                                          WriteStatementFgrCubit>(
+                                                      context)
+                                                  .getDocument();
+                                              Navigator.of(context).pop();
+                                            }
                                           : null,
                                       elevation: 0,
                                       child: Icon(FontAwesomeIcons.fileAlt),
@@ -243,7 +259,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                       onPressed: (state.stateOfFiles.pickedFiles.length < 3)
                           ? () =>
                               BlocProvider.of<WriteStatementFgrCubit>(context)
-                                  .getImageFormCamera()
+                                  .getImageFormCameraOrGallery(source: 'camera')
                           : null,
                       elevation: 0,
                       child: Icon(FontAwesomeIcons.camera),
@@ -269,6 +285,9 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
   }
 
   _sendStatement() {
+    setState(() {
+
+    });
     if (_subject != null && _statement != null) {
       _subject = _subject!;
       _statement = _statement!;
@@ -281,7 +300,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
 }
 
 class _ShowFiles extends StatelessWidget {
-  final List<File> files;
+  final BuiltList<File> files;
 
   const _ShowFiles(this.files);
 
@@ -294,8 +313,11 @@ class _ShowFiles extends StatelessWidget {
         itemCount: files.length,
         itemBuilder: (BuildContext context, int index) {
           var file = files[index];
-          // if(file.path.endsWith(.webp))
-          return _buildImage(context, file, index);
+          if (file.path.endsWith('.webp')) {
+            return _buildImage(context, file, index);
+          } else {
+            return _buildDocument(context, file, index);
+          }
         });
   }
 
@@ -325,13 +347,21 @@ class _ShowFiles extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Text(file.path.split('/').last,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                    SizedBox(width: 10),
                     Text(_getFileSize(file),
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),
                     SizedBox(width: 10),
                     InkWell(
                         onTap: () {
-                          Provider.of<WriteStatementFgrCubit>(context,
+                          BlocProvider.of<WriteStatementFgrCubit>(context,
                                   listen: false)
                               .deleteFile(index);
                         },
@@ -348,7 +378,72 @@ class _ShowFiles extends StatelessWidget {
     );
   }
 
-  _getFileSize(File file){
+  _buildDocument(context, File file, index) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Stack(
+          children: [
+            Container(
+                height: 90,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.green.withOpacity(0.1),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Icon(FontAwesomeIcons.fileArchive,
+                        color: Colors.green, size: 55),
+                  ],
+                )),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 40,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.black45,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Text(file.path.split('/').last,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    ),
+                    SizedBox(width: 10),
+                    Text(_getFileSize(file),
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
+                    SizedBox(width: 10),
+                    InkWell(
+                        onTap: () {
+                          BlocProvider.of<WriteStatementFgrCubit>(context,
+                              listen: false)
+                              .deleteFile(index);
+                        },
+                        child: Icon(FontAwesomeIcons.trash,
+                            color: Colors.red, size: 20)),
+                    SizedBox(width: 10)
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _getFileSize(File file) {
     final u = Utils();
     return u.formatBytes(file.readAsBytesSync().lengthInBytes, 2);
   }

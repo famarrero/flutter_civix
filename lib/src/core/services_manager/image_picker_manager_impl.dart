@@ -23,15 +23,17 @@ class ImagePickerManagerImpl implements ImagePickerManager {
   }
 
   @override
-  Future<File?> getImageFromGallery() async {
-    File? image;
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      image = File(pickedFile.path);
-    } else {
-      print('No image selected');
-      image = null;
+  Future<Either<String, File>> getImageFromGallery() async {
+    try {
+      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        return right(File(pickedFile.path));
+      } else {
+        print('No image selected');
+        return left('No image selected');
+      }
+    } catch (e) {
+      return left(e.toString());
     }
-    return image;
   }
 }

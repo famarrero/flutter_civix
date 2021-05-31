@@ -1,65 +1,75 @@
 import 'dart:io';
 
+import 'package:dartz/dartz.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart';
 
-//todo add plist to ios module
+//todo add plist to iOS module
 class FilePickerManagerImpl implements FilePickerManager {
   @override
-  Future<File?> getSingleFile() async {
-    File? file;
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+  Future<Either<String, File>> getSingleFile() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
 
-    if (result != null) {
-      file = File(result.files.single.path!);
-    } else {
-      file = null;
+      if (result != null) {
+        return right(File(result.files.single.path!));
+      } else {
+        return left('No file selected');
+      }
+    } catch (e) {
+      return left(e.toString());
     }
-    return file;
   }
 
   @override
-  Future<List<File>?> getMultiplesFiles() async {
-    List<File>? files;
-    FilePickerResult? result =
-        await FilePicker.platform.pickFiles(allowMultiple: true);
+  Future<Either<String, List<File>>> getMultiplesFiles() async {
+    try {
+      FilePickerResult? result =
+          await FilePicker.platform.pickFiles(allowMultiple: true);
 
-    if (result != null) {
-      files = result.paths.map((path) => File(path!)).toList();
-    } else {
-      files = null;
+      if (result != null) {
+        return right(result.paths.map((path) => File(path!)).toList());
+      } else {
+        return left('No file selected');
+      }
+    } catch (e) {
+      return left(e.toString());
     }
-    return files;
   }
 
   @override
-  Future<List<File>?> getMultiplesFilesByExtensions(
+  Future<Either<String, List<File>>> getMultiplesFilesByExtensions(
       List<String> extensions) async {
-    List<File>? files;
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-        allowMultiple: true,
-        type: FileType.custom,
-        allowedExtensions: extensions);
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+          allowMultiple: true,
+          type: FileType.custom,
+          allowedExtensions: extensions);
 
-    if (result != null) {
-      files = result.paths.map((path) => File(path!)).toList();
-    } else {
-      files = null;
+      if (result != null) {
+        return right(result.paths.map((path) => File(path!)).toList());
+      } else {
+        return left('No file selected');
+      }
+    } catch (e) {
+      return left(e.toString());
     }
-    return files;
   }
 
   @override
-  Future<List<File>?> getFileByExtensions(List<String> extensions) async {
-    List<File>? files;
-    FilePickerResult? result = await FilePicker.platform
-        .pickFiles(type: FileType.custom, allowedExtensions: extensions);
+  Future<Either<String, File>> getSingleFileByExtensions(
+      List<String> extensions) async {
+    try {
+      FilePickerResult? result = await FilePicker.platform
+          .pickFiles(type: FileType.custom, allowedExtensions: extensions);
 
-    if (result != null) {
-      files = result.paths.map((path) => File(path!)).toList();
-    } else {
-      files = null;
+      if (result != null) {
+        return right(File(result.files.first.path!));
+      } else {
+        return left('No file selected');
+      }
+    } catch (e) {
+      return left(e.toString());
     }
-    return files;
   }
 }

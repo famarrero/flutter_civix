@@ -19,7 +19,7 @@ class WriteStatementFgrState extends Equatable {
 
 class FileListState extends Equatable {
   final bool isLoading;
-  final List<File> pickedFiles;
+  final BuiltList<File> pickedFiles;
   final bool done;
   final String? error;
 
@@ -30,10 +30,10 @@ class FileListState extends Equatable {
       this.error});
 
   factory FileListState.initial() => FileListState(
-      isLoading: false, pickedFiles: [], done: false, error: null);
+      isLoading: false, pickedFiles: BuiltList([]), done: false, error: null);
 
   FileListState copyWith(
-      {bool? isLoading, List<File>? pickedFiles, bool? done, String? error}) {
+      {bool? isLoading, BuiltList<File>? pickedFiles, bool? done, String? error}) {
     return FileListState(
       isLoading: isLoading ?? this.isLoading,
       pickedFiles: pickedFiles ?? this.pickedFiles,

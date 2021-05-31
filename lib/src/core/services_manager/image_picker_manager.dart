@@ -6,6 +6,6 @@ abstract class ImagePickerManager{
 
   Future<Either<String, File>> getImageFromCamera();
 
-  Future<File?> getImageFromGallery();
+  Future<Either<String, File>> getImageFromGallery();
 
 }
