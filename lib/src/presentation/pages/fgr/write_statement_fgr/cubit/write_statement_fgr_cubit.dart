@@ -25,25 +25,27 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   BuiltList<File> _files = BuiltList([]);
   BuiltList<PromoterFRG> _promoters = BuiltList([]);
   List<String> _documentsSupportedList = ['pdf', 'doc', 'xlsx', 'txt'];
-  FormGroup _form = FormGroup({
-    'subject': FormControl<String>(validators: [Validators.required]),
-    'statement': FormControl<String>(validators: [Validators.required]),
-  });
+  FormGroup _addStatementForm = FormsStatementFGR.addStatementForm;
+  FormGroup _addPromoterForm = FormsStatementFGR.addPromoterForm;
+
+  FormGroup get getAddStatementForm => _addStatementForm;
+
+  FormGroup get getAddPromoterForm => _addPromoterForm;
 
   Future<void> sendStatement() async {
     emit(state.copyWith(
         stateSendStatement: SendStatementState.initial(),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
 
-    if (_form.valid) {
+    if (_addStatementForm.valid) {
       emit(state.copyWith(
           stateSendStatement:
               state.stateSendStatement.copyWith(isSending: true)));
       //Simulation of send statement
       await Future.delayed(Duration(seconds: 5));
       StatementFRG statementFGR = StatementFRG(
-          subject: _form.control('subject').value,
-          statement: _form.control('statement').value,
+          subject: _addStatementForm.control('subject').value,
+          statement: _addStatementForm.control('statement').value,
           promoters: _promoters.toList(),
           files: _files.toList());
       print(statementFGR.toString());
@@ -51,13 +53,11 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           stateSendStatement:
               state.stateSendStatement.copyWith(isSending: false, done: true)));
     } else {
-      _form.control('subject').markAsTouched();
-      _form.control('statement').markAsTouched();
+      _addStatementForm.control('subject').markAsTouched();
+      _addStatementForm.control('statement').markAsTouched();
       print('invalid form');
     }
   }
-
-  FormGroup getForm() => _form;
 
   Future<void> getImageFormCameraOrGallery({required String source}) async {
     emit(state.copyWith(
@@ -180,3 +180,39 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   }
 }
 // await Future.delayed(Duration(seconds: 5));
+
+abstract class FormsStatementFGR {
+  const FormsStatementFGR._();
+
+  static FormGroup get addStatementForm => FormGroup({
+        subject: FormControl<String>(validators: [Validators.required]),
+        statement: FormControl<String>(validators: [Validators.required]),
+      });
+
+  static FormGroup get addPromoterForm => FormGroup({
+        firstName: FormControl<String>(validators: [Validators.required]),
+        secondName: FormControl<String>(validators: [Validators.required]),
+        firstLastName: FormControl<String>(validators: [Validators.required]),
+        secondLastName: FormControl<String>(validators: [Validators.required]),
+        id: FormControl<String>(validators: [Validators.required]),
+        phone: FormControl<String>(validators: [Validators.required]),
+        email: FormControl<String>(validators: [Validators.required]),
+        province: FormControl<String>(validators: [Validators.required]),
+        municipality: FormControl<String>(validators: [Validators.required]),
+        address: FormControl<String>(validators: [Validators.required]),
+      });
+
+  static const subject = 'subject';
+  static const statement = 'statement';
+
+  static const firstName = 'firstName';
+  static const secondName = 'secondName';
+  static const firstLastName = 'firstLastName';
+  static const secondLastName = 'secondLastName';
+  static const id = 'id';
+  static const phone = 'phone';
+  static const email = 'email';
+  static const province = 'province';
+  static const municipality = 'municipality';
+  static const address = 'address';
+}

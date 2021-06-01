@@ -22,7 +22,6 @@ class WriteStatementFgrPage extends StatefulWidget {
 }
 
 class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: _buildAppBar(), body: _buildBody(context));
@@ -79,11 +78,11 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
               backgroundColor: Colors.black.withOpacity(0.7));
         }
       }, builder: (context, state) {
-        var provider = Provider.of<WriteStatementFgrCubit>(context);
         return Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
           child: ReactiveForm(
-            formGroup: provider.getForm(),
+            formGroup: Provider.of<WriteStatementFgrCubit>(context)
+                .getAddStatementForm,
             child: Column(
               children: [
                 Expanded(
@@ -91,9 +90,9 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
                     children: [
-                      SizedBox(height: 15),
+                      SizedBox(height: 25),
                       ReactiveTextField(
-                        formControlName: 'subject',
+                        formControlName: FormsStatementFGR.subject,
                         validationMessages: (control) =>
                             {ValidationMessage.required: S().subjectValidator},
                         textInputAction: TextInputAction.next,
@@ -110,7 +109,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                       ),
                       SizedBox(height: 20),
                       ReactiveTextField(
-                        formControlName: 'statement',
+                        formControlName: FormsStatementFGR.statement,
                         validationMessages: (control) => {
                           ValidationMessage.required: S().statementValidator
                         },
@@ -128,26 +127,30 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      _ShowPromoters(state.stateOfPromoters.promoters),
+                      if (state.stateOfPromoters.promoters.isNotEmpty)
+                        _ShowPromoters(state.stateOfPromoters.promoters),
+                      SizedBox(height: 20),
                       ElevatedButton(
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ))),
-                        onPressed: (state.stateOfPromoters.promoters.length >= 1)
-                            ? null
-                            : () => showDialog<void>(
-                                context: context,
-                                builder: (BuildContext dialogContext) =>
-                                    _AddPromoterDialog(
-                                      blocContext: context,
-                                    )),
+                        onPressed:
+                            (state.stateOfPromoters.promoters.length >= 1)
+                                ? null
+                                : () => showDialog<void>(
+                                    context: context,
+                                    builder: (BuildContext dialogContext) =>
+                                        _AddPromoterDialog(
+                                          blocContext: context,
+                                        )),
                         child: Text(
                           S().addPromoter,
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      SizedBox(height: 20),
                       _ShowFiles(state.stateOfFiles.pickedFiles)
                     ],
                   ),
@@ -429,7 +432,6 @@ class _ShowFiles extends StatelessWidget {
 }
 
 class _AddPromoterDialog extends StatelessWidget {
-
   final BuildContext blocContext;
 
   _AddPromoterDialog({required this.blocContext});
@@ -665,7 +667,8 @@ class _AddPromoterDialog extends StatelessWidget {
                     }
                   else
                     {
-                      BlocProvider.of<WriteStatementFgrCubit>(blocContext, listen: false)
+                      BlocProvider.of<WriteStatementFgrCubit>(blocContext,
+                              listen: false)
                           .addPromoter(PromoterFRG(
                               firstName: _firstName,
                               secondName: _secondName,
@@ -696,7 +699,7 @@ class _ShowPromoters extends StatelessWidget {
     return ListView.builder(
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
-        padding: EdgeInsets.all(4),
+        padding: EdgeInsets.symmetric(horizontal: 4),
         itemCount: _promoters.length,
         itemBuilder: (BuildContext context, int index) {
           String title = '';
@@ -707,7 +710,7 @@ class _ShowPromoters extends StatelessWidget {
             title += '${_promoters[index].firstLastName!}';
           }
           return Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
                 Icon(FontAwesomeIcons.addressBook,
@@ -739,7 +742,8 @@ class _ShowPromoters extends StatelessWidget {
                   child:
                       Icon(FontAwesomeIcons.trash, size: 25, color: Colors.red),
                   onTap: () {
-                    BlocProvider.of<WriteStatementFgrCubit>(context, listen: false)
+                    BlocProvider.of<WriteStatementFgrCubit>(context,
+                            listen: false)
                         .deletePromoter(index);
                   },
                 )
