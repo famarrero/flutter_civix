@@ -580,6 +580,26 @@ class S {
     );
   }
 
+  /// `The statement must o be null`
+  String get statementValidator {
+    return Intl.message(
+      'The statement must o be null',
+      name: 'statementValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The subject must o be null`
+  String get subjectValidator {
+    return Intl.message(
+      'The subject must o be null',
+      name: 'subjectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Write statement`
   String get writeStatement {
     return Intl.message(

@@ -88,6 +88,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "statementValidator": MessageLookupByLibrary.simpleMessage(
+            "The statement must o be null"),
+        "subjectValidator":
+            MessageLookupByLibrary.simpleMessage("The subject must o be null"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Dark Theme"),
         "themeLight": MessageLookupByLibrary.simpleMessage("Light Theme"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),

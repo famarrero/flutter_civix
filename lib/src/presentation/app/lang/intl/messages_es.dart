@@ -90,6 +90,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "share": MessageLookupByLibrary.simpleMessage("Compartir"),
         "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
+        "statementValidator": MessageLookupByLibrary.simpleMessage(
+            "El planteamiento no puede estar vacío"),
+        "subjectValidator": MessageLookupByLibrary.simpleMessage(
+            "El asunto no puede estar vacío"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Tema oscuro"),
         "themeLight": MessageLookupByLibrary.simpleMessage("Tema claro"),
         "update": MessageLookupByLibrary.simpleMessage("Actualizar"),

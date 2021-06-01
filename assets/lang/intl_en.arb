@@ -52,6 +52,8 @@
   "fgr": "General Prosecutor of the Republic",
   "enterSubject": "Enter subject",
   "enterStatement": "Enter statement",
+  "statementValidator": "The statement must o be null",
+  "subjectValidator": "The subject must o be null",
   "writeStatement": "Write statement",
   "addPromoter": "Add promoter",
   "firstName": "First name",

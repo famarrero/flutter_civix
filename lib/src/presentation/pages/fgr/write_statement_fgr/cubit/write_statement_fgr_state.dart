@@ -1,20 +1,65 @@
 part of 'write_statement_fgr_cubit.dart';
 
 class WriteStatementFgrState extends Equatable {
+  final SendStatementState stateSendStatement;
   final FileListState stateOfFiles;
+  final PromoterListState stateOfPromoters;
 
-  const WriteStatementFgrState({required this.stateOfFiles});
+  const WriteStatementFgrState(
+      {required this.stateSendStatement,
+      required this.stateOfFiles,
+      required this.stateOfPromoters});
 
-  factory WriteStatementFgrState.initial() =>
-      WriteStatementFgrState(stateOfFiles: FileListState.initial());
+  factory WriteStatementFgrState.initial() => WriteStatementFgrState(
+        stateSendStatement: SendStatementState.initial(),
+        stateOfFiles: FileListState.initial(),
+        stateOfPromoters: PromoterListState.initial(),
+      );
 
-  WriteStatementFgrState copyWith({FileListState? stateOfFiles}) {
+  WriteStatementFgrState copyWith(
+      {SendStatementState? stateSendStatement,
+      FileListState? stateOfFiles,
+      PromoterListState? stateOfPromoters}) {
     return WriteStatementFgrState(
-        stateOfFiles: stateOfFiles ?? this.stateOfFiles);
+      stateSendStatement: stateSendStatement ?? this.stateSendStatement,
+      stateOfFiles: stateOfFiles ?? this.stateOfFiles,
+      stateOfPromoters: stateOfPromoters ?? this.stateOfPromoters,
+    );
   }
 
   @override
-  List<Object?> get props => [stateOfFiles];
+  List<Object?> get props => [stateSendStatement, stateOfFiles, stateOfPromoters];
+}
+
+class SendStatementState extends Equatable {
+  final bool isSending;
+  final bool done;
+  final String? error;
+
+  const SendStatementState(
+      {required this.isSending, required this.done, this.error});
+
+  // factory SendStatementState.initial() =>
+  //     SendStatementState(isSending: false, done: false, error: null);
+
+  factory SendStatementState.initial(
+          {bool? isSending, bool? done, String? error}) =>
+      SendStatementState(
+        isSending: isSending ?? false,
+        done: done ?? false,
+        error: error ?? null,
+      );
+
+  SendStatementState copyWith({bool? isSending, bool? done, String? error}) {
+    return SendStatementState(
+      isSending: isSending ?? this.isSending,
+      done: done ?? this.done,
+      error: error ?? this.error,
+    );
+  }
+
+  @override
+  List<Object?> get props => [isSending, done, error];
 }
 
 class FileListState extends Equatable {
@@ -29,11 +74,26 @@ class FileListState extends Equatable {
       required this.done,
       this.error});
 
-  factory FileListState.initial() => FileListState(
-      isLoading: false, pickedFiles: BuiltList([]), done: false, error: null);
+  // factory FileListState.initial() => FileListState(
+  //     isLoading: false, pickedFiles: BuiltList([]), done: false, error: null);
+
+  factory FileListState.initial(
+          {bool? isLoading,
+          BuiltList<File>? pickedFiles,
+          bool? done,
+          String? error}) =>
+      FileListState(
+        isLoading: isLoading ?? false,
+        pickedFiles: pickedFiles ?? BuiltList([]),
+        done: done ?? false,
+        error: error ?? null,
+      );
 
   FileListState copyWith(
-      {bool? isLoading, BuiltList<File>? pickedFiles, bool? done, String? error}) {
+      {bool? isLoading,
+      BuiltList<File>? pickedFiles,
+      bool? done,
+      String? error}) {
     return FileListState(
       isLoading: isLoading ?? this.isLoading,
       pickedFiles: pickedFiles ?? this.pickedFiles,
@@ -44,4 +104,18 @@ class FileListState extends Equatable {
 
   @override
   List<Object?> get props => [isLoading, pickedFiles, done, error];
+}
+
+class PromoterListState extends Equatable {
+  final BuiltList<PromoterFRG> promoters;
+
+  const PromoterListState({
+    required this.promoters,
+  });
+
+  factory PromoterListState.initial() =>
+      PromoterListState(promoters: BuiltList([]));
+
+  @override
+  List<Object?> get props => [promoters];
 }

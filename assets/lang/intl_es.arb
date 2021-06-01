@@ -52,6 +52,8 @@
     "fgr": "Fiscalía General de la República",
     "enterSubject": "Introduzca asunto",
     "enterStatement": "Introduzca planteamiento",
+    "statementValidator": "El planteamiento no puede estar vacío",
+    "subjectValidator": "El asunto no puede estar vacío",
     "writeStatement": "Redactar planteamiento",
     "addPromoter": "Adicionar promovente",
     "firstName": "Primer nombre",

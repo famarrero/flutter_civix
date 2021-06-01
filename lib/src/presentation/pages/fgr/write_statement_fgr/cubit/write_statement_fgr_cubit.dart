@@ -7,6 +7,9 @@ import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
 import 'package:flutter_civix/src/core/utils/utils.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:flutter_civix/src/domain/entities/promoter_fgr.dart';
+import 'package:flutter_civix/src/domain/entities/statement_fgr.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 part 'write_statement_fgr_state.dart';
 
@@ -20,12 +23,46 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   final u = Utils();
   BuiltList<File> _files = BuiltList([]);
+  BuiltList<PromoterFRG> _promoters = BuiltList([]);
   List<String> _documentsSupportedList = ['pdf', 'doc', 'xlsx', 'txt'];
+  FormGroup _form = FormGroup({
+    'subject': FormControl<String>(validators: [Validators.required]),
+    'statement': FormControl<String>(validators: [Validators.required]),
+  });
+
+  Future<void> sendStatement() async {
+    emit(state.copyWith(
+        stateSendStatement: SendStatementState.initial(),
+        stateOfFiles: FileListState.initial(pickedFiles: _files)));
+
+    if (_form.valid) {
+      emit(state.copyWith(
+          stateSendStatement:
+              state.stateSendStatement.copyWith(isSending: true)));
+      //Simulation of send statement
+      await Future.delayed(Duration(seconds: 5));
+      StatementFRG statementFGR = StatementFRG(
+          subject: _form.control('subject').value,
+          statement: _form.control('statement').value,
+          promoters: _promoters.toList(),
+          files: _files.toList());
+      print(statementFGR.toString());
+      emit(state.copyWith(
+          stateSendStatement:
+              state.stateSendStatement.copyWith(isSending: false, done: true)));
+    } else {
+      _form.control('subject').markAsTouched();
+      _form.control('statement').markAsTouched();
+      print('invalid form');
+    }
+  }
+
+  FormGroup getForm() => _form;
 
   Future<void> getImageFormCameraOrGallery({required String source}) async {
     emit(state.copyWith(
-        stateOfFiles: FileListState(
-            isLoading: false, pickedFiles: _files, done: false, error: null)));
+        stateSendStatement: SendStatementState.initial(),
+        stateOfFiles: FileListState.initial(pickedFiles: _files)));
 
     final String _newDirectory = '${_directory.path}/AppPictures';
     await Directory(_newDirectory).create(recursive: true);
@@ -62,10 +99,6 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
               stateOfFiles:
                   state.stateOfFiles.copyWith(isLoading: false, error: error)));
         }, (imageCompress) async {
-          // var builder = _files.toBuilder();
-          // builder.add(imageCompress);
-          // _files = builder.build();
-
           _files = (_files.toBuilder()..add(imageCompress)).build();
 
           file.delete(recursive: true);
@@ -80,8 +113,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   Future<void> getDocument() async {
     emit(state.copyWith(
-        stateOfFiles: FileListState(
-            isLoading: false, pickedFiles: _files, done: false, error: null)));
+        stateSendStatement: SendStatementState.initial(),
+        stateOfFiles: FileListState.initial(pickedFiles: _files)));
 
     final String _newDirectory = '${_directory.path}/AppDocuments';
     await Directory(_newDirectory).create(recursive: true);
@@ -99,10 +132,6 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           emit(state.copyWith(
               stateOfFiles: FileListState(
                   isLoading: true, pickedFiles: _files, done: false)));
-
-          // var builder = _files.toBuilder();
-          // builder.add(file);
-          // _files = builder.build();
 
           _files = (_files.toBuilder()..add(file)).build();
 
@@ -130,8 +159,24 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     _files = (_files.toBuilder()..removeAt(index)).build();
 
     emit(state.copyWith(
-        stateOfFiles: state.stateOfFiles
-            .copyWith(isLoading: false, pickedFiles: _files, done: false)));
+        stateSendStatement: SendStatementState.initial(),
+        stateOfFiles: FileListState.initial(pickedFiles: _files)));
+  }
+
+  Future<void> addPromoter(PromoterFRG promoterFRG) async {
+    _promoters = (_promoters.toBuilder()..add(promoterFRG)).build();
+    emit(state.copyWith(
+        stateSendStatement: SendStatementState.initial(),
+        stateOfFiles: FileListState.initial(pickedFiles: _files),
+        stateOfPromoters: PromoterListState(promoters: _promoters)));
+  }
+
+  Future<void> deletePromoter(int index) async {
+    _promoters = (_promoters.toBuilder()..removeAt(index)).build();
+    emit(state.copyWith(
+        stateSendStatement: SendStatementState.initial(),
+        stateOfFiles: FileListState.initial(pickedFiles: _files),
+        stateOfPromoters: PromoterListState(promoters: _promoters)));
   }
 }
 // await Future.delayed(Duration(seconds: 5));
