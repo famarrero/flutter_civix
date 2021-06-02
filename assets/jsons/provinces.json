@@ -1,0 +1,788 @@
+{
+  "provinces_list": [
+    {
+      "province_name": "Pinar del Río",
+      "province_abbreviation": "pri",
+      "id": "169",
+      "municipalities_list": [
+        {
+          "id": "8",
+          "municipality_name": "Consolación del Sur"
+        },
+        {
+          "id": "3",
+          "municipality_name": "Guane"
+        },
+        {
+          "id": "11",
+          "municipality_name": "La Palma"
+        },
+        {
+          "id": "10",
+          "municipality_name": "Los Palacios"
+        },
+        {
+          "id": "2",
+          "municipality_name": "Mantua"
+        },
+        {
+          "id": "4",
+          "municipality_name": "Minas de Matahambre"
+        },
+        {
+          "id": "7",
+          "municipality_name": "Pinar del Río"
+        },
+        {
+          "id": "5",
+          "municipality_name": "San Juan y Martínez"
+        },
+        {
+          "id": "6",
+          "municipality_name": "San Luis"
+        },
+        {
+          "id": "1",
+          "municipality_name": "Sandino"
+        },
+        {
+          "id": "9",
+          "municipality_name": "Viñales"
+        }
+      ]
+    },
+    {
+      "province_name": "Artemisa",
+      "province_abbreviation": "art",
+      "id": "170",
+      "municipalities_list": [
+        {
+          "id": "18",
+          "municipality_name": "Alquízar"
+        },
+        {
+          "id": "19",
+          "municipality_name": "Artemisa"
+        },
+        {
+          "id": "12",
+          "municipality_name": "Bahía Honda"
+        },
+        {
+          "id": "16",
+          "municipality_name": "Bauta"
+        },
+        {
+          "id": "15",
+          "municipality_name": "Caimito"
+        },
+        {
+          "id": "20",
+          "municipality_name": "Candelaria"
+        },
+        {
+          "id": "14",
+          "municipality_name": "Guanajay"
+        },
+        {
+          "id": "17",
+          "municipality_name": "Güira de Melena"
+        },
+        {
+          "id": "13",
+          "municipality_name": "Mariel"
+        },
+        {
+          "id": "22",
+          "municipality_name": "San Antonio de los Baños"
+        },
+        {
+          "id": "21",
+          "municipality_name": "San Cristóbal"
+        }
+      ]
+    },
+    {
+      "province_name": "La Habana",
+      "province_abbreviation": "hab",
+      "id": "171",
+      "municipalities_list": [
+        {
+          "id": "36",
+          "municipality_name": "Arroyo Naranjo"
+        },
+        {
+          "id": "35",
+          "municipality_name": "Boyeros"
+        },
+        {
+          "id": "25",
+          "municipality_name": "Centro Habana"
+        },
+        {
+          "id": "32",
+          "municipality_name": "Cerro"
+        },
+        {
+          "id": "37",
+          "municipality_name": "Cotorro"
+        },
+        {
+          "id": "31",
+          "municipality_name": "Diez de Octubre"
+        },
+        {
+          "id": "29",
+          "municipality_name": "Guanabacoa"
+        },
+        {
+          "id": "28",
+          "municipality_name": "Habana del Este"
+        },
+        {
+          "id": "26",
+          "municipality_name": "Habana Vieja"
+        },
+        {
+          "id": "34",
+          "municipality_name": "La Lisa"
+        },
+        {
+          "id": "33",
+          "municipality_name": "Marianao"
+        },
+        {
+          "id": "23",
+          "municipality_name": "Playa"
+        },
+        {
+          "id": "24",
+          "municipality_name": "Plaza de la Revolución"
+        },
+        {
+          "id": "27",
+          "municipality_name": "Regla"
+        },
+        {
+          "id": "30",
+          "municipality_name": "San Miguel del Padrón"
+        }
+      ]
+    },
+    {
+      "province_name": "Mayabeque",
+      "province_abbreviation": "may",
+      "id": "172",
+      "municipalities_list": [
+        {
+          "id": "47",
+          "municipality_name": "Batabanó"
+        },
+        {
+          "id": "38",
+          "municipality_name": "Bejucal"
+        },
+        {
+          "id": "45",
+          "municipality_name": "Güines"
+        },
+        {
+          "id": "40",
+          "municipality_name": "Jaruco"
+        },
+        {
+          "id": "42",
+          "municipality_name": "Madruga"
+        },
+        {
+          "id": "46",
+          "municipality_name": "Melena del Sur"
+        },
+        {
+          "id": "43",
+          "municipality_name": "Nueva Paz"
+        },
+        {
+          "id": "48",
+          "municipality_name": "Quivicán"
+        },
+        {
+          "id": "39",
+          "municipality_name": "San José de las Lajas"
+        },
+        {
+          "id": "44",
+          "municipality_name": "San Nicolás de Bari"
+        },
+        {
+          "id": "41",
+          "municipality_name": "Santa Cruz del Norte"
+        }
+      ]
+    },
+    {
+      "province_name": "Matanzas",
+      "province_abbreviation": "mtz",
+      "id": "173",
+      "municipalities_list": [
+        {
+          "id": "60",
+          "municipality_name": "Calimete"
+        },
+        {
+          "id": "58",
+          "municipality_name": "Ciénaga de Zapata"
+        },
+        {
+          "id": "52",
+          "municipality_name": "Colón"
+        },
+        {
+          "id": "50",
+          "municipality_name": "Cárdenas"
+        },
+        {
+          "id": "59",
+          "municipality_name": "Jagüey Grande"
+        },
+        {
+          "id": "54",
+          "municipality_name": "Jovellanos"
+        },
+        {
+          "id": "56",
+          "municipality_name": "Limonar"
+        },
+        {
+          "id": "61",
+          "municipality_name": "Los Arabos"
+        },
+        {
+          "id": "51",
+          "municipality_name": "Martí"
+        },
+        {
+          "id": "49",
+          "municipality_name": "Matanzas"
+        },
+        {
+          "id": "55",
+          "municipality_name": "Pedro Betancourt"
+        },
+        {
+          "id": "53",
+          "municipality_name": "Perico"
+        },
+        {
+          "id": "57",
+          "municipality_name": "Unión de Reyes"
+        }
+      ]
+    },
+    {
+      "province_name": "Cienfuegos",
+      "province_abbreviation": "cfg",
+      "id": "174",
+      "municipalities_list": [
+        {
+          "id": "69",
+          "municipality_name": "Abreus"
+        },
+        {
+          "id": "62",
+          "municipality_name": "Aguada de Pasajeros"
+        },
+        {
+          "id": "68",
+          "municipality_name": "Cienfuegos"
+        },
+        {
+          "id": "66",
+          "municipality_name": "Cruces"
+        },
+        {
+          "id": "67",
+          "municipality_name": "Cumanayagua"
+        },
+        {
+          "id": "65",
+          "municipality_name": "Santa Isabel de las Lajas"
+        },
+        {
+          "id": "64",
+          "municipality_name": "Palmira"
+        },
+        {
+          "id": "63",
+          "municipality_name": "Rodas"
+        }
+      ]
+    },
+    {
+      "province_name": "Villa Clara",
+      "province_abbreviation": "vcl",
+      "id": "175",
+      "municipalities_list": [
+        {
+          "id": "76",
+          "municipality_name": "Caibarién"
+        },
+        {
+          "id": "75",
+          "municipality_name": "Camajuaní"
+        },
+        {
+          "id": "80",
+          "municipality_name": "Cifuentes"
+        },
+        {
+          "id": "71",
+          "municipality_name": "Corralillo"
+        },
+        {
+          "id": "74",
+          "municipality_name": "Encrucijada"
+        },
+        {
+          "id": "70",
+          "municipality_name": "Manicaragua"
+        },
+        {
+          "id": "78",
+          "municipality_name": "Placetas"
+        },
+        {
+          "id": "72",
+          "municipality_name": "Quemado de Güines"
+        },
+        {
+          "id": "82",
+          "municipality_name": "Ranchuelo"
+        },
+        {
+          "id": "77",
+          "municipality_name": "Remedios"
+        },
+        {
+          "id": "73",
+          "municipality_name": "Sagua la Grande"
+        },
+        {
+          "id": "79",
+          "municipality_name": "Santa Clara"
+        },
+        {
+          "id": "81",
+          "municipality_name": "Santo Domingo"
+        }
+      ]
+    },
+    {
+      "province_name": "Sancti Spíritus",
+      "province_abbreviation": "ssp",
+      "id": "176",
+      "municipalities_list": [
+        {
+          "id": "86",
+          "municipality_name": "Cabaiguán"
+        },
+        {
+          "id": "87",
+          "municipality_name": "Fomento"
+        },
+        {
+          "id": "84",
+          "municipality_name": "Jatibonico"
+        },
+        {
+          "id": "90",
+          "municipality_name": "La Sierpe"
+        },
+        {
+          "id": "89",
+          "municipality_name": "Sancti Spíritus"
+        },
+        {
+          "id": "85",
+          "municipality_name": "Taguasco"
+        },
+        {
+          "id": "88",
+          "municipality_name": "Trinidad"
+        },
+        {
+          "id": "83",
+          "municipality_name": "Yaguajay"
+        }
+      ]
+    },
+    {
+      "province_name": "Ciego de Ávila",
+      "province_abbreviation": "cav",
+      "id": "177",
+      "municipalities_list": [
+        {
+          "id": "100",
+          "municipality_name": "Baraguá"
+        },
+        {
+          "id": "93",
+          "municipality_name": "Bolivia"
+        },
+        {
+          "id": "91",
+          "municipality_name": "Chambas"
+        },
+        {
+          "id": "98",
+          "municipality_name": "Ciego de Ávila"
+        },
+        {
+          "id": "95",
+          "municipality_name": "Ciro Redondo"
+        },
+        {
+          "id": "96",
+          "municipality_name": "Florencia"
+        },
+        {
+          "id": "97",
+          "municipality_name": "Majagua"
+        },
+        {
+          "id": "92",
+          "municipality_name": "Morón"
+        },
+        {
+          "id": "94",
+          "municipality_name": "Primero de Enero"
+        },
+        {
+          "id": "99",
+          "municipality_name": "Venezuela"
+        }
+      ]
+    },
+    {
+      "province_name": "Camagüey",
+      "province_abbreviation": "cmg",
+      "id": "178",
+      "municipalities_list": [
+        {
+          "id": "108",
+          "municipality_name": "Camagüey"
+        },
+        {
+          "id": "101",
+          "municipality_name": "Carlos Manuel de Céspedes"
+        },
+        {
+          "id": "102",
+          "municipality_name": "Esmeralda"
+        },
+        {
+          "id": "109",
+          "municipality_name": "Florida"
+        },
+        {
+          "id": "106",
+          "municipality_name": "Guáimaro"
+        },
+        {
+          "id": "111",
+          "municipality_name": "Jimaguayú"
+        },
+        {
+          "id": "104",
+          "municipality_name": "Minas"
+        },
+        {
+          "id": "112",
+          "municipality_name": "Najasa"
+        },
+        {
+          "id": "105",
+          "municipality_name": "Nuevitas"
+        },
+        {
+          "id": "113",
+          "municipality_name": "Santa Cruz del Sur"
+        },
+        {
+          "id": "107",
+          "municipality_name": "Sibanicú"
+        },
+        {
+          "id": "103",
+          "municipality_name": "Sierra de Cubitas"
+        },
+        {
+          "id": "110",
+          "municipality_name": "Vertientes"
+        }
+      ]
+    },
+    {
+      "province_name": "Las Tunas",
+      "province_abbreviation": "ltu",
+      "id": "179",
+      "municipalities_list": [
+        {
+          "id": "121",
+          "municipality_name": "Amancio Rodríguez"
+        },
+        {
+          "id": "120",
+          "municipality_name": "Colombia"
+        },
+        {
+          "id": "116",
+          "municipality_name": "Jesús Menéndez"
+        },
+        {
+          "id": "119",
+          "municipality_name": "Jobabo"
+        },
+        {
+          "id": "118",
+          "municipality_name": "Las Tunas"
+        },
+        {
+          "id": "117",
+          "municipality_name": "Majibacoa"
+        },
+        {
+          "id": "114",
+          "municipality_name": "Manatí"
+        },
+        {
+          "id": "115",
+          "municipality_name": "Puerto Padre"
+        }
+      ]
+    },
+    {
+      "province_name": "Holguín",
+      "province_abbreviation": "hol",
+      "id": "180",
+      "municipalities_list": [
+        {
+          "id": "125",
+          "municipality_name": "Antilla"
+        },
+        {
+          "id": "124",
+          "municipality_name": "Banes"
+        },
+        {
+          "id": "126",
+          "municipality_name": "Báguanos"
+        },
+        {
+          "id": "129",
+          "municipality_name": "Cacocum"
+        },
+        {
+          "id": "128",
+          "municipality_name": "Calixto García"
+        },
+        {
+          "id": "131",
+          "municipality_name": "Cueto"
+        },
+        {
+          "id": "133",
+          "municipality_name": "Frank País"
+        },
+        {
+          "id": "122",
+          "municipality_name": "Gibara"
+        },
+        {
+          "id": "127",
+          "municipality_name": "Holguín"
+        },
+        {
+          "id": "132",
+          "municipality_name": "Mayarí"
+        },
+        {
+          "id": "135",
+          "municipality_name": "Moa"
+        },
+        {
+          "id": "123",
+          "municipality_name": "Rafael Freyre"
+        },
+        {
+          "id": "134",
+          "municipality_name": "Sagua de Tánamo"
+        },
+        {
+          "id": "130",
+          "municipality_name": "Urbano Noris"
+        }
+      ]
+    },
+    {
+      "province_name": "Granma",
+      "province_abbreviation": "gra",
+      "id": "181",
+      "municipalities_list": [
+        {
+          "id": "146",
+          "municipality_name": "Bartolomé Masó"
+        },
+        {
+          "id": "139",
+          "municipality_name": "Bayamo"
+        },
+        {
+          "id": "147",
+          "municipality_name": "Buey Arriba"
+        },
+        {
+          "id": "142",
+          "municipality_name": "Campechuela"
+        },
+        {
+          "id": "137",
+          "municipality_name": "Cauto Cristo"
+        },
+        {
+          "id": "148",
+          "municipality_name": "Guisa"
+        },
+        {
+          "id": "138",
+          "municipality_name": "Jiguaní"
+        },
+        {
+          "id": "141",
+          "municipality_name": "Manzanillo"
+        },
+        {
+          "id": "143",
+          "municipality_name": "Media Luna"
+        },
+        {
+          "id": "144",
+          "municipality_name": "Niquero"
+        },
+        {
+          "id": "145",
+          "municipality_name": "Pilón"
+        },
+        {
+          "id": "136",
+          "municipality_name": "Río Cauto"
+        },
+        {
+          "id": "140",
+          "municipality_name": "Yara"
+        }
+      ]
+    },
+    {
+      "province_name": "Santiago de Cuba",
+      "province_abbreviation": "scu",
+      "id": "182",
+      "municipalities_list": [
+        {
+          "id": "149",
+          "municipality_name": "Contramaestre"
+        },
+        {
+          "id": "157",
+          "municipality_name": "Guamá"
+        },
+        {
+          "id": "150",
+          "municipality_name": "Julio Antonio Mella"
+        },
+        {
+          "id": "155",
+          "municipality_name": "Palma Soriano"
+        },
+        {
+          "id": "151",
+          "municipality_name": "San Luis"
+        },
+        {
+          "id": "154",
+          "municipality_name": "Santiago de Cuba"
+        },
+        {
+          "id": "152",
+          "municipality_name": "Segundo Frente"
+        },
+        {
+          "id": "153",
+          "municipality_name": "Songo - La Maya"
+        },
+        {
+          "id": "156",
+          "municipality_name": "Tercer Frente"
+        }
+      ]
+    },
+    {
+      "province_name": "Guantánamo",
+      "province_abbreviation": "gtm",
+      "id": "183",
+      "municipalities_list": [
+        {
+          "id": "161",
+          "municipality_name": "Baracoa"
+        },
+        {
+          "id": "165",
+          "municipality_name": "Caimanera"
+        },
+        {
+          "id": "158",
+          "municipality_name": "El Salvador"
+        },
+        {
+          "id": "166",
+          "municipality_name": "Guantánamo"
+        },
+        {
+          "id": "163",
+          "municipality_name": "Imías"
+        },
+        {
+          "id": "162",
+          "municipality_name": "Maisí"
+        },
+        {
+          "id": "159",
+          "municipality_name": "Manuel Tames"
+        },
+        {
+          "id": "167",
+          "municipality_name": "Niceto Pérez"
+        },
+        {
+          "id": "164",
+          "municipality_name": "San Antonio del Sur"
+        },
+        {
+          "id": "160",
+          "municipality_name": "Yateras"
+        }
+      ]
+    },
+    {
+      "province_name": "Isla de la Juventud",
+      "province_abbreviation": "ijv",
+      "id": "184",
+      "municipalities_list": [
+        {
+          "id": "168",
+          "municipality_name": "Isla de la Juventud"
+        }
+      ]
+    }
+  ]
+}

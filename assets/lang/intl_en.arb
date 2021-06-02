@@ -68,5 +68,15 @@
   "send": "Send",
   "attachments": "Attachments",
   "document": "Document",
-  "location": "Location"
+  "location": "Location",
+  "firstNameCorrectValidator": "The first name must be a valid name",
+  "secondNameCorrectValidator": "The second name name must be a valid name",
+  "firstLastNameCorrectValidator": "The first last name must be a valid name",
+  "secondLastNameCorrectValidator": "The second last name must be a valid name",
+  "emailCorrectValidator": "The email must be a correct email",
+  "idCorrectValidator": "The id must be a correct id",
+  "phoneCorrectValidator": "The phone must be a correct phone",
+  "provinceRequiredValidator": "The province is required",
+  "municipalityRequiredValidator": "The municipality is required"
+
 }

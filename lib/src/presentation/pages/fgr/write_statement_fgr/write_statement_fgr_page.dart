@@ -438,17 +438,6 @@ class _AddPromoterDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? _firstName;
-    String? _secondName;
-    String? _firstLastName;
-    String? _secondLastName;
-    int? _id;
-    String? _phone;
-    String? _email;
-    String? _province;
-    String? _municipality;
-    String? _address;
-
     return AlertDialog(
       title: Text(S().addPromoter),
       shape: RoundedRectangleBorder(
@@ -458,189 +447,198 @@ class _AddPromoterDialog extends StatelessWidget {
       content: Container(
         width: 315,
         height: double.infinity,
-        child: ListView(
-          children: [
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.name,
-              maxLines: 1,
-              maxLength: 10,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().firstName,
-                suffixIcon: Icon(Icons.person),
+        child: ReactiveForm(
+          formGroup: BlocProvider.of<WriteStatementFgrCubit>(blocContext)
+              .getAddPromoterForm,
+          child: ListView(
+            children: [
+              SizedBox(height: 8),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.firstName,
+                validationMessages: (control) =>
+                    {ValidationMessage.pattern: S().firstNameCorrectValidator},
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.name,
+                maxLines: 1,
+                maxLength: 25,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().firstName,
+                  suffixIcon: Icon(Icons.person),
+                ),
               ),
-              onChanged: (valor) {
-                _firstName = valor;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.name,
-              maxLines: 1,
-              maxLength: 10,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().secondName,
-                suffixIcon: Icon(Icons.person),
+              SizedBox(height: 8),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.secondName,
+                validationMessages: (control) =>
+                    {ValidationMessage.pattern: S().secondNameCorrectValidator},
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.name,
+                maxLines: 1,
+                maxLength: 25,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().secondName,
+                  suffixIcon: Icon(Icons.person),
+                ),
               ),
-              onChanged: (valor) {
-                _secondName = valor;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.name,
-              maxLines: 1,
-              maxLength: 10,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().firstLastName,
-                suffixIcon: Icon(Icons.person),
+              SizedBox(height: 8),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.firstLastName,
+                validationMessages: (control) => {
+                  ValidationMessage.pattern: S().firstLastNameCorrectValidator
+                },
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.name,
+                maxLines: 1,
+                maxLength: 25,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().firstLastName,
+                  suffixIcon: Icon(Icons.person),
+                ),
               ),
-              onChanged: (valor) {
-                _firstLastName = valor;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.name,
-              maxLines: 1,
-              maxLength: 10,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().secondLastName,
-                suffixIcon: Icon(Icons.person),
+              SizedBox(height: 8),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.secondLastName,
+                validationMessages: (control) => {
+                  ValidationMessage.pattern: S().secondLastNameCorrectValidator
+                },
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.name,
+                maxLines: 1,
+                maxLength: 25,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().secondLastName,
+                  suffixIcon: Icon(Icons.person),
+                ),
               ),
-              onChanged: (valor) {
-                _secondLastName = valor;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.none,
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              maxLines: 1,
-              maxLength: 11,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().id,
-                suffixIcon: Icon(Icons.person),
+              SizedBox(height: 8),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.id,
+                validationMessages: (control) =>
+                    {ValidationMessage.minLength: S().idCorrectValidator},
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.none,
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                maxLines: 1,
+                maxLength: 11,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().id,
+                  suffixIcon: Icon(Icons.vpn_key),
+                ),
               ),
-              onChanged: (valor) {
-                _id = valor as int;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.phone,
-              maxLines: 1,
-              maxLength: 8,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().phone,
-                suffixIcon: Icon(Icons.phone),
+              SizedBox(height: 8),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.phone,
+                validationMessages: (control) =>
+                    {ValidationMessage.pattern: S().phoneCorrectValidator},
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.phone,
+                maxLines: 1,
+                maxLength: 8,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().phone,
+                  suffixIcon: Icon(Icons.phone),
+                ),
               ),
-              onChanged: (valor) {
-                _phone = valor;
-              },
-            ),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.emailAddress,
-              maxLines: 1,
-              maxLength: 25,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().email,
-                suffixIcon: Icon(Icons.alternate_email),
+              SizedBox(height: 8),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.email,
+                validationMessages: (control) =>
+                    {ValidationMessage.email: S().emailCorrectValidator},
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.emailAddress,
+                maxLines: 1,
+                maxLength: 25,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().email,
+                  suffixIcon: Icon(Icons.alternate_email),
+                ),
               ),
-              onChanged: (valor) {
-                _email = valor;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.text,
-              maxLines: 1,
-              maxLength: 15,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().province,
-                suffixIcon: Icon(Icons.location_city),
+              SizedBox(height: 8),
+              ReactiveDropdownField<String>(
+                formControlName: FormsStatementFGR.province,
+                validationMessages: (control) =>
+                    {ValidationMessage.required: S().provinceRequiredValidator},
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().province,
+                  suffixIcon: Icon(Icons.location_city),
+                ),
+                items: [
+                  DropdownMenuItem(
+                      value: 'HAB', child: Text('La Habana')),
+                  DropdownMenuItem(
+                      value: 'SSP', child: Text('Sancti Spiritus')),
+                  DropdownMenuItem(
+                      value: 'CAV', child: Text('Ciego de Ávila')),
+                  // DropdownMenuItem(
+                  //     value:
+                  //         'San Cristobal de La Habana y todos los santos juntos por ahi pa allá',
+                  //     child: Expanded(
+                  //       child: Text(
+                  //           'San Cristobal de La Habana y todos los santos juntos por ahi pa allá'),
+                  //     ))
+                ],
               ),
-              onChanged: (valor) {
-                _province = valor;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.text,
-              maxLines: 1,
-              maxLength: 15,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().municipality,
-                suffixIcon: Icon(Icons.location_city),
+              SizedBox(height: 25),
+              ReactiveDropdownField<String>(
+                formControlName: FormsStatementFGR.municipality,
+                validationMessages: (control) => {
+                  ValidationMessage.required: S().municipalityRequiredValidator
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().municipality,
+                  suffixIcon: Icon(Icons.location_city),
+                ),
+                items: [
+                  DropdownMenuItem(value: 'F', child: Text('Fomento')),
+                  DropdownMenuItem(value: 'C', child: Text('Cabaigüan')),
+                  DropdownMenuItem(value: 'T', child: Text('Trinidad')),
+                  DropdownMenuItem(value: 'J', child: Text('Jativonico'))
+                ],
               ),
-              onChanged: (valor) {
-                _municipality = valor;
-              },
-            ),
-            SizedBox(height: 8),
-            TextField(
-              autofocus: true,
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              keyboardType: TextInputType.streetAddress,
-              maxLines: 1,
-              maxLength: 25,
-              decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: S().address,
-                suffixIcon: Icon(Icons.location_on),
+              SizedBox(height: 25),
+              ReactiveTextField(
+                formControlName: FormsStatementFGR.address,
+                // validationMessages: (control) =>
+                // {ValidationMessage.email: S().subjectValidator},
+                textInputAction: TextInputAction.next,
+                textCapitalization: TextCapitalization.sentences,
+                keyboardType: TextInputType.streetAddress,
+                maxLines: 1,
+                maxLength: 25,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: S().address,
+                  suffixIcon: Icon(Icons.location_on),
+                ),
               ),
-              onChanged: (valor) {
-                _address = valor;
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       actions: [
@@ -649,39 +647,9 @@ class _AddPromoterDialog extends StatelessWidget {
             child: Text(S().cancel)),
         TextButton(
             onPressed: () => {
-                  if (_province == null)
-                    {
-                      print('La provincia no puede ser null'),
-                      showToast('La provincia no puede estar vacia',
-                          duration: Duration(seconds: 2),
-                          position: ToastPosition.bottom,
-                          backgroundColor: Colors.black.withOpacity(0.4))
-                    }
-                  else if (_municipality == null)
-                    {
-                      print('El municipio no puede ser null'),
-                      showToast('El municipio no puede estar vacio',
-                          duration: Duration(seconds: 2),
-                          position: ToastPosition.bottom,
-                          backgroundColor: Colors.black.withOpacity(0.4))
-                    }
-                  else
-                    {
-                      BlocProvider.of<WriteStatementFgrCubit>(blocContext,
-                              listen: false)
-                          .addPromoter(PromoterFRG(
-                              firstName: _firstName,
-                              secondName: _secondName,
-                              firstLastName: _firstLastName,
-                              secondLastName: _secondLastName,
-                              id: _id.toString(),
-                              phone: _phone,
-                              email: _email,
-                              province: _province!,
-                              municipality: _municipality!,
-                              address: _address)),
-                      Navigator.of(context).pop()
-                    }
+                  BlocProvider.of<WriteStatementFgrCubit>(blocContext,
+                          listen: false)
+                      .addPromoter(context),
                 },
             child: Text(S().ok)),
       ],

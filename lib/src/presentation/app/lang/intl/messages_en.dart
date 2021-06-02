@@ -43,6 +43,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "emailCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The email must be a correct email"),
         "emailValidator":
             MessageLookupByLibrary.simpleMessage("Email is invalid"),
         "emptyValidator":
@@ -56,16 +58,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "finish": MessageLookupByLibrary.simpleMessage("Finish"),
         "firstLastName":
             MessageLookupByLibrary.simpleMessage("First last name"),
+        "firstLastNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The first last name must be a valid name"),
         "firstName": MessageLookupByLibrary.simpleMessage("First name"),
+        "firstNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The first name must be a valid name"),
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "id": MessageLookupByLibrary.simpleMessage("ID"),
+        "idCorrectValidator":
+            MessageLookupByLibrary.simpleMessage("The id must be a correct id"),
         "info": MessageLookupByLibrary.simpleMessage("Information"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Language"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
         "location": MessageLookupByLibrary.simpleMessage("Location"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Main FGR"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipality"),
+        "municipalityRequiredValidator": MessageLookupByLibrary.simpleMessage(
+            "The municipality is required"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
@@ -77,14 +87,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordValidator":
             MessageLookupByLibrary.simpleMessage("Passwords must match"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
+        "phoneCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The phone must be a correct phone"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "province": MessageLookupByLibrary.simpleMessage("Province"),
+        "provinceRequiredValidator":
+            MessageLookupByLibrary.simpleMessage("The province is required"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Search.."),
         "secondLastName":
             MessageLookupByLibrary.simpleMessage("Second last name"),
+        "secondLastNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The second last name must be a valid name"),
         "secondName": MessageLookupByLibrary.simpleMessage("Second name"),
+        "secondNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The second name name must be a valid name"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),

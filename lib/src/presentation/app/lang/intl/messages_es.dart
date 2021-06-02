@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "done": MessageLookupByLibrary.simpleMessage("Finalizar"),
         "edit": MessageLookupByLibrary.simpleMessage("Editar"),
         "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
+        "emailCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El correo electrónico de ser un correo válido"),
         "emailValidator": MessageLookupByLibrary.simpleMessage(
             "El correo electrónico no es válido"),
         "emptyValidator":
@@ -58,16 +60,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "finish": MessageLookupByLibrary.simpleMessage("Finalizar"),
         "firstLastName":
             MessageLookupByLibrary.simpleMessage("Primer apellido"),
+        "firstLastNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El primer apellido debe ser un apellido válido"),
         "firstName": MessageLookupByLibrary.simpleMessage("Primer nombre"),
+        "firstNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El primer nombre debe ser un nombre válido"),
         "gallery": MessageLookupByLibrary.simpleMessage("Galería"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "id": MessageLookupByLibrary.simpleMessage("Carné de identidad"),
+        "idCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El caré de indentidad debe ser un carné válido"),
         "info": MessageLookupByLibrary.simpleMessage("Información"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Idioma"),
         "later": MessageLookupByLibrary.simpleMessage("Después"),
         "location": MessageLookupByLibrary.simpleMessage("Ubicación"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Principal FGR"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipio"),
+        "municipalityRequiredValidator":
+            MessageLookupByLibrary.simpleMessage("El municipio es requerido"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -79,14 +89,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordValidator": MessageLookupByLibrary.simpleMessage(
             "Las contraseñas deben coincidir"),
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
+        "phoneCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El teléfono debe ser un teléfono válido"),
         "price": MessageLookupByLibrary.simpleMessage("Precio"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
         "province": MessageLookupByLibrary.simpleMessage("Provincia"),
+        "provinceRequiredValidator":
+            MessageLookupByLibrary.simpleMessage("La provincia es requerida"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Buscar.."),
         "secondLastName":
             MessageLookupByLibrary.simpleMessage("Segundo apellido"),
+        "secondLastNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El segundo apellido debe ser un apellido válido"),
         "secondName": MessageLookupByLibrary.simpleMessage("Segundo nombre"),
+        "secondNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El segundo nombre debe ser un nombre válido"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "share": MessageLookupByLibrary.simpleMessage("Compartir"),
         "skip": MessageLookupByLibrary.simpleMessage("Saltar"),

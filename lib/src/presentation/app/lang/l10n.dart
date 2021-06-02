@@ -749,6 +749,96 @@ class S {
       args: [],
     );
   }
+
+  /// `The first name must be a valid name`
+  String get firstNameCorrectValidator {
+    return Intl.message(
+      'The first name must be a valid name',
+      name: 'firstNameCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The second name name must be a valid name`
+  String get secondNameCorrectValidator {
+    return Intl.message(
+      'The second name name must be a valid name',
+      name: 'secondNameCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The first last name must be a valid name`
+  String get firstLastNameCorrectValidator {
+    return Intl.message(
+      'The first last name must be a valid name',
+      name: 'firstLastNameCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The second last name must be a valid name`
+  String get secondLastNameCorrectValidator {
+    return Intl.message(
+      'The second last name must be a valid name',
+      name: 'secondLastNameCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email must be a correct email`
+  String get emailCorrectValidator {
+    return Intl.message(
+      'The email must be a correct email',
+      name: 'emailCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The id must be a correct id`
+  String get idCorrectValidator {
+    return Intl.message(
+      'The id must be a correct id',
+      name: 'idCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The phone must be a correct phone`
+  String get phoneCorrectValidator {
+    return Intl.message(
+      'The phone must be a correct phone',
+      name: 'phoneCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The province is required`
+  String get provinceRequiredValidator {
+    return Intl.message(
+      'The province is required',
+      name: 'provinceRequiredValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The municipality is required`
+  String get municipalityRequiredValidator {
+    return Intl.message(
+      'The municipality is required',
+      name: 'municipalityRequiredValidator',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
