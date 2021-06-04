@@ -20,11 +20,23 @@ import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class WriteStatementFgrPage extends StatefulWidget {
+
+  final WriteStatementFgrCubit bloc;
+
+  WriteStatementFgrPage({required this.bloc});
+
   @override
   _WriteStatementFgrPageState createState() => _WriteStatementFgrPageState();
 }
 
 class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
+
+  @override
+  void initState() {
+    widget.bloc.getSavedStatement();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: _buildAppBar(), body: _buildBody(context));
@@ -35,9 +47,9 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(S().writeStatement),
+          Text(S.of(context).writeStatement),
           SizedBox(height: 4),
-          Text(S().fgr,
+          Text(S.of(context).fgr,
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
@@ -45,8 +57,8 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
   }
 
   _buildBody(BuildContext context) {
-    return BlocProvider(
-      create: (context) => injector<WriteStatementFgrCubit>(),
+    return BlocProvider.value(
+      value: widget.bloc,
       child: BlocConsumer<WriteStatementFgrCubit, WriteStatementFgrState>(
           listener: (context, state) {
         print(state);
@@ -97,7 +109,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                       ReactiveTextField(
                         formControlName: FormsStatementFGR.subject,
                         validationMessages: (control) =>
-                            {ValidationMessage.required: S().subjectValidator},
+                            {ValidationMessage.required: S.of(context).subjectValidator},
                         textInputAction: TextInputAction.next,
                         textCapitalization: TextCapitalization.sentences,
                         keyboardType: TextInputType.text,
@@ -106,7 +118,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          labelText: S().enterSubject,
+                          labelText: S.of(context).enterSubject,
                           icon: Icon(Icons.short_text),
                         ),
                       ),
@@ -114,7 +126,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                       ReactiveTextField(
                         formControlName: FormsStatementFGR.statement,
                         validationMessages: (control) => {
-                          ValidationMessage.required: S().statementValidator
+                          ValidationMessage.required: S.of(context).statementValidator
                         },
                         textInputAction: TextInputAction.newline,
                         textCapitalization: TextCapitalization.sentences,
@@ -125,7 +137,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          labelText: S().enterStatement,
+                          labelText: S.of(context).enterStatement,
                           icon: Icon(Icons.wrap_text),
                         ),
                       ),
@@ -147,11 +159,11 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                                     builder: (BuildContext dialogContext) =>
                                         _AddEditPromoterDialog(
                                           blocContext: context,
-                                          title: S().addPromoter,
+                                          title: S.of(context).addPromoter,
                                           isEdit: false,
                                         )),
                         child: Text(
-                          S().addPromoter,
+                          S.of(context).addPromoter,
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -173,7 +185,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                       FloatingActionButton(
                         heroTag: 'attachments',
                         backgroundColor: Colors.blue,
-                        tooltip: S().attachments,
+                        tooltip: S.of(context).attachments,
                         onPressed: () {
                           showModalBottomSheet(
                               backgroundColor: Colors.transparent,
@@ -193,7 +205,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                             (state.stateOfFiles.pickedFiles.length < 3)
                                 ? Colors.blue
                                 : Colors.black.withOpacity(0.1),
-                        tooltip: S().camera,
+                        tooltip: S.of(context).camera,
                         onPressed: (state.stateOfFiles.pickedFiles.length < 3)
                             ? () =>
                                 BlocProvider.of<WriteStatementFgrCubit>(context)
@@ -206,7 +218,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                       FloatingActionButton(
                         heroTag: 'send',
                         backgroundColor: Colors.blue,
-                        tooltip: S().send,
+                        tooltip: S.of(context).send,
                         onPressed: () =>
                             BlocProvider.of<WriteStatementFgrCubit>(context)
                                 .sendStatement(),
@@ -220,7 +232,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
             ),
           ),
         );
-      }),
+      })
     );
   }
 }
@@ -243,7 +255,7 @@ class _MenuBottomSheet extends StatelessWidget {
         children: [
           FloatingActionButton(
             heroTag: 'gallery',
-            tooltip: S().gallery,
+            tooltip: S.of(context).gallery,
             backgroundColor:
                 (files.length < 3) ? Colors.red : Colors.black.withOpacity(0.1),
             onPressed: (files.length < 3)
@@ -258,7 +270,7 @@ class _MenuBottomSheet extends StatelessWidget {
           ),
           FloatingActionButton(
             heroTag: 'documents',
-            tooltip: S().document,
+            tooltip: S.of(context).document,
             backgroundColor: (files.length < 3)
                 ? Colors.green
                 : Colors.black.withOpacity(0.1),
@@ -274,7 +286,7 @@ class _MenuBottomSheet extends StatelessWidget {
           ),
           FloatingActionButton(
             heroTag: 'location',
-            tooltip: S().location,
+            tooltip: S.of(context).location,
             backgroundColor: Colors.orange,
             onPressed: (files.length < 3) ? () {} : null,
             elevation: 0,
@@ -478,7 +490,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.firstName,
                       validationMessages: (control) => {
-                        ValidationMessage.pattern: S().firstNameCorrectValidator
+                        ValidationMessage.pattern: S.of(context).firstNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -488,7 +500,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().firstName,
+                        labelText: S.of(context).firstName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -497,7 +509,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.secondName,
                       validationMessages: (control) => {
                         ValidationMessage.pattern:
-                            S().secondNameCorrectValidator
+                        S.of(context).secondNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -507,7 +519,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().secondName,
+                        labelText: S.of(context).secondName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -516,7 +528,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.firstLastName,
                       validationMessages: (control) => {
                         ValidationMessage.pattern:
-                            S().firstLastNameCorrectValidator
+                        S.of(context).firstLastNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -526,7 +538,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().firstLastName,
+                        labelText: S.of(context).firstLastName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -535,7 +547,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.secondLastName,
                       validationMessages: (control) => {
                         ValidationMessage.pattern:
-                            S().secondLastNameCorrectValidator
+                        S.of(context).secondLastNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -545,7 +557,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().secondLastName,
+                        labelText: S.of(context).secondLastName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -553,7 +565,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.id,
                       validationMessages: (control) =>
-                          {ValidationMessage.minLength: S().idCorrectValidator},
+                          {ValidationMessage.minLength: S.of(context).idCorrectValidator},
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
@@ -563,7 +575,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().id,
+                        labelText: S.of(context).id,
                         suffixIcon: Icon(Icons.vpn_key),
                       ),
                     ),
@@ -571,7 +583,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.phone,
                       validationMessages: (control) => {
-                        ValidationMessage.pattern: S().phoneCorrectValidator
+                        ValidationMessage.pattern: S.of(context).phoneCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -581,7 +593,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().phone,
+                        labelText: S.of(context).phone,
                         suffixIcon: Icon(Icons.phone),
                       ),
                     ),
@@ -589,7 +601,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.email,
                       validationMessages: (control) =>
-                          {ValidationMessage.email: S().emailCorrectValidator},
+                          {ValidationMessage.email: S.of(context).emailCorrectValidator},
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.emailAddress,
@@ -598,7 +610,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().email,
+                        labelText: S.of(context).email,
                         suffixIcon: Icon(Icons.alternate_email),
                       ),
                     ),
@@ -607,12 +619,12 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.province,
                       validationMessages: (control) => {
                         ValidationMessage.required:
-                            S().provinceRequiredValidator
+                        S.of(context).provinceRequiredValidator
                       },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().province,
+                        labelText: S.of(context).province,
                         suffixIcon: Icon(Icons.location_city),
                       ),
                       items: _provincesList
@@ -632,12 +644,12 @@ class _AddEditPromoterDialog extends StatelessWidget {
                           formControlName: FormsStatementFGR.municipality,
                           validationMessages: (control) => {
                             ValidationMessage.required:
-                                S().municipalityRequiredValidator
+                            S.of(context).municipalityRequiredValidator
                           },
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20)),
-                            labelText: S().municipality,
+                            labelText: S.of(context).municipality,
                             suffixIcon: Icon(Icons.location_city),
                           ),
                           items: valueProvince.value != null ? valueProvince.value!.municipalitiesList
@@ -655,7 +667,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.address,
                       // validationMessages: (control) =>
-                      // {ValidationMessage.email: S().subjectValidator},
+                      // {ValidationMessage.email: S.of(context).subjectValidator},
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.streetAddress,
@@ -664,7 +676,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        labelText: S().address,
+                        labelText: S.of(context).address,
                         suffixIcon: Icon(Icons.location_on),
                       ),
                     ),
@@ -684,7 +696,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       .reset(),
                   Navigator.of(context).pop(),
                 },
-            child: Text(S().cancel)),
+            child: Text(S.of(context).cancel)),
         TextButton(
             onPressed: () => {
                   if (isEdit)
@@ -696,7 +708,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       getCubitListenFalse.addPromoter(context),
                     }
                 },
-            child: Text(S().ok)),
+            child: Text(S.of(context).ok)),
       ],
     );
   }
@@ -758,7 +770,7 @@ class _ShowPromoters extends StatelessWidget {
                         builder: (BuildContext dialogContext) =>
                             _AddEditPromoterDialog(
                                 blocContext: context,
-                                title: S().editPromoter,
+                                title: S.of(context).editPromoter,
                                 isEdit: true,
                                 index: index));
                   },

@@ -8,6 +8,8 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 import '../../presentation/pages/fgr/main_fgr_page.dart' as _i3;
+import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+    as _i5;
 import '../../presentation/pages/fgr/write_statement_fgr/write_statement_fgr_page.dart'
     as _i4;
 
@@ -24,8 +26,9 @@ class AppRouter extends _i1.RootStackRouter {
         }),
     WriteStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i4.WriteStatementFgrPage();
+        builder: (data) {
+          final args = data.argsAs<WriteStatementFgrPageRouteArgs>();
+          return _i4.WriteStatementFgrPage(bloc: args.bloc);
         })
   };
 
@@ -43,9 +46,18 @@ class MainFGRPageRoute extends _i1.PageRouteInfo {
   static const String name = 'MainFGRPageRoute';
 }
 
-class WriteStatementFgrPageRoute extends _i1.PageRouteInfo {
-  const WriteStatementFgrPageRoute()
-      : super(name, path: '/write-statement-fgr-page');
+class WriteStatementFgrPageRoute
+    extends _i1.PageRouteInfo<WriteStatementFgrPageRouteArgs> {
+  WriteStatementFgrPageRoute({required _i5.WriteStatementFgrCubit bloc})
+      : super(name,
+            path: '/write-statement-fgr-page',
+            args: WriteStatementFgrPageRouteArgs(bloc: bloc));
 
   static const String name = 'WriteStatementFgrPageRoute';
+}
+
+class WriteStatementFgrPageRouteArgs {
+  const WriteStatementFgrPageRouteArgs({required this.bloc});
+
+  final _i5.WriteStatementFgrCubit bloc;
 }

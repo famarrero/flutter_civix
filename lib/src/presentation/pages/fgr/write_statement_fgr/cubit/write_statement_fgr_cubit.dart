@@ -35,6 +35,11 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   FormGroup get getAddStatementForm => _addStatementForm;
 
+  Future<void> getSavedStatement() async {
+    _addStatementForm.control(FormsStatementFGR.subject).value = 'Saved statement subject';
+    _addStatementForm.control(FormsStatementFGR.statement).value = 'Saved statement statement';
+  }
+
   FormGroup getAddEditPromoterForm({required bool isEdit}) {
     if (isEdit) {
       //todo pass index later
