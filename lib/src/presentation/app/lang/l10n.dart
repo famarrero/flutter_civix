@@ -620,6 +620,16 @@ class S {
     );
   }
 
+  /// `Edit promoter`
+  String get editPromoter {
+    return Intl.message(
+      'Edit promoter',
+      name: 'editPromoter',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `First name`
   String get firstName {
     return Intl.message(

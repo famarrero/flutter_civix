@@ -4,6 +4,9 @@ import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart
 import 'package:flutter_civix/src/core/services_manager/file_picker_manager_impl.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager_impl.dart';
+import 'package:flutter_civix/src/data/data_sources/local_data/local_assets_impl.dart';
+import 'package:flutter_civix/src/data/repositories/local_assets.dart';
+import 'package:flutter_civix/src/presentation/manager/provinces_list_cuibit/provinces_list_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -21,14 +24,10 @@ Future<void> initializeDependencies() async {
   // Dependencies
   // injector.registerSingleton<DioApiProvider>(DioApiProvider(injector()));
 
-  // Repositories
-  // injector.registerSingleton<RemoteRepository>(
-  //   RemoteRepositoryImpl(injector()),
-  // );
-  // injector.registerSingleton<LocalRepository>(
-  //   LocalRepositoryImpl(),
-  // );
-
+  //Repositories
+  injector.registerSingleton<LocalAssets>(
+    LocalAssetsImpl(),
+  );
   injector.registerSingleton<ImagePickerManager>(
     ImagePickerManagerImpl(),
   );
@@ -39,12 +38,10 @@ Future<void> initializeDependencies() async {
   // UseCases
   // injector.registerSingleton<GetRemotePostsUseCase>(
   //     GetRemotePostsUseCase(injector()));
-  // injector.registerSingleton<GetRemoteCommentsByPostIdUseCase>(
-  //     GetRemoteCommentsByPostIdUseCase(injector())
-  // );
 
   // Blocs
   injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit(injector(), injector(), injector()));
+  injector.registerFactory<ProvincesListCubit>(() => ProvincesListCubit(injector()));
 }
 
 Future<void> registerDir() async {

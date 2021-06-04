@@ -56,6 +56,7 @@
   "subjectValidator": "The subject must o be null",
   "writeStatement": "Write statement",
   "addPromoter": "Add promoter",
+  "editPromoter": "Edit promoter",
   "firstName": "First name",
   "secondName": "Second name",
   "firstLastName": "First last name",

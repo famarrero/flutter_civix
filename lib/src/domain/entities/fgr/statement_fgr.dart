@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter_civix/src/domain/entities/promoter_fgr.dart';
+import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 
 class StatementFRG {
   final String subject;

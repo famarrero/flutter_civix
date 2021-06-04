@@ -8,9 +8,10 @@ import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
 import 'package:flutter_civix/src/core/utils/utils.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:flutter_civix/src/domain/entities/promoter_fgr.dart';
-import 'package:flutter_civix/src/domain/entities/statement_fgr.dart';
-import 'package:oktoast/oktoast.dart';
+import 'package:flutter_civix/src/data/models/municipality_model.dart';
+import 'package:flutter_civix/src/data/models/province_model.dart';
+import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
+import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 part 'write_statement_fgr_state.dart';
@@ -20,7 +21,9 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   final FilePickerManager _filePicker;
   final Directory _directory;
 
-  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory)
+
+  WriteStatementFgrCubit(
+      this._imagePicker, this._filePicker, this._directory)
       : super(WriteStatementFgrState.initial());
 
   final u = Utils();
@@ -32,7 +35,25 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   FormGroup get getAddStatementForm => _addStatementForm;
 
-  FormGroup get getAddPromoterForm => _addPromoterForm;
+  FormGroup getAddEditPromoterForm({required bool isEdit}) {
+    if (isEdit) {
+      //todo pass index later
+      var promoter = _promoters[0];
+      _addPromoterForm.value = {
+        FormsStatementFGR.firstName: promoter.firstName,
+        FormsStatementFGR.secondName: promoter.secondName,
+        FormsStatementFGR.firstLastName: promoter.firstLastName,
+        FormsStatementFGR.secondLastName: promoter.secondLastName,
+        FormsStatementFGR.id: promoter.id,
+        FormsStatementFGR.phone: promoter.phone,
+        FormsStatementFGR.email: promoter.email,
+        FormsStatementFGR.province: promoter.provinceModel,
+        FormsStatementFGR.municipality: promoter.municipalityModel,
+        FormsStatementFGR.address: promoter.address,
+      };
+    }
+    return _addPromoterForm;
+  }
 
   Future<void> sendStatement() async {
     emit(state.copyWith(
@@ -46,8 +67,9 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       //Simulation of send statement
       await Future.delayed(Duration(seconds: 5));
       StatementFRG statementFGR = StatementFRG(
-          subject: _addStatementForm.control('subject').value,
-          statement: _addStatementForm.control('statement').value,
+          subject: _addStatementForm.control(FormsStatementFGR.subject).value,
+          statement:
+              _addStatementForm.control(FormsStatementFGR.statement).value,
           promoters: _promoters.toList(),
           files: _files.toList());
       print(statementFGR.toString());
@@ -55,9 +77,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           stateSendStatement:
               state.stateSendStatement.copyWith(isSending: false, done: true)));
     } else {
-      _addStatementForm.control('subject').markAsTouched();
-      _addStatementForm.control('statement').markAsTouched();
-      print('invalid form');
+      _addStatementForm.control(FormsStatementFGR.subject).markAsTouched();
+      _addStatementForm.control(FormsStatementFGR.statement).markAsTouched();
     }
   }
 
@@ -118,6 +139,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         stateSendStatement: SendStatementState.initial(),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
 
+    //todo move file selected to new directory
     final String _newDirectory = '${_directory.path}/AppDocuments';
     await Directory(_newDirectory).create(recursive: true);
 
@@ -175,6 +197,10 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
       _addPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
+      var provinceModel = _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+      var municipalityModel = _addPromoterForm
+          .control(FormsStatementFGR.municipality)
+          .value as MunicipalityModel;
       PromoterFRG promoterFRG = PromoterFRG(
           firstName:
               _addPromoterForm.control(FormsStatementFGR.firstName).value,
@@ -187,15 +213,68 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           id: _addPromoterForm.control(FormsStatementFGR.id).value,
           email: _addPromoterForm.control(FormsStatementFGR.email).value,
           phone: _addPromoterForm.control(FormsStatementFGR.phone).value,
-          province: _addPromoterForm.control(FormsStatementFGR.province).value,
-          municipality:
-              _addPromoterForm.control(FormsStatementFGR.municipality).value,
+          provinceName: provinceModel.provinceName,
+          provinceModel: provinceModel,
+          municipalityName: municipalityModel.municipalityName,
+          municipalityModel: municipalityModel,
           address: _addPromoterForm.control(FormsStatementFGR.address).value);
       _promoters = (_promoters.toBuilder()..add(promoterFRG)).build();
       emit(state.copyWith(
           stateSendStatement: SendStatementState.initial(),
           stateOfFiles: FileListState.initial(pickedFiles: _files),
           stateOfPromoters: PromoterListState(promoters: _promoters)));
+
+      //reset form
+      _addPromoterForm.reset();
+
+      Navigator.of(context).pop();
+    }
+  }
+
+  Future<void> editPromoter(BuildContext context, int index) async {
+    if (_addPromoterForm.control(FormsStatementFGR.province).invalid) {
+      _addPromoterForm.control(FormsStatementFGR.province).markAsTouched();
+      _addPromoterForm.control(FormsStatementFGR.province).focus();
+    } else if (_addPromoterForm
+        .control(FormsStatementFGR.municipality)
+        .invalid) {
+      _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
+      _addPromoterForm.control(FormsStatementFGR.municipality).focus();
+    } else {
+      var provinceModel = _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+      var municipalityModel = _addPromoterForm
+          .control(FormsStatementFGR.municipality)
+          .value as MunicipalityModel;
+      PromoterFRG promoterFRG = PromoterFRG(
+          firstName:
+              _addPromoterForm.control(FormsStatementFGR.firstName).value,
+          secondName:
+              _addPromoterForm.control(FormsStatementFGR.secondName).value,
+          firstLastName:
+              _addPromoterForm.control(FormsStatementFGR.firstLastName).value,
+          secondLastName:
+              _addPromoterForm.control(FormsStatementFGR.secondLastName).value,
+          id: _addPromoterForm.control(FormsStatementFGR.id).value,
+          email: _addPromoterForm.control(FormsStatementFGR.email).value,
+          phone: _addPromoterForm.control(FormsStatementFGR.phone).value,
+          provinceName: provinceModel.provinceName,
+          provinceModel: provinceModel,
+          municipalityName: municipalityModel.municipalityName,
+          municipalityModel: municipalityModel,
+          address: _addPromoterForm.control(FormsStatementFGR.address).value);
+
+      _promoters = (_promoters.toBuilder()
+            ..removeAt(index)
+            ..add(promoterFRG))
+          .build();
+
+      emit(state.copyWith(
+          stateSendStatement: SendStatementState.initial(),
+          stateOfFiles: FileListState.initial(pickedFiles: _files),
+          stateOfPromoters: PromoterListState(promoters: _promoters)));
+
+      //reset form
+      _addPromoterForm.reset();
 
       Navigator.of(context).pop();
     }
@@ -208,6 +287,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         stateOfFiles: FileListState.initial(pickedFiles: _files),
         stateOfPromoters: PromoterListState(promoters: _promoters)));
   }
+
 }
 // await Future.delayed(Duration(seconds: 5));
 
@@ -216,6 +296,7 @@ abstract class FormsStatementFGR {
 
   static const nameRegExp = r'^[A-Za-z ÁÉÍÓÚÜÇáéíóúüç.-]+$';
   static const phoneRegExp = r'^[0-9 +*-]+$';
+  //todo regex for id
 
   static FormGroup get addStatementForm => FormGroup({
         subject: FormControl<String>(validators: [Validators.required]),
@@ -223,21 +304,24 @@ abstract class FormsStatementFGR {
       });
 
   static FormGroup get addPromoterForm => FormGroup({
-        firstName:
-            FormControl<String>(validators: [Validators.pattern(nameRegExp)]),
-        secondName:
-            FormControl<String>(validators: [Validators.pattern(nameRegExp)]),
-        firstLastName:
-            FormControl<String>(validators: [Validators.pattern(nameRegExp)]),
-        secondLastName:
-            FormControl<String>(validators: [Validators.pattern(nameRegExp)]),
-        id: FormControl<String>(validators: [Validators.minLength(11)]),
-        phone:
-            FormControl<String>(validators: [Validators.pattern(phoneRegExp)]),
-        email: FormControl<String>(validators: [Validators.email]),
-        province: FormControl<String>(validators: [Validators.required]),
-        municipality: FormControl<String>(validators: [Validators.required]),
-        address: FormControl<String>(validators: []),
+        firstName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
+        secondName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
+        firstLastName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
+        secondLastName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
+        id: FormControl<String>(
+            value: null, validators: [Validators.minLength(11)]),
+        phone: FormControl<String>(
+            value: null, validators: [Validators.pattern(phoneRegExp)]),
+        email: FormControl<String>(value: null, validators: [Validators.email]),
+        province: FormControl<ProvinceModel>(
+            value: null, validators: [Validators.required]),
+        municipality: FormControl<MunicipalityModel>(
+            value: null, validators: [Validators.required]),
+        address: FormControl<String>(value: null, validators: []),
       });
 
   static const subject = 'subject';

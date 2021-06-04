@@ -5,9 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_civix/src/core/utils/utils.dart';
-import 'package:flutter_civix/src/domain/entities/promoter_fgr.dart';
+import 'package:flutter_civix/src/data/models/municipality_model.dart';
+import 'package:flutter_civix/src/data/models/province_model.dart';
+import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
+import 'package:flutter_civix/src/presentation/manager/provinces_list_cuibit/provinces_list_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/widgets/dialog_progress_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -142,8 +145,10 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                                 : () => showDialog<void>(
                                     context: context,
                                     builder: (BuildContext dialogContext) =>
-                                        _AddPromoterDialog(
+                                        _AddEditPromoterDialog(
                                           blocContext: context,
+                                          title: S().addPromoter,
+                                          isEdit: false,
                                         )),
                         child: Text(
                           S().addPromoter,
@@ -431,225 +436,265 @@ class _ShowFiles extends StatelessWidget {
   }
 }
 
-class _AddPromoterDialog extends StatelessWidget {
-  final BuildContext blocContext;
+class _AddEditPromoterDialog extends StatelessWidget {
 
-  _AddPromoterDialog({required this.blocContext});
+  final BuildContext blocContext;
+  final String title;
+  final bool isEdit;
+  final int? index;
+
+  _AddEditPromoterDialog(
+      {required this.blocContext,
+        required this.title,
+        required this.isEdit,
+        this.index});
 
   @override
   Widget build(BuildContext context) {
+    var getCubit = BlocProvider.of<WriteStatementFgrCubit>(blocContext);
+    var getCubitListenFalse = BlocProvider.of<WriteStatementFgrCubit>(
+        blocContext,
+        listen: false);
     return AlertDialog(
-      title: Text(S().addPromoter),
+      title: Text(title),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
       insetPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
       contentPadding: EdgeInsets.only(left: 16, right: 16, top: 8),
-      content: Container(
-        width: 315,
-        height: double.infinity,
-        child: ReactiveForm(
-          formGroup: BlocProvider.of<WriteStatementFgrCubit>(blocContext)
-              .getAddPromoterForm,
-          child: ListView(
-            children: [
-              SizedBox(height: 8),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.firstName,
-                validationMessages: (control) =>
-                    {ValidationMessage.pattern: S().firstNameCorrectValidator},
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.sentences,
-                keyboardType: TextInputType.name,
-                maxLines: 1,
-                maxLength: 25,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().firstName,
-                  suffixIcon: Icon(Icons.person),
+      content: BlocProvider(
+        create: (context) => injector<ProvincesListCubit>()..getProvinces(),
+        child: BlocBuilder<ProvincesListCubit, ProvincesListState>(
+          builder: (context, state) {
+            var _provincesList = state.provinceList;
+            return Container(
+              width: 315,
+              height: double.infinity,
+              child: ReactiveForm(
+                formGroup:
+                    getCubit.getAddEditPromoterForm(isEdit: isEdit),
+                child: ListView(
+                  children: [
+                    SizedBox(height: 8),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.firstName,
+                      validationMessages: (control) => {
+                        ValidationMessage.pattern: S().firstNameCorrectValidator
+                      },
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.name,
+                      maxLines: 1,
+                      maxLength: 25,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().firstName,
+                        suffixIcon: Icon(Icons.person),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.secondName,
+                      validationMessages: (control) => {
+                        ValidationMessage.pattern:
+                            S().secondNameCorrectValidator
+                      },
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.name,
+                      maxLines: 1,
+                      maxLength: 25,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().secondName,
+                        suffixIcon: Icon(Icons.person),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.firstLastName,
+                      validationMessages: (control) => {
+                        ValidationMessage.pattern:
+                            S().firstLastNameCorrectValidator
+                      },
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.name,
+                      maxLines: 1,
+                      maxLength: 25,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().firstLastName,
+                        suffixIcon: Icon(Icons.person),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.secondLastName,
+                      validationMessages: (control) => {
+                        ValidationMessage.pattern:
+                            S().secondLastNameCorrectValidator
+                      },
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.name,
+                      maxLines: 1,
+                      maxLength: 25,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().secondLastName,
+                        suffixIcon: Icon(Icons.person),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.id,
+                      validationMessages: (control) =>
+                          {ValidationMessage.minLength: S().idCorrectValidator},
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.none,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      maxLines: 1,
+                      maxLength: 11,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().id,
+                        suffixIcon: Icon(Icons.vpn_key),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.phone,
+                      validationMessages: (control) => {
+                        ValidationMessage.pattern: S().phoneCorrectValidator
+                      },
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.phone,
+                      maxLines: 1,
+                      maxLength: 8,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().phone,
+                        suffixIcon: Icon(Icons.phone),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.email,
+                      validationMessages: (control) =>
+                          {ValidationMessage.email: S().emailCorrectValidator},
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.emailAddress,
+                      maxLines: 1,
+                      maxLength: 25,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().email,
+                        suffixIcon: Icon(Icons.alternate_email),
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    ReactiveDropdownField<ProvinceModel>(
+                      formControlName: FormsStatementFGR.province,
+                      validationMessages: (control) => {
+                        ValidationMessage.required:
+                            S().provinceRequiredValidator
+                      },
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().province,
+                        suffixIcon: Icon(Icons.location_city),
+                      ),
+                      items: _provincesList
+                          .map<DropdownMenuItem<ProvinceModel>>(
+                              (ProvinceModel value) {
+                        return DropdownMenuItem<ProvinceModel>(
+                          value: value,
+                          child: Text(value.provinceName),
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: 25),
+                    ReactiveValueListenableBuilder<ProvinceModel>(
+                      formControlName: FormsStatementFGR.province,
+                      builder: (context, valueProvince, child) {
+                        return ReactiveDropdownField<MunicipalityModel>(
+                          formControlName: FormsStatementFGR.municipality,
+                          validationMessages: (control) => {
+                            ValidationMessage.required:
+                                S().municipalityRequiredValidator
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: S().municipality,
+                            suffixIcon: Icon(Icons.location_city),
+                          ),
+                          items: valueProvince.value != null ? valueProvince.value!.municipalitiesList
+                              .map<DropdownMenuItem<MunicipalityModel>>(
+                                  (MunicipalityModel value) {
+                            return DropdownMenuItem<MunicipalityModel>(
+                              value: value,
+                              child: Text(value.municipalityName),
+                            );
+                          }).toList() : [],
+                        );
+                      },
+                    ),
+                    SizedBox(height: 25),
+                    ReactiveTextField(
+                      formControlName: FormsStatementFGR.address,
+                      // validationMessages: (control) =>
+                      // {ValidationMessage.email: S().subjectValidator},
+                      textInputAction: TextInputAction.next,
+                      textCapitalization: TextCapitalization.sentences,
+                      keyboardType: TextInputType.streetAddress,
+                      maxLines: 1,
+                      maxLength: 100,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S().address,
+                        suffixIcon: Icon(Icons.location_on),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 8),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.secondName,
-                validationMessages: (control) =>
-                    {ValidationMessage.pattern: S().secondNameCorrectValidator},
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.sentences,
-                keyboardType: TextInputType.name,
-                maxLines: 1,
-                maxLength: 25,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().secondName,
-                  suffixIcon: Icon(Icons.person),
-                ),
-              ),
-              SizedBox(height: 8),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.firstLastName,
-                validationMessages: (control) => {
-                  ValidationMessage.pattern: S().firstLastNameCorrectValidator
-                },
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.sentences,
-                keyboardType: TextInputType.name,
-                maxLines: 1,
-                maxLength: 25,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().firstLastName,
-                  suffixIcon: Icon(Icons.person),
-                ),
-              ),
-              SizedBox(height: 8),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.secondLastName,
-                validationMessages: (control) => {
-                  ValidationMessage.pattern: S().secondLastNameCorrectValidator
-                },
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.sentences,
-                keyboardType: TextInputType.name,
-                maxLines: 1,
-                maxLength: 25,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().secondLastName,
-                  suffixIcon: Icon(Icons.person),
-                ),
-              ),
-              SizedBox(height: 8),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.id,
-                validationMessages: (control) =>
-                    {ValidationMessage.minLength: S().idCorrectValidator},
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.none,
-                keyboardType: TextInputType.number,
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                maxLines: 1,
-                maxLength: 11,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().id,
-                  suffixIcon: Icon(Icons.vpn_key),
-                ),
-              ),
-              SizedBox(height: 8),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.phone,
-                validationMessages: (control) =>
-                    {ValidationMessage.pattern: S().phoneCorrectValidator},
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.sentences,
-                keyboardType: TextInputType.phone,
-                maxLines: 1,
-                maxLength: 8,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().phone,
-                  suffixIcon: Icon(Icons.phone),
-                ),
-              ),
-              SizedBox(height: 8),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.email,
-                validationMessages: (control) =>
-                    {ValidationMessage.email: S().emailCorrectValidator},
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.sentences,
-                keyboardType: TextInputType.emailAddress,
-                maxLines: 1,
-                maxLength: 25,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().email,
-                  suffixIcon: Icon(Icons.alternate_email),
-                ),
-              ),
-              SizedBox(height: 8),
-              ReactiveDropdownField<String>(
-                formControlName: FormsStatementFGR.province,
-                validationMessages: (control) =>
-                    {ValidationMessage.required: S().provinceRequiredValidator},
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().province,
-                  suffixIcon: Icon(Icons.location_city),
-                ),
-                items: [
-                  DropdownMenuItem(
-                      value: 'HAB', child: Text('La Habana')),
-                  DropdownMenuItem(
-                      value: 'SSP', child: Text('Sancti Spiritus')),
-                  DropdownMenuItem(
-                      value: 'CAV', child: Text('Ciego de Ávila')),
-                  // DropdownMenuItem(
-                  //     value:
-                  //         'San Cristobal de La Habana y todos los santos juntos por ahi pa allá',
-                  //     child: Expanded(
-                  //       child: Text(
-                  //           'San Cristobal de La Habana y todos los santos juntos por ahi pa allá'),
-                  //     ))
-                ],
-              ),
-              SizedBox(height: 25),
-              ReactiveDropdownField<String>(
-                formControlName: FormsStatementFGR.municipality,
-                validationMessages: (control) => {
-                  ValidationMessage.required: S().municipalityRequiredValidator
-                },
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().municipality,
-                  suffixIcon: Icon(Icons.location_city),
-                ),
-                items: [
-                  DropdownMenuItem(value: 'F', child: Text('Fomento')),
-                  DropdownMenuItem(value: 'C', child: Text('Cabaigüan')),
-                  DropdownMenuItem(value: 'T', child: Text('Trinidad')),
-                  DropdownMenuItem(value: 'J', child: Text('Jativonico'))
-                ],
-              ),
-              SizedBox(height: 25),
-              ReactiveTextField(
-                formControlName: FormsStatementFGR.address,
-                // validationMessages: (control) =>
-                // {ValidationMessage.email: S().subjectValidator},
-                textInputAction: TextInputAction.next,
-                textCapitalization: TextCapitalization.sentences,
-                keyboardType: TextInputType.streetAddress,
-                maxLines: 1,
-                maxLength: 25,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  labelText: S().address,
-                  suffixIcon: Icon(Icons.location_on),
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
       actions: [
         TextButton(
-            onPressed: () => {Navigator.of(context).pop()},
+            onPressed: () => {
+                  //reset form
+                  getCubitListenFalse
+                      .getAddEditPromoterForm(isEdit: false)
+                      .reset(),
+                  Navigator.of(context).pop(),
+                },
             child: Text(S().cancel)),
         TextButton(
             onPressed: () => {
-                  BlocProvider.of<WriteStatementFgrCubit>(blocContext,
-                          listen: false)
-                      .addPromoter(context),
+                  if (isEdit)
+                    {
+                      getCubitListenFalse.editPromoter(context, index!),
+                    }
+                  else
+                    {
+                      getCubitListenFalse.addPromoter(context),
+                    }
                 },
             child: Text(S().ok)),
       ],
@@ -664,6 +709,8 @@ class _ShowPromoters extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // var form =
+    //     BlocProvider.of<WriteStatementFgrCubit>(blocContext).getProvinces;
     return ListView.builder(
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
@@ -671,10 +718,12 @@ class _ShowPromoters extends StatelessWidget {
         itemCount: _promoters.length,
         itemBuilder: (BuildContext context, int index) {
           String title = '';
-          if (_promoters[index].firstName != null) {
+          if (_promoters[index].firstName != null &&
+              _promoters[index].firstName!.isNotEmpty) {
             title = '${_promoters[index].firstName} ';
           }
-          if (_promoters[index].firstLastName != null) {
+          if (_promoters[index].firstLastName != null &&
+              _promoters[index].firstLastName!.isNotEmpty) {
             title += '${_promoters[index].firstLastName!}';
           }
           return Padding(
@@ -694,7 +743,7 @@ class _ShowPromoters extends StatelessWidget {
                                 TextStyle(fontSize: 14, color: Colors.black54)),
                       SizedBox(height: 2),
                       Text(
-                          '${_promoters[index].municipality}, ${_promoters[index].province}',
+                          '${_promoters[index].municipalityName}, ${_promoters[index].provinceName}',
                           style:
                               TextStyle(fontSize: 14, color: Colors.black54)),
                     ],
@@ -703,7 +752,16 @@ class _ShowPromoters extends StatelessWidget {
                 InkWell(
                   child:
                       Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
-                  onTap: () {},
+                  onTap: () {
+                    showDialog<void>(
+                        context: context,
+                        builder: (BuildContext dialogContext) =>
+                            _AddEditPromoterDialog(
+                                blocContext: context,
+                                title: S().editPromoter,
+                                isEdit: true,
+                                index: index));
+                  },
                 ),
                 SizedBox(width: 10),
                 InkWell(

@@ -42,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "document": MessageLookupByLibrary.simpleMessage("Document"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editPromoter": MessageLookupByLibrary.simpleMessage("Edit promoter"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The email must be a correct email"),

@@ -12,10 +12,17 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/marca_agua_fgr.png');
 }
 
+class $AssetsJsonsGen {
+  const $AssetsJsonsGen();
+
+  String get provinces => 'assets/jsons/provinces.json';
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonsGen jsons = $AssetsJsonsGen();
 }
 
 class AssetGenImage extends AssetImage {

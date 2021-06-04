@@ -56,6 +56,7 @@
     "subjectValidator": "El asunto no puede estar vacío",
     "writeStatement": "Redactar planteamiento",
     "addPromoter": "Adicionar promovente",
+    "editPromoter": "Editar promovente",
     "firstName": "Primer nombre",
     "secondName": "Segundo nombre",
     "firstLastName": "Primer apellido",
