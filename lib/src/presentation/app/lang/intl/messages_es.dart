@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Introduzca planteamiento"),
         "enterSubject":
             MessageLookupByLibrary.simpleMessage("Introduzca asunto"),
+        "eraser": MessageLookupByLibrary.simpleMessage("Borrador"),
         "expire": MessageLookupByLibrary.simpleMessage("Vence"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "Fiscalía General de la República"),

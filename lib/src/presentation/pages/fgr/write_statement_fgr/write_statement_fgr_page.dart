@@ -20,7 +20,6 @@ import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class WriteStatementFgrPage extends StatefulWidget {
-
   final WriteStatementFgrCubit bloc;
 
   WriteStatementFgrPage({required this.bloc});
@@ -30,7 +29,6 @@ class WriteStatementFgrPage extends StatefulWidget {
 }
 
 class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
-
   @override
   void initState() {
     widget.bloc.getSavedStatement();
@@ -53,187 +51,203 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
+      actions: [
+        IconButton(
+          tooltip: S.of(context).eraser,
+          icon: Icon(Icons.save),
+          onPressed: () =>
+              BlocProvider.of<WriteStatementFgrCubit>(context).savedStatement(),
+        ),
+      ],
     );
   }
 
   _buildBody(BuildContext context) {
     return BlocProvider.value(
-      value: widget.bloc,
-      child: BlocConsumer<WriteStatementFgrCubit, WriteStatementFgrState>(
-          listener: (context, state) {
-        print(state);
-        if (state.stateSendStatement.isSending) {
-          showDialog<void>(
-              context: context,
-              barrierDismissible: false,
-              builder: (BuildContext dialogContext) =>
-                  DialogProgressWidget('Sending statement'));
-        }
-        if (state.stateSendStatement.done) {
-          Navigator.of(context).pop();
-          print('done');
-        }
-        if (state.stateSendStatement.error != null) {
-          print(state.stateSendStatement.error);
-        }
-        if (state.stateOfFiles.isLoading) {
-          showDialog<void>(
-              context: context,
-              barrierDismissible: false,
-              builder: (BuildContext dialogContext) =>
-                  DialogProgressWidget('Processing image'));
-        }
-        if (state.stateOfFiles.done) {
-          Navigator.of(context).pop();
-        }
-        if (state.stateOfFiles.error != null) {
-          showToast(state.stateOfFiles.error!,
-              duration: Duration(seconds: 3),
-              position: ToastPosition.bottom,
-              backgroundColor: Colors.black.withOpacity(0.7));
-        }
-      }, builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-          child: ReactiveForm(
-            formGroup: Provider.of<WriteStatementFgrCubit>(context)
-                .getAddStatementForm,
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    children: [
-                      SizedBox(height: 25),
-                      ReactiveTextField(
-                        formControlName: FormsStatementFGR.subject,
-                        validationMessages: (control) =>
-                            {ValidationMessage.required: S.of(context).subjectValidator},
-                        textInputAction: TextInputAction.next,
-                        textCapitalization: TextCapitalization.sentences,
-                        keyboardType: TextInputType.text,
-                        maxLines: 1,
-                        maxLength: 150,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          labelText: S.of(context).enterSubject,
-                          icon: Icon(Icons.short_text),
+        value: widget.bloc,
+        child: BlocConsumer<WriteStatementFgrCubit, WriteStatementFgrState>(
+            listener: (context, state) {
+          print(state);
+          if (state.stateSendStatement.isSending) {
+            showDialog<void>(
+                context: context,
+                barrierDismissible: false,
+                builder: (BuildContext dialogContext) =>
+                    DialogProgressWidget('Sending statement'));
+          }
+          if (state.stateSendStatement.done) {
+            Navigator.of(context).pop();
+            print('done');
+          }
+          if (state.stateSendStatement.error != null) {
+            print(state.stateSendStatement.error);
+          }
+          if (state.stateOfFiles.isLoading) {
+            showDialog<void>(
+                context: context,
+                barrierDismissible: false,
+                builder: (BuildContext dialogContext) =>
+                    DialogProgressWidget('Processing image'));
+          }
+          if (state.stateOfFiles.done) {
+            Navigator.of(context).pop();
+          }
+          if (state.stateOfFiles.error != null) {
+            showToast(state.stateOfFiles.error!,
+                duration: Duration(seconds: 3),
+                position: ToastPosition.bottom,
+                backgroundColor: Colors.black.withOpacity(0.7));
+          }
+          if (state.showSavedStatement) {
+            showToast('Saved statement load',
+                duration: Duration(seconds: 3),
+                position: ToastPosition.bottom,
+                backgroundColor: Colors.black.withOpacity(0.7));
+          }
+        }, builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: ReactiveForm(
+              formGroup: Provider.of<WriteStatementFgrCubit>(context)
+                  .getAddStatementForm,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView(
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      children: [
+                        SizedBox(height: 25),
+                        ReactiveTextField(
+                          formControlName: FormsStatementFGR.subject,
+                          validationMessages: (control) => {
+                            ValidationMessage.required:
+                                S.of(context).subjectValidator
+                          },
+                          textInputAction: TextInputAction.next,
+                          textCapitalization: TextCapitalization.sentences,
+                          keyboardType: TextInputType.text,
+                          maxLines: 1,
+                          maxLength: 150,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: S.of(context).enterSubject,
+                            icon: Icon(Icons.short_text),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      ReactiveTextField(
-                        formControlName: FormsStatementFGR.statement,
-                        validationMessages: (control) => {
-                          ValidationMessage.required: S.of(context).statementValidator
-                        },
-                        textInputAction: TextInputAction.newline,
-                        textCapitalization: TextCapitalization.sentences,
-                        keyboardType: TextInputType.multiline,
-                        minLines: 6,
-                        maxLines: null,
-                        maxLength: 3000,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          labelText: S.of(context).enterStatement,
-                          icon: Icon(Icons.wrap_text),
+                        SizedBox(height: 20),
+                        ReactiveTextField(
+                          formControlName: FormsStatementFGR.statement,
+                          validationMessages: (control) => {
+                            ValidationMessage.required:
+                                S.of(context).statementValidator
+                          },
+                          textInputAction: TextInputAction.newline,
+                          textCapitalization: TextCapitalization.sentences,
+                          keyboardType: TextInputType.multiline,
+                          minLines: 6,
+                          maxLines: null,
+                          maxLength: 3000,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: S.of(context).enterStatement,
+                            icon: Icon(Icons.wrap_text),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      if (state.stateOfPromoters.promoters.isNotEmpty)
-                        _ShowPromoters(state.stateOfPromoters.promoters),
-                      SizedBox(height: 20),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ))),
-                        onPressed:
-                            (state.stateOfPromoters.promoters.length >= 1)
-                                ? null
-                                : () => showDialog<void>(
-                                    context: context,
-                                    builder: (BuildContext dialogContext) =>
-                                        _AddEditPromoterDialog(
-                                          blocContext: context,
-                                          title: S.of(context).addPromoter,
-                                          isEdit: false,
-                                        )),
-                        child: Text(
-                          S.of(context).addPromoter,
-                          style: TextStyle(color: Colors.white),
+                        SizedBox(height: 20),
+                        if (state.stateOfPromoters.promoters.isNotEmpty)
+                          _ShowPromoters(state.stateOfPromoters.promoters),
+                        SizedBox(height: 20),
+                        ElevatedButton(
+                          style: ButtonStyle(
+                              shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ))),
+                          onPressed:
+                              (state.stateOfPromoters.promoters.length >= 1)
+                                  ? null
+                                  : () => showDialog<void>(
+                                      context: context,
+                                      builder: (BuildContext dialogContext) =>
+                                          _AddEditPromoterDialog(
+                                            blocContext: context,
+                                            title: S.of(context).addPromoter,
+                                            isEdit: false,
+                                          )),
+                          child: Text(
+                            S.of(context).addPromoter,
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      _ShowFiles(state.stateOfFiles.pickedFiles)
-                    ],
+                        SizedBox(height: 20),
+                        _ShowFiles(state.stateOfFiles.pickedFiles)
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 16),
-                  height: 50,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      FloatingActionButton(
-                        heroTag: 'attachments',
-                        backgroundColor: Colors.blue,
-                        tooltip: S.of(context).attachments,
-                        onPressed: () {
-                          showModalBottomSheet(
-                              backgroundColor: Colors.transparent,
-                              elevation: 0,
-                              context: context,
-                              builder: (_) {
-                                return _MenuBottomSheet(
-                                    context, state.stateOfFiles.pickedFiles);
-                              });
-                        },
-                        elevation: 0,
-                        child: Icon(Icons.attach_file),
-                      ),
-                      FloatingActionButton(
-                        heroTag: 'camera',
-                        backgroundColor:
-                            (state.stateOfFiles.pickedFiles.length < 3)
-                                ? Colors.blue
-                                : Colors.black.withOpacity(0.1),
-                        tooltip: S.of(context).camera,
-                        onPressed: (state.stateOfFiles.pickedFiles.length < 3)
-                            ? () =>
-                                BlocProvider.of<WriteStatementFgrCubit>(context)
-                                    .getImageFormCameraOrGallery(
-                                        source: 'camera')
-                            : null,
-                        elevation: 0,
-                        child: Icon(FontAwesomeIcons.camera),
-                      ),
-                      FloatingActionButton(
-                        heroTag: 'send',
-                        backgroundColor: Colors.blue,
-                        tooltip: S.of(context).send,
-                        onPressed: () =>
-                            BlocProvider.of<WriteStatementFgrCubit>(context)
-                                .sendStatement(),
-                        elevation: 0,
-                        child: Icon(Icons.send_rounded),
-                      )
-                    ],
-                  ),
-                )
-              ],
+                  Container(
+                    margin: EdgeInsets.only(top: 16),
+                    height: 50,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        FloatingActionButton(
+                          heroTag: 'attachments',
+                          backgroundColor: Colors.blue,
+                          tooltip: S.of(context).attachments,
+                          onPressed: () {
+                            showModalBottomSheet(
+                                backgroundColor: Colors.transparent,
+                                elevation: 0,
+                                context: context,
+                                builder: (_) {
+                                  return _MenuBottomSheet(
+                                      context, state.stateOfFiles.pickedFiles);
+                                });
+                          },
+                          elevation: 0,
+                          child: Icon(Icons.attach_file),
+                        ),
+                        FloatingActionButton(
+                          heroTag: 'camera',
+                          backgroundColor:
+                              (state.stateOfFiles.pickedFiles.length < 3)
+                                  ? Colors.blue
+                                  : Colors.black.withOpacity(0.1),
+                          tooltip: S.of(context).camera,
+                          onPressed: (state.stateOfFiles.pickedFiles.length < 3)
+                              ? () => BlocProvider.of<WriteStatementFgrCubit>(
+                                      context)
+                                  .getImageFormCameraOrGallery(source: 'camera')
+                              : null,
+                          elevation: 0,
+                          child: Icon(FontAwesomeIcons.camera),
+                        ),
+                        FloatingActionButton(
+                          heroTag: 'send',
+                          backgroundColor: Colors.blue,
+                          tooltip: S.of(context).send,
+                          onPressed: () =>
+                              BlocProvider.of<WriteStatementFgrCubit>(context)
+                                  .sendStatement(),
+                          elevation: 0,
+                          child: Icon(Icons.send_rounded),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        );
-      })
-    );
+          );
+        }));
   }
 }
 
@@ -449,7 +463,6 @@ class _ShowFiles extends StatelessWidget {
 }
 
 class _AddEditPromoterDialog extends StatelessWidget {
-
   final BuildContext blocContext;
   final String title;
   final bool isEdit;
@@ -457,16 +470,15 @@ class _AddEditPromoterDialog extends StatelessWidget {
 
   _AddEditPromoterDialog(
       {required this.blocContext,
-        required this.title,
-        required this.isEdit,
-        this.index});
+      required this.title,
+      required this.isEdit,
+      this.index});
 
   @override
   Widget build(BuildContext context) {
     var getCubit = BlocProvider.of<WriteStatementFgrCubit>(blocContext);
-    var getCubitListenFalse = BlocProvider.of<WriteStatementFgrCubit>(
-        blocContext,
-        listen: false);
+    var getCubitListenFalse =
+        BlocProvider.of<WriteStatementFgrCubit>(blocContext, listen: false);
     return AlertDialog(
       title: Text(title),
       shape: RoundedRectangleBorder(
@@ -482,15 +494,15 @@ class _AddEditPromoterDialog extends StatelessWidget {
               width: 315,
               height: double.infinity,
               child: ReactiveForm(
-                formGroup:
-                    getCubit.getAddEditPromoterForm(isEdit: isEdit),
+                formGroup: getCubit.getAddEditPromoterForm(isEdit: isEdit),
                 child: ListView(
                   children: [
                     SizedBox(height: 8),
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.firstName,
                       validationMessages: (control) => {
-                        ValidationMessage.pattern: S.of(context).firstNameCorrectValidator
+                        ValidationMessage.pattern:
+                            S.of(context).firstNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -509,7 +521,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.secondName,
                       validationMessages: (control) => {
                         ValidationMessage.pattern:
-                        S.of(context).secondNameCorrectValidator
+                            S.of(context).secondNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -528,7 +540,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.firstLastName,
                       validationMessages: (control) => {
                         ValidationMessage.pattern:
-                        S.of(context).firstLastNameCorrectValidator
+                            S.of(context).firstLastNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -547,7 +559,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.secondLastName,
                       validationMessages: (control) => {
                         ValidationMessage.pattern:
-                        S.of(context).secondLastNameCorrectValidator
+                            S.of(context).secondLastNameCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -564,8 +576,10 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     SizedBox(height: 8),
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.id,
-                      validationMessages: (control) =>
-                          {ValidationMessage.minLength: S.of(context).idCorrectValidator},
+                      validationMessages: (control) => {
+                        ValidationMessage.minLength:
+                            S.of(context).idCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,
@@ -583,7 +597,8 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.phone,
                       validationMessages: (control) => {
-                        ValidationMessage.pattern: S.of(context).phoneCorrectValidator
+                        ValidationMessage.pattern:
+                            S.of(context).phoneCorrectValidator
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
@@ -600,8 +615,10 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     SizedBox(height: 8),
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.email,
-                      validationMessages: (control) =>
-                          {ValidationMessage.email: S.of(context).emailCorrectValidator},
+                      validationMessages: (control) => {
+                        ValidationMessage.email:
+                            S.of(context).emailCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.emailAddress,
@@ -619,7 +636,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       formControlName: FormsStatementFGR.province,
                       validationMessages: (control) => {
                         ValidationMessage.required:
-                        S.of(context).provinceRequiredValidator
+                            S.of(context).provinceRequiredValidator
                       },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -644,7 +661,7 @@ class _AddEditPromoterDialog extends StatelessWidget {
                           formControlName: FormsStatementFGR.municipality,
                           validationMessages: (control) => {
                             ValidationMessage.required:
-                            S.of(context).municipalityRequiredValidator
+                                S.of(context).municipalityRequiredValidator
                           },
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -652,14 +669,16 @@ class _AddEditPromoterDialog extends StatelessWidget {
                             labelText: S.of(context).municipality,
                             suffixIcon: Icon(Icons.location_city),
                           ),
-                          items: valueProvince.value != null ? valueProvince.value!.municipalitiesList
-                              .map<DropdownMenuItem<MunicipalityModel>>(
-                                  (MunicipalityModel value) {
-                            return DropdownMenuItem<MunicipalityModel>(
-                              value: value,
-                              child: Text(value.municipalityName),
-                            );
-                          }).toList() : [],
+                          items: valueProvince.value != null
+                              ? valueProvince.value!.municipalitiesList
+                                  .map<DropdownMenuItem<MunicipalityModel>>(
+                                      (MunicipalityModel value) {
+                                  return DropdownMenuItem<MunicipalityModel>(
+                                    value: value,
+                                    child: Text(value.municipalityName),
+                                  );
+                                }).toList()
+                              : [],
                         );
                       },
                     ),

@@ -4,31 +4,36 @@ class WriteStatementFgrState extends Equatable {
   final SendStatementState stateSendStatement;
   final FileListState stateOfFiles;
   final PromoterListState stateOfPromoters;
+  final bool showSavedStatement;
 
   const WriteStatementFgrState(
       {required this.stateSendStatement,
       required this.stateOfFiles,
-      required this.stateOfPromoters});
+      required this.stateOfPromoters,
+      required this.showSavedStatement});
 
   factory WriteStatementFgrState.initial() => WriteStatementFgrState(
-        stateSendStatement: SendStatementState.initial(),
-        stateOfFiles: FileListState.initial(),
-        stateOfPromoters: PromoterListState.initial(),
-      );
+      stateSendStatement: SendStatementState.initial(),
+      stateOfFiles: FileListState.initial(),
+      stateOfPromoters: PromoterListState.initial(),
+      showSavedStatement: false);
 
   WriteStatementFgrState copyWith(
       {SendStatementState? stateSendStatement,
       FileListState? stateOfFiles,
-      PromoterListState? stateOfPromoters}) {
+      PromoterListState? stateOfPromoters,
+      bool? showSavedStatement}) {
     return WriteStatementFgrState(
       stateSendStatement: stateSendStatement ?? this.stateSendStatement,
       stateOfFiles: stateOfFiles ?? this.stateOfFiles,
       stateOfPromoters: stateOfPromoters ?? this.stateOfPromoters,
+      showSavedStatement: showSavedStatement ?? this.showSavedStatement,
     );
   }
 
   @override
-  List<Object?> get props => [stateSendStatement, stateOfFiles, stateOfPromoters];
+  List<Object?> get props =>
+      [stateSendStatement, stateOfFiles, stateOfPromoters, showSavedStatement];
 }
 
 class SendStatementState extends Equatable {

@@ -12,6 +12,7 @@ import 'package:flutter_civix/src/data/models/municipality_model.dart';
 import 'package:flutter_civix/src/data/models/province_model.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
+import 'package:flutter_civix/src/domain/repositories/preferences_fgr_repository.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 part 'write_statement_fgr_state.dart';
@@ -20,10 +21,10 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   final ImagePickerManager _imagePicker;
   final FilePickerManager _filePicker;
   final Directory _directory;
+  final PreferencesFGRRepository _preferencesFGR;
 
-
-  WriteStatementFgrCubit(
-      this._imagePicker, this._filePicker, this._directory)
+  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory,
+      this._preferencesFGR)
       : super(WriteStatementFgrState.initial());
 
   final u = Utils();
@@ -35,9 +36,36 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   FormGroup get getAddStatementForm => _addStatementForm;
 
+  Future<void> savedStatement() async {
+    StatementFRG statementFGR = StatementFRG(
+        subject: _addStatementForm.control(FormsStatementFGR.subject).value,
+        statement: _addStatementForm.control(FormsStatementFGR.statement).value,
+        promoters: _promoters.toList(),
+        files: _files.toList());
+
+    await _preferencesFGR.savedStatementFGR(statementFGR);
+  }
+
   Future<void> getSavedStatement() async {
-    _addStatementForm.control(FormsStatementFGR.subject).value = 'Saved statement subject';
-    _addStatementForm.control(FormsStatementFGR.statement).value = 'Saved statement statement';
+    var savedStatement = await _preferencesFGR.getSavedStatementFGR();
+
+    if (savedStatement != null) {
+      _addStatementForm.control(FormsStatementFGR.subject).value =
+          savedStatement.subject;
+      _addStatementForm.control(FormsStatementFGR.statement).value =
+          savedStatement.statement;
+
+      if (savedStatement.promoters != null)
+        _promoters = savedStatement.promoters!.toBuiltList();
+
+      if (savedStatement.files != null)
+        _files = await _checkIfFilesExists(savedStatement.files!.toBuiltList());
+
+      emit(state.copyWith(
+          showSavedStatement: true,
+          stateOfPromoters: PromoterListState(promoters: _promoters),
+          stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
+    }
   }
 
   FormGroup getAddEditPromoterForm({required bool isEdit}) {
@@ -62,6 +90,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   Future<void> sendStatement() async {
     emit(state.copyWith(
+        showSavedStatement: false,
         stateSendStatement: SendStatementState.initial(),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
 
@@ -89,6 +118,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   Future<void> getImageFormCameraOrGallery({required String source}) async {
     emit(state.copyWith(
+        showSavedStatement: false,
         stateSendStatement: SendStatementState.initial(),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
 
@@ -141,6 +171,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   Future<void> getDocument() async {
     emit(state.copyWith(
+        showSavedStatement: false,
         stateSendStatement: SendStatementState.initial(),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
 
@@ -188,8 +219,20 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     _files = (_files.toBuilder()..removeAt(index)).build();
 
     emit(state.copyWith(
+        showSavedStatement: false,
         stateSendStatement: SendStatementState.initial(),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
+  }
+
+  Future<BuiltList<File>> _checkIfFilesExists(BuiltList<File> files) async {
+    var builder = files.toBuilder();
+
+    for (var file in files) {
+      if (await file.exists() == false) {
+        builder.remove(file);
+      }
+    }
+    return builder.build();
   }
 
   Future<void> addPromoter(BuildContext context) async {
@@ -202,7 +245,9 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
       _addPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
-      var provinceModel = _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+      var provinceModel = _addPromoterForm
+          .control(FormsStatementFGR.province)
+          .value as ProvinceModel;
       var municipalityModel = _addPromoterForm
           .control(FormsStatementFGR.municipality)
           .value as MunicipalityModel;
@@ -225,6 +270,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           address: _addPromoterForm.control(FormsStatementFGR.address).value);
       _promoters = (_promoters.toBuilder()..add(promoterFRG)).build();
       emit(state.copyWith(
+          showSavedStatement: false,
           stateSendStatement: SendStatementState.initial(),
           stateOfFiles: FileListState.initial(pickedFiles: _files),
           stateOfPromoters: PromoterListState(promoters: _promoters)));
@@ -246,7 +292,9 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
       _addPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
-      var provinceModel = _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+      var provinceModel = _addPromoterForm
+          .control(FormsStatementFGR.province)
+          .value as ProvinceModel;
       var municipalityModel = _addPromoterForm
           .control(FormsStatementFGR.municipality)
           .value as MunicipalityModel;
@@ -274,6 +322,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           .build();
 
       emit(state.copyWith(
+          showSavedStatement: false,
           stateSendStatement: SendStatementState.initial(),
           stateOfFiles: FileListState.initial(pickedFiles: _files),
           stateOfPromoters: PromoterListState(promoters: _promoters)));
@@ -288,11 +337,11 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   Future<void> deletePromoter(int index) async {
     _promoters = (_promoters.toBuilder()..removeAt(index)).build();
     emit(state.copyWith(
+        showSavedStatement: false,
         stateSendStatement: SendStatementState.initial(),
         stateOfFiles: FileListState.initial(pickedFiles: _files),
         stateOfPromoters: PromoterListState(promoters: _promoters)));
   }
-
 }
 // await Future.delayed(Duration(seconds: 5));
 
@@ -301,6 +350,7 @@ abstract class FormsStatementFGR {
 
   static const nameRegExp = r'^[A-Za-z ÁÉÍÓÚÜÇáéíóúüç.-]+$';
   static const phoneRegExp = r'^[0-9 +*-]+$';
+
   //todo regex for id
 
   static FormGroup get addStatementForm => FormGroup({

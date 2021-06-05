@@ -53,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterStatement":
             MessageLookupByLibrary.simpleMessage("Enter statement"),
         "enterSubject": MessageLookupByLibrary.simpleMessage("Enter subject"),
+        "eraser": MessageLookupByLibrary.simpleMessage("Eraser"),
         "expire": MessageLookupByLibrary.simpleMessage("Expire"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "General Prosecutor of the Republic"),

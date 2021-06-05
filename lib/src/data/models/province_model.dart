@@ -37,6 +37,10 @@ abstract class ProvinceModel
         ProvinceModel.serializer, json.decode(jsonString));
   }
 
+  Map<String, dynamic> toMap() {
+    return serializers.serializeWith(ProvinceModel.serializer, this) as Map<String, dynamic>;
+  }
+
   static ProvinceModel? fromMap(Map<String, dynamic> map) {
     return serializers.deserializeWith(ProvinceModel.serializer, map);
   }

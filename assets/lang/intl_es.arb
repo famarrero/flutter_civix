@@ -78,5 +78,6 @@
     "idCorrectValidator": "El caré de indentidad debe ser un carné válido",
     "phoneCorrectValidator": "El teléfono debe ser un teléfono válido",
     "provinceRequiredValidator": "La provincia es requerida",
-    "municipalityRequiredValidator": "El municipio es requerido"
+    "municipalityRequiredValidator": "El municipio es requerido",
+    "eraser": "Borrador"
 }

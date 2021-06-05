@@ -78,6 +78,7 @@
   "idCorrectValidator": "The id must be a correct id",
   "phoneCorrectValidator": "The phone must be a correct phone",
   "provinceRequiredValidator": "The province is required",
-  "municipalityRequiredValidator": "The municipality is required"
+  "municipalityRequiredValidator": "The municipality is required",
+  "eraser": "Eraser"
 
 }
