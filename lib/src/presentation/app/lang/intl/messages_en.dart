@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "document": MessageLookupByLibrary.simpleMessage("Document"),
+        "documentNotSupported": MessageLookupByLibrary.simpleMessage(
+            "The file selected is not a document or is not supported"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editPromoter": MessageLookupByLibrary.simpleMessage("Edit promoter"),
@@ -53,7 +55,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterStatement":
             MessageLookupByLibrary.simpleMessage("Enter statement"),
         "enterSubject": MessageLookupByLibrary.simpleMessage("Enter subject"),
-        "eraser": MessageLookupByLibrary.simpleMessage("Eraser"),
         "expire": MessageLookupByLibrary.simpleMessage("Expire"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "General Prosecutor of the Republic"),
@@ -80,6 +81,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "The municipality is required"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noFileSelected":
+            MessageLookupByLibrary.simpleMessage("No file selected"),
+        "noImageSelected":
+            MessageLookupByLibrary.simpleMessage("No image selected"),
+        "noImageTaked": MessageLookupByLibrary.simpleMessage("No image taked"),
+        "nothingToSave":
+            MessageLookupByLibrary.simpleMessage("Nothing to save"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "options": MessageLookupByLibrary.simpleMessage("Options"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
@@ -97,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("The province is required"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "saveEraser": MessageLookupByLibrary.simpleMessage("Save eraser"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Search.."),
         "secondLastName":
             MessageLookupByLibrary.simpleMessage("Second last name"),
@@ -107,7 +116,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "The second name name must be a valid name"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "showingSadevStatement":
+            MessageLookupByLibrary.simpleMessage("Showing saved statement"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "statementSaved":
+            MessageLookupByLibrary.simpleMessage("Statement saved"),
         "statementValidator": MessageLookupByLibrary.simpleMessage(
             "The statement must o be null"),
         "subjectValidator":

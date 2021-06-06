@@ -52,7 +52,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
       ),
       actions: [
         IconButton(
-          tooltip: S.of(context).eraser,
+          tooltip: S.of(context).saveEraser,
           icon: Icon(Icons.save),
           onPressed: () => widget.bloc.savedStatement(),
         ),
@@ -93,7 +93,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                 position: ToastPosition.bottom,
                 backgroundColor: Colors.black.withOpacity(0.7));
           }
-          if (state.showMessage != null) {
+          if (state.showMessage != '') {
             showToast(state.showMessage!,
                 duration: Duration(seconds: 3),
                 position: ToastPosition.bottom,

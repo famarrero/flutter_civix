@@ -13,6 +13,7 @@ import 'package:flutter_civix/src/data/models/province_model.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/domain/repositories/preferences_fgr_repository.dart';
+import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 part 'write_statement_fgr_state.dart';
@@ -31,11 +32,11 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   BuiltList<PromoterFRG> _promoters = BuiltList([]);
   List<String> _documentsSupportedList = ['pdf', 'doc', 'xlsx', 'txt'];
   FormGroup _addStatementForm = FormsStatementFGR.addStatementForm;
-  FormGroup _addPromoterForm = FormsStatementFGR.addPromoterForm;
+  FormGroup _addEditPromoterForm = FormsStatementFGR.addPromoterForm;
 
   void _emitInitialsStates() {
     emit(state.copyWith(
-        showMessage: null,
+        showMessage: '',
         stateSendStatement: SendStatementState.initial(),
         stateOfPromoters: PromoterListState(promoters: _promoters),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
@@ -47,7 +48,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     if (isEdit) {
       //todo pass index later
       var promoter = _promoters[0];
-      _addPromoterForm.value = {
+      _addEditPromoterForm.value = {
         FormsStatementFGR.firstName: promoter.firstName,
         FormsStatementFGR.secondName: promoter.secondName,
         FormsStatementFGR.firstLastName: promoter.firstLastName,
@@ -60,7 +61,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         FormsStatementFGR.address: promoter.address,
       };
     }
-    return _addPromoterForm;
+    return _addEditPromoterForm;
   }
 
   Future<void> savedStatement() async {
@@ -75,7 +76,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         promoters.isEmpty &&
         files.isEmpty) {
       emit(state.copyWith(
-          showMessage: 'Nothing to save',
+          showMessage: S.current.nothingToSave,
           stateOfPromoters: PromoterListState(promoters: _promoters),
           stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
       await _preferencesFGR.deleteStatmentFGR();
@@ -89,12 +90,10 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       await _preferencesFGR.savedStatementFGR(statementFGR);
 
       emit(state.copyWith(
-          showMessage: 'Statement saved',
+          showMessage: S.current.statementSaved,
           stateOfPromoters: PromoterListState(promoters: _promoters),
           stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
     }
-
-    _emitInitialsStates();
   }
 
   Future<void> getSavedStatement() async {
@@ -112,10 +111,13 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         _files = await _checkIfFilesExists(savedStatement.files!.toBuiltList());
 
       emit(state.copyWith(
-          showMessage: 'Show saved statement',
+          showMessage: S.current.showingSadevStatement,
           stateOfPromoters: PromoterListState(promoters: _promoters),
           stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
     }
+
+    _addStatementForm.markAsUntouched();
+    _addEditPromoterForm.markAsUntouched();
   }
 
   Future<void> sendStatement() async {
@@ -209,9 +211,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
               stateOfFiles: FileListState(isLoading: false, pickedFiles: _files, done: true)));
         } else {
           emit(state.copyWith(
-              stateOfFiles: state.stateOfFiles.copyWith(
-                  isLoading: false,
-                  error: 'The file selected is not a document or is not supported')));
+              stateOfFiles: state.stateOfFiles
+                  .copyWith(isLoading: false, error: S.current.documentNotSupported)));
         }
       },
     );
@@ -230,66 +231,66 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   }
 
   Future<void> addPromoter(BuildContext context) async {
-    if (_addPromoterForm.control(FormsStatementFGR.province).invalid) {
-      _addPromoterForm.control(FormsStatementFGR.province).markAsTouched();
-      _addPromoterForm.control(FormsStatementFGR.province).focus();
-    } else if (_addPromoterForm.control(FormsStatementFGR.municipality).invalid) {
-      _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
-      _addPromoterForm.control(FormsStatementFGR.municipality).focus();
+    if (_addEditPromoterForm.control(FormsStatementFGR.province).invalid) {
+      _addEditPromoterForm.control(FormsStatementFGR.province).markAsTouched();
+      _addEditPromoterForm.control(FormsStatementFGR.province).focus();
+    } else if (_addEditPromoterForm.control(FormsStatementFGR.municipality).invalid) {
+      _addEditPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
+      _addEditPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
       var provinceModel =
-          _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+          _addEditPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
       var municipalityModel =
-          _addPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
+          _addEditPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
       PromoterFRG promoterFRG = PromoterFRG(
-          firstName: _addPromoterForm.control(FormsStatementFGR.firstName).value,
-          secondName: _addPromoterForm.control(FormsStatementFGR.secondName).value,
-          firstLastName: _addPromoterForm.control(FormsStatementFGR.firstLastName).value,
-          secondLastName: _addPromoterForm.control(FormsStatementFGR.secondLastName).value,
-          id: _addPromoterForm.control(FormsStatementFGR.id).value,
-          email: _addPromoterForm.control(FormsStatementFGR.email).value,
-          phone: _addPromoterForm.control(FormsStatementFGR.phone).value,
+          firstName: _addEditPromoterForm.control(FormsStatementFGR.firstName).value,
+          secondName: _addEditPromoterForm.control(FormsStatementFGR.secondName).value,
+          firstLastName: _addEditPromoterForm.control(FormsStatementFGR.firstLastName).value,
+          secondLastName: _addEditPromoterForm.control(FormsStatementFGR.secondLastName).value,
+          id: _addEditPromoterForm.control(FormsStatementFGR.id).value,
+          email: _addEditPromoterForm.control(FormsStatementFGR.email).value,
+          phone: _addEditPromoterForm.control(FormsStatementFGR.phone).value,
           provinceName: provinceModel.provinceName,
           provinceModel: provinceModel,
           municipalityName: municipalityModel.municipalityName,
           municipalityModel: municipalityModel,
-          address: _addPromoterForm.control(FormsStatementFGR.address).value);
+          address: _addEditPromoterForm.control(FormsStatementFGR.address).value);
       _promoters = (_promoters.toBuilder()..add(promoterFRG)).build();
 
       _emitInitialsStates();
 
       //reset form
-      _addPromoterForm.reset();
+      _addEditPromoterForm.reset();
 
       Navigator.of(context).pop();
     }
   }
 
   Future<void> editPromoter(BuildContext context, int index) async {
-    if (_addPromoterForm.control(FormsStatementFGR.province).invalid) {
-      _addPromoterForm.control(FormsStatementFGR.province).markAsTouched();
-      _addPromoterForm.control(FormsStatementFGR.province).focus();
-    } else if (_addPromoterForm.control(FormsStatementFGR.municipality).invalid) {
-      _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
-      _addPromoterForm.control(FormsStatementFGR.municipality).focus();
+    if (_addEditPromoterForm.control(FormsStatementFGR.province).invalid) {
+      _addEditPromoterForm.control(FormsStatementFGR.province).markAsTouched();
+      _addEditPromoterForm.control(FormsStatementFGR.province).focus();
+    } else if (_addEditPromoterForm.control(FormsStatementFGR.municipality).invalid) {
+      _addEditPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
+      _addEditPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
       var provinceModel =
-          _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+          _addEditPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
       var municipalityModel =
-          _addPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
+          _addEditPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
       PromoterFRG promoterFRG = PromoterFRG(
-          firstName: _addPromoterForm.control(FormsStatementFGR.firstName).value,
-          secondName: _addPromoterForm.control(FormsStatementFGR.secondName).value,
-          firstLastName: _addPromoterForm.control(FormsStatementFGR.firstLastName).value,
-          secondLastName: _addPromoterForm.control(FormsStatementFGR.secondLastName).value,
-          id: _addPromoterForm.control(FormsStatementFGR.id).value,
-          email: _addPromoterForm.control(FormsStatementFGR.email).value,
-          phone: _addPromoterForm.control(FormsStatementFGR.phone).value,
+          firstName: _addEditPromoterForm.control(FormsStatementFGR.firstName).value,
+          secondName: _addEditPromoterForm.control(FormsStatementFGR.secondName).value,
+          firstLastName: _addEditPromoterForm.control(FormsStatementFGR.firstLastName).value,
+          secondLastName: _addEditPromoterForm.control(FormsStatementFGR.secondLastName).value,
+          id: _addEditPromoterForm.control(FormsStatementFGR.id).value,
+          email: _addEditPromoterForm.control(FormsStatementFGR.email).value,
+          phone: _addEditPromoterForm.control(FormsStatementFGR.phone).value,
           provinceName: provinceModel.provinceName,
           provinceModel: provinceModel,
           municipalityName: municipalityModel.municipalityName,
           municipalityModel: municipalityModel,
-          address: _addPromoterForm.control(FormsStatementFGR.address).value);
+          address: _addEditPromoterForm.control(FormsStatementFGR.address).value);
 
       _promoters = (_promoters.toBuilder()
             ..removeAt(index)
@@ -299,7 +300,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       _emitInitialsStates();
 
       //reset form
-      _addPromoterForm.reset();
+      _addEditPromoterForm.reset();
 
       Navigator.of(context).pop();
     }

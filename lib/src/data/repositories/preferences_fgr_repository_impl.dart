@@ -19,7 +19,6 @@ class PreferencesFGRRepositoryImpl implements PreferencesFGRRepository {
   @override
   Future<void> savedStatementFGR(StatementFRG statementFRG) async {
     String serializedStatement = statementFRG.toJson();
-    print(serializedStatement);
     await _sharedPreferencesFGR.savedStatementFGR(serializedStatement);
   }
 

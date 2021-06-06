@@ -79,5 +79,12 @@
     "phoneCorrectValidator": "El teléfono debe ser un teléfono válido",
     "provinceRequiredValidator": "La provincia es requerida",
     "municipalityRequiredValidator": "El municipio es requerido",
-    "eraser": "Borrador"
+    "saveEraser": "Guardar borrador",
+    "nothingToSave": "No hay nada que guardar",
+    "statementSaved": "Planteamiento guardado",
+    "showingSadevStatement": "Mostrando planteamiento guardado",
+    "documentNotSupported": "El archivo seleccionado no es un documento o es un formato no soportado",
+    "noFileSelected": "No se seleccionó ningun archivo",
+    "noImageSelected": "No se seleccionó ninguna imagen",
+    "noImageTaked": "No se tomó ninguna imagen"
 }

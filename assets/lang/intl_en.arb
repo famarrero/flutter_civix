@@ -79,6 +79,13 @@
   "phoneCorrectValidator": "The phone must be a correct phone",
   "provinceRequiredValidator": "The province is required",
   "municipalityRequiredValidator": "The municipality is required",
-  "eraser": "Eraser"
+  "saveEraser": "Save eraser",
+  "nothingToSave": "Nothing to save",
+  "statementSaved": "Statement saved",
+  "showingSadevStatement": "Showing saved statement",
+  "documentNotSupported": "The file selected is not a document or is not supported",
+  "noFileSelected": "No file selected",
+  "noImageSelected": "No image selected",
+  "noImageTaked": "No image taked"
 
 }

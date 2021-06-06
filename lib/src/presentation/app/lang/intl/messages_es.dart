@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleting": MessageLookupByLibrary.simpleMessage("Borrando"),
         "description": MessageLookupByLibrary.simpleMessage("Descripción"),
         "document": MessageLookupByLibrary.simpleMessage("Documento"),
+        "documentNotSupported": MessageLookupByLibrary.simpleMessage(
+            "El archivo seleccionado no es un documento o es un formato no soportado"),
         "done": MessageLookupByLibrary.simpleMessage("Finalizar"),
         "edit": MessageLookupByLibrary.simpleMessage("Editar"),
         "editPromoter":
@@ -56,7 +58,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Introduzca planteamiento"),
         "enterSubject":
             MessageLookupByLibrary.simpleMessage("Introduzca asunto"),
-        "eraser": MessageLookupByLibrary.simpleMessage("Borrador"),
         "expire": MessageLookupByLibrary.simpleMessage("Vence"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "Fiscalía General de la República"),
@@ -83,6 +84,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("El municipio es requerido"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noFileSelected": MessageLookupByLibrary.simpleMessage(
+            "No se seleccionó ningun archivo"),
+        "noImageSelected": MessageLookupByLibrary.simpleMessage(
+            "No se seleccionó ninguna imagen"),
+        "noImageTaked":
+            MessageLookupByLibrary.simpleMessage("No se tomó ninguna imagen"),
+        "nothingToSave":
+            MessageLookupByLibrary.simpleMessage("No hay nada que guardar"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
         "options": MessageLookupByLibrary.simpleMessage("Opciones"),
         "or": MessageLookupByLibrary.simpleMessage("Ó"),
@@ -100,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("La provincia es requerida"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "saveEraser": MessageLookupByLibrary.simpleMessage("Guardar borrador"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Buscar.."),
         "secondLastName":
             MessageLookupByLibrary.simpleMessage("Segundo apellido"),
@@ -110,7 +120,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "El segundo nombre debe ser un nombre válido"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
         "share": MessageLookupByLibrary.simpleMessage("Compartir"),
+        "showingSadevStatement": MessageLookupByLibrary.simpleMessage(
+            "Mostrando planteamiento guardado"),
         "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
+        "statementSaved":
+            MessageLookupByLibrary.simpleMessage("Planteamiento guardado"),
         "statementValidator": MessageLookupByLibrary.simpleMessage(
             "El planteamiento no puede estar vacío"),
         "subjectValidator": MessageLookupByLibrary.simpleMessage(

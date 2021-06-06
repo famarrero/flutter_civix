@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
+import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:image_picker/image_picker.dart';
 
 //todo add plist to ios module
@@ -15,7 +16,7 @@ class ImagePickerManagerImpl implements ImagePickerManager {
       if (pickedFile != null) {
         return right(File(pickedFile.path));
       } else {
-        return left('No image tacked');
+        return left(S.current.noImageTaked);
       }
     } catch (e) {
       return left(e.toString());
@@ -29,8 +30,7 @@ class ImagePickerManagerImpl implements ImagePickerManager {
       if (pickedFile != null) {
         return right(File(pickedFile.path));
       } else {
-        print('No image selected');
-        return left('No image selected');
+        return left(S.current.noImageSelected);
       }
     } catch (e) {
       return left(e.toString());

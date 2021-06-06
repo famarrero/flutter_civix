@@ -850,11 +850,81 @@ class S {
     );
   }
 
-  /// `Eraser`
-  String get eraser {
+  /// `Save eraser`
+  String get saveEraser {
     return Intl.message(
-      'Eraser',
-      name: 'eraser',
+      'Save eraser',
+      name: 'saveEraser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nothing to save`
+  String get nothingToSave {
+    return Intl.message(
+      'Nothing to save',
+      name: 'nothingToSave',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statement saved`
+  String get statementSaved {
+    return Intl.message(
+      'Statement saved',
+      name: 'statementSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Showing saved statement`
+  String get showingSadevStatement {
+    return Intl.message(
+      'Showing saved statement',
+      name: 'showingSadevStatement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The file selected is not a document or is not supported`
+  String get documentNotSupported {
+    return Intl.message(
+      'The file selected is not a document or is not supported',
+      name: 'documentNotSupported',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No file selected`
+  String get noFileSelected {
+    return Intl.message(
+      'No file selected',
+      name: 'noFileSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No image selected`
+  String get noImageSelected {
+    return Intl.message(
+      'No image selected',
+      name: 'noImageSelected',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No image taked`
+  String get noImageTaked {
+    return Intl.message(
+      'No image taked',
+      name: 'noImageTaked',
       desc: '',
       args: [],
     );
