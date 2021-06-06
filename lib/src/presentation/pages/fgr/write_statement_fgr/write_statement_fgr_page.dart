@@ -522,8 +522,9 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     SizedBox(height: 8),
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.id,
-                      validationMessages: (control) =>
-                          {ValidationMessage.minLength: S.of(context).idCorrectValidator},
+                      validationMessages: (control) => {
+                        ValidationMessage.pattern: S.of(context).idCorrectValidator,
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
                       keyboardType: TextInputType.number,

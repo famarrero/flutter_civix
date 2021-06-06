@@ -329,6 +329,9 @@ abstract class FormsStatementFGR {
 
   static const nameRegExp = r'^[A-Za-z ÁÉÍÓÚÜÇáéíóúüç.-]+$';
   static const phoneRegExp = r'^[0-9 +*-]+$';
+  static const idRegExp = r'^([0-9]{2})(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[12][0-9]{4}$';
+  static const dateRegExp =
+      r'^(0[1-9]|1[0-9]|2[0-9]|3[01])[-/.](0[1-9]|1[012])[-/.](19[23456789][0-9]|20[0][12])$';
 
   //todo regex for id
 
@@ -344,7 +347,9 @@ abstract class FormsStatementFGR {
             FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
         secondLastName:
             FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
-        id: FormControl<String>(value: null, validators: [Validators.minLength(11)]),
+        id: FormControl<String>(value: null, validators: [
+          Validators.pattern(idRegExp),
+        ]),
         phone: FormControl<String>(value: null, validators: [Validators.pattern(phoneRegExp)]),
         email: FormControl<String>(value: null, validators: [Validators.email]),
         province: FormControl<ProvinceModel>(value: null, validators: [Validators.required]),

@@ -75,7 +75,7 @@
     "firstLastNameCorrectValidator": "El primer apellido debe ser un apellido válido",
     "secondLastNameCorrectValidator": "El segundo apellido debe ser un apellido válido",
     "emailCorrectValidator": "El correo electrónico de ser un correo válido",
-    "idCorrectValidator": "El caré de indentidad debe ser un carné válido",
+    "idCorrectValidator": "El carné de indentidad debe ser un carné válido",
     "phoneCorrectValidator": "El teléfono debe ser un teléfono válido",
     "provinceRequiredValidator": "La provincia es requerida",
     "municipalityRequiredValidator": "El municipio es requerido",

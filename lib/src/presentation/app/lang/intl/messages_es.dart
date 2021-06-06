@@ -73,7 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "id": MessageLookupByLibrary.simpleMessage("Carné de identidad"),
         "idCorrectValidator": MessageLookupByLibrary.simpleMessage(
-            "El caré de indentidad debe ser un carné válido"),
+            "El carné de indentidad debe ser un carné válido"),
         "info": MessageLookupByLibrary.simpleMessage("Información"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Idioma"),
         "later": MessageLookupByLibrary.simpleMessage("Después"),
