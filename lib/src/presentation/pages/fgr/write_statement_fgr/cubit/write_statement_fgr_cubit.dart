@@ -23,8 +23,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   final Directory _directory;
   final PreferencesFGRRepository _preferencesFGR;
 
-  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory,
-      this._preferencesFGR)
+  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory, this._preferencesFGR)
       : super(WriteStatementFgrState.initial());
 
   final u = Utils();
@@ -34,39 +33,15 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   FormGroup _addStatementForm = FormsStatementFGR.addStatementForm;
   FormGroup _addPromoterForm = FormsStatementFGR.addPromoterForm;
 
+  void _emitInitialsStates() {
+    emit(state.copyWith(
+        showMessage: null,
+        stateSendStatement: SendStatementState.initial(),
+        stateOfPromoters: PromoterListState(promoters: _promoters),
+        stateOfFiles: FileListState.initial(pickedFiles: _files)));
+  }
+
   FormGroup get getAddStatementForm => _addStatementForm;
-
-  Future<void> savedStatement() async {
-    StatementFRG statementFGR = StatementFRG(
-        subject: _addStatementForm.control(FormsStatementFGR.subject).value,
-        statement: _addStatementForm.control(FormsStatementFGR.statement).value,
-        promoters: _promoters.toList(),
-        files: _files.toList());
-
-    await _preferencesFGR.savedStatementFGR(statementFGR);
-  }
-
-  Future<void> getSavedStatement() async {
-    var savedStatement = await _preferencesFGR.getSavedStatementFGR();
-
-    if (savedStatement != null) {
-      _addStatementForm.control(FormsStatementFGR.subject).value =
-          savedStatement.subject;
-      _addStatementForm.control(FormsStatementFGR.statement).value =
-          savedStatement.statement;
-
-      if (savedStatement.promoters != null)
-        _promoters = savedStatement.promoters!.toBuiltList();
-
-      if (savedStatement.files != null)
-        _files = await _checkIfFilesExists(savedStatement.files!.toBuiltList());
-
-      emit(state.copyWith(
-          showSavedStatement: true,
-          stateOfPromoters: PromoterListState(promoters: _promoters),
-          stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
-    }
-  }
 
   FormGroup getAddEditPromoterForm({required bool isEdit}) {
     if (isEdit) {
@@ -88,28 +63,76 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     return _addPromoterForm;
   }
 
+  Future<void> savedStatement() async {
+    _emitInitialsStates();
+
+    var subject = _addStatementForm.control(FormsStatementFGR.subject).value as String?;
+    var statement = _addStatementForm.control(FormsStatementFGR.statement).value as String?;
+    var promoters = _promoters.toList();
+    var files = _files.toList();
+    if ((subject == null || subject.isEmpty) &&
+        (statement == null || statement.isEmpty) &&
+        promoters.isEmpty &&
+        files.isEmpty) {
+      emit(state.copyWith(
+          showMessage: 'Nothing to save',
+          stateOfPromoters: PromoterListState(promoters: _promoters),
+          stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
+      await _preferencesFGR.deleteStatmentFGR();
+    } else {
+      StatementFRG statementFGR = StatementFRG(
+          subject: _addStatementForm.control(FormsStatementFGR.subject).value,
+          statement: _addStatementForm.control(FormsStatementFGR.statement).value,
+          promoters: _promoters.toList(),
+          files: _files.toList());
+
+      await _preferencesFGR.savedStatementFGR(statementFGR);
+
+      emit(state.copyWith(
+          showMessage: 'Statement saved',
+          stateOfPromoters: PromoterListState(promoters: _promoters),
+          stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
+    }
+
+    _emitInitialsStates();
+  }
+
+  Future<void> getSavedStatement() async {
+    _emitInitialsStates();
+
+    StatementFRG? savedStatement = await _preferencesFGR.getSavedStatementFGR();
+
+    if (savedStatement != null) {
+      _addStatementForm.control(FormsStatementFGR.subject).value = savedStatement.subject;
+      _addStatementForm.control(FormsStatementFGR.statement).value = savedStatement.statement;
+
+      if (savedStatement.promoters != null) _promoters = savedStatement.promoters!.toBuiltList();
+
+      if (savedStatement.files != null)
+        _files = await _checkIfFilesExists(savedStatement.files!.toBuiltList());
+
+      emit(state.copyWith(
+          showMessage: 'Show saved statement',
+          stateOfPromoters: PromoterListState(promoters: _promoters),
+          stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
+    }
+  }
+
   Future<void> sendStatement() async {
-    emit(state.copyWith(
-        showSavedStatement: false,
-        stateSendStatement: SendStatementState.initial(),
-        stateOfFiles: FileListState.initial(pickedFiles: _files)));
+    _emitInitialsStates();
 
     if (_addStatementForm.valid) {
-      emit(state.copyWith(
-          stateSendStatement:
-              state.stateSendStatement.copyWith(isSending: true)));
+      emit(state.copyWith(stateSendStatement: state.stateSendStatement.copyWith(isSending: true)));
       //Simulation of send statement
       await Future.delayed(Duration(seconds: 5));
       StatementFRG statementFGR = StatementFRG(
           subject: _addStatementForm.control(FormsStatementFGR.subject).value,
-          statement:
-              _addStatementForm.control(FormsStatementFGR.statement).value,
+          statement: _addStatementForm.control(FormsStatementFGR.statement).value,
           promoters: _promoters.toList(),
           files: _files.toList());
       print(statementFGR.toString());
       emit(state.copyWith(
-          stateSendStatement:
-              state.stateSendStatement.copyWith(isSending: false, done: true)));
+          stateSendStatement: state.stateSendStatement.copyWith(isSending: false, done: true)));
     } else {
       _addStatementForm.control(FormsStatementFGR.subject).markAsTouched();
       _addStatementForm.control(FormsStatementFGR.statement).markAsTouched();
@@ -117,10 +140,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   }
 
   Future<void> getImageFormCameraOrGallery({required String source}) async {
-    emit(state.copyWith(
-        showSavedStatement: false,
-        stateSendStatement: SendStatementState.initial(),
-        stateOfFiles: FileListState.initial(pickedFiles: _files)));
+    _emitInitialsStates();
 
     final String _newDirectory = '${_directory.path}/AppPictures';
     await Directory(_newDirectory).create(recursive: true);
@@ -134,13 +154,11 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
     response.fold(
       (errorOrCancel) {
-        emit(state.copyWith(
-            stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
+        emit(state.copyWith(stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
       },
       (file) async {
         emit(state.copyWith(
-            stateOfFiles: FileListState(
-                isLoading: true, pickedFiles: _files, done: false)));
+            stateOfFiles: FileListState(isLoading: true, pickedFiles: _files, done: false)));
 
         var nameFile = file.path.split('/').last.split('.').first;
         int quality = 75;
@@ -150,12 +168,11 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         if (file.readAsBytesSync().lengthInBytes / 1024 / 1024 > 1) {
           quality = 50;
         }
-        final imageCompressResponse = await u.compressImage(
-            file, '$_newDirectory/$nameFile.webp', quality);
+        final imageCompressResponse =
+            await u.compressImage(file, '$_newDirectory/$nameFile.webp', quality);
         imageCompressResponse.fold((error) {
           emit(state.copyWith(
-              stateOfFiles:
-                  state.stateOfFiles.copyWith(isLoading: false, error: error)));
+              stateOfFiles: state.stateOfFiles.copyWith(isLoading: false, error: error)));
         }, (imageCompress) async {
           _files = (_files.toBuilder()..add(imageCompress)).build();
 
@@ -163,47 +180,38 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         });
 
         emit(state.copyWith(
-            stateOfFiles: FileListState(
-                isLoading: false, pickedFiles: _files, done: true)));
+            stateOfFiles: FileListState(isLoading: false, pickedFiles: _files, done: true)));
       },
     );
   }
 
   Future<void> getDocument() async {
-    emit(state.copyWith(
-        showSavedStatement: false,
-        stateSendStatement: SendStatementState.initial(),
-        stateOfFiles: FileListState.initial(pickedFiles: _files)));
+    _emitInitialsStates();
 
     //todo move file selected to new directory
     final String _newDirectory = '${_directory.path}/AppDocuments';
     await Directory(_newDirectory).create(recursive: true);
 
-    final response =
-        await _filePicker.getSingleFileByExtensions(_documentsSupportedList);
+    final response = await _filePicker.getSingleFileByExtensions(_documentsSupportedList);
 
     response.fold(
       (errorOrCancel) {
-        emit(state.copyWith(
-            stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
+        emit(state.copyWith(stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
       },
       (file) async {
         if (_documentsSupportedList.contains(file.path.split('.').last)) {
           emit(state.copyWith(
-              stateOfFiles: FileListState(
-                  isLoading: true, pickedFiles: _files, done: false)));
+              stateOfFiles: FileListState(isLoading: true, pickedFiles: _files, done: false)));
 
           _files = (_files.toBuilder()..add(file)).build();
 
           emit(state.copyWith(
-              stateOfFiles: FileListState(
-                  isLoading: false, pickedFiles: _files, done: true)));
+              stateOfFiles: FileListState(isLoading: false, pickedFiles: _files, done: true)));
         } else {
           emit(state.copyWith(
               stateOfFiles: state.stateOfFiles.copyWith(
                   isLoading: false,
-                  error:
-                      'The file selected is not a document or is not supported')));
+                  error: 'The file selected is not a document or is not supported')));
         }
       },
     );
@@ -218,48 +226,26 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
     _files = (_files.toBuilder()..removeAt(index)).build();
 
-    emit(state.copyWith(
-        showSavedStatement: false,
-        stateSendStatement: SendStatementState.initial(),
-        stateOfFiles: FileListState.initial(pickedFiles: _files)));
-  }
-
-  Future<BuiltList<File>> _checkIfFilesExists(BuiltList<File> files) async {
-    var builder = files.toBuilder();
-
-    for (var file in files) {
-      if (await file.exists() == false) {
-        builder.remove(file);
-      }
-    }
-    return builder.build();
+    _emitInitialsStates();
   }
 
   Future<void> addPromoter(BuildContext context) async {
     if (_addPromoterForm.control(FormsStatementFGR.province).invalid) {
       _addPromoterForm.control(FormsStatementFGR.province).markAsTouched();
       _addPromoterForm.control(FormsStatementFGR.province).focus();
-    } else if (_addPromoterForm
-        .control(FormsStatementFGR.municipality)
-        .invalid) {
+    } else if (_addPromoterForm.control(FormsStatementFGR.municipality).invalid) {
       _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
       _addPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
-      var provinceModel = _addPromoterForm
-          .control(FormsStatementFGR.province)
-          .value as ProvinceModel;
-      var municipalityModel = _addPromoterForm
-          .control(FormsStatementFGR.municipality)
-          .value as MunicipalityModel;
+      var provinceModel =
+          _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+      var municipalityModel =
+          _addPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
       PromoterFRG promoterFRG = PromoterFRG(
-          firstName:
-              _addPromoterForm.control(FormsStatementFGR.firstName).value,
-          secondName:
-              _addPromoterForm.control(FormsStatementFGR.secondName).value,
-          firstLastName:
-              _addPromoterForm.control(FormsStatementFGR.firstLastName).value,
-          secondLastName:
-              _addPromoterForm.control(FormsStatementFGR.secondLastName).value,
+          firstName: _addPromoterForm.control(FormsStatementFGR.firstName).value,
+          secondName: _addPromoterForm.control(FormsStatementFGR.secondName).value,
+          firstLastName: _addPromoterForm.control(FormsStatementFGR.firstLastName).value,
+          secondLastName: _addPromoterForm.control(FormsStatementFGR.secondLastName).value,
           id: _addPromoterForm.control(FormsStatementFGR.id).value,
           email: _addPromoterForm.control(FormsStatementFGR.email).value,
           phone: _addPromoterForm.control(FormsStatementFGR.phone).value,
@@ -269,11 +255,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           municipalityModel: municipalityModel,
           address: _addPromoterForm.control(FormsStatementFGR.address).value);
       _promoters = (_promoters.toBuilder()..add(promoterFRG)).build();
-      emit(state.copyWith(
-          showSavedStatement: false,
-          stateSendStatement: SendStatementState.initial(),
-          stateOfFiles: FileListState.initial(pickedFiles: _files),
-          stateOfPromoters: PromoterListState(promoters: _promoters)));
+
+      _emitInitialsStates();
 
       //reset form
       _addPromoterForm.reset();
@@ -286,27 +269,19 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     if (_addPromoterForm.control(FormsStatementFGR.province).invalid) {
       _addPromoterForm.control(FormsStatementFGR.province).markAsTouched();
       _addPromoterForm.control(FormsStatementFGR.province).focus();
-    } else if (_addPromoterForm
-        .control(FormsStatementFGR.municipality)
-        .invalid) {
+    } else if (_addPromoterForm.control(FormsStatementFGR.municipality).invalid) {
       _addPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
       _addPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
-      var provinceModel = _addPromoterForm
-          .control(FormsStatementFGR.province)
-          .value as ProvinceModel;
-      var municipalityModel = _addPromoterForm
-          .control(FormsStatementFGR.municipality)
-          .value as MunicipalityModel;
+      var provinceModel =
+          _addPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
+      var municipalityModel =
+          _addPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
       PromoterFRG promoterFRG = PromoterFRG(
-          firstName:
-              _addPromoterForm.control(FormsStatementFGR.firstName).value,
-          secondName:
-              _addPromoterForm.control(FormsStatementFGR.secondName).value,
-          firstLastName:
-              _addPromoterForm.control(FormsStatementFGR.firstLastName).value,
-          secondLastName:
-              _addPromoterForm.control(FormsStatementFGR.secondLastName).value,
+          firstName: _addPromoterForm.control(FormsStatementFGR.firstName).value,
+          secondName: _addPromoterForm.control(FormsStatementFGR.secondName).value,
+          firstLastName: _addPromoterForm.control(FormsStatementFGR.firstLastName).value,
+          secondLastName: _addPromoterForm.control(FormsStatementFGR.secondLastName).value,
           id: _addPromoterForm.control(FormsStatementFGR.id).value,
           email: _addPromoterForm.control(FormsStatementFGR.email).value,
           phone: _addPromoterForm.control(FormsStatementFGR.phone).value,
@@ -321,11 +296,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
             ..add(promoterFRG))
           .build();
 
-      emit(state.copyWith(
-          showSavedStatement: false,
-          stateSendStatement: SendStatementState.initial(),
-          stateOfFiles: FileListState.initial(pickedFiles: _files),
-          stateOfPromoters: PromoterListState(promoters: _promoters)));
+      _emitInitialsStates();
 
       //reset form
       _addPromoterForm.reset();
@@ -336,15 +307,22 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   Future<void> deletePromoter(int index) async {
     _promoters = (_promoters.toBuilder()..removeAt(index)).build();
-    emit(state.copyWith(
-        showSavedStatement: false,
-        stateSendStatement: SendStatementState.initial(),
-        stateOfFiles: FileListState.initial(pickedFiles: _files),
-        stateOfPromoters: PromoterListState(promoters: _promoters)));
+    _emitInitialsStates();
+  }
+
+  Future<BuiltList<File>> _checkIfFilesExists(BuiltList<File> files) async {
+    var builder = files.toBuilder();
+
+    for (var file in files) {
+      if (await file.exists() == false) {
+        builder.remove(file);
+      }
+    }
+    return builder.build();
   }
 }
-// await Future.delayed(Duration(seconds: 5));
 
+// await Future.delayed(Duration(seconds: 5));
 abstract class FormsStatementFGR {
   const FormsStatementFGR._();
 
@@ -359,23 +337,18 @@ abstract class FormsStatementFGR {
       });
 
   static FormGroup get addPromoterForm => FormGroup({
-        firstName: FormControl<String>(
-            value: null, validators: [Validators.pattern(nameRegExp)]),
-        secondName: FormControl<String>(
-            value: null, validators: [Validators.pattern(nameRegExp)]),
-        firstLastName: FormControl<String>(
-            value: null, validators: [Validators.pattern(nameRegExp)]),
-        secondLastName: FormControl<String>(
-            value: null, validators: [Validators.pattern(nameRegExp)]),
-        id: FormControl<String>(
-            value: null, validators: [Validators.minLength(11)]),
-        phone: FormControl<String>(
-            value: null, validators: [Validators.pattern(phoneRegExp)]),
+        firstName: FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
+        secondName: FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
+        firstLastName:
+            FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
+        secondLastName:
+            FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
+        id: FormControl<String>(value: null, validators: [Validators.minLength(11)]),
+        phone: FormControl<String>(value: null, validators: [Validators.pattern(phoneRegExp)]),
         email: FormControl<String>(value: null, validators: [Validators.email]),
-        province: FormControl<ProvinceModel>(
-            value: null, validators: [Validators.required]),
-        municipality: FormControl<MunicipalityModel>(
-            value: null, validators: [Validators.required]),
+        province: FormControl<ProvinceModel>(value: null, validators: [Validators.required]),
+        municipality:
+            FormControl<MunicipalityModel>(value: null, validators: [Validators.required]),
         address: FormControl<String>(value: null, validators: []),
       });
 

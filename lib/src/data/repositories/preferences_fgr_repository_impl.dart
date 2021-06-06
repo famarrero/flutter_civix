@@ -9,9 +9,8 @@ class PreferencesFGRRepositoryImpl implements PreferencesFGRRepository {
 
   @override
   Future<StatementFRG?> getSavedStatementFGR() async {
-    String stringStatementFRG =
-        await _sharedPreferencesFGR.getSavedStatementFGR();
-    if (stringStatementFRG != '') {
+    String? stringStatementFRG = await _sharedPreferencesFGR.getSavedStatementFGR();
+    if (stringStatementFRG != null) {
       return StatementFRG.fromJson(stringStatementFRG);
     }
     return null;
@@ -22,5 +21,10 @@ class PreferencesFGRRepositoryImpl implements PreferencesFGRRepository {
     String serializedStatement = statementFRG.toJson();
     print(serializedStatement);
     await _sharedPreferencesFGR.savedStatementFGR(serializedStatement);
+  }
+
+  @override
+  Future<void> deleteStatmentFGR() async {
+    await _sharedPreferencesFGR.deleteStatmentFGR();
   }
 }

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:flutter_civix/src/core/serialaizers/serializers.dart';
-import 'package:flutter_civix/src/data/models/municipality_model.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_civix/src/data/models/province_model.dart';
 
@@ -14,20 +13,17 @@ abstract class ProvincesResponseModel
   ProvincesResponseModel._();
 
   factory ProvincesResponseModel([void Function(ProvincesResponseModelBuilder) updates]) =
-  _$ProvincesResponseModel;
-
+      _$ProvincesResponseModel;
 
   @BuiltValueField(wireName: 'provinces_list')
   BuiltList<ProvinceModel> get provincesList;
 
   String toJson() {
-    return json
-        .encode(serializers.serializeWith(ProvincesResponseModel.serializer, this));
+    return json.encode(serializers.serializeWith(ProvincesResponseModel.serializer, this));
   }
 
   static ProvincesResponseModel? fromJson(String jsonString) {
-    return serializers.deserializeWith(
-        ProvincesResponseModel.serializer, json.decode(jsonString));
+    return serializers.deserializeWith(ProvincesResponseModel.serializer, json.decode(jsonString));
   }
 
   static ProvincesResponseModel? fromMap(Map<String, dynamic> map) {
