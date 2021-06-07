@@ -12,9 +12,11 @@ import 'package:flutter_civix/src/data/models/municipality_model.dart';
 import 'package:flutter_civix/src/data/models/province_model.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
+import 'package:flutter_civix/src/domain/repositories/database_fgr_repository.dart';
 import 'package:flutter_civix/src/domain/repositories/preferences_fgr_repository.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:uuid/uuid.dart';
 
 part 'write_statement_fgr_state.dart';
 
@@ -23,8 +25,10 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   final FilePickerManager _filePicker;
   final Directory _directory;
   final PreferencesFGRRepository _preferencesFGR;
+  final DataBaseFGRRepository _dataBaseFGRRepository;
 
-  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory, this._preferencesFGR)
+  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory, this._preferencesFGR,
+      this._dataBaseFGRRepository)
       : super(WriteStatementFgrState.initial());
 
   final u = Utils();
@@ -81,7 +85,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
       await _preferencesFGR.deleteStatmentFGR();
     } else {
-      StatementFRG statementFGR = StatementFRG(
+      StatementFGR statementFGR = StatementFGR(
+          tiked: null,
           subject: _addStatementForm.control(FormsStatementFGR.subject).value,
           statement: _addStatementForm.control(FormsStatementFGR.statement).value,
           promoters: _promoters.toList(),
@@ -99,7 +104,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   Future<void> getSavedStatement() async {
     _emitInitialsStates();
 
-    StatementFRG? savedStatement = await _preferencesFGR.getSavedStatementFGR();
+    StatementFGR? savedStatement = await _preferencesFGR.getSavedStatementFGR();
 
     if (savedStatement != null) {
       _addStatementForm.control(FormsStatementFGR.subject).value = savedStatement.subject;
@@ -125,14 +130,19 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
     if (_addStatementForm.valid) {
       emit(state.copyWith(stateSendStatement: state.stateSendStatement.copyWith(isSending: true)));
+
       //Simulation of send statement
       await Future.delayed(Duration(seconds: 5));
-      StatementFRG statementFGR = StatementFRG(
-          subject: _addStatementForm.control(FormsStatementFGR.subject).value,
-          statement: _addStatementForm.control(FormsStatementFGR.statement).value,
-          promoters: _promoters.toList(),
-          files: _files.toList());
-      print(statementFGR.toString());
+      StatementFGR statementFGR = StatementFGR(
+        tiked: Uuid().v4(),
+        subject: _addStatementForm.control(FormsStatementFGR.subject).value,
+        statement: _addStatementForm.control(FormsStatementFGR.statement).value,
+        promoters: _promoters.toList(),
+        files: _files.toList(),
+      );
+
+      _dataBaseFGRRepository.insertStatementFGR(statementFGR);
+
       emit(state.copyWith(
           stateSendStatement: state.stateSendStatement.copyWith(isSending: false, done: true)));
     } else {

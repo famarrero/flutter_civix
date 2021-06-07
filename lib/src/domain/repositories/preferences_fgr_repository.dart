@@ -1,9 +1,9 @@
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 
 abstract class PreferencesFGRRepository {
-  Future<void> savedStatementFGR(StatementFRG statementFRG);
+  Future<void> savedStatementFGR(StatementFGR statementFRG);
 
-  Future<StatementFRG?> getSavedStatementFGR();
+  Future<StatementFGR?> getSavedStatementFGR();
 
   Future<void> deleteStatmentFGR();
 }

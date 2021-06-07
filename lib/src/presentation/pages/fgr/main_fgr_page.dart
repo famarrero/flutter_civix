@@ -5,21 +5,26 @@ import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 
-class MainFGRPage extends StatefulWidget {
-  MainFGRPage();
+class MainFgrPage extends StatefulWidget {
+  MainFgrPage();
 
   @override
-  _MainFGRPageState createState() => _MainFGRPageState();
+  _MainFgrPageState createState() => _MainFgrPageState();
 }
 
-class _MainFGRPageState extends State<MainFGRPage> {
+class _MainFgrPageState extends State<MainFgrPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => injector<WriteStatementFgrCubit>(),
-        child: _ScaffoldMainFGRPage());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => injector<WriteStatementFgrCubit>()),
+        BlocProvider(create: (context) => injector<ListStatementFgrCubit>()),
+      ],
+      child: _ScaffoldMainFGRPage(),
+    );
   }
 }
 
@@ -40,8 +45,17 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
               trailing: Image(image: Assets.images.marcaAguaFgr),
               onTap: () {
                 var bloc = BlocProvider.of<WriteStatementFgrCubit>(context);
-                AutoRouter.of(context)
-                    .push(WriteStatementFgrPageRoute(bloc: bloc));
+                AutoRouter.of(context).push(WriteStatementFgrPageRoute(bloc: bloc));
+              },
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.all(16),
+              leading: Icon(Icons.list),
+              title: Text('List of statements FGR'),
+              trailing: Image(image: Assets.images.marcaAguaFgr),
+              onTap: () {
+                var bloc = BlocProvider.of<ListStatementFgrCubit>(context);
+                AutoRouter.of(context).push(ListStatementFgrPageRoute(bloc: bloc));
               },
             )
           ],

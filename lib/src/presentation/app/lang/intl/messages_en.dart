@@ -119,10 +119,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "showingSadevStatement":
             MessageLookupByLibrary.simpleMessage("Showing saved statement"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "statement": MessageLookupByLibrary.simpleMessage("Statement"),
         "statementSaved":
             MessageLookupByLibrary.simpleMessage("Statement saved"),
         "statementValidator": MessageLookupByLibrary.simpleMessage(
             "The statement must o be null"),
+        "statements": MessageLookupByLibrary.simpleMessage("Statements"),
         "subjectValidator":
             MessageLookupByLibrary.simpleMessage("The subject must o be null"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Dark Theme"),

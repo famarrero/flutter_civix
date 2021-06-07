@@ -123,10 +123,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "showingSadevStatement": MessageLookupByLibrary.simpleMessage(
             "Mostrando planteamiento guardado"),
         "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
+        "statement": MessageLookupByLibrary.simpleMessage("Planteamiento"),
         "statementSaved":
             MessageLookupByLibrary.simpleMessage("Planteamiento guardado"),
         "statementValidator": MessageLookupByLibrary.simpleMessage(
             "El planteamiento no puede estar vacío"),
+        "statements": MessageLookupByLibrary.simpleMessage("Planteamientos"),
         "subjectValidator": MessageLookupByLibrary.simpleMessage(
             "El asunto no puede estar vacío"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Tema oscuro"),

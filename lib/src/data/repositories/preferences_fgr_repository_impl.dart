@@ -8,16 +8,16 @@ class PreferencesFGRRepositoryImpl implements PreferencesFGRRepository {
   PreferencesFGRRepositoryImpl(this._sharedPreferencesFGR);
 
   @override
-  Future<StatementFRG?> getSavedStatementFGR() async {
+  Future<StatementFGR?> getSavedStatementFGR() async {
     String? stringStatementFRG = await _sharedPreferencesFGR.getSavedStatementFGR();
     if (stringStatementFRG != null) {
-      return StatementFRG.fromJson(stringStatementFRG);
+      return StatementFGR.fromJson(stringStatementFRG);
     }
     return null;
   }
 
   @override
-  Future<void> savedStatementFGR(StatementFRG statementFRG) async {
+  Future<void> savedStatementFGR(StatementFGR statementFRG) async {
     String serializedStatement = statementFRG.toJson();
     await _sharedPreferencesFGR.savedStatementFGR(serializedStatement);
   }

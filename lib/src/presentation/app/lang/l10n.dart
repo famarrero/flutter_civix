@@ -929,6 +929,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Statement`
+  String get statement {
+    return Intl.message(
+      'Statement',
+      name: 'statement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statements`
+  String get statements {
+    return Intl.message(
+      'Statements',
+      name: 'statements',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

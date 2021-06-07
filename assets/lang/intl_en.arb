@@ -86,6 +86,8 @@
   "documentNotSupported": "The file selected is not a document or is not supported",
   "noFileSelected": "No file selected",
   "noImageSelected": "No image selected",
-  "noImageTaked": "No image taked"
+  "noImageTaked": "No image taked",
+  "statement": "Statement",
+  "statements": "Statements"
 
 }
