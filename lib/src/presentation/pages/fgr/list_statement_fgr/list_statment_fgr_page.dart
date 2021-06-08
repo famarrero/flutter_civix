@@ -1,9 +1,8 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:eva_icons_flutter/icon_data.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
-import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/widgets/statement_item_list_widget.dart';
@@ -35,7 +34,7 @@ class ListStatementFgrPage extends StatelessWidget {
         IconButton(
           tooltip: S.of(context).saveEraser,
           icon: Icon(Icons.notifications),
-          onPressed: () {},
+          onPressed: () => bloc.deleteAllStatementFGR(),
         ),
         IconButton(
           tooltip: S.of(context).saveEraser,
@@ -56,37 +55,49 @@ class ListStatementFgrPage extends StatelessWidget {
       value: bloc,
       child: BlocBuilder<ListStatementFgrCubit, ListStatementFgrState>(
         builder: (context, state) {
-          return Container(
-            child: _buildStreamList(state),
-          );
+        if (state.error != null) {
+            return Container();
+          } else {
+            return Container(
+              child: _buildStreamList(state.statmentsFgr),
+            );
+          }
         },
       ),
     );
   }
 
-  StreamBuilder<List<StatementFGR>> _buildStreamList(ListStatementFgrState state) {
+  StreamBuilder<List<StatementFGR>> _buildStreamList(Stream<List<StatementFGR>> statmentsFgr) {
     return StreamBuilder(
-      stream: state.statmentsFgr,
+      stream: statmentsFgr,
       builder: (context, AsyncSnapshot<List<StatementFGR>> snapshot) {
-        final statements = snapshot.data ?? [];
-
-        if (statements.isNotEmpty) {
-          return ListView.builder(
-              itemCount: statements.length,
-              itemBuilder: (BuildContext context, int index) {
-                return StatementItemListWidget(statement: statements[index]);
-              });
+        if (snapshot.hasData) {
+          if (snapshot.data != null && snapshot.data!.isNotEmpty) {
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  StatementFGR statement = snapshot.data![index];
+                  return InkWell(
+                    child: StatementItemListWidget(statement: statement),
+                    onTap: () {
+                      AutoRouter.of(context).push(ShowStatementFgrPageRoute(id: statement.tiked!));
+                    },
+                  );
+                });
+          } else {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(FontAwesomeIcons.sadTear, size: 50, color: Colors.black45),
+                  SizedBox(height: 20),
+                  Text('No hay ningún planteamiento', style: TextStyle(fontSize: 16))
+                ],
+              ),
+            );
+          }
         } else {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(FontAwesomeIcons.sadTear, size: 50, color: Colors.black45),
-                SizedBox(height: 20),
-                Text('No hay ningún planteamiento', style: TextStyle(fontSize: 16))
-              ],
-            ),
-          );
+          return Center(child: CircularProgressIndicator());
         }
       },
     );

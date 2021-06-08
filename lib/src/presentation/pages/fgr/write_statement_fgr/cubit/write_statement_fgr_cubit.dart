@@ -132,7 +132,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       emit(state.copyWith(stateSendStatement: state.stateSendStatement.copyWith(isSending: true)));
 
       //Simulation of send statement
-      await Future.delayed(Duration(seconds: 5));
+      await Future.delayed(Duration(seconds: 1));
       StatementFGR statementFGR = StatementFGR(
         tiked: Uuid().v4(),
         subject: _addStatementForm.control(FormsStatementFGR.subject).value,

@@ -59,7 +59,7 @@ dependencies:
   cupertino_icons: ^1.0.3
 
   device_info: ^2.0.0
-  device_preview: ^0.7.1
+  device_preview: ^0.7.3
   uuid: ^3.0.4
   plugin_platform_interface: ^2.0.0
 

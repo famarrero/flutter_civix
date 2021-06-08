@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DevicePreview(
-        enabled: false,
+        enabled: true,
         builder: (context) => OKToast(
               child: MaterialApp.router(
                 routeInformationParser: _appRouter.defaultRouteParser(),

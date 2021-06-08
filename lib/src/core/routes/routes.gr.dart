@@ -8,12 +8,14 @@ import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
 import '../../presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart'
-    as _i7;
+    as _i8;
 import '../../presentation/pages/fgr/list_statement_fgr/list_statment_fgr_page.dart'
     as _i5;
 import '../../presentation/pages/fgr/main_fgr_page.dart' as _i3;
-import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
     as _i6;
+import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+    as _i7;
 import '../../presentation/pages/fgr/write_statement_fgr/write_statement_fgr_page.dart'
     as _i4;
 
@@ -39,6 +41,12 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (data) {
           final args = data.argsAs<ListStatementFgrPageRouteArgs>();
           return _i5.ListStatementFgrPage(bloc: args.bloc);
+        }),
+    ShowStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<ShowStatementFgrPageRouteArgs>();
+          return _i6.ShowStatementFgrPage(id: args.id);
         })
   };
 
@@ -48,7 +56,9 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(WriteStatementFgrPageRoute.name,
             path: '/write-statement-fgr-page'),
         _i1.RouteConfig(ListStatementFgrPageRoute.name,
-            path: '/list-statement-fgr-page')
+            path: '/list-statement-fgr-page'),
+        _i1.RouteConfig(ShowStatementFgrPageRoute.name,
+            path: '/show-statement-fgr-page')
       ];
 }
 
@@ -60,7 +70,7 @@ class MainFgrPageRoute extends _i1.PageRouteInfo {
 
 class WriteStatementFgrPageRoute
     extends _i1.PageRouteInfo<WriteStatementFgrPageRouteArgs> {
-  WriteStatementFgrPageRoute({required _i6.WriteStatementFgrCubit bloc})
+  WriteStatementFgrPageRoute({required _i7.WriteStatementFgrCubit bloc})
       : super(name,
             path: '/write-statement-fgr-page',
             args: WriteStatementFgrPageRouteArgs(bloc: bloc));
@@ -71,12 +81,12 @@ class WriteStatementFgrPageRoute
 class WriteStatementFgrPageRouteArgs {
   const WriteStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i6.WriteStatementFgrCubit bloc;
+  final _i7.WriteStatementFgrCubit bloc;
 }
 
 class ListStatementFgrPageRoute
     extends _i1.PageRouteInfo<ListStatementFgrPageRouteArgs> {
-  ListStatementFgrPageRoute({required _i7.ListStatementFgrCubit bloc})
+  ListStatementFgrPageRoute({required _i8.ListStatementFgrCubit bloc})
       : super(name,
             path: '/list-statement-fgr-page',
             args: ListStatementFgrPageRouteArgs(bloc: bloc));
@@ -87,5 +97,21 @@ class ListStatementFgrPageRoute
 class ListStatementFgrPageRouteArgs {
   const ListStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i7.ListStatementFgrCubit bloc;
+  final _i8.ListStatementFgrCubit bloc;
+}
+
+class ShowStatementFgrPageRoute
+    extends _i1.PageRouteInfo<ShowStatementFgrPageRouteArgs> {
+  ShowStatementFgrPageRoute({required String id})
+      : super(name,
+            path: '/show-statement-fgr-page',
+            args: ShowStatementFgrPageRouteArgs(id: id));
+
+  static const String name = 'ShowStatementFgrPageRoute';
+}
+
+class ShowStatementFgrPageRouteArgs {
+  const ShowStatementFgrPageRouteArgs({required this.id});
+
+  final String id;
 }

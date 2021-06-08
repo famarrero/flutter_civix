@@ -6,6 +6,7 @@ import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 
 class MainFgrPage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _MainFgrPageState extends State<MainFgrPage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => injector<WriteStatementFgrCubit>()),
-        BlocProvider(create: (context) => injector<ListStatementFgrCubit>()),
+        BlocProvider(create: (context) => injector<ListStatementFgrCubit>()),       
       ],
       child: _ScaffoldMainFGRPage(),
     );

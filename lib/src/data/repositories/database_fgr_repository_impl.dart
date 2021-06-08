@@ -64,6 +64,11 @@ class DataBaseFGRRepositoryImpl implements DataBaseFGRRepository {
     return _statementFGRDao.deleteStatementFGR(_convertToDataBase(statementFGR));
   }
 
+  @override
+  Future deleteAllStatementFGR() async {
+    return _statementFGRDao.deleteAllStatementFGR();
+  }
+
   StatementFGREntity _convertToDataBase(StatementFGR sf) {
     List<String>? promoters = sf.promoters!.map<String>((promoter) => promoter.toJson()).toList();
     List<String>? files = sf.files!.map<String>((file) => file.path).toList();

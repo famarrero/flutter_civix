@@ -15,6 +15,7 @@ import 'package:flutter_civix/src/domain/repositories/local_assets_repository.da
 import 'package:flutter_civix/src/domain/repositories/preferences_fgr_repository.dart';
 import 'package:flutter_civix/src/presentation/manager/provinces_list_cuibit/provinces_list_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
@@ -57,6 +58,7 @@ Future<void> initializeDependencies() async {
       () => WriteStatementFgrCubit(injector(), injector(), injector(), injector(), injector()));
   injector.registerLazySingleton<ProvincesListCubit>(() => ProvincesListCubit(injector()));
   injector.registerLazySingleton<ListStatementFgrCubit>(() => ListStatementFgrCubit(injector()));
+  injector.registerLazySingleton<ShowStatementFgrCubit>(() => ShowStatementFgrCubit(injector()));
 
   // UseCases
   // injector.registerSingleton<GetRemotePostsUseCase>(

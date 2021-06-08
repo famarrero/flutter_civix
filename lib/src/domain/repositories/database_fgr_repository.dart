@@ -16,4 +16,6 @@ abstract class DataBaseFGRRepository {
   Future updateStatementFGR(StatementFGR statementFGR);
 
   Future deleteStatementFGR(StatementFGR statementFGR);
+
+  Future deleteAllStatementFGR();
 }

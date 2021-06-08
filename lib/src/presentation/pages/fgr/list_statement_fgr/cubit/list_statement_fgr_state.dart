@@ -1,29 +1,26 @@
 part of 'list_statement_fgr_cubit.dart';
 
 class ListStatementFgrState extends Equatable {
-  final bool isLoading;
   final Stream<List<StatementFGR>> statmentsFgr;
   final String? error;
 
-  const ListStatementFgrState({required this.isLoading, required this.statmentsFgr, this.error});
+  const ListStatementFgrState({required this.statmentsFgr, this.error});
 
   factory ListStatementFgrState.initial(
-          {bool? isSending, Stream<List<StatementFGR>>? statmentsFgr, String? error}) =>
+          {Stream<List<StatementFGR>>? statmentsFgr, String? error}) =>
       ListStatementFgrState(
-        isLoading: isSending ?? false,
-        statmentsFgr: statmentsFgr ?? Stream.empty(),
+        statmentsFgr: statmentsFgr ?? Stream<List<StatementFGR>>.empty(),
         error: error ?? null,
       );
 
   ListStatementFgrState copyWith(
-      {bool? isSending, Stream<List<StatementFGR>>? statmentsFgr, String? error}) {
+      {bool? isLoading, Stream<List<StatementFGR>>? statmentsFgr, String? error}) {
     return ListStatementFgrState(
-      isLoading: isSending ?? this.isLoading,
       statmentsFgr: statmentsFgr ?? this.statmentsFgr,
       error: error ?? this.error,
     );
   }
 
   @override
-  List<Object?> get props => [isLoading, statmentsFgr, error];
+  List<Object?> get props => [statmentsFgr, error];
 }

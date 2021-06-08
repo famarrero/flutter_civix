@@ -38,5 +38,5 @@ class StatementFGRDao extends DatabaseAccessor<AppDatabase> with _$StatementFGRD
   Future deleteStatementFGR(Insertable<StatementFGREntity> statementFGREntity) =>
       delete(statementsFGR).delete(statementFGREntity);
 
-  // Future clearCache() => delete(statementsFGR).go();
+  Future deleteAllStatementFGR() => delete(statementsFGR).go();
 }
