@@ -9,6 +9,7 @@ import 'package:flutter_civix/src/presentation/widgets/statement_item_list_widge
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ListStatementFgrPage extends StatelessWidget {
+
   final ListStatementFgrCubit bloc;
 
   ListStatementFgrPage({required this.bloc});
@@ -27,7 +28,8 @@ class ListStatementFgrPage extends StatelessWidget {
         children: [
           Text(S.of(context).statements),
           SizedBox(height: 4),
-          Text(S.of(context).fgr, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
+          Text(S.of(context).fgr,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
       actions: [
@@ -55,7 +57,7 @@ class ListStatementFgrPage extends StatelessWidget {
       value: bloc,
       child: BlocBuilder<ListStatementFgrCubit, ListStatementFgrState>(
         builder: (context, state) {
-        if (state.error != null) {
+          if (state.error != null) {
             return Container();
           } else {
             return Container(
@@ -67,9 +69,10 @@ class ListStatementFgrPage extends StatelessWidget {
     );
   }
 
-  StreamBuilder<List<StatementFGR>> _buildStreamList(Stream<List<StatementFGR>> statmentsFgr) {
+  StreamBuilder<List<StatementFGR>> _buildStreamList(
+      Stream<List<StatementFGR>> statementsFgr) {
     return StreamBuilder(
-      stream: statmentsFgr,
+      stream: statementsFgr,
       builder: (context, AsyncSnapshot<List<StatementFGR>> snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data != null && snapshot.data!.isNotEmpty) {
@@ -80,7 +83,8 @@ class ListStatementFgrPage extends StatelessWidget {
                   return InkWell(
                     child: StatementItemListWidget(statement: statement),
                     onTap: () {
-                      AutoRouter.of(context).push(ShowStatementFgrPageRoute(id: statement.tiked!));
+                      AutoRouter.of(context).push(
+                          ShowStatementFgrPageRoute(id: statement.tiked!));
                     },
                   );
                 });
@@ -89,9 +93,11 @@ class ListStatementFgrPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(FontAwesomeIcons.sadTear, size: 50, color: Colors.black45),
+                  Icon(FontAwesomeIcons.sadTear,
+                      size: 50, color: Colors.black45),
                   SizedBox(height: 20),
-                  Text('No hay ningún planteamiento', style: TextStyle(fontSize: 16))
+                  Text('No hay ningún planteamiento',
+                      style: TextStyle(fontSize: 16))
                 ],
               ),
             );

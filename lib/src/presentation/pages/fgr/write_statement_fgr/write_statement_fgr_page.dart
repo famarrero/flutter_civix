@@ -13,6 +13,7 @@ import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/manager/provinces_list_cuibit/provinces_list_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/widgets/dialog_progress_widget.dart';
+import 'package:flutter_civix/src/presentation/widgets/show_files_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:built_collection/built_collection.dart';
@@ -29,6 +30,11 @@ class WriteStatementFgrPage extends StatefulWidget {
 }
 
 class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
+
+  _deleteFile(int index) {
+    widget.bloc.deleteFile(index);
+  }
+
   @override
   void initState() {
     widget.bloc.getSavedStatement();
@@ -45,14 +51,21 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(S.of(context).writeStatement),
+          Text(S
+              .of(context)
+              .writeStatement),
           SizedBox(height: 4),
-          Text(S.of(context).fgr, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
+          Text(S
+              .of(context)
+              .fgr,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
       actions: [
         IconButton(
-          tooltip: S.of(context).saveEraser,
+          tooltip: S
+              .of(context)
+              .saveEraser,
           icon: Icon(Icons.save),
           onPressed: () => widget.bloc.savedStatement(),
         ),
@@ -65,45 +78,50 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
         value: widget.bloc,
         child: BlocConsumer<WriteStatementFgrCubit, WriteStatementFgrState>(
             listener: (context, state) {
-          print(state);
-          if (state.stateSendStatement.isSending) {
-            showDialog<void>(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext dialogContext) => DialogProgressWidget('Sending statement'));
-          }
-          if (state.stateOfFiles.done || state.stateSendStatement.done) {
-            Navigator.of(context).pop();
-          }
-          if (state.stateSendStatement.error != null) {
-            print(state.stateSendStatement.error);
-          }
-          if (state.stateOfFiles.isLoading) {
-            showDialog<void>(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext dialogContext) => DialogProgressWidget('Processing image'));
-          }
-          // if (state.stateOfFiles.done) {
-          //   Navigator.of(context).pop();
-          // }
-          if (state.stateOfFiles.error != null) {
-            showToast(state.stateOfFiles.error!,
-                duration: Duration(seconds: 3),
-                position: ToastPosition.bottom,
-                backgroundColor: Colors.black.withOpacity(0.7));
-          }
-          if (state.showMessage != '') {
-            showToast(state.showMessage!,
-                duration: Duration(seconds: 3),
-                position: ToastPosition.bottom,
-                backgroundColor: Colors.black.withOpacity(0.7));
-          }
-        }, builder: (context, state) {
+              print(state);
+              if (state.stateSendStatement.isSending) {
+                showDialog<void>(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext dialogContext) =>
+                        DialogProgressWidget('Sending statement'));
+              }
+              if (state.stateSendStatement.done) {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              }
+              if (state.stateSendStatement.error != null) {
+                print(state.stateSendStatement.error);
+              }
+              if (state.stateOfFiles.isLoading) {
+                showDialog<void>(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext dialogContext) =>
+                        DialogProgressWidget('Processing image'));
+              }
+              if (state.stateOfFiles.done) {
+                Navigator.of(context).pop();
+              }
+              if (state.stateOfFiles.error != null) {
+                showToast(state.stateOfFiles.error!,
+                    duration: Duration(seconds: 3),
+                    position: ToastPosition.bottom,
+                    backgroundColor: Colors.black.withOpacity(0.7));
+              }
+              if (state.showMessage != null && state.showMessage != '') {
+                showToast(state.showMessage!,
+                    duration: Duration(seconds: 3),
+                    position: ToastPosition.bottom,
+                    backgroundColor: Colors.black.withOpacity(0.7));
+              }
+            }, builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
             child: ReactiveForm(
-              formGroup: Provider.of<WriteStatementFgrCubit>(context).getAddStatementForm,
+              formGroup: Provider
+                  .of<WriteStatementFgrCubit>(context)
+                  .getAddStatementForm,
               child: Column(
                 children: [
                   Expanded(
@@ -115,15 +133,23 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         ReactiveTextField(
                           formControlName: FormsStatementFGR.subject,
                           validationMessages: (control) =>
-                              {ValidationMessage.required: S.of(context).subjectValidator},
+                          {
+                            ValidationMessage.required:
+                            S
+                                .of(context)
+                                .subjectValidator
+                          },
                           textInputAction: TextInputAction.next,
                           textCapitalization: TextCapitalization.sentences,
                           keyboardType: TextInputType.text,
                           maxLines: 1,
                           maxLength: 150,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                            labelText: S.of(context).enterSubject,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: S
+                                .of(context)
+                                .enterSubject,
                             icon: Icon(Icons.short_text),
                           ),
                         ),
@@ -131,7 +157,12 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         ReactiveTextField(
                           formControlName: FormsStatementFGR.statement,
                           validationMessages: (control) =>
-                              {ValidationMessage.required: S.of(context).statementValidator},
+                          {
+                            ValidationMessage.required:
+                            S
+                                .of(context)
+                                .statementValidator
+                          },
                           textInputAction: TextInputAction.newline,
                           textCapitalization: TextCapitalization.sentences,
                           keyboardType: TextInputType.multiline,
@@ -139,8 +170,11 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                           maxLines: null,
                           maxLength: 3000,
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                            labelText: S.of(context).enterStatement,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: S
+                                .of(context)
+                                .enterStatement,
                             icon: Icon(Icons.wrap_text),
                           ),
                         ),
@@ -150,26 +184,38 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         SizedBox(height: 20),
                         ElevatedButton(
                           style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ))),
-                          onPressed: (state.stateOfPromoters.promoters.length >= 1)
+                                    borderRadius: BorderRadius.circular(20),
+                                  ))),
+                          onPressed:
+                          (state.stateOfPromoters.promoters.length >= 1)
                               ? null
-                              : () => showDialog<void>(
+                              : () =>
+                              showDialog<void>(
                                   context: context,
-                                  builder: (BuildContext dialogContext) => _AddEditPromoterDialog(
+                                  builder: (BuildContext dialogContext) =>
+                                      _AddEditPromoterDialog(
                                         blocContext: context,
-                                        title: S.of(context).addPromoter,
+                                        title: S
+                                            .of(context)
+                                            .addPromoter,
                                         isEdit: false,
                                       )),
                           child: Text(
-                            S.of(context).addPromoter,
+                            S
+                                .of(context)
+                                .addPromoter,
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(height: 20),
-                        _ShowFiles(state.stateOfFiles.pickedFiles)
+                        ShowFiles(
+                          files: state.stateOfFiles.pickedFiles.toList(),
+                          buttonDeleteIsVisible: true,
+                          deleteFile: _deleteFile,
+                        )
                       ],
                     ),
                   ),
@@ -178,21 +224,25 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                     height: 50,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Colors.transparent, borderRadius: BorderRadius.circular(20)),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(20)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         FloatingActionButton(
                           heroTag: 'attachments',
                           backgroundColor: Colors.blue,
-                          tooltip: S.of(context).attachments,
+                          tooltip: S
+                              .of(context)
+                              .attachments,
                           onPressed: () {
                             showModalBottomSheet(
                                 backgroundColor: Colors.transparent,
                                 elevation: 0,
                                 context: context,
                                 builder: (_) {
-                                  return _MenuBottomSheet(context, state.stateOfFiles.pickedFiles);
+                                  return _MenuBottomSheet(
+                                      context, state.stateOfFiles.pickedFiles);
                                 });
                           },
                           elevation: 0,
@@ -200,12 +250,17 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         ),
                         FloatingActionButton(
                           heroTag: 'camera',
-                          backgroundColor: (state.stateOfFiles.pickedFiles.length < 3)
+                          backgroundColor:
+                          (state.stateOfFiles.pickedFiles.length < 3)
                               ? Colors.blue
                               : Colors.black.withOpacity(0.1),
-                          tooltip: S.of(context).camera,
+                          tooltip: S
+                              .of(context)
+                              .camera,
                           onPressed: (state.stateOfFiles.pickedFiles.length < 3)
-                              ? () => BlocProvider.of<WriteStatementFgrCubit>(context)
+                              ? () =>
+                              BlocProvider.of<WriteStatementFgrCubit>(
+                                  context)
                                   .getImageFormCameraOrGallery(source: 'camera')
                               : null,
                           elevation: 0,
@@ -214,9 +269,12 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         FloatingActionButton(
                           heroTag: 'send',
                           backgroundColor: Colors.blue,
-                          tooltip: S.of(context).send,
+                          tooltip: S
+                              .of(context)
+                              .send,
                           onPressed: () =>
-                              BlocProvider.of<WriteStatementFgrCubit>(context).sendStatement(),
+                              BlocProvider.of<WriteStatementFgrCubit>(context)
+                                  .sendStatement(),
                           elevation: 0,
                           child: Icon(Icons.send_rounded),
                         )
@@ -241,41 +299,52 @@ class _MenuBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 120,
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(20)),
       margin: EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
             heroTag: 'gallery',
-            tooltip: S.of(context).gallery,
-            backgroundColor: (files.length < 3) ? Colors.red : Colors.black.withOpacity(0.1),
+            tooltip: S
+                .of(context)
+                .gallery,
+            backgroundColor:
+            (files.length < 3) ? Colors.red : Colors.black.withOpacity(0.1),
             onPressed: (files.length < 3)
                 ? () {
-                    BlocProvider.of<WriteStatementFgrCubit>(blocContext)
-                        .getImageFormCameraOrGallery(source: 'gallery');
-                    Navigator.of(context).pop();
-                  }
+              BlocProvider.of<WriteStatementFgrCubit>(blocContext)
+                  .getImageFormCameraOrGallery(source: 'gallery');
+              Navigator.of(context).pop();
+            }
                 : null,
             elevation: 0,
             child: Icon(FontAwesomeIcons.fileImage),
           ),
           FloatingActionButton(
             heroTag: 'documents',
-            tooltip: S.of(context).document,
-            backgroundColor: (files.length < 3) ? Colors.green : Colors.black.withOpacity(0.1),
+            tooltip: S
+                .of(context)
+                .document,
+            backgroundColor: (files.length < 3)
+                ? Colors.green
+                : Colors.black.withOpacity(0.1),
             onPressed: (files.length < 3)
                 ? () {
-                    BlocProvider.of<WriteStatementFgrCubit>(blocContext).getDocument();
-                    Navigator.of(context).pop();
-                  }
+              BlocProvider.of<WriteStatementFgrCubit>(blocContext)
+                  .getDocument();
+              Navigator.of(context).pop();
+            }
                 : null,
             elevation: 0,
             child: Icon(FontAwesomeIcons.fileAlt),
           ),
           FloatingActionButton(
             heroTag: 'location',
-            tooltip: S.of(context).location,
+            tooltip: S
+                .of(context)
+                .location,
             backgroundColor: Colors.orange,
             onPressed: (files.length < 3) ? () {} : null,
             elevation: 0,
@@ -287,164 +356,32 @@ class _MenuBottomSheet extends StatelessWidget {
   }
 }
 
-class _ShowFiles extends StatelessWidget {
-  final BuiltList<File> files;
-
-  const _ShowFiles(this.files);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: ClampingScrollPhysics(),
-        padding: EdgeInsets.all(4),
-        itemCount: files.length,
-        itemBuilder: (BuildContext context, int index) {
-          var file = files[index];
-          if (file.path.endsWith('.webp')) {
-            return _buildImage(context, file, index);
-          } else {
-            return _buildDocument(context, file, index);
-          }
-        });
-  }
-
-  _buildImage(context, file, index) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Stack(
-          children: [
-            Container(
-                height: 90,
-                width: double.infinity,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                child: Image.file(file, fit: BoxFit.cover)),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                height: 40,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.black45,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Text(file.path.split('/').last,
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                    ),
-                    SizedBox(width: 10),
-                    Text(_getFileSize(file),
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                    SizedBox(width: 10),
-                    InkWell(
-                        onTap: () {
-                          BlocProvider.of<WriteStatementFgrCubit>(context, listen: false)
-                              .deleteFile(index);
-                        },
-                        child: Icon(FontAwesomeIcons.trash, color: Colors.red, size: 20)),
-                    SizedBox(width: 10)
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  _buildDocument(context, File file, index) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Stack(
-          children: [
-            Container(
-                height: 90,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.green.withOpacity(0.1),
-                ),
-                child: Row(
-                  children: [
-                    SizedBox(width: 10),
-                    Icon(FontAwesomeIcons.fileArchive, color: Colors.green, size: 55),
-                  ],
-                )),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                height: 40,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.black45,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Text(file.path.split('/').last,
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                    ),
-                    SizedBox(width: 10),
-                    Text(_getFileSize(file),
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                    SizedBox(width: 10),
-                    InkWell(
-                        onTap: () {
-                          BlocProvider.of<WriteStatementFgrCubit>(context, listen: false)
-                              .deleteFile(index);
-                        },
-                        child: Icon(FontAwesomeIcons.trash, color: Colors.red, size: 20)),
-                    SizedBox(width: 10)
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  _getFileSize(File file) {
-    final u = Utils();
-    return u.formatBytes(file.readAsBytesSync().lengthInBytes, 2);
-  }
-}
-
 class _AddEditPromoterDialog extends StatelessWidget {
   final BuildContext blocContext;
   final String title;
   final bool isEdit;
   final int? index;
 
-  _AddEditPromoterDialog(
-      {required this.blocContext, required this.title, required this.isEdit, this.index});
+  _AddEditPromoterDialog({required this.blocContext,
+    required this.title,
+    required this.isEdit,
+    this.index});
 
   @override
   Widget build(BuildContext context) {
     var getCubit = BlocProvider.of<WriteStatementFgrCubit>(blocContext);
-    var getCubitListenFalse = BlocProvider.of<WriteStatementFgrCubit>(blocContext, listen: false);
+    var getCubitListenFalse =
+    BlocProvider.of<WriteStatementFgrCubit>(blocContext, listen: false);
     return AlertDialog(
       title: Text(title),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20))),
       insetPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
       contentPadding: EdgeInsets.only(left: 16, right: 16, top: 8),
       content: BlocProvider(
-        create: (context) => injector<ProvincesListCubit>()..getProvinces(),
+        create: (context) =>
+        injector<ProvincesListCubit>()
+          ..getProvinces(),
         child: BlocBuilder<ProvincesListCubit, ProvincesListState>(
           builder: (context, state) {
             var _provincesList = state.provinceList;
@@ -459,15 +396,23 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.firstName,
                       validationMessages: (control) =>
-                          {ValidationMessage.pattern: S.of(context).firstNameCorrectValidator},
+                      {
+                        ValidationMessage.pattern:
+                        S
+                            .of(context)
+                            .firstNameCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.name,
                       maxLines: 1,
                       maxLength: 25,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).firstName,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .firstName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -475,15 +420,23 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.secondName,
                       validationMessages: (control) =>
-                          {ValidationMessage.pattern: S.of(context).secondNameCorrectValidator},
+                      {
+                        ValidationMessage.pattern:
+                        S
+                            .of(context)
+                            .secondNameCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.name,
                       maxLines: 1,
                       maxLength: 25,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).secondName,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .secondName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -491,15 +444,23 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.firstLastName,
                       validationMessages: (control) =>
-                          {ValidationMessage.pattern: S.of(context).firstLastNameCorrectValidator},
+                      {
+                        ValidationMessage.pattern:
+                        S
+                            .of(context)
+                            .firstLastNameCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.name,
                       maxLines: 1,
                       maxLength: 25,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).firstLastName,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .firstLastName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
@@ -507,23 +468,35 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.secondLastName,
                       validationMessages: (control) =>
-                          {ValidationMessage.pattern: S.of(context).secondLastNameCorrectValidator},
+                      {
+                        ValidationMessage.pattern:
+                        S
+                            .of(context)
+                            .secondLastNameCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.name,
                       maxLines: 1,
                       maxLength: 25,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).secondLastName,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .secondLastName,
                         suffixIcon: Icon(Icons.person),
                       ),
                     ),
                     SizedBox(height: 8),
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.id,
-                      validationMessages: (control) => {
-                        ValidationMessage.pattern: S.of(context).idCorrectValidator,
+                      validationMessages: (control) =>
+                      {
+                        ValidationMessage.pattern:
+                        S
+                            .of(context)
+                            .idCorrectValidator,
                       },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.none,
@@ -532,8 +505,11 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       maxLines: 1,
                       maxLength: 11,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).id,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .id,
                         suffixIcon: Icon(Icons.vpn_key),
                       ),
                     ),
@@ -541,15 +517,23 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.phone,
                       validationMessages: (control) =>
-                          {ValidationMessage.pattern: S.of(context).phoneCorrectValidator},
+                      {
+                        ValidationMessage.pattern:
+                        S
+                            .of(context)
+                            .phoneCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.phone,
                       maxLines: 1,
                       maxLength: 8,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).phone,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .phone,
                         suffixIcon: Icon(Icons.phone),
                       ),
                     ),
@@ -557,15 +541,23 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveTextField(
                       formControlName: FormsStatementFGR.email,
                       validationMessages: (control) =>
-                          {ValidationMessage.email: S.of(context).emailCorrectValidator},
+                      {
+                        ValidationMessage.email:
+                        S
+                            .of(context)
+                            .emailCorrectValidator
+                      },
                       textInputAction: TextInputAction.next,
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.emailAddress,
                       maxLines: 1,
                       maxLength: 25,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).email,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .email,
                         suffixIcon: Icon(Icons.alternate_email),
                       ),
                     ),
@@ -573,19 +565,28 @@ class _AddEditPromoterDialog extends StatelessWidget {
                     ReactiveDropdownField<ProvinceModel>(
                       formControlName: FormsStatementFGR.province,
                       validationMessages: (control) =>
-                          {ValidationMessage.required: S.of(context).provinceRequiredValidator},
+                      {
+                        ValidationMessage.required:
+                        S
+                            .of(context)
+                            .provinceRequiredValidator
+                      },
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).province,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .province,
                         suffixIcon: Icon(Icons.location_city),
                       ),
                       items: _provincesList
-                          .map<DropdownMenuItem<ProvinceModel>>((ProvinceModel value) {
-                        return DropdownMenuItem<ProvinceModel>(
-                          value: value,
-                          child: Text(value.provinceName),
-                        );
-                      }).toList(),
+                          .map<DropdownMenuItem<ProvinceModel>>(
+                              (ProvinceModel value) {
+                            return DropdownMenuItem<ProvinceModel>(
+                              value: value,
+                              child: Text(value.provinceName),
+                            );
+                          }).toList(),
                     ),
                     SizedBox(height: 25),
                     ReactiveValueListenableBuilder<ProvinceModel>(
@@ -593,23 +594,30 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       builder: (context, valueProvince, child) {
                         return ReactiveDropdownField<MunicipalityModel>(
                           formControlName: FormsStatementFGR.municipality,
-                          validationMessages: (control) => {
-                            ValidationMessage.required: S.of(context).municipalityRequiredValidator
+                          validationMessages: (control) =>
+                          {
+                            ValidationMessage.required:
+                            S
+                                .of(context)
+                                .municipalityRequiredValidator
                           },
                           decoration: InputDecoration(
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                            labelText: S.of(context).municipality,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            labelText: S
+                                .of(context)
+                                .municipality,
                             suffixIcon: Icon(Icons.location_city),
                           ),
                           items: valueProvince.value != null
                               ? valueProvince.value!.municipalitiesList
-                                  .map<DropdownMenuItem<MunicipalityModel>>(
-                                      (MunicipalityModel value) {
-                                  return DropdownMenuItem<MunicipalityModel>(
-                                    value: value,
-                                    child: Text(value.municipalityName),
-                                  );
-                                }).toList()
+                              .map<DropdownMenuItem<MunicipalityModel>>(
+                                  (MunicipalityModel value) {
+                                return DropdownMenuItem<MunicipalityModel>(
+                                  value: value,
+                                  child: Text(value.municipalityName),
+                                );
+                              }).toList()
                               : [],
                         );
                       },
@@ -625,8 +633,11 @@ class _AddEditPromoterDialog extends StatelessWidget {
                       maxLines: 1,
                       maxLength: 100,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                        labelText: S.of(context).address,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        labelText: S
+                            .of(context)
+                            .address,
                         suffixIcon: Icon(Icons.location_on),
                       ),
                     ),
@@ -639,24 +650,32 @@ class _AddEditPromoterDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
-            onPressed: () => {
-                  //reset form
-                  getCubitListenFalse.getAddEditPromoterForm(isEdit: false).reset(),
-                  Navigator.of(context).pop(),
-                },
-            child: Text(S.of(context).cancel)),
+            onPressed: () =>
+            {
+              //reset form
+              getCubitListenFalse
+                  .getAddEditPromoterForm(isEdit: false)
+                  .reset(),
+              Navigator.of(context).pop(),
+            },
+            child: Text(S
+                .of(context)
+                .cancel)),
         TextButton(
-            onPressed: () => {
-                  if (isEdit)
-                    {
-                      getCubitListenFalse.editPromoter(context, index!),
-                    }
-                  else
-                    {
-                      getCubitListenFalse.addPromoter(context),
-                    }
-                },
-            child: Text(S.of(context).ok)),
+            onPressed: () =>
+            {
+              if (isEdit)
+                {
+                  getCubitListenFalse.editPromoter(context, index!),
+                }
+              else
+                {
+                  getCubitListenFalse.addPromoter(context),
+                }
+            },
+            child: Text(S
+                .of(context)
+                .ok)),
       ],
     );
   }
@@ -678,7 +697,8 @@ class _ShowPromoters extends StatelessWidget {
         itemCount: _promoters.length,
         itemBuilder: (BuildContext context, int index) {
           String title = '';
-          if (_promoters[index].firstName != null && _promoters[index].firstName!.isNotEmpty) {
+          if (_promoters[index].firstName != null &&
+              _promoters[index].firstName!.isNotEmpty) {
             title = '${_promoters[index].firstName} ';
           }
           if (_promoters[index].firstLastName != null &&
@@ -689,38 +709,50 @@ class _ShowPromoters extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
-                Icon(FontAwesomeIcons.addressBook, size: 25, color: Colors.blue),
+                Icon(FontAwesomeIcons.addressBook,
+                    size: 25, color: Colors.blue),
                 SizedBox(width: 18),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (title != '')
-                        Text(title, style: TextStyle(fontSize: 14, color: Colors.black54)),
+                        Text(title,
+                            style:
+                            TextStyle(fontSize: 14, color: Colors.black54)),
                       SizedBox(height: 2),
                       Text(
-                          '${_promoters[index].municipalityName}, ${_promoters[index].provinceName}',
-                          style: TextStyle(fontSize: 14, color: Colors.black54)),
+                          '${_promoters[index]
+                              .municipalityName}, ${_promoters[index]
+                              .provinceName}',
+                          style:
+                          TextStyle(fontSize: 14, color: Colors.black54)),
                     ],
                   ),
                 ),
                 InkWell(
-                  child: Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
+                  child:
+                  Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
                   onTap: () {
                     showDialog<void>(
                         context: context,
-                        builder: (BuildContext dialogContext) => _AddEditPromoterDialog(
-                            blocContext: context,
-                            title: S.of(context).editPromoter,
-                            isEdit: true,
-                            index: index));
+                        builder: (BuildContext dialogContext) =>
+                            _AddEditPromoterDialog(
+                                blocContext: context,
+                                title: S
+                                    .of(context)
+                                    .editPromoter,
+                                isEdit: true,
+                                index: index));
                   },
                 ),
                 SizedBox(width: 10),
                 InkWell(
-                  child: Icon(FontAwesomeIcons.trash, size: 25, color: Colors.red),
+                  child:
+                  Icon(FontAwesomeIcons.trash, size: 25, color: Colors.red),
                   onTap: () {
-                    BlocProvider.of<WriteStatementFgrCubit>(context, listen: false)
+                    BlocProvider.of<WriteStatementFgrCubit>(context,
+                        listen: false)
                         .deletePromoter(index);
                   },
                 )

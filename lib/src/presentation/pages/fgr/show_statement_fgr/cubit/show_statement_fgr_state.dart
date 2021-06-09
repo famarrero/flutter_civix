@@ -1,26 +1,27 @@
 part of 'show_statement_fgr_cubit.dart';
 
 class ShowStatementFgrState extends Equatable {
-  final Stream<StatementFGR?> statmentsFgr;
+  // final Stream<StatementFGR?> statmentsFgr;
+  final StatementFGR? statementsFgr;
   final String? error;
 
-  const ShowStatementFgrState({required this.statmentsFgr, this.error});
+  const ShowStatementFgrState({required this.statementsFgr, this.error});
 
   factory ShowStatementFgrState.initial(
-          {bool? isSending, Stream<StatementFGR?>? statmentsFgr, String? error}) =>
+          {bool? isSending, StatementFGR? statmentsFgr, String? error}) =>
       ShowStatementFgrState(
-        statmentsFgr: statmentsFgr ?? Stream.empty(),
+        statementsFgr: statmentsFgr ?? null,
         error: error ?? null,
       );
 
   ShowStatementFgrState copyWith(
-      {Stream<StatementFGR?>? statmentsFgr, String? error}) {
+      {StatementFGR? statementsFgr, String? error}) {
     return ShowStatementFgrState(
-      statmentsFgr: statmentsFgr ?? this.statmentsFgr,
+      statementsFgr: statementsFgr ?? this.statementsFgr,
       error: error ?? this.error,
     );
   }
 
   @override
-  List<Object?> get props => [statmentsFgr, error];
+  List<Object?> get props => [statementsFgr, error];
 }

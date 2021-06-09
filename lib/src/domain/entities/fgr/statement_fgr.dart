@@ -19,6 +19,24 @@ class StatementFGR {
       this.files,
       this.dateSend});
 
+  StatementFGR copyWith({
+    String? ticked,
+    String? subject,
+    String? statement,
+    List<PromoterFRG>? promoters,
+    List<File>? files,
+    DateTime? dateSend,
+  }) {
+    return StatementFGR(
+      tiked: ticked ?? this.tiked,
+      subject: subject ?? this.subject,
+      statement: statement ?? this.statement,
+      promoters: promoters ?? this.promoters,
+      files: files ?? this.files,
+      dateSend: dateSend ?? this.dateSend,
+    );
+  }
+
   String toJson() {
     return jsonEncode(this.toMap());
   }

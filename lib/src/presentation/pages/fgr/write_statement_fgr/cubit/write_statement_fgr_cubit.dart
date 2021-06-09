@@ -27,8 +27,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   final PreferencesFGRRepository _preferencesFGR;
   final DataBaseFGRRepository _dataBaseFGRRepository;
 
-  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory, this._preferencesFGR,
-      this._dataBaseFGRRepository)
+  WriteStatementFgrCubit(this._imagePicker, this._filePicker, this._directory,
+      this._preferencesFGR, this._dataBaseFGRRepository)
       : super(WriteStatementFgrState.initial());
 
   final u = Utils();
@@ -71,8 +71,10 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   Future<void> savedStatement() async {
     _emitInitialsStates();
 
-    var subject = _addStatementForm.control(FormsStatementFGR.subject).value as String?;
-    var statement = _addStatementForm.control(FormsStatementFGR.statement).value as String?;
+    var subject =
+        _addStatementForm.control(FormsStatementFGR.subject).value as String?;
+    var statement =
+        _addStatementForm.control(FormsStatementFGR.statement).value as String?;
     var promoters = _promoters.toList();
     var files = _files.toList();
     if ((subject == null || subject.isEmpty) &&
@@ -88,7 +90,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       StatementFGR statementFGR = StatementFGR(
           tiked: null,
           subject: _addStatementForm.control(FormsStatementFGR.subject).value,
-          statement: _addStatementForm.control(FormsStatementFGR.statement).value,
+          statement:
+              _addStatementForm.control(FormsStatementFGR.statement).value,
           promoters: _promoters.toList(),
           files: _files.toList());
 
@@ -107,20 +110,22 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     StatementFGR? savedStatement = await _preferencesFGR.getSavedStatementFGR();
 
     if (savedStatement != null) {
-      _addStatementForm.control(FormsStatementFGR.subject).value = savedStatement.subject;
-      _addStatementForm.control(FormsStatementFGR.statement).value = savedStatement.statement;
+      _addStatementForm.control(FormsStatementFGR.subject).value =
+          savedStatement.subject;
+      _addStatementForm.control(FormsStatementFGR.statement).value =
+          savedStatement.statement;
 
-      if (savedStatement.promoters != null) _promoters = savedStatement.promoters!.toBuiltList();
+      if (savedStatement.promoters != null)
+        _promoters = savedStatement.promoters!.toBuiltList();
 
       if (savedStatement.files != null)
-        _files = await _checkIfFilesExists(savedStatement.files!.toBuiltList());
+        // _files = await _checkIfFilesExists(savedStatement.files!.toBuiltList());
 
       emit(state.copyWith(
           showMessage: S.current.showingSadevStatement,
           stateOfPromoters: PromoterListState(promoters: _promoters),
           stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
     }
-
     _addStatementForm.markAsUntouched();
     _addEditPromoterForm.markAsUntouched();
   }
@@ -129,12 +134,16 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     _emitInitialsStates();
 
     if (_addStatementForm.valid) {
-      emit(state.copyWith(stateSendStatement: state.stateSendStatement.copyWith(isSending: true)));
+      emit(state.copyWith(
+          stateSendStatement:
+              state.stateSendStatement.copyWith(isSending: true)));
 
       //Simulation of send statement
       await Future.delayed(Duration(seconds: 1));
+
       StatementFGR statementFGR = StatementFGR(
-        tiked: Uuid().v4(),
+        // tiked: Uuid().v4(),
+        tiked: UniqueKey().toString(),
         subject: _addStatementForm.control(FormsStatementFGR.subject).value,
         statement: _addStatementForm.control(FormsStatementFGR.statement).value,
         promoters: _promoters.toList(),
@@ -144,7 +153,15 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       _dataBaseFGRRepository.insertStatementFGR(statementFGR);
 
       emit(state.copyWith(
-          stateSendStatement: state.stateSendStatement.copyWith(isSending: false, done: true)));
+          stateSendStatement:
+              state.stateSendStatement.copyWith(isSending: false, done: true)));
+
+      await _preferencesFGR.deleteStatmentFGR();
+      _addStatementForm.control(FormsStatementFGR.subject).value = null;
+      _addStatementForm.control(FormsStatementFGR.statement).value = null;
+      _promoters = BuiltList([]);
+      _files = BuiltList([]);
+      emit(WriteStatementFgrState.initial());
     } else {
       _addStatementForm.control(FormsStatementFGR.subject).markAsTouched();
       _addStatementForm.control(FormsStatementFGR.statement).markAsTouched();
@@ -166,11 +183,13 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
     response.fold(
       (errorOrCancel) {
-        emit(state.copyWith(stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
+        emit(state.copyWith(
+            stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
       },
       (file) async {
         emit(state.copyWith(
-            stateOfFiles: FileListState(isLoading: true, pickedFiles: _files, done: false)));
+            stateOfFiles: FileListState(
+                isLoading: true, pickedFiles: _files, done: false)));
 
         var nameFile = file.path.split('/').last.split('.').first;
         int quality = 75;
@@ -180,11 +199,12 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         if (file.readAsBytesSync().lengthInBytes / 1024 / 1024 > 1) {
           quality = 50;
         }
-        final imageCompressResponse =
-            await u.compressImage(file, '$_newDirectory/$nameFile.webp', quality);
+        final imageCompressResponse = await u.compressImage(
+            file, '$_newDirectory/$nameFile.webp', quality);
         imageCompressResponse.fold((error) {
           emit(state.copyWith(
-              stateOfFiles: state.stateOfFiles.copyWith(isLoading: false, error: error)));
+              stateOfFiles:
+                  state.stateOfFiles.copyWith(isLoading: false, error: error)));
         }, (imageCompress) async {
           _files = (_files.toBuilder()..add(imageCompress)).build();
 
@@ -192,7 +212,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         });
 
         emit(state.copyWith(
-            stateOfFiles: FileListState(isLoading: false, pickedFiles: _files, done: true)));
+            stateOfFiles: FileListState(
+                isLoading: false, pickedFiles: _files, done: true)));
       },
     );
   }
@@ -204,39 +225,42 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     final String _newDirectory = '${_directory.path}/AppDocuments';
     await Directory(_newDirectory).create(recursive: true);
 
-    final response = await _filePicker.getSingleFileByExtensions(_documentsSupportedList);
+    final response =
+        await _filePicker.getSingleFileByExtensions(_documentsSupportedList);
 
     response.fold(
       (errorOrCancel) {
-        emit(state.copyWith(stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
+        emit(state.copyWith(
+            stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
       },
       (file) async {
         if (_documentsSupportedList.contains(file.path.split('.').last)) {
           emit(state.copyWith(
-              stateOfFiles: FileListState(isLoading: true, pickedFiles: _files, done: false)));
+              stateOfFiles: FileListState(
+                  isLoading: true, pickedFiles: _files, done: false)));
 
           _files = (_files.toBuilder()..add(file)).build();
 
           emit(state.copyWith(
-              stateOfFiles: FileListState(isLoading: false, pickedFiles: _files, done: true)));
+              stateOfFiles: FileListState(
+                  isLoading: false, pickedFiles: _files, done: true)));
         } else {
           emit(state.copyWith(
-              stateOfFiles: state.stateOfFiles
-                  .copyWith(isLoading: false, error: S.current.documentNotSupported)));
+              stateOfFiles: state.stateOfFiles.copyWith(
+                  isLoading: false, error: S.current.documentNotSupported)));
         }
       },
     );
   }
 
   Future<void> deleteFile(int index) async {
-    await _files[index].delete(recursive: true);
-
+    if (await _files[index].exists()) {
+      await _files[index].delete(recursive: true);
+    }
     // var builder = _files.toBuilder();
     // builder.removeAt(index);
     // _files = builder.build();
-
     _files = (_files.toBuilder()..removeAt(index)).build();
-
     _emitInitialsStates();
   }
 
@@ -244,19 +268,31 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     if (_addEditPromoterForm.control(FormsStatementFGR.province).invalid) {
       _addEditPromoterForm.control(FormsStatementFGR.province).markAsTouched();
       _addEditPromoterForm.control(FormsStatementFGR.province).focus();
-    } else if (_addEditPromoterForm.control(FormsStatementFGR.municipality).invalid) {
-      _addEditPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
+    } else if (_addEditPromoterForm
+        .control(FormsStatementFGR.municipality)
+        .invalid) {
+      _addEditPromoterForm
+          .control(FormsStatementFGR.municipality)
+          .markAsTouched();
       _addEditPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
-      var provinceModel =
-          _addEditPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
-      var municipalityModel =
-          _addEditPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
+      var provinceModel = _addEditPromoterForm
+          .control(FormsStatementFGR.province)
+          .value as ProvinceModel;
+      var municipalityModel = _addEditPromoterForm
+          .control(FormsStatementFGR.municipality)
+          .value as MunicipalityModel;
       PromoterFRG promoterFRG = PromoterFRG(
-          firstName: _addEditPromoterForm.control(FormsStatementFGR.firstName).value,
-          secondName: _addEditPromoterForm.control(FormsStatementFGR.secondName).value,
-          firstLastName: _addEditPromoterForm.control(FormsStatementFGR.firstLastName).value,
-          secondLastName: _addEditPromoterForm.control(FormsStatementFGR.secondLastName).value,
+          firstName:
+              _addEditPromoterForm.control(FormsStatementFGR.firstName).value,
+          secondName:
+              _addEditPromoterForm.control(FormsStatementFGR.secondName).value,
+          firstLastName: _addEditPromoterForm
+              .control(FormsStatementFGR.firstLastName)
+              .value,
+          secondLastName: _addEditPromoterForm
+              .control(FormsStatementFGR.secondLastName)
+              .value,
           id: _addEditPromoterForm.control(FormsStatementFGR.id).value,
           email: _addEditPromoterForm.control(FormsStatementFGR.email).value,
           phone: _addEditPromoterForm.control(FormsStatementFGR.phone).value,
@@ -264,7 +300,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           provinceModel: provinceModel,
           municipalityName: municipalityModel.municipalityName,
           municipalityModel: municipalityModel,
-          address: _addEditPromoterForm.control(FormsStatementFGR.address).value);
+          address:
+              _addEditPromoterForm.control(FormsStatementFGR.address).value);
       _promoters = (_promoters.toBuilder()..add(promoterFRG)).build();
 
       _emitInitialsStates();
@@ -280,19 +317,31 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     if (_addEditPromoterForm.control(FormsStatementFGR.province).invalid) {
       _addEditPromoterForm.control(FormsStatementFGR.province).markAsTouched();
       _addEditPromoterForm.control(FormsStatementFGR.province).focus();
-    } else if (_addEditPromoterForm.control(FormsStatementFGR.municipality).invalid) {
-      _addEditPromoterForm.control(FormsStatementFGR.municipality).markAsTouched();
+    } else if (_addEditPromoterForm
+        .control(FormsStatementFGR.municipality)
+        .invalid) {
+      _addEditPromoterForm
+          .control(FormsStatementFGR.municipality)
+          .markAsTouched();
       _addEditPromoterForm.control(FormsStatementFGR.municipality).focus();
     } else {
-      var provinceModel =
-          _addEditPromoterForm.control(FormsStatementFGR.province).value as ProvinceModel;
-      var municipalityModel =
-          _addEditPromoterForm.control(FormsStatementFGR.municipality).value as MunicipalityModel;
+      var provinceModel = _addEditPromoterForm
+          .control(FormsStatementFGR.province)
+          .value as ProvinceModel;
+      var municipalityModel = _addEditPromoterForm
+          .control(FormsStatementFGR.municipality)
+          .value as MunicipalityModel;
       PromoterFRG promoterFRG = PromoterFRG(
-          firstName: _addEditPromoterForm.control(FormsStatementFGR.firstName).value,
-          secondName: _addEditPromoterForm.control(FormsStatementFGR.secondName).value,
-          firstLastName: _addEditPromoterForm.control(FormsStatementFGR.firstLastName).value,
-          secondLastName: _addEditPromoterForm.control(FormsStatementFGR.secondLastName).value,
+          firstName:
+              _addEditPromoterForm.control(FormsStatementFGR.firstName).value,
+          secondName:
+              _addEditPromoterForm.control(FormsStatementFGR.secondName).value,
+          firstLastName: _addEditPromoterForm
+              .control(FormsStatementFGR.firstLastName)
+              .value,
+          secondLastName: _addEditPromoterForm
+              .control(FormsStatementFGR.secondLastName)
+              .value,
           id: _addEditPromoterForm.control(FormsStatementFGR.id).value,
           email: _addEditPromoterForm.control(FormsStatementFGR.email).value,
           phone: _addEditPromoterForm.control(FormsStatementFGR.phone).value,
@@ -300,7 +349,8 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
           provinceModel: provinceModel,
           municipalityName: municipalityModel.municipalityName,
           municipalityModel: municipalityModel,
-          address: _addEditPromoterForm.control(FormsStatementFGR.address).value);
+          address:
+              _addEditPromoterForm.control(FormsStatementFGR.address).value);
 
       _promoters = (_promoters.toBuilder()
             ..removeAt(index)
@@ -339,7 +389,8 @@ abstract class FormsStatementFGR {
 
   static const nameRegExp = r'^[A-Za-z ÁÉÍÓÚÜÇáéíóúüç.-]+$';
   static const phoneRegExp = r'^[0-9 +*-]+$';
-  static const idRegExp = r'^([0-9]{2})(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[12][0-9]{4}$';
+  static const idRegExp =
+      r'^([0-9]{2})(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[12][0-9]{4}$';
   static const dateRegExp =
       r'^(0[1-9]|1[0-9]|2[0-9]|3[01])[-/.](0[1-9]|1[012])[-/.](19[23456789][0-9]|20[0][12])$';
 
@@ -351,20 +402,24 @@ abstract class FormsStatementFGR {
       });
 
   static FormGroup get addPromoterForm => FormGroup({
-        firstName: FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
-        secondName: FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
-        firstLastName:
-            FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
-        secondLastName:
-            FormControl<String>(value: null, validators: [Validators.pattern(nameRegExp)]),
+        firstName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
+        secondName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
+        firstLastName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
+        secondLastName: FormControl<String>(
+            value: null, validators: [Validators.pattern(nameRegExp)]),
         id: FormControl<String>(value: null, validators: [
           Validators.pattern(idRegExp),
         ]),
-        phone: FormControl<String>(value: null, validators: [Validators.pattern(phoneRegExp)]),
+        phone: FormControl<String>(
+            value: null, validators: [Validators.pattern(phoneRegExp)]),
         email: FormControl<String>(value: null, validators: [Validators.email]),
-        province: FormControl<ProvinceModel>(value: null, validators: [Validators.required]),
-        municipality:
-            FormControl<MunicipalityModel>(value: null, validators: [Validators.required]),
+        province: FormControl<ProvinceModel>(
+            value: null, validators: [Validators.required]),
+        municipality: FormControl<MunicipalityModel>(
+            value: null, validators: [Validators.required]),
         address: FormControl<String>(value: null, validators: []),
       });
 

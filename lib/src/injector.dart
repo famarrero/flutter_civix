@@ -26,17 +26,25 @@ final injector = GetIt.instance;
 Future<void> initializeDependencies() async {
   await registerDir();
 
+  //**
+  // - I register the instance like registerLazySingleton() because i need that the
+  // instance register the first time that in call them.
+  // - If i register the instance like registerSingleton() the instance will be created at the first time that app start
+  //**/
+
   // Dio client
   injector.registerLazySingleton<Dio>(() => Dio());
 
-  //Database
+  // Preferences
+  injector.registerLazySingleton<SharedPreferencesFGR>(
+      () => SharedPreferencesFGR());
+
+  // Database
   injector.registerLazySingleton<AppDatabase>(() => AppDatabase());
-  injector.registerLazySingleton(() => StatementFGRDao(injector()));
+  injector.registerLazySingleton<StatementFGRDao>(
+      () => StatementFGRDao(injector()));
 
-  //
-  injector.registerSingleton<SharedPreferencesFGR>(SharedPreferencesFGR());
-
-  //Repositories
+  // Repositories
   injector.registerLazySingleton<DataBaseFGRRepository>(
     () => DataBaseFGRRepositoryImpl(injector()),
   );
@@ -53,12 +61,18 @@ Future<void> initializeDependencies() async {
     () => FilePickerManagerImpl(),
   );
 
-  // Blocs
-  injector.registerLazySingleton<WriteStatementFgrCubit>(
-      () => WriteStatementFgrCubit(injector(), injector(), injector(), injector(), injector()));
-  injector.registerLazySingleton<ProvincesListCubit>(() => ProvincesListCubit(injector()));
-  injector.registerLazySingleton<ListStatementFgrCubit>(() => ListStatementFgrCubit(injector()));
-  injector.registerLazySingleton<ShowStatementFgrCubit>(() => ShowStatementFgrCubit(injector()));
+  // Blocs/Cubits
+  //**
+  // They are register like registerFactory because every time i need a new instance of the BloC/Cubit
+  //**
+  injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit(
+      injector(), injector(), injector(), injector(), injector()));
+  injector.registerFactory<ProvincesListCubit>(
+      () => ProvincesListCubit(injector()));
+  injector.registerFactory<ListStatementFgrCubit>(
+      () => ListStatementFgrCubit(injector()));
+  injector.registerFactory<ShowStatementFgrCubit>(
+      () => ShowStatementFgrCubit(injector()));
 
   // UseCases
   // injector.registerSingleton<GetRemotePostsUseCase>(
