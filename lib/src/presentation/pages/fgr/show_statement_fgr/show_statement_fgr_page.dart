@@ -1,12 +1,13 @@
-import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
 import 'package:flutter_civix/src/presentation/widgets/show_files_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -115,6 +116,9 @@ class ShowStatementFgrPage extends StatelessWidget {
         children: [
           _firstCard(colorState, textState, statementsFgr, institutionLogo),
           _secondCard(statementsFgr),
+          if (statementsFgr.promoters != null &&
+              statementsFgr.promoters!.isNotEmpty)
+            _ShowPromoters(statementsFgr.promoters!),
           _responseCard(statementsFgr),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -190,10 +194,10 @@ class ShowStatementFgrPage extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.black, fontSize: 16)),
                           ),
-                          Icon(
-                            Icons.copy,
-                            color: Colors.blue,
-                          ),
+                          // Icon(
+                          //   Icons.copy,
+                          //   color: Colors.blue,
+                          // ),
                           SizedBox(width: 20),
                         ],
                       ),
@@ -209,6 +213,22 @@ class ShowStatementFgrPage extends StatelessWidget {
                           Text('07/06/21',
                               style:
                                   TextStyle(color: Colors.black, fontSize: 16)),
+                        ],
+                      ),
+                      SizedBox(height: 16),
+                      Row(
+                        children: [
+                          SizedBox(width: 10),
+                          Icon(
+                            Icons.phone_android,
+                            color: Colors.blue,
+                          ),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: Text('Reception way  Civix',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16)),
+                          ),
                         ],
                       ),
                       SizedBox(height: 16)
@@ -286,7 +306,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                 SizedBox(width: 10),
               ],
             ),
-            SizedBox(height: 16)
+            SizedBox(height: 16),
           ],
         ),
       ),
@@ -335,15 +355,223 @@ class ShowStatementFgrPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Future<List<File>> _checkIfFilesExists(List<File> files) async {
-    var _files = files;
+class _ShowPromoters extends StatelessWidget {
+  final List<PromoterFRG> _promoters;
 
-    for (var file in _files) {
-      if (await file.exists() == false) {
-        _files.remove(file);
-      }
-    }
-    return _files;
+  _ShowPromoters(this._promoters);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text('Promotres',
+                  style: TextStyle(
+                      color: Colors.black.withOpacity(0.7),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(height: 10),
+            ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                itemCount: _promoters.length,
+                itemBuilder: (BuildContext context, int index) {
+                  String title = '';
+                  if (_promoters[index].firstName != null &&
+                      _promoters[index].firstName!.isNotEmpty) {
+                    title = '${_promoters[index].firstName} ';
+                  }
+                  if (_promoters[index].firstLastName != null &&
+                      _promoters[index].firstLastName!.isNotEmpty) {
+                    title += '${_promoters[index].firstLastName!}';
+                  }
+                  return Row(
+                    children: [
+                      Icon(FontAwesomeIcons.addressBook,
+                          size: 25, color: Colors.blue),
+                      SizedBox(width: 18),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (title != '')
+                              Text(title,
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.black54)),
+                            SizedBox(height: 2),
+                            Text(
+                                '${_promoters[index].municipalityName}, ${_promoters[index].provinceName}',
+                                style: TextStyle(
+                                    fontSize: 14, color: Colors.black54)),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        child: Icon(FontAwesomeIcons.eye,
+                            size: 25, color: Colors.blue),
+                        onTap: () {
+                          showDialog<void>(
+                              context: context,
+                              builder: (BuildContext dialogContext) =>
+                                  _ShowPromoterDialog(
+                                    promoterFRG: _promoters[index],
+                                  ));
+                        },
+                      ),
+                    ],
+                  );
+                }),
+            SizedBox(height: 16),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ShowPromoterDialog extends StatelessWidget {
+  final PromoterFRG promoterFRG;
+
+  _ShowPromoterDialog({required this.promoterFRG});
+
+  @override
+  Widget build(BuildContext context) {
+    String? firstName = promoterFRG.firstName;
+    String? secondName = promoterFRG.secondName;
+    String? firstLastName = promoterFRG.firstLastName;
+    String? secondLastName = promoterFRG.secondLastName;
+    String? id = promoterFRG.id;
+    String? phone = promoterFRG.phone;
+    String? email = promoterFRG.email;
+    String? provinceName = promoterFRG.provinceName;
+    String? municipalityName = promoterFRG.municipalityName;
+    String? address = promoterFRG.address;
+
+    String promoterNameToShow = '';
+    if (firstName != null && firstName.isNotEmpty)
+      promoterNameToShow += firstName;
+    if (secondName != null && secondName.isNotEmpty)
+      promoterNameToShow += ' ' + secondName;
+    if (firstLastName != null && firstLastName.isNotEmpty)
+      promoterNameToShow += ' ' + firstLastName;
+    if (secondLastName != null && secondLastName.isNotEmpty)
+      promoterNameToShow += ' ' + secondLastName;
+
+    String municipalityAndProvinceToShow = '';
+    if (municipalityName != null && municipalityName.isNotEmpty)
+      municipalityAndProvinceToShow += municipalityName;
+    if (provinceName != null && provinceName.isNotEmpty)
+      municipalityAndProvinceToShow += ', ' + provinceName;
+
+    return CustomDialogBox(
+        title: 'Promoter',
+        icon: FontAwesomeIcons.addressBook,
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (promoterNameToShow.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(Icons.person, color: Colors.blue, size: 25),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Text(promoterNameToShow,
+                          style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                ),
+              ),
+            if (id != null && id.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 22),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(Icons.vpn_key, color: Colors.blue, size: 25),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Text(id,
+                          style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                ),
+              ),
+            if (phone != null && phone.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 22),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(Icons.phone, color: Colors.blue, size: 25),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Text(phone,
+                          style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                ),
+              ),
+            if (email != null && email.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 22),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(Icons.alternate_email, color: Colors.blue, size: 25),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Text(email,
+                          style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                ),
+              ),
+            if (municipalityAndProvinceToShow.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 22),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(Icons.location_city, color: Colors.blue, size: 25),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Text(municipalityAndProvinceToShow,
+                          style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                ),
+              ),
+            if (address != null && address.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 22),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(Icons.location_pin, color: Colors.blue, size: 25),
+                    SizedBox(width: 12),
+                    Expanded(
+                      child: Text(address,
+                          style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
+        buttonName: 'Ok');
   }
 }

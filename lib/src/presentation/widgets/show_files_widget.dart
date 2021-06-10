@@ -1,10 +1,7 @@
 import 'dart:io';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_civix/src/core/utils/utils.dart';
-import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ShowFiles extends StatelessWidget {

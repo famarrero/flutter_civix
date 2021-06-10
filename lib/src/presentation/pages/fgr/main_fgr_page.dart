@@ -6,8 +6,9 @@ import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
-import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainFgrPage extends StatefulWidget {
   MainFgrPage();
@@ -22,7 +23,7 @@ class _MainFgrPageState extends State<MainFgrPage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => injector<WriteStatementFgrCubit>()),
-        BlocProvider(create: (context) => injector<ListStatementFgrCubit>()),       
+        BlocProvider(create: (context) => injector<ListStatementFgrCubit>()),
       ],
       child: _ScaffoldMainFGRPage(),
     );
@@ -35,6 +36,16 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).mainFGR),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.error),
+              onPressed: () {
+                showDialog<void>(
+                    context: context,
+                    builder: (BuildContext dialogContext) =>
+                        _buildDialogInformation());
+              })
+        ],
       ),
       body: Center(
         child: ListView(
@@ -46,7 +57,8 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
               trailing: Image(image: Assets.images.marcaAguaFgr),
               onTap: () {
                 var bloc = BlocProvider.of<WriteStatementFgrCubit>(context);
-                AutoRouter.of(context).push(WriteStatementFgrPageRoute(bloc: bloc));
+                AutoRouter.of(context)
+                    .push(WriteStatementFgrPageRoute(bloc: bloc));
               },
             ),
             ListTile(
@@ -56,12 +68,23 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
               trailing: Image(image: Assets.images.marcaAguaFgr),
               onTap: () {
                 var bloc = BlocProvider.of<ListStatementFgrCubit>(context);
-                AutoRouter.of(context).push(ListStatementFgrPageRoute(bloc: bloc));
+                AutoRouter.of(context)
+                    .push(ListStatementFgrPageRoute(bloc: bloc));
               },
             )
           ],
         ),
       ),
+    );
+  }
+
+  _buildDialogInformation() {
+    return CustomDialogInformation(
+      title: 'Info!',
+      icon: Icons.report_gmailerrorred_sharp,
+      colorIcon: Colors.red,
+      message: 'This is for shoeing information about whatever thing.',
+      buttonName: 'Ok',
     );
   }
 }
