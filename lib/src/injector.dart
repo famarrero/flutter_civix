@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart';
 import 'package:flutter_civix/src/core/services_manager/file_picker_manager_impl.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
@@ -24,7 +25,7 @@ import 'package:path_provider/path_provider.dart';
 final injector = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-  await registerDir();
+  await registerStorageDirectory();
 
   //**
   // - I register the instance like registerLazySingleton() because i need that the
@@ -81,16 +82,16 @@ Future<void> initializeDependencies() async {
   // injector.registerSingleton<DioApiProvider>(DioApiProvider(injector()));
 }
 
-Future<void> registerDir() async {
-  if (Platform.isAndroid) {
+Future<void> registerStorageDirectory() async {
+  if (kIsWeb) {
+    final webStorageDirectory = Directory('');
+    injector.registerLazySingleton(() => webStorageDirectory);
+  } else if (Platform.isAndroid) {
     final Directory? dir = await getExternalStorageDirectory();
     if (dir != null) {
       injector.registerLazySingleton(() => dir);
-    } else {
-      final Directory fallbackDir = await getApplicationDocumentsDirectory();
-      injector.registerLazySingleton(() => fallbackDir);
     }
-  } else {
+  } else if (Platform.isIOS) {
     final Directory dir = await getApplicationDocumentsDirectory();
     injector.registerLazySingleton(() => dir);
   }
