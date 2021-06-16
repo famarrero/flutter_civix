@@ -5,8 +5,11 @@ import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
+import 'package:flutter_civix/src/presentation/app/constants/constants.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
+import 'package:flutter_civix/src/presentation/widgets/custom_container_state.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
 import 'package:flutter_civix/src/presentation/widgets/show_files_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,8 +24,7 @@ class ShowStatementFgrPage extends StatelessWidget {
     return Scaffold(
         appBar: _buildAppBar(context),
         body: BlocProvider(
-            create: (context) =>
-                injector<ShowStatementFgrCubit>()..getStatementFGRById(id),
+            create: (context) => injector<ShowStatementFgrCubit>()..getStatementFGRById(id),
             child: BlocBuilder<ShowStatementFgrCubit, ShowStatementFgrState>(
                 builder: (context, state) {
               if (state.error != null) {
@@ -41,8 +43,7 @@ class ShowStatementFgrPage extends StatelessWidget {
         children: [
           Text(S.of(context).statement),
           SizedBox(height: 4),
-          Text(S.of(context).fgr,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
+          Text(S.of(context).fgr, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
       actions: [
@@ -52,57 +53,6 @@ class ShowStatementFgrPage extends StatelessWidget {
           onPressed: () {},
         ),
       ],
-    );
-  }
-
-  _buildStreamStatement(Stream<StatementFGR?> statementsFgr) {
-    Color colorState = Colors.green;
-    String textState = 'En tramitación';
-    AssetGenImage institutionLogo = Assets.images.marcaAguaFgr;
-    return StreamBuilder(
-      stream: statementsFgr,
-      builder: (context, AsyncSnapshot<StatementFGR?> snapshot) {
-        if (snapshot.hasData) {
-          StatementFGR? statement = snapshot.data;
-          if (statement != null) {
-            return ListView(
-              children: [
-                _firstCard(colorState, textState, statement, institutionLogo),
-                _secondCard(statement),
-                _responseCard(statement),
-                ShowFiles(
-                    files: statement.files!, buttonDeleteIsVisible: false),
-                // FutureBuilder<List<File>>(
-                //   future: _checkIfFilesExists(statement.files!),
-                //   builder: (BuildContext context,
-                //       AsyncSnapshot<List<File>> snapshot) {
-                //     if (snapshot.data != null)
-                //       return ShowFiles(
-                //           files: snapshot.data!, buttonDeleteIsVisible: false);
-                //     else
-                //       return Container();
-                //   },
-                // ),
-              ],
-            );
-          } else {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(FontAwesomeIcons.sadTear,
-                      size: 50, color: Colors.black45),
-                  SizedBox(height: 20),
-                  Text('Upss, no hay planteamiento!',
-                      style: TextStyle(fontSize: 16))
-                ],
-              ),
-            );
-          }
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
     );
   }
 
@@ -116,14 +66,12 @@ class ShowStatementFgrPage extends StatelessWidget {
         children: [
           _firstCard(colorState, textState, statementsFgr, institutionLogo),
           _secondCard(statementsFgr),
-          if (statementsFgr.promoters != null &&
-              statementsFgr.promoters!.isNotEmpty)
+          if (statementsFgr.promoters != null && statementsFgr.promoters!.isNotEmpty)
             _ShowPromoters(statementsFgr.promoters!),
           _responseCard(statementsFgr),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: ShowFiles(
-                files: statementsFgr.files!, buttonDeleteIsVisible: false),
+            child: ShowFiles(files: statementsFgr.files!, buttonDeleteIsVisible: false),
           ),
         ],
       );
@@ -141,40 +89,16 @@ class ShowStatementFgrPage extends StatelessWidget {
     }
   }
 
-  _firstCard(Color colorState, String textState, StatementFGR statement,
-      AssetGenImage institutionLogo) {
+  _firstCard(
+      Color colorState, String textState, StatementFGR statement, AssetGenImage institutionLogo) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(50),
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20))),
+      child: CustomCardTopRightCorner(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              height: 40,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: colorState,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(50))),
-              child: Row(
-                children: [
-                  SizedBox(width: 16),
-                  Text(textState,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
-                ],
-              ),
-            ),
+            CustomContainerState(textState: textState, colorState: colorState),
             Row(
               children: [
                 Expanded(
@@ -191,8 +115,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(statement.tiked!,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16)),
+                                style: TextStyle(color: Colors.black, fontSize: 16)),
                           ),
                           // Icon(
                           //   Icons.copy,
@@ -210,9 +133,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                             color: Colors.blue,
                           ),
                           SizedBox(width: 10),
-                          Text('07/06/21',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16)),
+                          Text('07/06/21', style: TextStyle(color: Colors.black, fontSize: 16)),
                         ],
                       ),
                       SizedBox(height: 16),
@@ -226,8 +147,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text('Reception way  Civix',
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16)),
+                                style: TextStyle(color: Colors.black, fontSize: 16)),
                           ),
                         ],
                       ),
@@ -248,8 +168,7 @@ class ShowStatementFgrPage extends StatelessWidget {
   _secondCard(StatementFGR statement) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: CustomCard(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -274,8 +193,8 @@ class ShowStatementFgrPage extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child: Text(statement.subject!,
-                      style: TextStyle(color: Colors.black, fontSize: 16)),
+                  child:
+                      Text(statement.subject!, style: TextStyle(color: Colors.black, fontSize: 16)),
                 ),
                 SizedBox(width: 10),
               ],
@@ -316,8 +235,7 @@ class ShowStatementFgrPage extends StatelessWidget {
   _responseCard(StatementFGR statement) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: CustomCard(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -366,8 +284,7 @@ class _ShowPromoters extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: CustomCard(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -398,33 +315,27 @@ class _ShowPromoters extends StatelessWidget {
                   }
                   return Row(
                     children: [
-                      Icon(FontAwesomeIcons.addressBook,
-                          size: 25, color: Colors.blue),
+                      Icon(FontAwesomeIcons.addressBook, size: 25, color: Colors.blue),
                       SizedBox(width: 18),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (title != '')
-                              Text(title,
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.black54)),
+                              Text(title, style: TextStyle(fontSize: 14, color: Colors.black54)),
                             SizedBox(height: 2),
                             Text(
                                 '${_promoters[index].municipalityName}, ${_promoters[index].provinceName}',
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.black54)),
+                                style: TextStyle(fontSize: 14, color: Colors.black54)),
                           ],
                         ),
                       ),
                       InkWell(
-                        child: Icon(FontAwesomeIcons.eye,
-                            size: 25, color: Colors.blue),
+                        child: Icon(FontAwesomeIcons.eye, size: 25, color: Colors.blue),
                         onTap: () {
                           showDialog<void>(
                               context: context,
-                              builder: (BuildContext dialogContext) =>
-                                  _ShowPromoterDialog(
+                              builder: (BuildContext dialogContext) => _ShowPromoterDialog(
                                     promoterFRG: _promoters[index],
                                   ));
                         },
@@ -459,10 +370,8 @@ class _ShowPromoterDialog extends StatelessWidget {
     String? address = promoterFRG.address;
 
     String promoterNameToShow = '';
-    if (firstName != null && firstName.isNotEmpty)
-      promoterNameToShow += firstName;
-    if (secondName != null && secondName.isNotEmpty)
-      promoterNameToShow += ' ' + secondName;
+    if (firstName != null && firstName.isNotEmpty) promoterNameToShow += firstName;
+    if (secondName != null && secondName.isNotEmpty) promoterNameToShow += ' ' + secondName;
     if (firstLastName != null && firstLastName.isNotEmpty)
       promoterNameToShow += ' ' + firstLastName;
     if (secondLastName != null && secondLastName.isNotEmpty)
@@ -477,8 +386,7 @@ class _ShowPromoterDialog extends StatelessWidget {
     return CustomDialogBox(
         title: 'Promoter',
         icon: FontAwesomeIcons.addressBook,
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
+        body: Column(       
           children: [
             if (promoterNameToShow.isNotEmpty)
               Padding(
@@ -486,11 +394,11 @@ class _ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.person, color: Colors.blue, size: 25),
+                    Icon(Icons.person, color: Colors.blue, size: Constants.nomalIconSize),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(promoterNameToShow,
-                          style: TextStyle(fontSize: 18)),
+                          style: TextStyle(fontSize: Constants.nomalTextSize)),
                     ),
                   ],
                 ),
@@ -501,11 +409,10 @@ class _ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.vpn_key, color: Colors.blue, size: 25),
+                    Icon(Icons.vpn_key, color: Colors.blue, size: Constants.nomalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(id,
-                          style: TextStyle(fontSize: 18)),
+                      child: Text(id, style: TextStyle(fontSize: Constants.nomalTextSize)),
                     ),
                   ],
                 ),
@@ -516,11 +423,10 @@ class _ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.phone, color: Colors.blue, size: 25),
+                    Icon(Icons.phone, color: Colors.blue, size: Constants.nomalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(phone,
-                          style: TextStyle(fontSize: 18)),
+                      child: Text(phone, style: TextStyle(fontSize: Constants.nomalTextSize)),
                     ),
                   ],
                 ),
@@ -531,11 +437,10 @@ class _ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.alternate_email, color: Colors.blue, size: 25),
+                    Icon(Icons.alternate_email, color: Colors.blue, size: Constants.nomalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(email,
-                          style: TextStyle(fontSize: 18)),
+                      child: Text(email, style: TextStyle(fontSize: Constants.nomalTextSize)),
                     ),
                   ],
                 ),
@@ -546,11 +451,11 @@ class _ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.location_city, color: Colors.blue, size: 25),
+                    Icon(Icons.location_city, color: Colors.blue, size: Constants.nomalIconSize),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(municipalityAndProvinceToShow,
-                          style: TextStyle(fontSize: 18)),
+                          style: TextStyle(fontSize: Constants.nomalTextSize)),
                     ),
                   ],
                 ),
@@ -561,11 +466,10 @@ class _ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.location_pin, color: Colors.blue, size: 25),
+                    Icon(Icons.location_pin, color: Colors.blue, size: Constants.nomalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(address,
-                          style: TextStyle(fontSize: 18)),
+                      child: Text(address, style: TextStyle(fontSize: Constants.nomalTextSize)),
                     ),
                   ],
                 ),
@@ -575,3 +479,52 @@ class _ShowPromoterDialog extends StatelessWidget {
         buttonName: 'Ok');
   }
 }
+
+
+  // _buildStreamStatement(Stream<StatementFGR?> statementsFgr) {
+  //   Color colorState = Colors.green;
+  //   String textState = 'En tramitación';
+  //   AssetGenImage institutionLogo = Assets.images.marcaAguaFgr;
+  //   return StreamBuilder(
+  //     stream: statementsFgr,
+  //     builder: (context, AsyncSnapshot<StatementFGR?> snapshot) {
+  //       if (snapshot.hasData) {
+  //         StatementFGR? statement = snapshot.data;
+  //         if (statement != null) {
+  //           return ListView(
+  //             children: [
+  //               _firstCard(colorState, textState, statement, institutionLogo),
+  //               _secondCard(statement),
+  //               _responseCard(statement),
+  //               ShowFiles(files: statement.files!, buttonDeleteIsVisible: false),
+  //               // FutureBuilder<List<File>>(
+  //               //   future: _checkIfFilesExists(statement.files!),
+  //               //   builder: (BuildContext context,
+  //               //       AsyncSnapshot<List<File>> snapshot) {
+  //               //     if (snapshot.data != null)
+  //               //       return ShowFiles(
+  //               //           files: snapshot.data!, buttonDeleteIsVisible: false);
+  //               //     else
+  //               //       return Container();
+  //               //   },
+  //               // ),
+  //             ],
+  //           );
+  //         } else {
+  //           return Center(
+  //             child: Column(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 Icon(FontAwesomeIcons.sadTear, size: 50, color: Colors.black45),
+  //                 SizedBox(height: 20),
+  //                 Text('Upss, no hay planteamiento!', style: TextStyle(fontSize: 16))
+  //               ],
+  //             ),
+  //           );
+  //         }
+  //       } else {
+  //         return Center(child: CircularProgressIndicator());
+  //       }
+  //     },
+  //   );
+  // }

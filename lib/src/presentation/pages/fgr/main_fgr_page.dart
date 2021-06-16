@@ -8,7 +8,6 @@ import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainFgrPage extends StatefulWidget {
   MainFgrPage();
@@ -40,10 +39,15 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.error),
               onPressed: () {
-                showDialog<void>(
-                    context: context,
-                    builder: (BuildContext dialogContext) =>
-                        _buildDialogInformation());
+                CustomDialogs().customDialogInformation(
+                  title: 'Info!',
+                  icon: Icons.report_gmailerrorred_sharp,
+                  colorIcon: Colors.red,
+                  sizeIcon: 35,
+                  message: 'This is for shoeing information about whatever thing.',
+                  buttonName: 'Ok',
+                  context: context,
+                );
               })
         ],
       ),
@@ -57,8 +61,7 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
               trailing: Image(image: Assets.images.marcaAguaFgr),
               onTap: () {
                 var bloc = BlocProvider.of<WriteStatementFgrCubit>(context);
-                AutoRouter.of(context)
-                    .push(WriteStatementFgrPageRoute(bloc: bloc));
+                AutoRouter.of(context).push(WriteStatementFgrPageRoute(bloc: bloc));
               },
             ),
             ListTile(
@@ -68,23 +71,12 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
               trailing: Image(image: Assets.images.marcaAguaFgr),
               onTap: () {
                 var bloc = BlocProvider.of<ListStatementFgrCubit>(context);
-                AutoRouter.of(context)
-                    .push(ListStatementFgrPageRoute(bloc: bloc));
+                AutoRouter.of(context).push(ListStatementFgrPageRoute(bloc: bloc));
               },
             )
           ],
         ),
       ),
-    );
-  }
-
-  _buildDialogInformation() {
-    return CustomDialogInformation(
-      title: 'Info!',
-      icon: Icons.report_gmailerrorred_sharp,
-      colorIcon: Colors.red,
-      message: 'This is for shoeing information about whatever thing.',
-      buttonName: 'Ok',
     );
   }
 }

@@ -1,11 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_civix/src/presentation/app/constants/constants.dart';
 
 class CustomDialogBox extends StatelessWidget {
   final String title;
   final IconData? icon;
   final Color? colorIcon;
+  final double? sizeIcon;
   final Widget body;
   final String buttonName;
   final Function? buttonAction;
@@ -14,6 +16,7 @@ class CustomDialogBox extends StatelessWidget {
       {required this.title,
       this.icon,
       this.colorIcon,
+      this.sizeIcon = Constants.nomalIconSize,
       required this.body,
       required this.buttonName,
       this.buttonAction});
@@ -52,9 +55,7 @@ class CustomDialogBox extends StatelessWidget {
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
                 ),
               ),
-              Icon(icon,
-                  color: (colorIcon != null) ? colorIcon : Colors.blue,
-                  size: 40),
+              Icon(icon, color: (colorIcon != null) ? colorIcon : Colors.blue, size: sizeIcon),
               SizedBox(width: 25)
             ],
           ),
@@ -64,12 +65,11 @@ class CustomDialogBox extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: TextButton(
-                onPressed: () => (buttonAction != null)
-                    ? buttonAction!()
-                    : {Navigator.of(context).pop()},
+                onPressed: () =>
+                    (buttonAction != null) ? buttonAction!() : {Navigator.of(context).pop()},
                 child: Text(
                   buttonName,
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: Constants.nomalTextSize),
                 )),
           ),
           SizedBox(height: 16)
@@ -79,38 +79,32 @@ class CustomDialogBox extends StatelessWidget {
   }
 }
 
-class CustomDialogInformation extends StatelessWidget {
-  final String title;
-  final IconData? icon;
-  final Color? colorIcon;
-  final String message;
-  final String buttonName;
-  final Function? buttonAction;
-
-  CustomDialogInformation(
-      {required this.title,
-      this.icon,
-      this.colorIcon,
-      required this.message,
-      required this.buttonName,
-      this.buttonAction});
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomDialogBox(
-      title: title,
-      icon: icon,
-      colorIcon: colorIcon,
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: Text(message, style: TextStyle(fontSize: 18)),
-          ),
-        ],
-      ),
-      buttonName: buttonName,
-      buttonAction: buttonAction,
-    );
+class CustomDialogs {
+  customDialogInformation(
+      {required BuildContext context,
+      required String title,
+      IconData? icon,
+      Color? colorIcon,
+      double? sizeIcon,
+      required String message,
+      required String buttonName,
+      Function? buttonAction}) {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext dialogContext) => CustomDialogBox(
+              title: title,
+              icon: icon,
+              colorIcon: colorIcon,
+              sizeIcon: sizeIcon,
+              body: Row(
+                children: [
+                  Expanded(
+                    child: Text(message, style: TextStyle(fontSize: 18)),
+                  ),
+                ],
+              ),
+              buttonName: buttonName,
+              buttonAction: buttonAction,
+            ));
   }
 }
