@@ -29,7 +29,15 @@ class _MainFgrPageState extends State<MainFgrPage> {
   }
 }
 
-class _ScaffoldMainFGRPage extends StatelessWidget {
+class _ScaffoldMainFGRPage extends StatefulWidget {
+  @override
+  __ScaffoldMainFGRPageState createState() => __ScaffoldMainFGRPageState();
+}
+
+class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
+
+  bool? checkboxValue = false; 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,14 +47,21 @@ class _ScaffoldMainFGRPage extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.error),
               onPressed: () {
-                CustomDialogs().customDialogInformation(
+                CustomDialogs().customDialogInformationWithCheckBox(
+                  context: context,
+                  isDismissible: false,
                   title: 'Info!',
                   icon: Icons.report_gmailerrorred_sharp,
                   colorIcon: Colors.red,
-                  sizeIcon: 35,
+                  sizeIcon: 45,
                   message: 'This is for shoeing information about whatever thing.',
-                  buttonName: 'Ok',
-                  context: context,
+                  buttonPositiveName: 'Ok',               
+                  checkboxValue: checkboxValue!,
+                  checkboxFunction: (bool? newValue) {
+                    setState(() {
+                      checkboxValue = newValue;
+                    });
+                  }
                 );
               })
         ],
