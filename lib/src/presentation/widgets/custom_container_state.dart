@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/presentation/app/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/constants.dart';
 
+//Es la barra donde se muestra el estado y el color del estado del planteamiento
 class CustomContainerState extends StatelessWidget {
   final Color colorState;
   final String textState;

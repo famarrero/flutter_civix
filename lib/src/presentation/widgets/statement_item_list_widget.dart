@@ -13,10 +13,10 @@ class StatementItemListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _clasicCivix(statement);
+    return _buildBody(statement);
   }
 
-  _clasicCivix(StatementFGR statement) {
+  _buildBody(StatementFGR statement) {
     Color colorState = Colors.green;
     String textState = 'En tramitación';
     AssetGenImage institutionLogo = Assets.images.marcaAguaFgr;

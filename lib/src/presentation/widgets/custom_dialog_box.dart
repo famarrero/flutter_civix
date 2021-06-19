@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/presentation/app/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/constants.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_elevated_button.dart';
 
 class CustomDialogBox extends StatelessWidget {
@@ -60,16 +60,18 @@ class CustomDialogBox extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title.toUpperCase(),
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
-                Icon(icon, color: (colorIcon != null) ? colorIcon : Colors.blue, size: sizeIcon),
+                Icon(icon,
+                    color: (colorIcon != null) ? colorIcon : Colors.blue,
+                    size: (sizeIcon != null) ? sizeIcon : 45),
                 SizedBox(width: 25)
               ],
             ),
             SizedBox(height: 26),
             body,
-            SizedBox(height: 20),
+            SizedBox(height: 26),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -122,7 +124,7 @@ class CustomDialogs {
               sizeIcon: sizeIcon,
               body: Row(
                 children: [
-                  Text(message, style: TextStyle(fontSize: 18)),
+                  Expanded(child: Text(message, style: TextStyle(fontSize: 16))),
                 ],
               ),
               buttonPositiveName: buttonPositiveName,
@@ -187,10 +189,10 @@ class CustomDialogs {
               sizeIcon: sizeIcon,
               body: Column(
                 children: [
-                  Text(message, style: TextStyle(fontSize: 18)),
+                  Text(message, style: TextStyle(fontSize: 16)),
                   SizedBox(height: 12),
                   CheckboxListTile(
-                    title: Text('Checked this option', style: TextStyle(fontSize: 18)),
+                    title: Text('Checked this option', style: TextStyle(fontSize: 16)),
                     value: checkboxValue,
                     onChanged: (value) {
                       setState(() {

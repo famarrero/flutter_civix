@@ -15,6 +15,7 @@ import 'package:flutter_civix/src/domain/repositories/database_fgr_repository.da
 import 'package:flutter_civix/src/domain/repositories/local_assets_repository.dart';
 import 'package:flutter_civix/src/domain/repositories/preferences_fgr_repository.dart';
 import 'package:flutter_civix/src/presentation/manager/provinces_list_cuibit/provinces_list_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
@@ -37,13 +38,11 @@ Future<void> initializeDependencies() async {
   injector.registerLazySingleton<Dio>(() => Dio());
 
   // Preferences
-  injector.registerLazySingleton<SharedPreferencesFGR>(
-      () => SharedPreferencesFGR());
+  injector.registerLazySingleton<SharedPreferencesFGR>(() => SharedPreferencesFGR());
 
   // Database
   injector.registerLazySingleton<AppDatabase>(() => AppDatabase());
-  injector.registerLazySingleton<StatementFGRDao>(
-      () => StatementFGRDao(injector()));
+  injector.registerLazySingleton<StatementFGRDao>(() => StatementFGRDao(injector()));
 
   // Repositories
   injector.registerLazySingleton<DataBaseFGRRepository>(
@@ -66,14 +65,12 @@ Future<void> initializeDependencies() async {
   //**
   // They are register like registerFactory because every time i need a new instance of the BloC/Cubit
   //**
-  injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit(
-      injector(), injector(), injector(), injector(), injector()));
-  injector.registerFactory<ProvincesListCubit>(
-      () => ProvincesListCubit(injector()));
-  injector.registerFactory<ListStatementFgrCubit>(
-      () => ListStatementFgrCubit(injector()));
-  injector.registerFactory<ShowStatementFgrCubit>(
-      () => ShowStatementFgrCubit(injector()));
+  injector.registerFactory<WriteStatementFgrCubit>(
+      () => WriteStatementFgrCubit(injector(), injector(), injector(), injector(), injector()));
+  injector.registerFactory<ProvincesListCubit>(() => ProvincesListCubit(injector()));
+  injector.registerFactory<ListStatementFgrCubit>(() => ListStatementFgrCubit(injector()));
+  injector.registerFactory<ShowStatementFgrCubit>(() => ShowStatementFgrCubit(injector()));
+  injector.registerFactory<ConsultStateFgrCubit>(() => ConsultStateFgrCubit());
 
   // UseCases
   // injector.registerSingleton<GetRemotePostsUseCase>(

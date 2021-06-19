@@ -88,5 +88,10 @@
     "noImageSelected": "No se seleccionó ninguna imagen",
     "noImageTaked": "No se tomó ninguna imagen",
     "statement": "Planteamiento",
-    "statements": "Planteamientos"
+    "statements": "Planteamientos",
+    "enterTiked": "Introduzca comprobante",
+    "tikedCorrectValidator": "El comprobante debe ser válido",
+    "consultState": "Consultar estado",
+    "consult": "Consultar",
+    "save": "Guardar"
 }

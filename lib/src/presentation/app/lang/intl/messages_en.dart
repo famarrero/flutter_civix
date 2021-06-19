@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "congrats": MessageLookupByLibrary.simpleMessage("Congratulation!"),
         "connecting": MessageLookupByLibrary.simpleMessage("Connecting..."),
+        "consult": MessageLookupByLibrary.simpleMessage("Consult"),
+        "consultState": MessageLookupByLibrary.simpleMessage("Consult state"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "creating": MessageLookupByLibrary.simpleMessage("Creating"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -55,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterStatement":
             MessageLookupByLibrary.simpleMessage("Enter statement"),
         "enterSubject": MessageLookupByLibrary.simpleMessage("Enter subject"),
+        "enterTiked": MessageLookupByLibrary.simpleMessage("Statements"),
         "expire": MessageLookupByLibrary.simpleMessage("Expire"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "General Prosecutor of the Republic"),
@@ -105,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("The province is required"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Save eraser"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Search.."),
         "secondLastName":
@@ -129,6 +133,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("The subject must o be null"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Dark Theme"),
         "themeLight": MessageLookupByLibrary.simpleMessage("Light Theme"),
+        "tikedCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The tiked must be a correct tiked"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updating": MessageLookupByLibrary.simpleMessage("Updating"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade"),

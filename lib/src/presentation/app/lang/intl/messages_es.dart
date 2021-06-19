@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
         "congrats": MessageLookupByLibrary.simpleMessage("¡Felicidades!"),
         "connecting": MessageLookupByLibrary.simpleMessage("Conectando..."),
+        "consult": MessageLookupByLibrary.simpleMessage("Consultar"),
+        "consultState":
+            MessageLookupByLibrary.simpleMessage("Consultar estado"),
         "create": MessageLookupByLibrary.simpleMessage("Crear"),
         "creating": MessageLookupByLibrary.simpleMessage("Creando"),
         "delete": MessageLookupByLibrary.simpleMessage("Borrar"),
@@ -58,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Introduzca planteamiento"),
         "enterSubject":
             MessageLookupByLibrary.simpleMessage("Introduzca asunto"),
+        "enterTiked":
+            MessageLookupByLibrary.simpleMessage("Introduzca comprobante"),
         "expire": MessageLookupByLibrary.simpleMessage("Vence"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "Fiscalía General de la República"),
@@ -109,6 +114,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("La provincia es requerida"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "save": MessageLookupByLibrary.simpleMessage("Guardar"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Guardar borrador"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Buscar.."),
         "secondLastName":
@@ -133,6 +139,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "El asunto no puede estar vacío"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Tema oscuro"),
         "themeLight": MessageLookupByLibrary.simpleMessage("Tema claro"),
+        "tikedCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "El comprobante debe ser válido"),
         "update": MessageLookupByLibrary.simpleMessage("Actualizar"),
         "updating": MessageLookupByLibrary.simpleMessage("Actualizando"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Mejorar"),

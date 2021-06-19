@@ -949,6 +949,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Statements`
+  String get enterTiked {
+    return Intl.message(
+      'Statements',
+      name: 'enterTiked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The tiked must be a correct tiked`
+  String get tikedCorrectValidator {
+    return Intl.message(
+      'The tiked must be a correct tiked',
+      name: 'tikedCorrectValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consult state`
+  String get consultState {
+    return Intl.message(
+      'Consult state',
+      name: 'consultState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consult`
+  String get consult {
+    return Intl.message(
+      'Consult',
+      name: 'consult',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

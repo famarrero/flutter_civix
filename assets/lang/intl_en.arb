@@ -88,6 +88,10 @@
   "noImageSelected": "No image selected",
   "noImageTaked": "No image taked",
   "statement": "Statement",
-  "statements": "Statements"
-
+  "statements": "Statements",
+  "enterTiked": "Statements",
+  "tikedCorrectValidator": "The tiked must be a correct tiked",
+  "consultState": "Consult state",
+  "consult": "Consult",
+  "save": "Save"
 }

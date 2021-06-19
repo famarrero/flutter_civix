@@ -26,20 +26,18 @@ class StatementFGREntity extends DataClass
       Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
-    final stringType = db.typeSystem.forDartType<String>();
-    final dateTimeType = db.typeSystem.forDartType<DateTime>();
     return StatementFGREntity(
-      tiked:
-          stringType.mapFromDatabaseResponse(data['${effectivePrefix}tiked'])!,
-      subject: stringType
+      tiked: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}tiked'])!,
+      subject: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}subject'])!,
-      statement: stringType
+      statement: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}statement'])!,
-      promoters: stringType
+      promoters: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}promoters']),
-      files:
-          stringType.mapFromDatabaseResponse(data['${effectivePrefix}files']),
-      dateSend: dateTimeType
+      files: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}files']),
+      dateSend: const DateTimeType()
           .mapFromDatabaseResponse(data['${effectivePrefix}date_send']),
     );
   }
@@ -140,7 +138,7 @@ class StatementFGREntity extends DataClass
               $mrjc(promoters.hashCode,
                   $mrjc(files.hashCode, dateSend.hashCode))))));
   @override
-  bool operator ==(dynamic other) =>
+  bool operator ==(Object other) =>
       identical(this, other) ||
       (other is StatementFGREntity &&
           other.tiked == this.tiked &&
@@ -368,8 +366,8 @@ class $StatementsFGRTable extends StatementsFGR
   Set<GeneratedColumn> get $primaryKey => {tiked};
   @override
   StatementFGREntity map(Map<String, dynamic> data, {String? tablePrefix}) {
-    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
-    return StatementFGREntity.fromData(data, _db, prefix: effectivePrefix);
+    return StatementFGREntity.fromData(data, _db,
+        prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_civix/src/core/constants/constants.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
-import 'package:flutter_civix/src/presentation/app/constants/constants.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/widgets/show_promoter_dialg.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
