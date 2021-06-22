@@ -1,1 +1,1 @@
-#-keep class androidx.lifecycle.DefaultLifecycleObserve
+-keep class androidx.lifecycle.DefaultLifecycleObserver
