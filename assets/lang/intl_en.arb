@@ -1,4 +1,6 @@
 {
+  "appName": "Civix",
+  "appSlogan": "Electronic government closer to you",
   "searchHint": "Search..",
   "welcome": "Welcome",
   "connecting": "Connecting...",
@@ -93,5 +95,14 @@
   "tikedCorrectValidator": "The tiked must be a correct tiked",
   "consultState": "Consult state",
   "consult": "Consult",
-  "save": "Save"
+  "save": "Save",
+  "myShipments": "My shipments",
+  "quickAccess": "Quick access",
+  "institutionsList": "Institutions list",
+  "frequentQuestions": "Frequent questions",
+  "aboutUs": "About us",
+  "settings": "Settings",
+  "main": "Main",
+  "more": "More",
+  "pressAgainToExit": "Press again to exit"
 }

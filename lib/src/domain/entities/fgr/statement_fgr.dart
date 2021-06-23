@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 
 class StatementFGR {
-  final String? tiked;
+  final String? ticked;
   final String? subject;
   final String? statement;
   final List<PromoterFRG>? promoters;
@@ -12,7 +12,7 @@ class StatementFGR {
   final DateTime? dateSend;
 
   StatementFGR(
-      {required this.tiked,
+      {required this.ticked,
       required this.subject,
       required this.statement,
       this.promoters,
@@ -28,7 +28,7 @@ class StatementFGR {
     DateTime? dateSend,
   }) {
     return StatementFGR(
-      tiked: ticked ?? this.tiked,
+      ticked: ticked ?? this.ticked,
       subject: subject ?? this.subject,
       statement: statement ?? this.statement,
       promoters: promoters ?? this.promoters,
@@ -49,7 +49,7 @@ class StatementFGR {
     var promoters = map['promoters'].cast<String>() as List<String>;
     var files = map['files'].cast<String>() as List<String>;
     return new StatementFGR(
-      tiked: map['tiked'] as String?,
+      ticked: map['tiked'] as String?,
       subject: map['subject'] as String?,
       statement: map['statement'] as String?,
       promoters: promoters.map<PromoterFRG>((promoter) => PromoterFRG.fromJson(promoter)).toList(),
@@ -61,7 +61,7 @@ class StatementFGR {
   Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
-      'tiked': this.tiked,
+      'tiked': this.ticked,
       'subject': this.subject,
       'statement': this.statement,
       'promoters': this.promoters?.map<String>((promoter) => promoter.toJson()).toList(),
@@ -72,6 +72,6 @@ class StatementFGR {
 
   @override
   String toString() {
-    return 'StatementFRG{tiked: $tiked, subject: $subject, statement: $statement, promoters: $promoters, files: $files, sendDate: $dateSend}';
+    return 'StatementFRG{tiked: $ticked, subject: $subject, statement: $statement, promoters: $promoters, files: $files, sendDate: $dateSend}';
   }
 }

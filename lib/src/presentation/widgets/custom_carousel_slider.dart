@@ -77,7 +77,7 @@ class ItemCarouselSlider extends StatelessWidget {
                   child: Text(
                 text!,
                 style: TextStyle(
-                  fontSize: Constants.nomalTextSize,
+                  fontSize: Constants.normalTextSize,
                   fontWeight: FontWeight.w400,
                 ),
                 textAlign: TextAlign.center,

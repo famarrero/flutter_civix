@@ -52,11 +52,11 @@ class ShowPromoters extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (title != '')
-                              Text(title, style: TextStyle(fontSize: Constants.nomalTextSize, color: Colors.black54)),
+                              Text(title, style: TextStyle(fontSize: Constants.normalTextSize, color: Colors.black54)),
                             SizedBox(height: 2),
                             Text(
                                 '${_promoters[index].municipalityName}, ${_promoters[index].provinceName}',
-                                style: TextStyle(fontSize: Constants.nomalTextSize, color: Colors.black54)),
+                                style: TextStyle(fontSize: Constants.normalTextSize, color: Colors.black54)),
                           ],
                         ),
                       ),

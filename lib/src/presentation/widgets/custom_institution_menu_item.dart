@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
 import 'package:flutter_civix/src/domain/entities/institution_menu_item.dart';
 
-class CutomInstitutionMenuItem extends StatelessWidget {
+class CustomInstitutionMenuItem extends StatelessWidget {
   final InstitutionMenuItem info;
   final double? iconSize;
 
-  const CutomInstitutionMenuItem({Key? key, required this.info, this.iconSize}) : super(key: key);
+  const CustomInstitutionMenuItem({Key? key, required this.info, this.iconSize}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

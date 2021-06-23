@@ -4,11 +4,11 @@ import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_container_state.dart';
 
-class StatmentResponseConsultWidget extends StatelessWidget {
+class StatementResponseConsultWidget extends StatelessWidget {
   
   final StatementResponseConsult statement;
 
-  const StatmentResponseConsultWidget({
+  const StatementResponseConsultWidget({
     required this.statement,
   });
 
@@ -24,11 +24,11 @@ class StatmentResponseConsultWidget extends StatelessWidget {
     String response = 'Sin respuesta';
     AssetGenImage institutionLogo = Assets.images.marcaAguaFgr;
 
-    if (statement.tiked!.startsWith('a')) {
+    if (statement.ticked!.startsWith('a')) {
       colorState = Colors.blue;
       textState = 'En proceso';
     }
-    if (statement.tiked!.startsWith('b')) {
+    if (statement.ticked!.startsWith('b')) {
       colorState = Colors.red;
       textState = 'Anulado';
     }
@@ -58,7 +58,7 @@ class StatmentResponseConsultWidget extends StatelessWidget {
                         ),
                         SizedBox(width: 10),
                         Expanded(
-                          child: Text(statement.tiked!,
+                          child: Text(statement.ticked!,
                               style: TextStyle(color: Colors.black, fontSize: 16)),
                         ),
                         SizedBox(width: 10),

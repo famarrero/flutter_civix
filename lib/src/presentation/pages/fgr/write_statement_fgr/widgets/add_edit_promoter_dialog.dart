@@ -5,9 +5,9 @@ import 'package:flutter_civix/src/data/models/municipality_model.dart';
 import 'package:flutter_civix/src/data/models/province_model.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
-import 'package:flutter_civix/src/presentation/manager/provinces_list_cuibit/provinces_list_cubit.dart';
+import 'package:flutter_civix/src/presentation/manager/provinces_list_cubit/provinces_list_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
-import 'package:flutter_civix/src/presentation/widgets/custom_dropdawn_filed.dart';
+import 'package:flutter_civix/src/presentation/widgets/custom_dropdown_filed.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_reactive_text_field.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -136,7 +136,7 @@ class AddEditPromoterDialog extends StatelessWidget {
                       maxLength: 25,
                     ),
                     SizedBox(height: 12),
-                    CustomDropdawnFiled<ProvinceModel>(
+                    CustomDropdownFiled<ProvinceModel>(
                       formControlName: FormsStatementFGR.province,
                       validationMessages: (control) =>
                           {ValidationMessage.required: S.of(context).provinceRequiredValidator},
@@ -144,13 +144,13 @@ class AddEditPromoterDialog extends StatelessWidget {
                       mandatory: true,
                       suffixIcon: Icons.location_city,
                       itemBuilder: (item) => Text(item.provinceName),
-                      loadFuntion: () => _provincesList,
+                      loadFunction: () => _provincesList,
                     ),
                     SizedBox(height: 24),
                     ReactiveValueListenableBuilder<ProvinceModel>(
                       formControlName: FormsStatementFGR.province,
                       builder: (context, valueProvince, child) {
-                        return CustomDropdawnFiled<MunicipalityModel>(
+                        return CustomDropdownFiled<MunicipalityModel>(
                           formControlName: FormsStatementFGR.municipality,
                           validationMessages: (control) => {
                             ValidationMessage.required: S.of(context).municipalityRequiredValidator
@@ -159,7 +159,7 @@ class AddEditPromoterDialog extends StatelessWidget {
                           mandatory: true,
                           suffixIcon: Icons.location_city,
                           itemBuilder: (item) => Text(item.municipalityName),
-                          loadFuntion: () => valueProvince.value != null
+                          loadFunction: () => valueProvince.value != null
                               ? valueProvince.value!.municipalitiesList.toList()
                               : [],
                         );

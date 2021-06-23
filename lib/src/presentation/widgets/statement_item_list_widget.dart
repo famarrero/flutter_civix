@@ -21,11 +21,11 @@ class StatementItemListWidget extends StatelessWidget {
     String textState = 'En tramitación';
     AssetGenImage institutionLogo = Assets.images.marcaAguaFgr;
 
-    if (statement.tiked!.startsWith('a')) {
+    if (statement.ticked!.startsWith('a')) {
       colorState = Colors.blue;
       textState = 'En proceso';
     }
-    if (statement.tiked!.startsWith('b')) {
+    if (statement.ticked!.startsWith('b')) {
       colorState = Colors.red;
       textState = 'Anulado';
     }
@@ -53,7 +53,7 @@ class StatementItemListWidget extends StatelessWidget {
                           ),
                           SizedBox(width: 10),
                           Expanded(
-                            child: Text(statement.tiked!,
+                            child: Text(statement.ticked!,
                                 style: TextStyle(color: Colors.black, fontSize: 16)),
                           ),
                           SizedBox(width: 10),

@@ -16,7 +16,7 @@ class ConsultStateFgrCubit extends Cubit<ConsultStateFgrState> {
     if (_consultStateFgrForm.valid) {     
       emit(state.copyWith(loading: true));
       StatementResponseConsult sfgrc =
-          StatementResponseConsult(tiked: '5y4hj5', state: 'EN TRAMITACIÓN', response: null);
+          StatementResponseConsult(ticked: '5y4hj5', state: 'EN TRAMITACIÓN', response: null);
       await Future.delayed(Duration(seconds: 1));
 
       emit(state.copyWith(loading: false, statmentsResponseConsult: sfgrc));

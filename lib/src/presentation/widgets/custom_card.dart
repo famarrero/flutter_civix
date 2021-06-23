@@ -12,7 +12,7 @@ class CustomCard extends StatelessWidget {
     this.height,
     this.width,
     this.margin,
-    this.elevetion,
+    this.elevation,
     this.constraints,
   }) : super(key: key);
   final Widget? child;
@@ -23,7 +23,7 @@ class CustomCard extends StatelessWidget {
   final double? height;
   final double? width;
   final EdgeInsetsGeometry? margin;
-  final double? elevetion;
+  final double? elevation;
   final BoxConstraints? constraints;
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class CustomCard extends StatelessWidget {
         borderRadius: borderRadius ?? const BorderRadius.all(Radius.circular(10)),
         child: Material(
           color: Colors.transparent,
-          elevation: elevetion ?? 0.0,
+          elevation: elevation ?? 0.0,
           child: child,
         ),
       ),
@@ -87,7 +87,7 @@ class CustomCardTopRightCorner extends StatelessWidget {
     return CustomCard(
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(Constants.cornersRadius),
-          topRight: Radius.circular(Constants.differentCornerRaduis),
+          topRight: Radius.circular(Constants.differentCornerRadius),
           bottomLeft: Radius.circular(Constants.cornersRadius),
           bottomRight: Radius.circular(Constants.cornersRadius)),
       child: child,

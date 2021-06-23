@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 class StatementResponseConsult {
-  final String? tiked;
+  final String? ticked;
   final String? state;
   final String? response;
 
-  StatementResponseConsult({required this.tiked, required this.state, required this.response});
+  StatementResponseConsult({required this.ticked, required this.state, required this.response});
 
   StatementResponseConsult copyWith({
     String? ticked,
@@ -13,7 +13,7 @@ class StatementResponseConsult {
     String? response,
   }) {
     return StatementResponseConsult(
-      tiked: ticked ?? this.tiked,
+      ticked: ticked ?? this.ticked,
       state: state ?? this.state,
       response: response ?? this.response,
     );
@@ -29,7 +29,7 @@ class StatementResponseConsult {
 
   factory StatementResponseConsult.fromMap(Map<String, dynamic> map) {
     return new StatementResponseConsult(
-        tiked: map['tiked'] as String?,
+        ticked: map['tiked'] as String?,
         state: map['state'] as String?,
         response: map['response'] as String?);
   }
@@ -37,7 +37,7 @@ class StatementResponseConsult {
   Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
-      'tiked': this.tiked,
+      'tiked': this.ticked,
       'state': this.state,
       'response': this.response,
     } as Map<String, dynamic>;
@@ -45,6 +45,6 @@ class StatementResponseConsult {
 
   @override
   String toString() {
-    return 'StatementFRG{tiked: $tiked, state: $state, response: $response}';
+    return 'StatementFRG{tiked: $ticked, state: $state, response: $response}';
   }
 }

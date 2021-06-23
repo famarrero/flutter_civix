@@ -250,15 +250,4 @@ class ShowFiles extends StatelessWidget {
     final u = Utils();
     return u.formatBytes(file.readAsBytesSync().lengthInBytes, 2);
   }
-
-  Future<List<File>> _checkIfFilesExists(List<File> files) async {
-    List<File> _files = [];
-
-    for (var file in files) {
-      if (await file.exists()) {
-        _files.add(file);
-      }
-    }
-    return _files;
-  }
 }

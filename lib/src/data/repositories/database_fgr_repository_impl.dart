@@ -74,7 +74,7 @@ class DataBaseFGRRepositoryImpl implements DataBaseFGRRepository {
     List<String>? files = sf.files!.map<String>((file) => file.path).toList();
 
     return StatementFGREntity(
-        tiked: sf.tiked!,
+        tiked: sf.ticked!,
         subject: sf.subject!,
         statement: sf.statement!,
         promoters: jsonEncode(promoters),
@@ -89,7 +89,7 @@ class DataBaseFGRRepositoryImpl implements DataBaseFGRRepository {
     List<File>? files = jsonDecode(sf.files!).map<File>((file) => File(file)).toList();
 
     return StatementFGR(
-        tiked: sf.tiked,
+        ticked: sf.tiked,
         subject: sf.subject,
         statement: sf.statement,
         promoters: promoters,

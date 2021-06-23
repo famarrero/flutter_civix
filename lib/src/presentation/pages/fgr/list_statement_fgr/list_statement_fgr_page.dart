@@ -16,7 +16,7 @@ class ListStatementFgrPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bloc.whatchAllStatmentFgr();
+    bloc.watchAllStatementsFgr();
 
     return Scaffold(appBar: _buildAppBar(context), body: _buildBody());
   }
@@ -84,7 +84,7 @@ class ListStatementFgrPage extends StatelessWidget {
                     child: StatementItemListWidget(statement: statement),
                     onTap: () {
                       AutoRouter.of(context).push(
-                          ShowStatementFgrPageRoute(id: statement.tiked!));
+                          ShowStatementFgrPageRoute(id: statement.ticked!));
                     },
                   );
                 });

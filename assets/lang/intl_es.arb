@@ -1,4 +1,6 @@
 {
+    "appName": "Civix",
+    "appSlogan": "Gobierno electrónico más cerca de ti",
     "searchHint": "Buscar..",
     "welcome": "Bienvenido",
     "connecting": "Conectando...",
@@ -93,5 +95,14 @@
     "tikedCorrectValidator": "El comprobante debe ser válido",
     "consultState": "Consultar estado",
     "consult": "Consultar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "myShipments": "Mis envíos",
+    "quickAccess": "Acceso rápido",
+    "institutionsList": "Lista de instituciones",
+    "frequentQuestions": "Preguntas frecuentes",
+    "aboutUs": "Acerca de",
+    "settings": "Ajustes",
+    "main": "Principal",
+    "more": "Más",
+    "pressAgainToExit": "Presione nuevamente para salir"
 }

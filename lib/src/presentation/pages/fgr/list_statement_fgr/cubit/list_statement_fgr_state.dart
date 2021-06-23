@@ -14,9 +14,9 @@ class ListStatementFgrState extends Equatable {
       );
 
   ListStatementFgrState copyWith(
-      {Stream<List<StatementFGR>>? statmentsFgr, String? error}) {
+      {Stream<List<StatementFGR>>? statementsFgr, String? error}) {
     return ListStatementFgrState(
-      statmentsFgr: statmentsFgr ?? this.statmentsFgr,
+      statmentsFgr: statementsFgr ?? this.statmentsFgr,
       error: error ?? this.error,
     );
   }

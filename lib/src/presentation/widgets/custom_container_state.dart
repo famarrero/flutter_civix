@@ -16,14 +16,14 @@ class CustomContainerState extends StatelessWidget {
           color: colorState,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(Constants.cornersRadius),
-              topRight: Radius.circular(Constants.differentCornerRaduis))),
+              topRight: Radius.circular(Constants.differentCornerRadius))),
       child: Row(
         children: [
           SizedBox(width: 16),
           Text(textState,
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: Constants.nomalTextSize,
+                  fontSize: Constants.normalTextSize,
                   fontWeight: FontWeight.bold)),
         ],
       ),

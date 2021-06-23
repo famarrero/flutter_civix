@@ -112,7 +112,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                           ),
                           SizedBox(width: 10),
                           Expanded(
-                            child: Text(statement.tiked!,
+                            child: Text(statement.ticked!,
                                 style: TextStyle(color: Colors.black, fontSize: 16)),
                           ),
                           // Icon(

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class CustomReactiveTextField<T> extends StatelessWidget {
-  /// [ReactiveTextField] Expecific props;
+  /// [ReactiveTextField] Specific props;
   final String formControlName;
   final Function()? onSubmitted;
   final ValidationMessagesFunction? validationMessages;
@@ -78,7 +78,7 @@ class CustomReactiveTextField<T> extends StatelessWidget {
 }
 
 class CustomReactiveObscureTextField extends StatefulWidget {
-  /// [ReactiveTextField] Expecific props;
+  /// [ReactiveTextField] Specific props;
   final String formControlName;
   final Function()? onSubmitted;
   final ValidationMessagesFunction? validationMessages;
@@ -120,7 +120,7 @@ class _CustomReactiveObscureTextFieldState extends State<CustomReactiveObscureTe
     passwordVisible = false;
   }
 
-  IconButton getToogleButton() {
+  IconButton getToggleButton() {
     return IconButton(
         icon: Icon(
           // Based on passwordVisible state choose the icon
@@ -128,7 +128,7 @@ class _CustomReactiveObscureTextFieldState extends State<CustomReactiveObscureTe
           // color: Theme.of(context).primaryColorDark,
         ),
         onPressed: () {
-          // Update the state i.e. toogle the state of passwordVisible variable
+          // Update the state i.e. toggle the state of passwordVisible variable
           setState(() {
             passwordVisible = !passwordVisible;
           });
@@ -154,7 +154,7 @@ class _CustomReactiveObscureTextFieldState extends State<CustomReactiveObscureTe
             hintText: widget.hint,
             icon: widget.icon != null ? Icon(widget.icon) : null,
             prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
-            suffixIcon: getToogleButton(),
+            suffixIcon: getToggleButton(),
             errorStyle: TextStyle(height: 0.3, color: Colors.red, fontWeight: FontWeight.bold)));
   }
 }

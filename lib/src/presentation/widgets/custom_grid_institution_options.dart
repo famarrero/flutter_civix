@@ -3,7 +3,7 @@ import 'package:flutter_civix/src/core/constants/constants.dart';
 import 'package:flutter_civix/src/core/utils/responsive.dart';
 import 'package:flutter_civix/src/domain/entities/institution_menu_item.dart';
 
-import 'cutom_institution_menu_item.dart';
+import 'custom_institution_menu_item.dart';
 
 class InstitutionOptions extends StatelessWidget {
   final List<InstitutionMenuItem> items;
@@ -17,15 +17,15 @@ class InstitutionOptions extends StatelessWidget {
       children: [
         SizedBox(height: Constants.defaultPadding),
         Responsive(
-          mobile: IntitutionOptionsGrid(
+          mobile: InstitutionOptionsGrid(
             items: items,
             crossAxisCount: _size.width < 650 ? 2 : 4,
             childAspectRatio: _size.width < 650 ? 1.3 : 1,
           ),
-          tablet: IntitutionOptionsGrid(
+          tablet: InstitutionOptionsGrid(
             items: items,
           ),
-          desktop: IntitutionOptionsGrid(
+          desktop: InstitutionOptionsGrid(
             items: items,
             childAspectRatio: _size.width < 1400 ? 1.1 : 1.4,
           ),
@@ -35,12 +35,12 @@ class InstitutionOptions extends StatelessWidget {
   }
 }
 
-class IntitutionOptionsGrid extends StatelessWidget {
+class InstitutionOptionsGrid extends StatelessWidget {
   final int crossAxisCount;
   final double childAspectRatio;
   final List<InstitutionMenuItem> items;
 
-  const IntitutionOptionsGrid({
+  const InstitutionOptionsGrid({
     Key? key,
     this.crossAxisCount = 4,
     this.childAspectRatio = 1,
@@ -62,7 +62,7 @@ class IntitutionOptionsGrid extends StatelessWidget {
       itemBuilder: (context, index) => Material(
         color: Colors.transparent,
         child: InkWell(
-          child: CutomInstitutionMenuItem(info: items[index]),
+          child: CustomInstitutionMenuItem(info: items[index]),
           onTap: items[index].onTap,
         ),
       ),

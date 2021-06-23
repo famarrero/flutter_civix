@@ -21,10 +21,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
         "addPromoter": MessageLookupByLibrary.simpleMessage("Add promoter"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
+        "appName": MessageLookupByLibrary.simpleMessage("Civix"),
+        "appSlogan": MessageLookupByLibrary.simpleMessage(
+            "Electronic government closer to you"),
         "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
         "call": MessageLookupByLibrary.simpleMessage("Call"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
@@ -69,19 +73,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "firstName": MessageLookupByLibrary.simpleMessage("First name"),
         "firstNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The first name must be a valid name"),
+        "frequentQuestions":
+            MessageLookupByLibrary.simpleMessage("Frequent questions"),
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "id": MessageLookupByLibrary.simpleMessage("ID"),
         "idCorrectValidator":
             MessageLookupByLibrary.simpleMessage("The id must be a correct id"),
         "info": MessageLookupByLibrary.simpleMessage("Information"),
+        "institutionsList":
+            MessageLookupByLibrary.simpleMessage("Institutions list"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Language"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
         "location": MessageLookupByLibrary.simpleMessage("Location"),
+        "main": MessageLookupByLibrary.simpleMessage("Main"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Main FGR"),
+        "more": MessageLookupByLibrary.simpleMessage("More"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipality"),
         "municipalityRequiredValidator": MessageLookupByLibrary.simpleMessage(
             "The municipality is required"),
+        "myShipments": MessageLookupByLibrary.simpleMessage("My shipments"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noFileSelected":
@@ -102,11 +113,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phoneCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The phone must be a correct phone"),
+        "pressAgainToExit":
+            MessageLookupByLibrary.simpleMessage("Press again to exit"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "province": MessageLookupByLibrary.simpleMessage("Province"),
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("The province is required"),
+        "quickAccess": MessageLookupByLibrary.simpleMessage("Quick access"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Save eraser"),
@@ -119,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "secondNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The second name name must be a valid name"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "showingSadevStatement":
             MessageLookupByLibrary.simpleMessage("Showing saved statement"),

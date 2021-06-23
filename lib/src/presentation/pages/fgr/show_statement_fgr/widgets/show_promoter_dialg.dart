@@ -48,11 +48,11 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.person, color: Colors.blue, size: Constants.nomalIconSize),
+                    Icon(Icons.person, color: Colors.blue, size: Constants.normalIconSize),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(promoterNameToShow,
-                          style: TextStyle(fontSize: Constants.nomalTextSize)),
+                          style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -63,10 +63,10 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.vpn_key, color: Colors.blue, size: Constants.nomalIconSize),
+                    Icon(Icons.vpn_key, color: Colors.blue, size: Constants.normalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(id, style: TextStyle(fontSize: Constants.nomalTextSize)),
+                      child: Text(id, style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -77,10 +77,10 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.phone, color: Colors.blue, size: Constants.nomalIconSize),
+                    Icon(Icons.phone, color: Colors.blue, size: Constants.normalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(phone, style: TextStyle(fontSize: Constants.nomalTextSize)),
+                      child: Text(phone, style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -91,10 +91,10 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.alternate_email, color: Colors.blue, size: Constants.nomalIconSize),
+                    Icon(Icons.alternate_email, color: Colors.blue, size: Constants.normalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(email, style: TextStyle(fontSize: Constants.nomalTextSize)),
+                      child: Text(email, style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -105,11 +105,11 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.location_city, color: Colors.blue, size: Constants.nomalIconSize),
+                    Icon(Icons.location_city, color: Colors.blue, size: Constants.normalIconSize),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(municipalityAndProvinceToShow,
-                          style: TextStyle(fontSize: Constants.nomalTextSize)),
+                          style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -120,10 +120,10 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.location_pin, color: Colors.blue, size: Constants.nomalIconSize),
+                    Icon(Icons.location_pin, color: Colors.blue, size: Constants.normalIconSize),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(address, style: TextStyle(fontSize: Constants.nomalTextSize)),
+                      child: Text(address, style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),

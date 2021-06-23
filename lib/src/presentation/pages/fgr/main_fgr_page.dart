@@ -1,6 +1,4 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
@@ -11,7 +9,7 @@ import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubi
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_carousel_slider.dart';
-import 'package:flutter_civix/src/presentation/widgets/cutom_grid_institution_options.dart';
+import 'package:flutter_civix/src/presentation/widgets/custom_grid_institution_options.dart';
 import 'package:flutter_civix/src/domain/entities/institution_menu_item.dart';
 
 class MainFgrPage extends StatefulWidget {

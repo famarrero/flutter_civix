@@ -14,7 +14,7 @@ import 'package:flutter_civix/src/data/repositories/preferences_fgr_repository_i
 import 'package:flutter_civix/src/domain/repositories/database_fgr_repository.dart';
 import 'package:flutter_civix/src/domain/repositories/local_assets_repository.dart';
 import 'package:flutter_civix/src/domain/repositories/preferences_fgr_repository.dart';
-import 'package:flutter_civix/src/presentation/manager/provinces_list_cuibit/provinces_list_cubit.dart';
+import 'package:flutter_civix/src/presentation/manager/provinces_list_cubit/provinces_list_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';

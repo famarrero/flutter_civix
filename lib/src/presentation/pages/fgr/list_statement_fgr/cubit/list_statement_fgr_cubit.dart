@@ -10,10 +10,10 @@ class ListStatementFgrCubit extends Cubit<ListStatementFgrState> {
 
   ListStatementFgrCubit(this._dataBaseFGRRepository) : super(ListStatementFgrState.initial());
 
-  Future<void> whatchAllStatmentFgr() async {
-    Stream<List<StatementFGR>> statmentsFgr = _dataBaseFGRRepository.watchAllStatementsFGR();
+  Future<void> watchAllStatementsFgr() async {
+    Stream<List<StatementFGR>> statementsFgr = _dataBaseFGRRepository.watchAllStatementsFGR();
 
-    emit(state.copyWith(statmentsFgr: statmentsFgr));
+    emit(state.copyWith(statementsFgr: statementsFgr));
   }
 
   Future<void> deleteAllStatementFGR() async {

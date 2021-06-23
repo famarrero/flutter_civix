@@ -50,6 +50,26 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Civix`
+  String get appName {
+    return Intl.message(
+      'Civix',
+      name: 'appName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Electronic government closer to you`
+  String get appSlogan {
+    return Intl.message(
+      'Electronic government closer to you',
+      name: 'appSlogan',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Search..`
   String get searchHint {
     return Intl.message(
@@ -995,6 +1015,96 @@ class S {
     return Intl.message(
       'Save',
       name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My shipments`
+  String get myShipments {
+    return Intl.message(
+      'My shipments',
+      name: 'myShipments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quick access`
+  String get quickAccess {
+    return Intl.message(
+      'Quick access',
+      name: 'quickAccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Institutions list`
+  String get institutionsList {
+    return Intl.message(
+      'Institutions list',
+      name: 'institutionsList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequent questions`
+  String get frequentQuestions {
+    return Intl.message(
+      'Frequent questions',
+      name: 'frequentQuestions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About us`
+  String get aboutUs {
+    return Intl.message(
+      'About us',
+      name: 'aboutUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Main`
+  String get main {
+    return Intl.message(
+      'Main',
+      name: 'main',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get more {
+    return Intl.message(
+      'More',
+      name: 'more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Press again to exit`
+  String get pressAgainToExit {
+    return Intl.message(
+      'Press again to exit',
+      name: 'pressAgainToExit',
       desc: '',
       args: [],
     );

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-typedef SyncLoadFuntion<T> = List<T> Function();
+typedef SyncLoadFunction<T> = List<T> Function();
 typedef ItemBuilder<T> = Widget Function(T item);
 
-class CustomDropdawnFiled<T> extends StatelessWidget {
+class CustomDropdownFiled<T> extends StatelessWidget {
   final String formControlName;
-  final SyncLoadFuntion<T> loadFuntion;
+  final SyncLoadFunction<T> loadFunction;
   final ItemBuilder<T> itemBuilder;
   final IconData? icon;
   final IconData? suffixIcon;
@@ -18,10 +18,10 @@ class CustomDropdawnFiled<T> extends StatelessWidget {
   final Function()? onTap;
   final Function(T?)? onChange;
 
-  const CustomDropdawnFiled({
+  const CustomDropdownFiled({
     Key? key,
     required this.formControlName,
-    required this.loadFuntion,
+    required this.loadFunction,
     required this.itemBuilder,
     this.icon,
     this.suffixIcon,
@@ -51,7 +51,7 @@ class CustomDropdawnFiled<T> extends StatelessWidget {
       ),
       formControlName: formControlName,
       onTap: onTap,
-      items: loadFuntion()
+      items: loadFunction()
           .map((e) => DropdownMenuItem<T>(
                 value: e,
                 child: Container(child: itemBuilder(e)),

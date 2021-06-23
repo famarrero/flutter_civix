@@ -19,7 +19,7 @@ class CustomDialogBox extends StatelessWidget {
       {required this.title,
       this.icon,
       this.colorIcon,
-      this.sizeIcon = Constants.nomalIconSize,
+      this.sizeIcon = Constants.normalIconSize,
       required this.body,
       required this.buttonPositiveName,
       this.buttonPositiveAction,

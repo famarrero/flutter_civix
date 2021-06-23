@@ -88,7 +88,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
       await _preferencesFGR.deleteStatmentFGR();
     } else {
       StatementFGR statementFGR = StatementFGR(
-          tiked: null,
+          ticked: null,
           subject: _addStatementForm.control(FormsStatementFGR.subject).value,
           statement:
               _addStatementForm.control(FormsStatementFGR.statement).value,
@@ -143,7 +143,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
       StatementFGR statementFGR = StatementFGR(
         // tiked: Uuid().v4(),
-        tiked: UniqueKey().toString(),
+        ticked: UniqueKey().toString(),
         subject: _addStatementForm.control(FormsStatementFGR.subject).value,
         statement: _addStatementForm.control(FormsStatementFGR.statement).value,
         promoters: _promoters.toList(),

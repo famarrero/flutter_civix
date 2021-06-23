@@ -112,7 +112,7 @@ class ConsultStateFgrPage extends StatelessWidget {
     if (state.statmentsResponseConsult != null) {
       return Column(
         children: [
-          StatmentResponseConsultWidget(statement: state.statmentsResponseConsult!),
+          StatementResponseConsultWidget(statement: state.statmentsResponseConsult!),
           SizedBox(height: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

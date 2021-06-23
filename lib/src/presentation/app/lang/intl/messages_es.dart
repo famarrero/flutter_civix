@@ -21,11 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutUs": MessageLookupByLibrary.simpleMessage("Acerca de"),
         "addPromoter":
             MessageLookupByLibrary.simpleMessage("Adicionar promovente"),
         "address": MessageLookupByLibrary.simpleMessage("Dirección"),
         "all": MessageLookupByLibrary.simpleMessage("Todas"),
         "amount": MessageLookupByLibrary.simpleMessage("Cantidad"),
+        "appName": MessageLookupByLibrary.simpleMessage("Civix"),
+        "appSlogan": MessageLookupByLibrary.simpleMessage(
+            "Gobierno electrónico más cerca de ti"),
         "attachments": MessageLookupByLibrary.simpleMessage("Adjuntos"),
         "call": MessageLookupByLibrary.simpleMessage("Llamar"),
         "camera": MessageLookupByLibrary.simpleMessage("Camara"),
@@ -74,19 +78,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "firstName": MessageLookupByLibrary.simpleMessage("Primer nombre"),
         "firstNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El primer nombre debe ser un nombre válido"),
+        "frequentQuestions":
+            MessageLookupByLibrary.simpleMessage("Preguntas frecuentes"),
         "gallery": MessageLookupByLibrary.simpleMessage("Galería"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "id": MessageLookupByLibrary.simpleMessage("Carné de identidad"),
         "idCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El carné de indentidad debe ser un carné válido"),
         "info": MessageLookupByLibrary.simpleMessage("Información"),
+        "institutionsList":
+            MessageLookupByLibrary.simpleMessage("Lista de instituciones"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Idioma"),
         "later": MessageLookupByLibrary.simpleMessage("Después"),
         "location": MessageLookupByLibrary.simpleMessage("Ubicación"),
+        "main": MessageLookupByLibrary.simpleMessage("Principal"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Principal FGR"),
+        "more": MessageLookupByLibrary.simpleMessage("Más"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipio"),
         "municipalityRequiredValidator":
             MessageLookupByLibrary.simpleMessage("El municipio es requerido"),
+        "myShipments": MessageLookupByLibrary.simpleMessage("Mis envíos"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noFileSelected": MessageLookupByLibrary.simpleMessage(
@@ -108,11 +119,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
         "phoneCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El teléfono debe ser un teléfono válido"),
+        "pressAgainToExit": MessageLookupByLibrary.simpleMessage(
+            "Presione nuevamente para salir"),
         "price": MessageLookupByLibrary.simpleMessage("Precio"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
         "province": MessageLookupByLibrary.simpleMessage("Provincia"),
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("La provincia es requerida"),
+        "quickAccess": MessageLookupByLibrary.simpleMessage("Acceso rápido"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "save": MessageLookupByLibrary.simpleMessage("Guardar"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Guardar borrador"),
@@ -125,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "secondNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El segundo nombre debe ser un nombre válido"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
         "share": MessageLookupByLibrary.simpleMessage("Compartir"),
         "showingSadevStatement": MessageLookupByLibrary.simpleMessage(
             "Mostrando planteamiento guardado"),
