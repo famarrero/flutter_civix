@@ -5,13 +5,14 @@ import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/civix/main_civix/cubit/sidebar_cubit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'sidebar_menu_item.dart';
 import 'sidebar_text_separator.dart';
 
 class SideBar extends StatelessWidget {
-  const SideBar();  
+  const SideBar();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,21 @@ class SideBar extends StatelessWidget {
               icon: Icons.info_outline,
               onPressed: () {
                 _onPressedItem(context, const AboutUsPageRoute());
-              }),
+              }),          
+          const SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(FontAwesomeIcons.telegram,
+                      color: Colors.white.withOpacity(0.6), size: 30)),
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(FontAwesomeIcons.facebook,
+                      color: Colors.white.withOpacity(0.6), size: 30)),
+            ],
+          )
         ],
       ),
     );
@@ -107,8 +122,8 @@ class SideBar extends StatelessWidget {
   BoxDecoration _buildDecoration(BuildContext context) {
     return BoxDecoration(
         gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [Color(0xff092042), Theme.of(context).primaryColor]),
+            begin: Alignment.topCenter, colors: [Color(0xff07396f), Color(
+            0xff0b1a68)]),
         boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 10)]);
   }
 }

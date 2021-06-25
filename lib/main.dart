@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
                 routerDelegate: _appRouter.delegate(),
                 title: 'Flutter Civix Demo',
                 theme: ThemeData(
+                  // primaryColor: Color(0xff0c4d93),
+                  // accentColor: Color(0xff041a2d),
                   primarySwatch: Colors.blue,
                 ),
                 // home: MainFGR(),

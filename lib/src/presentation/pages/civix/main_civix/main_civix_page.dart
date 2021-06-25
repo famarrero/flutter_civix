@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
@@ -20,6 +21,7 @@ class MainCivixPage extends StatefulWidget {
 
 class _MainCivixPageState extends State<MainCivixPage> {
   DateTime? _currentBackPressedTime;
+  int _bottomNavBarIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,9 @@ class _MainCivixPageState extends State<MainCivixPage> {
               child: SafeArea(
                 child: Scaffold(
                     key: context.read<SideBarCubit>().scaffoldKey,
-                    drawer: (Responsive.isDesktop(context)) ? null : const SideBar(),
+                    drawer: (Responsive.isDesktop(context))
+                        ? null
+                        : const SideBar(),
                     body: Row(
                       children: [
                         // We want this side menu only for large screen
@@ -54,86 +58,46 @@ class _MainCivixPageState extends State<MainCivixPage> {
                       visible: showBottomNavBar,
                       child: FloatingActionButton(
                         child: Icon(Icons.home_filled),
-                        onPressed: _iAmAlreadyInThisPage(context, InstitutionsListPageRoute.name)
+                        backgroundColor: !_iAmAlreadyInThisPage(
+                            context, InstitutionsListPageRoute.name) ? Colors.blueGrey : Colors.blue,
+                        onPressed: _iAmAlreadyInThisPage(
+                                context, InstitutionsListPageRoute.name)
                             ? null
-                            : () => _onPreseedBottomNavItem(context, InstitutionsListPageRoute()),
+                            : () {
+                                setState(() {
+                                  _bottomNavBarIndex = -1;
+                                });
+                                _onPressedBottomNavItem(
+                                    context, InstitutionsListPageRoute());
+                              },
                       ),
                     ),
-                    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+                    floatingActionButtonLocation:
+                        FloatingActionButtonLocation.centerDocked,
                     bottomNavigationBar: AnimatedContainer(
                         duration: const Duration(milliseconds: 300),
                         height: showBottomNavBar ? kToolbarHeight : 0,
                         width: double.infinity,
                         child: Wrap(children: [
-                          // Container(
-                          //   margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          //   // padding: EdgeInsets.all(8),
-                          //   height: 46,
-                          //   width: double.infinity,
-                          //   decoration: BoxDecoration(
-                          //       color: Theme.of(context).cardColor,
-                          //       // color: Colors.red,
-                          //       borderRadius: const BorderRadius.all(Radius.circular(36)),
-                          //       // border: border,
-                          //       boxShadow: <BoxShadow>[
-                          //         if (Theme.of(context).brightness == Brightness.light)
-                          //           BoxShadow(
-                          //             blurRadius: 8,
-                          //             // color: Theme.of(context).primaryColor.withAlpha(20),
-                          //             color: Colors.black26,
-                          //           )
-                          //       ]),
-                          //   child: Row(
-                          //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          //     children: [
-                          //       IconButton(
-                          //           onPressed:
-                          //               _iAmAlreadyInThisPage(context, QuickAccessPageRoute.name)
-                          //                   ? null
-                          //                   : () => _onPreseedBottomNavItem(
-                          //                       context, QuickAccessPageRoute()),
-                          //           icon: Icon(
-                          //             Icons.touch_app_outlined,
-                          //             size: 30,
-                          //           )),
-                          //       IconButton(
-                          //           onPressed:
-                          //               _iAmAlreadyInThisPage(context, MyShipmentsPageRoute.name)
-                          //                   ? null
-                          //                   : () => _onPreseedBottomNavItem(
-                          //                       context, MyShipmentsPageRoute()),
-                          //           icon: Icon(Icons.list_alt_outlined, size: 30))
-                          //     ],
-                          //   ),
-                          // ),
-                          BottomAppBar(
-                            shape: CircularNotchedRectangle(),
-                            notchMargin: 8.0,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  IconButton(
-                                      onPressed:
-                                          _iAmAlreadyInThisPage(context, QuickAccessPageRoute.name)
-                                              ? null
-                                              : () => _onPreseedBottomNavItem(
-                                                  context, QuickAccessPageRoute()),
-                                      icon: Icon(
-                                        Icons.touch_app_outlined,
-                                        size: 30,
-                                      )),
-                                  IconButton(
-                                      onPressed:
-                                          _iAmAlreadyInThisPage(context, MyShipmentsPageRoute.name)
-                                              ? null
-                                              : () => _onPreseedBottomNavItem(
-                                                  context, MyShipmentsPageRoute()),
-                                      icon: Icon(Icons.list_alt_outlined, size: 30))
-                                ],
-                              ),
-                            ),
+                          AnimatedBottomNavigationBar(
+                            icons: [
+                              Icons.touch_app_outlined,
+                              Icons.list_alt_outlined
+                            ],
+                            activeColor: Colors.blue,
+                            inactiveColor: Colors.blueGrey,
+                            gapLocation: GapLocation.center,
+                            notchSmoothness: NotchSmoothness.softEdge,
+                            leftCornerRadius: 32,
+                            rightCornerRadius: 32,
+                            activeIndex: _iAmAlreadyInThisPage(
+                                    context, InstitutionsListPageRoute.name)
+                                ? -1
+                                : _bottomNavBarIndex,
+                            onTap: (index) => setState(() {
+                              _bottomNavBarIndex = index;
+                              _onPressedBottomNavItem2(context, index);
+                            }),
                           ),
                         ]))),
               ),
@@ -143,7 +107,10 @@ class _MainCivixPageState extends State<MainCivixPage> {
   }
 
   bool get showBottomNavBar {
-    final _currentPage = AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)?.current.name;
+    final _currentPage =
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
+            ?.current
+            .name;
     if (_currentPage == FrequentQuestionsPageRoute.name ||
         _currentPage == SettingsPageRoute.name ||
         _currentPage == ProfilePageRoute.name ||
@@ -155,17 +122,49 @@ class _MainCivixPageState extends State<MainCivixPage> {
   }
 
   bool _iAmAlreadyInThisPage(BuildContext context, String routeName) {
-    return AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)?.current.name == routeName;
+    return AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
+            ?.current
+            .name ==
+        routeName;
   }
 
-  void _onPreseedBottomNavItem(BuildContext context, PageRouteInfo routeInfo) {
+  void _onPressedBottomNavItem2(BuildContext context, int index) {
+    PageRouteInfo? routeInfo;
+    if (index == 0) {
+      _onPressedBottomNavItem(context, QuickAccessPageRoute());
+    } else if (index == 1) {
+      _onPressedBottomNavItem(context, MyShipmentsPageRoute());
+    }
+
     final currentRouteName =
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)?.current.name;
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
+            ?.current
+            .name;
     if (currentRouteName == InstitutionsListPageRoute.name) {
-      AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.push(routeInfo);
+      AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
+          .push(routeInfo!);
+    } else {
+      if (routeInfo!.routeName != InstitutionsListPageRoute.name) {
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
+            .replace(routeInfo);
+      } else {
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.pop();
+      }
+    }
+  }
+
+  void _onPressedBottomNavItem(BuildContext context, PageRouteInfo routeInfo) {
+    final currentRouteName =
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
+            ?.current
+            .name;
+    if (currentRouteName == InstitutionsListPageRoute.name) {
+      AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
+          .push(routeInfo);
     } else {
       if (routeInfo.routeName != InstitutionsListPageRoute.name) {
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.replace(routeInfo);
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
+            .replace(routeInfo);
       } else {
         AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.pop();
       }
@@ -187,3 +186,77 @@ class _MainCivixPageState extends State<MainCivixPage> {
     }
   }
 }
+
+// Container(
+//   margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+//   // padding: EdgeInsets.all(8),
+//   height: 46,
+//   width: double.infinity,
+//   decoration: BoxDecoration(
+//       color: Theme.of(context).cardColor,
+//       // color: Colors.red,
+//       borderRadius: const BorderRadius.all(Radius.circular(36)),
+//       // border: border,
+//       boxShadow: <BoxShadow>[
+//         if (Theme.of(context).brightness == Brightness.light)
+//           BoxShadow(
+//             blurRadius: 8,
+//             // color: Theme.of(context).primaryColor.withAlpha(20),
+//             color: Colors.black26,
+//           )
+//       ]),
+//   child: Row(
+//     mainAxisAlignment: MainAxisAlignment.spaceAround,
+//     children: [
+//       IconButton(
+//           onPressed:
+//               _iAmAlreadyInThisPage(context, QuickAccessPageRoute.name)
+//                   ? null
+//                   : () => _onPreseedBottomNavItem(
+//                       context, QuickAccessPageRoute()),
+//           icon: Icon(
+//             Icons.touch_app_outlined,
+//             size: 30,
+//           )),
+//       IconButton(
+//           onPressed:
+//               _iAmAlreadyInThisPage(context, MyShipmentsPageRoute.name)
+//                   ? null
+//                   : () => _onPreseedBottomNavItem(
+//                       context, MyShipmentsPageRoute()),
+//           icon: Icon(Icons.list_alt_outlined, size: 30))
+//     ],
+//   ),
+// ),
+
+// BottomAppBar(
+//   shape: CircularNotchedRectangle(),
+//   notchMargin: 8.0,
+//   child: Padding(
+//     padding: const EdgeInsets.all(8.0),
+//     child: Row(
+//       mainAxisAlignment:
+//           MainAxisAlignment.spaceAround,
+//       children: [
+//         IconButton(
+//             onPressed: _iAmAlreadyInThisPage(context,
+//                     QuickAccessPageRoute.name)
+//                 ? null
+//                 : () => _onPreseedBottomNavItem(
+//                     context, QuickAccessPageRoute()),
+//             icon: Icon(
+//               Icons.touch_app_outlined,
+//               size: 30,
+//             )),
+//         IconButton(
+//             onPressed: _iAmAlreadyInThisPage(context,
+//                     MyShipmentsPageRoute.name)
+//                 ? null
+//                 : () => _onPreseedBottomNavItem(
+//                     context, MyShipmentsPageRoute()),
+//             icon: Icon(Icons.list_alt_outlined,
+//                 size: 30))
+//       ],
+//     ),
+//   ),
+// ),
