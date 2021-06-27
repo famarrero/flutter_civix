@@ -11,8 +11,8 @@ import 'package:provider/provider.dart';
 import 'sidebar_menu_item.dart';
 import 'sidebar_text_separator.dart';
 
-class SideBar extends StatelessWidget {
-  const SideBar();
+class SideBarCivix extends StatelessWidget {
+  const SideBarCivix();
 
   @override
   Widget build(BuildContext context) {

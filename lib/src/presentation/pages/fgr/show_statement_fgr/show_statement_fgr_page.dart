@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
@@ -19,19 +20,25 @@ class ShowStatementFgrPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: _buildAppBar(context),
-        body: BlocProvider(
-            create: (context) => injector<ShowStatementFgrCubit>()..getStatementFGRById(id),
-            child: BlocBuilder<ShowStatementFgrCubit, ShowStatementFgrState>(
-                builder: (context, state) {
-              if (state.error != null) {
-                return Container();
-              } else if (state.statementsFgr != null) {
-                return _buildFutureStatement(state.statementsFgr);
-              } else
-                return Center(child: Text('Something wrong'));
-            })));
+    return Theme(
+      data: ThemeData(
+          primaryColor: kFgrPrimaryColor,
+          accentColor: kFgrSecondaryColor,
+          primarySwatch: kFgrPrimaryMaterialColor),
+      child: Scaffold(
+          appBar: _buildAppBar(context),
+          body: BlocProvider(
+              create: (context) => injector<ShowStatementFgrCubit>()..getStatementFGRById(id),
+              child: BlocBuilder<ShowStatementFgrCubit, ShowStatementFgrState>(
+                  builder: (context, state) {
+                if (state.error != null) {
+                  return Container();
+                } else if (state.statementsFgr != null) {
+                  return _buildFutureStatement(state.statementsFgr);
+                } else
+                  return Center(child: Text('Something wrong'));
+              }))),
+    );
   }
 
   _buildAppBar(BuildContext context) {
@@ -65,7 +72,7 @@ class ShowStatementFgrPage extends StatelessWidget {
           _firstCard(colorState, textState, statementsFgr, institutionLogo),
           _secondCard(statementsFgr),
           if (statementsFgr.promoters != null && statementsFgr.promoters!.isNotEmpty)
-            ShowPromoters(statementsFgr.promoters!),
+            ShowPromoters(promoters: statementsFgr.promoters!, colorIcons: kFgrSecondaryColor),
           _responseCard(statementsFgr),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -108,7 +115,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.vpn_key,
-                            color: Colors.blue,
+                            color: kFgrSecondaryColor,
                           ),
                           SizedBox(width: 10),
                           Expanded(
@@ -128,7 +135,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.date_range,
-                            color: Colors.blue,
+                            color: kFgrSecondaryColor,
                           ),
                           SizedBox(width: 10),
                           Text('07/06/21', style: TextStyle(color: Colors.black, fontSize: 16)),
@@ -140,7 +147,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.phone_android,
-                            color: Colors.blue,
+                            color: kFgrSecondaryColor,
                           ),
                           SizedBox(width: 10),
                           Expanded(
@@ -187,7 +194,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(
                   Icons.short_text,
-                  color: Colors.blue,
+                  color: kFgrSecondaryColor,
                 ),
                 SizedBox(width: 10),
                 Expanded(
@@ -213,7 +220,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(
                   Icons.wrap_text,
-                  color: Colors.blue,
+                  color: kFgrSecondaryColor,
                 ),
                 SizedBox(width: 10),
                 Expanded(
@@ -254,7 +261,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(
                   Icons.wrap_text,
-                  color: Colors.blue,
+                  color: kFgrSecondaryColor,
                 ),
                 SizedBox(width: 10),
                 Expanded(

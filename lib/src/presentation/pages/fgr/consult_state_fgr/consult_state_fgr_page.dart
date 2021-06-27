@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/domain/entities/statement_response_consult.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
@@ -21,9 +22,15 @@ class ConsultStateFgrPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(context),
-      body: _buildBody(context),
+    return Theme(
+      data: ThemeData(
+          primaryColor: kFgrPrimaryColor,
+          accentColor: kFgrSecondaryColor,
+          primarySwatch: kFgrPrimaryMaterialColor),
+      child: Scaffold(
+        appBar: _buildAppBar(context),
+        body: _buildBody(context),
+      ),
     );
   }
 
@@ -34,7 +41,8 @@ class ConsultStateFgrPage extends StatelessWidget {
         children: [
           Text(S.of(context).consultState),
           SizedBox(height: 4),
-          Text(S.of(context).fgr, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
+          Text(S.of(context).fgr,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
     );
@@ -43,12 +51,14 @@ class ConsultStateFgrPage extends StatelessWidget {
   _buildBody(BuildContext context) {
     return BlocProvider.value(
         value: bloc,
-        child: BlocConsumer<ConsultStateFgrCubit, ConsultStateFgrState>(listener: (context, state) {
+        child: BlocConsumer<ConsultStateFgrCubit, ConsultStateFgrState>(
+            listener: (context, state) {
           if (state.loading) {
             showDialog<void>(
                 context: context,
                 barrierDismissible: false,
-                builder: (BuildContext dialogContext) => DialogProgressWidget('Consulting...'));
+                builder: (BuildContext dialogContext) =>
+                    DialogProgressWidget('Consulting...'));
           }
           if (state.statmentsResponseConsult != null) {
             Navigator.of(context).pop();
@@ -66,14 +76,16 @@ class ConsultStateFgrPage extends StatelessWidget {
                     child: Column(
                       children: [
                         ReactiveForm(
-                          formGroup:
-                              Provider.of<ConsultStateFgrCubit>(context).getconsultStateFgrForm,
+                          formGroup: Provider.of<ConsultStateFgrCubit>(context)
+                              .getconsultStateFgrForm,
                           child: Padding(
                             padding: const EdgeInsets.all(16),
                             child: CustomReactiveTextField(
                               formControlName: FormConsultStateFgr.tiked,
-                              validationMessages: (control) =>
-                                  {ValidationMessage.required: S.of(context).tikedCorrectValidator},
+                              validationMessages: (control) => {
+                                ValidationMessage.required:
+                                    S.of(context).tikedCorrectValidator
+                              },
                               label: S.of(context).enterTiked,
                               icon: Icons.vpn_key_outlined,
                               textInputAction: TextInputAction.next,
@@ -92,7 +104,9 @@ class ConsultStateFgrPage extends StatelessWidget {
                             CustomElevatedButton(
                                 buttonText: S.of(context).consult,
                                 onPressed: () =>
-                                    BlocProvider.of<ConsultStateFgrCubit>(context).consultState()),
+                                    BlocProvider.of<ConsultStateFgrCubit>(
+                                            context)
+                                        .consultState()),
                             SizedBox(width: 4),
                           ],
                         ),
@@ -112,7 +126,8 @@ class ConsultStateFgrPage extends StatelessWidget {
     if (state.statmentsResponseConsult != null) {
       return Column(
         children: [
-          StatementResponseConsultWidget(statement: state.statmentsResponseConsult!),
+          StatementResponseConsultWidget(
+              statement: state.statmentsResponseConsult!),
           SizedBox(height: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -124,7 +139,8 @@ class ConsultStateFgrPage extends StatelessWidget {
                       icon: Icons.report_gmailerrorred_sharp,
                       colorIcon: Colors.blue,
                       title: 'Confirmación!',
-                      message: '¿Desea guardar este planteamiento en la aplicación?',
+                      message:
+                          '¿Desea guardar este planteamiento en la aplicación?',
                       buttonPositiveName: 'Guardar',
                       buttonPositiveAction: () {},
                       buttonNegativeName: 'Cancelar')),

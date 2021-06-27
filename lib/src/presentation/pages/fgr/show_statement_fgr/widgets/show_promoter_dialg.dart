@@ -6,8 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ShowPromoterDialog extends StatelessWidget {
   final PromoterFRG promoterFRG;
+  final Color colorIcons;
 
-  ShowPromoterDialog({required this.promoterFRG});
+  ShowPromoterDialog({required this.promoterFRG, required this.colorIcons});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,10 @@ class ShowPromoterDialog extends StatelessWidget {
     String? address = promoterFRG.address;
 
     String promoterNameToShow = '';
-    if (firstName != null && firstName.isNotEmpty) promoterNameToShow += firstName;
-    if (secondName != null && secondName.isNotEmpty) promoterNameToShow += ' ' + secondName;
+    if (firstName != null && firstName.isNotEmpty)
+      promoterNameToShow += firstName;
+    if (secondName != null && secondName.isNotEmpty)
+      promoterNameToShow += ' ' + secondName;
     if (firstLastName != null && firstLastName.isNotEmpty)
       promoterNameToShow += ' ' + firstLastName;
     if (secondLastName != null && secondLastName.isNotEmpty)
@@ -39,8 +42,9 @@ class ShowPromoterDialog extends StatelessWidget {
     return CustomDialogBox(
         title: 'Promoter',
         icon: FontAwesomeIcons.addressBook,
+        colorIcon: Theme.of(context).accentColor,
         sizeIcon: 30,
-        body: Column(       
+        body: Column(
           children: [
             if (promoterNameToShow.isNotEmpty)
               Padding(
@@ -48,7 +52,7 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.person, color: Colors.blue, size: Constants.normalIconSize),
+                    Icon(Icons.person, size: Constants.normalIconSize, color: colorIcons),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(promoterNameToShow,
@@ -63,10 +67,11 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.vpn_key, color: Colors.blue, size: Constants.normalIconSize),
+                    Icon(Icons.vpn_key, size: Constants.normalIconSize, color: colorIcons),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(id, style: TextStyle(fontSize: Constants.normalTextSize)),
+                      child: Text(id,
+                          style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -77,10 +82,11 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.phone, color: Colors.blue, size: Constants.normalIconSize),
+                    Icon(Icons.phone, size: Constants.normalIconSize, color: colorIcons),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(phone, style: TextStyle(fontSize: Constants.normalTextSize)),
+                      child: Text(phone,
+                          style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -91,10 +97,11 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.alternate_email, color: Colors.blue, size: Constants.normalIconSize),
+                    Icon(Icons.alternate_email, size: Constants.normalIconSize, color: colorIcons),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(email, style: TextStyle(fontSize: Constants.normalTextSize)),
+                      child: Text(email,
+                          style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),
@@ -105,7 +112,7 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.location_city, color: Colors.blue, size: Constants.normalIconSize),
+                    Icon(Icons.location_city, size: Constants.normalIconSize, color: colorIcons),
                     SizedBox(width: 12),
                     Expanded(
                       child: Text(municipalityAndProvinceToShow,
@@ -120,10 +127,11 @@ class ShowPromoterDialog extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.location_pin, color: Colors.blue, size: Constants.normalIconSize),
+                    Icon(Icons.location_pin, size: Constants.normalIconSize, color: colorIcons),
                     SizedBox(width: 12),
                     Expanded(
-                      child: Text(address, style: TextStyle(fontSize: Constants.normalTextSize)),
+                      child: Text(address,
+                          style: TextStyle(fontSize: Constants.normalTextSize)),
                     ),
                   ],
                 ),

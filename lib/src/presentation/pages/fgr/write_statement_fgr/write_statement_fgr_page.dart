@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/widgets/add_edit_promoter_dialog.dart';
@@ -48,7 +49,12 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _buildAppBar(), body: _buildBody(context));
+    return Theme(
+        data: ThemeData(
+            primaryColor: kFgrPrimaryColor,
+            accentColor: kFgrSecondaryColor,
+            primarySwatch: kFgrPrimaryMaterialColor),
+        child: Scaffold(appBar: _buildAppBar(), body: _buildBody(context)));
   }
 
   _buildAppBar() {
@@ -58,7 +64,8 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
         children: [
           Text(S.of(context).writeStatement),
           SizedBox(height: 4),
-          Text(S.of(context).fgr, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
+          Text(S.of(context).fgr,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
       actions: [
@@ -81,7 +88,8 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
             showDialog<void>(
                 context: context,
                 barrierDismissible: false,
-                builder: (BuildContext dialogContext) => DialogProgressWidget('Sending statement'));
+                builder: (BuildContext dialogContext) =>
+                    DialogProgressWidget('Sending statement'));
           }
           if (state.stateSendStatement.done) {
             Navigator.of(context).pop();
@@ -94,7 +102,8 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
             showDialog<void>(
                 context: context,
                 barrierDismissible: false,
-                builder: (BuildContext dialogContext) => DialogProgressWidget('Processing image'));
+                builder: (BuildContext dialogContext) =>
+                    DialogProgressWidget('Processing image'));
           }
           if (state.stateOfFiles.done) {
             Navigator.of(context).pop();
@@ -115,7 +124,8 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
           return Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
             child: ReactiveForm(
-              formGroup: Provider.of<WriteStatementFgrCubit>(context).getAddStatementForm,
+              formGroup: Provider.of<WriteStatementFgrCubit>(context)
+                  .getAddStatementForm,
               child: Column(
                 children: [
                   Expanded(
@@ -126,8 +136,10 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         SizedBox(height: 25),
                         CustomReactiveTextField(
                           formControlName: FormsStatementFGR.subject,
-                          validationMessages: (control) =>
-                              {ValidationMessage.required: S.of(context).subjectValidator},
+                          validationMessages: (control) => {
+                            ValidationMessage.required:
+                                S.of(context).subjectValidator
+                          },
                           label: S.of(context).enterSubject,
                           icon: Icons.short_text,
                           textInputAction: TextInputAction.next,
@@ -140,8 +152,10 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         SizedBox(height: 20),
                         CustomReactiveTextField(
                           formControlName: FormsStatementFGR.statement,
-                          validationMessages: (control) =>
-                              {ValidationMessage.required: S.of(context).statementValidator},
+                          validationMessages: (control) => {
+                            ValidationMessage.required:
+                                S.of(context).statementValidator
+                          },
                           label: S.of(context).enterStatement,
                           icon: Icons.wrap_text,
                           textInputAction: TextInputAction.newline,
@@ -157,16 +171,19 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                           ShowPromoters(state.stateOfPromoters.promoters),
                         SizedBox(height: 20),
                         CustomElevatedButton(
+                            color: Theme.of(context).accentColor,
                             buttonText: S.of(context).addPromoter,
-                            onPressed: () => (state.stateOfPromoters.promoters.length >= 1)
-                                ? null
-                                : showDialog<void>(
-                                    context: context,
-                                    builder: (BuildContext dialogContext) => AddEditPromoterDialog(
-                                          blocContext: context,
-                                          title: S.of(context).addPromoter,
-                                          isEdit: false,
-                                        ))),
+                            onPressed: () =>
+                                (state.stateOfPromoters.promoters.length >= 1)
+                                    ? null
+                                    : showDialog<void>(
+                                        context: context,
+                                        builder: (BuildContext dialogContext) =>
+                                            AddEditPromoterDialog(
+                                              blocContext: context,
+                                              title: S.of(context).addPromoter,
+                                              isEdit: false,
+                                            ))),
                         SizedBox(height: 20),
                         ShowFiles(
                           files: state.stateOfFiles.pickedFiles.toList(),
@@ -181,18 +198,20 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                     height: 50,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Colors.transparent, borderRadius: BorderRadius.circular(20)),
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(20)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         FloatingActionButton(
                           heroTag: 'attachments',
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Theme.of(context).accentColor,
                           tooltip: S.of(context).attachments,
                           onPressed: () {
                             return MenuBottomSheet().openMenuBottomSheet(
                                 context: context,
-                                filesCount: state.stateOfFiles.pickedFiles.length,
+                                filesCount:
+                                    state.stateOfFiles.pickedFiles.length,
                                 openGallery: _openGallery,
                                 openDocuments: _openDocuments);
                           },
@@ -201,12 +220,14 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         ),
                         FloatingActionButton(
                           heroTag: 'camera',
-                          backgroundColor: (state.stateOfFiles.pickedFiles.length < 3)
-                              ? Colors.blue
-                              : Colors.black.withOpacity(0.1),
+                          backgroundColor:
+                              (state.stateOfFiles.pickedFiles.length < 3)
+                                  ? Theme.of(context).accentColor
+                                  : Colors.black.withOpacity(0.1),
                           tooltip: S.of(context).camera,
                           onPressed: (state.stateOfFiles.pickedFiles.length < 3)
-                              ? () => BlocProvider.of<WriteStatementFgrCubit>(context)
+                              ? () => BlocProvider.of<WriteStatementFgrCubit>(
+                                      context)
                                   .getImageFormCameraOrGallery(source: 'camera')
                               : null,
                           elevation: 0,
@@ -214,10 +235,11 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         ),
                         FloatingActionButton(
                           heroTag: 'send',
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Theme.of(context).accentColor,
                           tooltip: S.of(context).send,
                           onPressed: () =>
-                              BlocProvider.of<WriteStatementFgrCubit>(context).sendStatement(),
+                              BlocProvider.of<WriteStatementFgrCubit>(context)
+                                  .sendStatement(),
                           elevation: 0,
                           child: Icon(Icons.send_rounded),
                         )

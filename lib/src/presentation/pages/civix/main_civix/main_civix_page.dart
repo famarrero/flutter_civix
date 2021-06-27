@@ -39,15 +39,15 @@ class _MainCivixPageState extends State<MainCivixPage> {
                     key: context.read<SideBarCubit>().scaffoldKey,
                     drawer: (Responsive.isDesktop(context))
                         ? null
-                        : const SideBar(),
+                        : const SideBarCivix(),
                     body: Row(
                       children: [
                         // We want this side menu only for large screen
-                        if (Responsive.isDesktop(context)) const SideBar(),
+                        if (Responsive.isDesktop(context)) const SideBarCivix(),
                         Expanded(
                           child: Column(
                             children: [
-                              const Navbar(),
+                              const NavBarCivix(),
                               const Expanded(child: Center(child: AutoRouter()))
                             ],
                           ),
@@ -59,7 +59,9 @@ class _MainCivixPageState extends State<MainCivixPage> {
                       child: FloatingActionButton(
                         child: Icon(Icons.home_filled),
                         backgroundColor: !_iAmAlreadyInThisPage(
-                            context, InstitutionsListPageRoute.name) ? Colors.blueGrey : Colors.blue,
+                                context, InstitutionsListPageRoute.name)
+                            ? Colors.blueGrey
+                            : Colors.blue,
                         onPressed: _iAmAlreadyInThisPage(
                                 context, InstitutionsListPageRoute.name)
                             ? null
@@ -67,7 +69,7 @@ class _MainCivixPageState extends State<MainCivixPage> {
                                 setState(() {
                                   _bottomNavBarIndex = -1;
                                 });
-                                _onPressedBottomNavItem(
+                                _navigateBottomNavBar(
                                     context, InstitutionsListPageRoute());
                               },
                       ),
@@ -95,8 +97,9 @@ class _MainCivixPageState extends State<MainCivixPage> {
                                 ? -1
                                 : _bottomNavBarIndex,
                             onTap: (index) => setState(() {
+                              print(index);
                               _bottomNavBarIndex = index;
-                              _onPressedBottomNavItem2(context, index);
+                              _onPressedBottomNavItem(context, index);
                             }),
                           ),
                         ]))),
@@ -128,32 +131,15 @@ class _MainCivixPageState extends State<MainCivixPage> {
         routeName;
   }
 
-  void _onPressedBottomNavItem2(BuildContext context, int index) {
-    PageRouteInfo? routeInfo;
+  void _onPressedBottomNavItem(BuildContext context, int index) {
     if (index == 0) {
-      _onPressedBottomNavItem(context, QuickAccessPageRoute());
+      _navigateBottomNavBar(context, QuickAccessPageRoute());
     } else if (index == 1) {
-      _onPressedBottomNavItem(context, MyShipmentsPageRoute());
-    }
-
-    final currentRouteName =
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
-            ?.current
-            .name;
-    if (currentRouteName == InstitutionsListPageRoute.name) {
-      AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
-          .push(routeInfo!);
-    } else {
-      if (routeInfo!.routeName != InstitutionsListPageRoute.name) {
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
-            .replace(routeInfo);
-      } else {
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.pop();
-      }
+      _navigateBottomNavBar(context, MyShipmentsPageRoute());
     }
   }
 
-  void _onPressedBottomNavItem(BuildContext context, PageRouteInfo routeInfo) {
+  void _navigateBottomNavBar(BuildContext context, PageRouteInfo routeInfo) {
     final currentRouteName =
         AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
             ?.current

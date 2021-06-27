@@ -6,9 +6,10 @@ import 'package:flutter_civix/src/presentation/widgets/custom_container_state.da
 
 class StatementItemListWidget extends StatelessWidget {
   final StatementFGR statement;
+  final Color? colorIcons;
 
   const StatementItemListWidget({
-    required this.statement,
+    required this.statement, this.colorIcons
   });
 
   @override
@@ -49,7 +50,7 @@ class StatementItemListWidget extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.vpn_key,
-                            color: Colors.blue,
+                            color: colorIcons,
                           ),
                           SizedBox(width: 10),
                           Expanded(
@@ -66,7 +67,7 @@ class StatementItemListWidget extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.short_text,
-                            color: Colors.blue,
+                            color: colorIcons,
                           ),
                           SizedBox(width: 10),
                           Expanded(
@@ -83,7 +84,7 @@ class StatementItemListWidget extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.date_range,
-                            color: Colors.blue,
+                            color: colorIcons,
                           ),
                           SizedBox(width: 10),
                           Expanded(

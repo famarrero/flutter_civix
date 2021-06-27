@@ -6,9 +6,10 @@ import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ShowPromoters extends StatelessWidget {
-  final List<PromoterFRG> _promoters;
+  final List<PromoterFRG> promoters;
+  final Color colorIcons;
 
-  ShowPromoters(this._promoters);
+  ShowPromoters({required this.promoters, required this.colorIcons});
 
   @override
   Widget build(BuildContext context) {
@@ -32,41 +33,51 @@ class ShowPromoters extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 shrinkWrap: true,
                 physics: ClampingScrollPhysics(),
-                itemCount: _promoters.length,
+                itemCount: promoters.length,
                 itemBuilder: (BuildContext context, int index) {
                   String title = '';
-                  if (_promoters[index].firstName != null &&
-                      _promoters[index].firstName!.isNotEmpty) {
-                    title = '${_promoters[index].firstName} ';
+                  if (promoters[index].firstName != null &&
+                      promoters[index].firstName!.isNotEmpty) {
+                    title = '${promoters[index].firstName} ';
                   }
-                  if (_promoters[index].firstLastName != null &&
-                      _promoters[index].firstLastName!.isNotEmpty) {
-                    title += '${_promoters[index].firstLastName!}';
+                  if (promoters[index].firstLastName != null &&
+                      promoters[index].firstLastName!.isNotEmpty) {
+                    title += '${promoters[index].firstLastName!}';
                   }
                   return Row(
                     children: [
-                      Icon(FontAwesomeIcons.addressBook, size: 25, color: Colors.blue),
+                      Icon(FontAwesomeIcons.addressBook, size: 25,
+                          color: colorIcons),
                       SizedBox(width: 18),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (title != '')
-                              Text(title, style: TextStyle(fontSize: Constants.normalTextSize, color: Colors.black54)),
+                              Text(title, style: TextStyle(
+                                  fontSize: Constants.normalTextSize,
+                                  color: Colors.black54)),
                             SizedBox(height: 2),
                             Text(
-                                '${_promoters[index].municipalityName}, ${_promoters[index].provinceName}',
-                                style: TextStyle(fontSize: Constants.normalTextSize, color: Colors.black54)),
+                                '${promoters[index]
+                                    .municipalityName}, ${promoters[index]
+                                    .provinceName}',
+                                style: TextStyle(
+                                    fontSize: Constants.normalTextSize,
+                                    color: Colors.black54)),
                           ],
                         ),
                       ),
                       InkWell(
-                        child: Icon(FontAwesomeIcons.eye, size: 25, color: Colors.blue),
+                        child: Icon(
+                            FontAwesomeIcons.eye, size: 25, color: colorIcons),
                         onTap: () {
                           showDialog<void>(
                               context: context,
-                              builder: (BuildContext dialogContext) => ShowPromoterDialog(
-                                    promoterFRG: _promoters[index],
+                              builder: (BuildContext dialogContext) =>
+                                  ShowPromoterDialog(
+                                    promoterFRG: promoters[index],
+                                    colorIcons: Theme.of(context).accentColor,
                                   ));
                         },
                       ),

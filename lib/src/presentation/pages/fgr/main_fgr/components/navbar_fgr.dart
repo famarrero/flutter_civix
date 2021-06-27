@@ -1,20 +1,20 @@
 import 'package:auto_route/auto_route.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
-import 'package:flutter_civix/src/core/utils/responsive.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
-import 'package:flutter_civix/src/presentation/pages/civix/main_civix/cubit/sidebar_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/cubit/sidebar_fgr_cubit.dart';
 import 'package:provider/provider.dart';
 
-class NavBarCivix extends StatefulWidget {
-  const NavBarCivix();
+
+class NavBarFgr extends StatefulWidget {
+  const NavBarFgr();
 
   @override
-  _NavBarCivixState createState() => _NavBarCivixState();
+  _NavBarFgrState createState() => _NavBarFgrState();
 }
 
-class _NavBarCivixState extends State<NavBarCivix> {
+class _NavBarFgrState extends State<NavBarFgr> {
   bool get showNab {
     final _currentPage =
         AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
@@ -61,35 +61,34 @@ class _NavBarCivixState extends State<NavBarCivix> {
       decoration: _buildBoxDecoration(),
       child: Row(
         children: [
-          if (!Responsive.isDesktop(context))
-            IconButton(
-                onPressed: () {
-                  context.read<SideBarCubit>().openMovilDrawable();
-                },
-                icon: const Icon(Icons.menu_outlined),
-                color: Colors.white),
-          const SizedBox(
-            width: 10,
-          ),
-          Text(getLocalizedTitleForRoute(context, data?.name ?? ''),
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20)),
-          const Spacer(),
+          SizedBox(width: 4),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.arrow_back, color: Colors.white)),
+          Spacer(),
           IconButton(
               onPressed: () {},
               icon: const Icon(Icons.notifications, color: Colors.white)),
           IconButton(
               onPressed: () {},
               icon: const Icon(Icons.sync, color: Colors.white)),
+          IconButton(
+              icon: Icon(Icons.qr_code_scanner, color: Colors.white),
+              onPressed: () {}),
+          IconButton(
+              icon: Icon(Icons.menu_outlined, color: Colors.white),
+              onPressed: () {
+                context.read<SideBarFgrCubit>().openMovilDrawable();
+              })
         ],
       ),
     );
   }
 
   BoxDecoration _buildBoxDecoration() => BoxDecoration(
-      color: Theme.of(context).primaryColor,
+      color: kFgrPrimaryColor, //Color fgr
       // gradient: LinearGradient(colors: [Color(0xff092044), Color(0xff092042)]),
       boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)]);
 }

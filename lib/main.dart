@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
@@ -28,9 +29,9 @@ class MyApp extends StatelessWidget {
                 routerDelegate: _appRouter.delegate(),
                 title: 'Flutter Civix Demo',
                 theme: ThemeData(
-                  // primaryColor: Color(0xff0c4d93),
+                  primaryColor: kCivixPrimaryColor,
                   // accentColor: Color(0xff041a2d),
-                  primarySwatch: Colors.blue,
+                  // primarySwatch: Colors.yellow,
                 ),
                 // home: MainFGR(),
                 supportedLocales: S.delegate.supportedLocales,

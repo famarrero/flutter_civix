@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
@@ -9,7 +10,6 @@ import 'package:flutter_civix/src/presentation/widgets/statement_item_list_widge
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ListStatementFgrPage extends StatelessWidget {
-
   final ListStatementFgrCubit bloc;
 
   ListStatementFgrPage({required this.bloc});
@@ -18,7 +18,12 @@ class ListStatementFgrPage extends StatelessWidget {
   Widget build(BuildContext context) {
     bloc.watchAllStatementsFgr();
 
-    return Scaffold(appBar: _buildAppBar(context), body: _buildBody());
+    return Theme(
+        data: ThemeData(
+            primaryColor: kFgrPrimaryColor,
+            accentColor: kFgrSecondaryColor,
+            primarySwatch: kFgrPrimaryMaterialColor),
+        child: Scaffold(appBar: _buildAppBar(context), body: _buildBody()));
   }
 
   _buildAppBar(BuildContext context) {
@@ -81,7 +86,7 @@ class ListStatementFgrPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   StatementFGR statement = snapshot.data![index];
                   return InkWell(
-                    child: StatementItemListWidget(statement: statement),
+                    child: StatementItemListWidget(statement: statement, colorIcons: kFgrSecondaryColor,),
                     onTap: () {
                       AutoRouter.of(context).push(
                           ShowStatementFgrPageRoute(id: statement.ticked!));
