@@ -1109,6 +1109,186 @@ class S {
       args: [],
     );
   }
+
+  /// `Services`
+  String get services {
+    return Intl.message(
+      'Services',
+      name: 'services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History`
+  String get history {
+    return Intl.message(
+      'History',
+      name: 'history',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mission and functions`
+  String get missionAndFunctions {
+    return Intl.message(
+      'Mission and functions',
+      name: 'missionAndFunctions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Structure`
+  String get structure {
+    return Intl.message(
+      'Structure',
+      name: 'structure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact us`
+  String get contactUs {
+    return Intl.message(
+      'Contact us',
+      name: 'contactUs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Promoters`
+  String get promoters {
+    return Intl.message(
+      'Promoters',
+      name: 'promoters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Promoter`
+  String get promoter {
+    return Intl.message(
+      'Promoter',
+      name: 'promoter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statements list`
+  String get statementsList {
+    return Intl.message(
+      'Statements list',
+      name: 'statementsList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consult another`
+  String get consultAnother {
+    return Intl.message(
+      'Consult another',
+      name: 'consultAnother',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want save this statement in the application?`
+  String get askSaveStatementInApp {
+    return Intl.message(
+      'Do you want save this statement in the application?',
+      name: 'askSaveStatementInApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consulting...`
+  String get consulting {
+    return Intl.message(
+      'Consulting...',
+      name: 'consulting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ups, there are no statements to show!`
+  String get noStatementsToShow {
+    return Intl.message(
+      'Ups, there are no statements to show!',
+      name: 'noStatementsToShow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ups, no statement to show!`
+  String get noStatementToShow {
+    return Intl.message(
+      'Ups, no statement to show!',
+      name: 'noStatementToShow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Response`
+  String get response {
+    return Intl.message(
+      'Response',
+      name: 'response',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subject`
+  String get subject {
+    return Intl.message(
+      'Subject',
+      name: 'subject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something wrong!`
+  String get somethingWrong {
+    return Intl.message(
+      'Something wrong!',
+      name: 'somethingWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sending statement`
+  String get sendingStatement {
+    return Intl.message(
+      'Sending statement',
+      name: 'sendingStatement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Processing image`
+  String get processingImage {
+    return Intl.message(
+      'Processing image',
+      name: 'processingImage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

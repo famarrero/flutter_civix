@@ -14,6 +14,7 @@ class CustomCard extends StatelessWidget {
     this.margin,
     this.elevation,
     this.constraints,
+    this.onTap
   }) : super(key: key);
   final Widget? child;
   final Color? backgroundColor;
@@ -25,6 +26,7 @@ class CustomCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final double? elevation;
   final BoxConstraints? constraints;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,7 +51,10 @@ class CustomCard extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           elevation: elevation ?? 0.0,
-          child: child,
+          child: InkWell(
+              borderRadius: borderRadius ?? const BorderRadius.all(Radius.circular(20)),
+              onTap: onTap,
+              child: child),
         ),
       ),
     );

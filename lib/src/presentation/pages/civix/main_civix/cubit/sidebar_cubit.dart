@@ -10,7 +10,7 @@ class SideBarCubit extends Cubit<bool> {
 
   GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;
 
-  void openMovilDrawable() {
+  void openMobilDrawable() {
     if (!_scaffoldKey.currentState!.isDrawerOpen) {
       _scaffoldKey.currentState!.openDrawer();
       emit(true);

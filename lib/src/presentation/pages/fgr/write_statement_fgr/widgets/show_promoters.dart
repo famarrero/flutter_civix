@@ -10,8 +10,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ShowPromoters extends StatelessWidget {
   final BuiltList<PromoterFRG> _promoters;
+  final Color colorIcons;
 
-  ShowPromoters(this._promoters);
+  ShowPromoters(this._promoters, this.colorIcons);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class ShowPromoters extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               children: [
-                Icon(FontAwesomeIcons.addressBook, size: 25, color: Colors.blue),
+                Icon(FontAwesomeIcons.addressBook, size: 25, color: colorIcons),
                 SizedBox(width: 18),
                 Expanded(
                   child: Column(
@@ -51,7 +52,7 @@ class ShowPromoters extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  child: Icon(FontAwesomeIcons.edit, size: 25, color: Colors.blue),
+                  child: Icon(FontAwesomeIcons.edit, size: 25, color: colorIcons),
                   onTap: () {
                     showDialog<void>(
                         context: context,

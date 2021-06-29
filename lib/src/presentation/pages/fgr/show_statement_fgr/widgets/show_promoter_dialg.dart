@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_civix/src/core/constants/constants.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
+import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -40,9 +41,9 @@ class ShowPromoterDialog extends StatelessWidget {
       municipalityAndProvinceToShow += ', ' + provinceName;
 
     return CustomDialogBox(
-        title: 'Promoter',
+        title: S.of(context).promoter,
         icon: FontAwesomeIcons.addressBook,
-        colorIcon: Theme.of(context).accentColor,
+        colorIcon: colorIcons,
         sizeIcon: 30,
         body: Column(
           children: [

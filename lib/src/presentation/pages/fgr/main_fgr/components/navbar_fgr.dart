@@ -46,7 +46,7 @@ class _NavBarFgrState extends State<NavBarFgr> {
       case AboutUsPageRoute.name:
         return localized.aboutUs;
       default:
-        return localized.home;
+        return localized.mainFGR;
     }
   }
 

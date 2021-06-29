@@ -7,9 +7,11 @@ import 'package:flutter_civix/src/presentation/widgets/custom_container_state.da
 class StatementResponseConsultWidget extends StatelessWidget {
   
   final StatementResponseConsult statement;
+  final Color colorIcons;
 
   const StatementResponseConsultWidget({
     required this.statement,
+    required this.colorIcons
   });
 
   @override
@@ -54,7 +56,7 @@ class StatementResponseConsultWidget extends StatelessWidget {
                         SizedBox(width: 10),
                         Icon(
                           Icons.vpn_key,
-                          color: Colors.blue,
+                          color: colorIcons,
                         ),
                         SizedBox(width: 10),
                         Expanded(
@@ -71,7 +73,7 @@ class StatementResponseConsultWidget extends StatelessWidget {
                         SizedBox(width: 10),
                         Icon(
                           Icons.wrap_text,
-                          color: Colors.blue,
+                          color: colorIcons,
                         ),
                         SizedBox(width: 10),
                         Expanded(
@@ -88,7 +90,7 @@ class StatementResponseConsultWidget extends StatelessWidget {
                         SizedBox(width: 10),
                         Icon(
                           Icons.date_range,
-                          color: Colors.blue,
+                          color: colorIcons,
                         ),
                         SizedBox(width: 10),
                         Expanded(

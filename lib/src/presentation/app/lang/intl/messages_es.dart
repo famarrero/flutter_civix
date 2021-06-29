@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Civix"),
         "appSlogan": MessageLookupByLibrary.simpleMessage(
             "Gobierno electrónico más cerca de ti"),
+        "askSaveStatementInApp": MessageLookupByLibrary.simpleMessage(
+            "¿Desea guardar este planteamiento en la aplicación?"),
         "attachments": MessageLookupByLibrary.simpleMessage("Adjuntos"),
         "call": MessageLookupByLibrary.simpleMessage("Llamar"),
         "camera": MessageLookupByLibrary.simpleMessage("Camara"),
@@ -40,8 +42,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "congrats": MessageLookupByLibrary.simpleMessage("¡Felicidades!"),
         "connecting": MessageLookupByLibrary.simpleMessage("Conectando..."),
         "consult": MessageLookupByLibrary.simpleMessage("Consultar"),
+        "consultAnother":
+            MessageLookupByLibrary.simpleMessage("Consultar otro"),
         "consultState":
             MessageLookupByLibrary.simpleMessage("Consultar estado"),
+        "consulting": MessageLookupByLibrary.simpleMessage("Consultando..."),
+        "contactUs": MessageLookupByLibrary.simpleMessage("Contáctenos"),
         "create": MessageLookupByLibrary.simpleMessage("Crear"),
         "creating": MessageLookupByLibrary.simpleMessage("Creando"),
         "delete": MessageLookupByLibrary.simpleMessage("Borrar"),
@@ -81,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "frequentQuestions":
             MessageLookupByLibrary.simpleMessage("Preguntas frecuentes"),
         "gallery": MessageLookupByLibrary.simpleMessage("Galería"),
+        "history": MessageLookupByLibrary.simpleMessage("Historia"),
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "id": MessageLookupByLibrary.simpleMessage("Carné de identidad"),
         "idCorrectValidator": MessageLookupByLibrary.simpleMessage(
@@ -93,6 +100,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "location": MessageLookupByLibrary.simpleMessage("Ubicación"),
         "main": MessageLookupByLibrary.simpleMessage("Principal"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Principal FGR"),
+        "missionAndFunctions":
+            MessageLookupByLibrary.simpleMessage("Misión y funciones"),
         "more": MessageLookupByLibrary.simpleMessage("Más"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipio"),
         "municipalityRequiredValidator":
@@ -106,6 +115,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "No se seleccionó ninguna imagen"),
         "noImageTaked":
             MessageLookupByLibrary.simpleMessage("No se tomó ninguna imagen"),
+        "noStatementToShow": MessageLookupByLibrary.simpleMessage(
+            "¡Ups, no hay ningún planteamiento!"),
+        "noStatementsToShow": MessageLookupByLibrary.simpleMessage(
+            "¡Ups, no hay ningún planteamiento!"),
         "nothingToSave":
             MessageLookupByLibrary.simpleMessage("No hay nada que guardar"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
@@ -122,12 +135,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "pressAgainToExit": MessageLookupByLibrary.simpleMessage(
             "Presione nuevamente para salir"),
         "price": MessageLookupByLibrary.simpleMessage("Precio"),
+        "processingImage":
+            MessageLookupByLibrary.simpleMessage("Procesando imagen"),
         "profile": MessageLookupByLibrary.simpleMessage("Perfil"),
+        "promoter": MessageLookupByLibrary.simpleMessage("Promovente"),
+        "promoters": MessageLookupByLibrary.simpleMessage("Promoventes"),
         "province": MessageLookupByLibrary.simpleMessage("Provincia"),
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("La provincia es requerida"),
         "quickAccess": MessageLookupByLibrary.simpleMessage("Acceso rápido"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "response": MessageLookupByLibrary.simpleMessage("Respuesta"),
         "save": MessageLookupByLibrary.simpleMessage("Guardar"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Guardar borrador"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Buscar.."),
@@ -139,17 +157,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "secondNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El segundo nombre debe ser un nombre válido"),
         "send": MessageLookupByLibrary.simpleMessage("Enviar"),
+        "sendingStatement":
+            MessageLookupByLibrary.simpleMessage("Enviando planteamiento"),
+        "services": MessageLookupByLibrary.simpleMessage("Servicios"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
         "share": MessageLookupByLibrary.simpleMessage("Compartir"),
         "showingSadevStatement": MessageLookupByLibrary.simpleMessage(
             "Mostrando planteamiento guardado"),
         "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
+        "somethingWrong":
+            MessageLookupByLibrary.simpleMessage("¡Hay algo mal!"),
         "statement": MessageLookupByLibrary.simpleMessage("Planteamiento"),
         "statementSaved":
             MessageLookupByLibrary.simpleMessage("Planteamiento guardado"),
         "statementValidator": MessageLookupByLibrary.simpleMessage(
             "El planteamiento no puede estar vacío"),
         "statements": MessageLookupByLibrary.simpleMessage("Planteamientos"),
+        "statementsList":
+            MessageLookupByLibrary.simpleMessage("Listado de planteamientos"),
+        "structure": MessageLookupByLibrary.simpleMessage("Estructura"),
+        "subject": MessageLookupByLibrary.simpleMessage("Asunto"),
         "subjectValidator": MessageLookupByLibrary.simpleMessage(
             "El asunto no puede estar vacío"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Tema oscuro"),

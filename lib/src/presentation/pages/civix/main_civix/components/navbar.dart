@@ -64,7 +64,7 @@ class _NavBarCivixState extends State<NavBarCivix> {
           if (!Responsive.isDesktop(context))
             IconButton(
                 onPressed: () {
-                  context.read<SideBarCubit>().openMovilDrawable();
+                  context.read<SideBarCubit>().openMobilDrawable();
                 },
                 icon: const Icon(Icons.menu_outlined),
                 color: Colors.white),

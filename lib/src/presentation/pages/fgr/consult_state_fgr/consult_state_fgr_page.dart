@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_civix/src/core/constants/colors.dart';
-import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
-import 'package:flutter_civix/src/domain/entities/statement_response_consult.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
@@ -10,7 +8,6 @@ import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_elevated_button.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_reactive_text_field.dart';
 import 'package:flutter_civix/src/presentation/widgets/dialog_progress_widget.dart';
-import 'package:flutter_civix/src/presentation/widgets/statement_item_list_widget.dart';
 import 'package:flutter_civix/src/presentation/widgets/statement_response_consult_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -26,7 +23,7 @@ class ConsultStateFgrPage extends StatelessWidget {
       data: ThemeData(
           primaryColor: kFgrPrimaryColor,
           accentColor: kFgrSecondaryColor,
-          primarySwatch: kFgrPrimaryMaterialColor),
+          primarySwatch: kFgrSecondaryMaterialColor),
       child: Scaffold(
         appBar: _buildAppBar(context),
         body: _buildBody(context),
@@ -58,20 +55,20 @@ class ConsultStateFgrPage extends StatelessWidget {
                 context: context,
                 barrierDismissible: false,
                 builder: (BuildContext dialogContext) =>
-                    DialogProgressWidget('Consulting...'));
+                    DialogProgressWidget(S.of(context).consulting));
           }
-          if (state.statmentsResponseConsult != null) {
+          if (state.statementsResponseConsult != null) {
             Navigator.of(context).pop();
           }
         }, builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-            child: Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
-                children: [
-                  SizedBox(height: 25),
+            child: ListView(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              children: [
+                SizedBox(height: 25),
+                if (state.showForm)
                   CustomCard(
                     child: Column(
                       children: [
@@ -97,53 +94,58 @@ class ConsultStateFgrPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 4),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            CustomElevatedButton(
-                                buttonText: S.of(context).consult,
-                                onPressed: () =>
-                                    BlocProvider.of<ConsultStateFgrCubit>(
-                                            context)
-                                        .consultState()),
-                            SizedBox(width: 4),
-                          ],
-                        ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 25),
-                  _buildResponse(context, state)
-                ],
-              ),
+                SizedBox(height: 4),
+                if (state.showForm)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CustomElevatedButton(
+                          buttonText: S.of(context).consult,
+                          onPressed: () =>
+                              BlocProvider.of<ConsultStateFgrCubit>(context)
+                                  .consultState()),
+                      SizedBox(width: 4),
+                    ],
+                  ),
+                SizedBox(height: 25),
+                _buildResponse(context, state)
+              ],
             ),
           );
         }));
   }
 
   _buildResponse(BuildContext context, ConsultStateFgrState state) {
-    if (state.statmentsResponseConsult != null) {
+    if (state.statementsResponseConsult != null) {
       return Column(
         children: [
           StatementResponseConsultWidget(
-              statement: state.statmentsResponseConsult!),
+              statement: state.statementsResponseConsult!,
+              colorIcons: Theme.of(context).primaryColor),
           SizedBox(height: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               CustomElevatedButton(
+                  buttonText: S.of(context).consultAnother,
+                  onPressed: () =>
+                      BlocProvider.of<ConsultStateFgrCubit>(context)
+                          .consultAgain()),
+              SizedBox(width: 8),
+              CustomElevatedButton(
                   buttonText: S.of(context).save,
                   onPressed: () => CustomDialogs().customDialogInformation(
                       context: context,
                       icon: Icons.report_gmailerrorred_sharp,
-                      colorIcon: Colors.blue,
-                      title: 'Confirmación!',
-                      message:
-                          '¿Desea guardar este planteamiento en la aplicación?',
-                      buttonPositiveName: 'Guardar',
+                      colorIcon: Theme.of(context).accentColor,
+                      title: S.of(context).confirm,
+                      message: S.of(context).askSaveStatementInApp,
+                      buttonPositiveName: S.of(context).save,
                       buttonPositiveAction: () {},
-                      buttonNegativeName: 'Cancelar')),
+                      buttonNegativeName: S.of(context).cancel)),
             ],
           ),
         ],

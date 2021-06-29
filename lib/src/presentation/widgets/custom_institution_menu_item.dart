@@ -5,12 +5,14 @@ import 'package:flutter_civix/src/domain/entities/institution_menu_item.dart';
 class CustomInstitutionMenuItem extends StatelessWidget {
   final InstitutionMenuItem info;
   final double? iconSize;
+  final Function()? onTap;
 
-  const CustomInstitutionMenuItem({Key? key, required this.info, this.iconSize}) : super(key: key);
+  const CustomInstitutionMenuItem({Key? key, required this.info, this.iconSize, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
+      onTap: onTap,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

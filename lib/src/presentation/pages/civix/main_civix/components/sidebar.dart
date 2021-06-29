@@ -8,15 +8,17 @@ import 'package:flutter_civix/src/presentation/pages/civix/main_civix/cubit/side
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'sidebar_menu_item.dart';
-import 'sidebar_text_separator.dart';
+import '../../../../widgets/sidebar_menu_item.dart';
+import '../../../../widgets/sidebar_text_separator.dart';
 
 class SideBarCivix extends StatelessWidget {
   const SideBarCivix();
 
   @override
   Widget build(BuildContext context) {
-    final routeName = AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)?.current.name;
+    final routeName = AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
+        ?.current
+        .name;
     return Container(
       width: 250,
       height: double.infinity,
@@ -28,14 +30,16 @@ class SideBarCivix extends StatelessWidget {
           const SizedBox(height: 50),
           SideBarTextSeparator(text: S.of(context).main),
           SideBarMenuItem(
-              isActive: routeName == const InstitutionsListPageRoute().routeName,
+              isActive:
+                  routeName == const InstitutionsListPageRoute().routeName,
               text: S.of(context).home,
               icon: Icons.home_outlined,
               onPressed: () {
                 _onPressedItem(context, const InstitutionsListPageRoute());
               }),
           SideBarMenuItem(
-              isActive: routeName == const FrequentQuestionsPageRoute().routeName,
+              isActive:
+                  routeName == const FrequentQuestionsPageRoute().routeName,
               text: S.of(context).frequentQuestions,
               icon: Icons.question_answer_outlined,
               onPressed: () {
@@ -63,7 +67,7 @@ class SideBarCivix extends StatelessWidget {
               icon: Icons.info_outline,
               onPressed: () {
                 _onPressedItem(context, const AboutUsPageRoute());
-              }),          
+              }),
           const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +101,8 @@ class SideBarCivix extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22),
           child: Text(S.of(context).appSlogan,
-              style: TextStyle(color: Colors.white.withOpacity(0.8)), textAlign: TextAlign.center),
+              style: TextStyle(color: Colors.white.withOpacity(0.8)),
+              textAlign: TextAlign.center),
         )
       ],
     );
@@ -105,12 +110,16 @@ class SideBarCivix extends StatelessWidget {
 
   void _onPressedItem(BuildContext context, PageRouteInfo routeInfo) {
     final currentRouteName =
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)?.current.name;
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
+            ?.current
+            .name;
     if (currentRouteName == InstitutionsListPageRoute.name) {
-      AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.push(routeInfo);
+      AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
+          .push(routeInfo);
     } else {
       if (routeInfo.routeName != InstitutionsListPageRoute.name) {
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.replace(routeInfo);
+        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!
+            .replace(routeInfo);
       } else {
         AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)!.pop();
       }
@@ -122,8 +131,8 @@ class SideBarCivix extends StatelessWidget {
   BoxDecoration _buildDecoration(BuildContext context) {
     return BoxDecoration(
         gradient: LinearGradient(
-            begin: Alignment.topCenter, colors: [Color(0xff07396f), Color(
-            0xff0b1a68)]),
+            begin: Alignment.topCenter,
+            colors: [Color(0xff07396f), Color(0xff07396f)]),
         boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 10)]);
   }
 }

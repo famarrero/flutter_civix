@@ -13,16 +13,20 @@ class ConsultStateFgrCubit extends Cubit<ConsultStateFgrState> {
   FormGroup get getconsultStateFgrForm => _consultStateFgrForm;
 
   Future<void> consultState() async {
-    if (_consultStateFgrForm.valid) {     
-      emit(state.copyWith(loading: true));
-      StatementResponseConsult sfgrc =
-          StatementResponseConsult(ticked: '5y4hj5', state: 'EN TRAMITACIÓN', response: null);
+    if (_consultStateFgrForm.valid) {
+      emit(state.copyWith(loading: true, statementsResponseConsult: null));
+      StatementResponseConsult sfgrc = StatementResponseConsult(
+          ticked: '5y4hj5', state: 'EN TRAMITACIÓN', response: null);
       await Future.delayed(Duration(seconds: 1));
 
-      emit(state.copyWith(loading: false, statmentsResponseConsult: sfgrc));
+      emit(state.copyWith(loading: false, statementsResponseConsult: sfgrc, showForm: false));
     } else {
       _consultStateFgrForm.markAllAsTouched();
     }
+  }
+
+  Future<void> consultAgain() async {
+    emit(ConsultStateFgrState.initial());
   }
 }
 
@@ -32,8 +36,8 @@ abstract class FormConsultStateFgr {
   static const tikedRegExp = r'^[0-9 a-z A-Z]{5}$';
 
   static FormGroup get consultStateFgrForm => FormGroup({
-        tiked:
-            FormControl<String>(validators: [Validators.required, Validators.pattern(tikedRegExp)]),
+        tiked: FormControl<String>(
+            validators: [Validators.required, Validators.pattern(tikedRegExp)]),
       });
 
   static const tiked = 'tiked';

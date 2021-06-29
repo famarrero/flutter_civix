@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("Civix"),
         "appSlogan": MessageLookupByLibrary.simpleMessage(
             "Electronic government closer to you"),
+        "askSaveStatementInApp": MessageLookupByLibrary.simpleMessage(
+            "Do you want save this statement in the application?"),
         "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
         "call": MessageLookupByLibrary.simpleMessage("Call"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
@@ -39,7 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "congrats": MessageLookupByLibrary.simpleMessage("Congratulation!"),
         "connecting": MessageLookupByLibrary.simpleMessage("Connecting..."),
         "consult": MessageLookupByLibrary.simpleMessage("Consult"),
+        "consultAnother":
+            MessageLookupByLibrary.simpleMessage("Consult another"),
         "consultState": MessageLookupByLibrary.simpleMessage("Consult state"),
+        "consulting": MessageLookupByLibrary.simpleMessage("Consulting..."),
+        "contactUs": MessageLookupByLibrary.simpleMessage("Contact us"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "creating": MessageLookupByLibrary.simpleMessage("Creating"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -76,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "frequentQuestions":
             MessageLookupByLibrary.simpleMessage("Frequent questions"),
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
+        "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "id": MessageLookupByLibrary.simpleMessage("ID"),
         "idCorrectValidator":
@@ -88,6 +95,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "location": MessageLookupByLibrary.simpleMessage("Location"),
         "main": MessageLookupByLibrary.simpleMessage("Main"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Main FGR"),
+        "missionAndFunctions":
+            MessageLookupByLibrary.simpleMessage("Mission and functions"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipality"),
         "municipalityRequiredValidator": MessageLookupByLibrary.simpleMessage(
@@ -100,6 +109,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "noImageSelected":
             MessageLookupByLibrary.simpleMessage("No image selected"),
         "noImageTaked": MessageLookupByLibrary.simpleMessage("No image taked"),
+        "noStatementToShow":
+            MessageLookupByLibrary.simpleMessage("Ups, no statement to show!"),
+        "noStatementsToShow": MessageLookupByLibrary.simpleMessage(
+            "Ups, there are no statements to show!"),
         "nothingToSave":
             MessageLookupByLibrary.simpleMessage("Nothing to save"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
@@ -116,12 +129,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "pressAgainToExit":
             MessageLookupByLibrary.simpleMessage("Press again to exit"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "processingImage":
+            MessageLookupByLibrary.simpleMessage("Processing image"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "promoter": MessageLookupByLibrary.simpleMessage("Promoter"),
+        "promoters": MessageLookupByLibrary.simpleMessage("Promoters"),
         "province": MessageLookupByLibrary.simpleMessage("Province"),
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("The province is required"),
         "quickAccess": MessageLookupByLibrary.simpleMessage("Quick access"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
+        "response": MessageLookupByLibrary.simpleMessage("Response"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Save eraser"),
         "searchHint": MessageLookupByLibrary.simpleMessage("Search.."),
@@ -133,17 +151,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "secondNameCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The second name name must be a valid name"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
+        "sendingStatement":
+            MessageLookupByLibrary.simpleMessage("Sending statement"),
+        "services": MessageLookupByLibrary.simpleMessage("Services"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "showingSadevStatement":
             MessageLookupByLibrary.simpleMessage("Showing saved statement"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "somethingWrong":
+            MessageLookupByLibrary.simpleMessage("Something wrong!"),
         "statement": MessageLookupByLibrary.simpleMessage("Statement"),
         "statementSaved":
             MessageLookupByLibrary.simpleMessage("Statement saved"),
         "statementValidator": MessageLookupByLibrary.simpleMessage(
             "The statement must o be null"),
         "statements": MessageLookupByLibrary.simpleMessage("Statements"),
+        "statementsList":
+            MessageLookupByLibrary.simpleMessage("Statements list"),
+        "structure": MessageLookupByLibrary.simpleMessage("Structure"),
+        "subject": MessageLookupByLibrary.simpleMessage("Subject"),
         "subjectValidator":
             MessageLookupByLibrary.simpleMessage("The subject must o be null"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Dark Theme"),

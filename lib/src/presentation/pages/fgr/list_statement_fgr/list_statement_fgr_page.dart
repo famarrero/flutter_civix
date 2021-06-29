@@ -22,7 +22,7 @@ class ListStatementFgrPage extends StatelessWidget {
         data: ThemeData(
             primaryColor: kFgrPrimaryColor,
             accentColor: kFgrSecondaryColor,
-            primarySwatch: kFgrPrimaryMaterialColor),
+            primarySwatch: kFgrSecondaryMaterialColor),
         child: Scaffold(appBar: _buildAppBar(context), body: _buildBody()));
   }
 
@@ -86,7 +86,9 @@ class ListStatementFgrPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   StatementFGR statement = snapshot.data![index];
                   return InkWell(
-                    child: StatementItemListWidget(statement: statement, colorIcons: kFgrSecondaryColor,),
+                    child: StatementItemListWidget(
+                        statement: statement,
+                        colorIcons: Theme.of(context).accentColor),
                     onTap: () {
                       AutoRouter.of(context).push(
                           ShowStatementFgrPageRoute(id: statement.ticked!));
@@ -101,7 +103,7 @@ class ListStatementFgrPage extends StatelessWidget {
                   Icon(FontAwesomeIcons.sadTear,
                       size: 50, color: Colors.black45),
                   SizedBox(height: 20),
-                  Text('No hay ningún planteamiento',
+                  Text(S.of(context).noStatementsToShow,
                       style: TextStyle(fontSize: 16))
                 ],
               ),

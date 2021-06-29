@@ -22,10 +22,9 @@ import '../../presentation/pages/civix/settings/settings_page.dart' as _i15;
 import '../../presentation/pages/fgr/consult_state_fgr/consult_state_fgr_page.dart'
     as _i8;
 import '../../presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart'
-    as _i20;
-import '../../presentation/pages/fgr/info_fgr/info_fgr_page.dart' as _i17;
-import '../../presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart'
     as _i19;
+import '../../presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart'
+    as _i18;
 import '../../presentation/pages/fgr/list_statement_fgr/list_statement_fgr_page.dart'
     as _i6;
 import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart' as _i4;
@@ -34,7 +33,7 @@ import '../../presentation/pages/fgr/services_fgr/services_fgr_page.dart'
 import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
     as _i7;
 import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
-    as _i18;
+    as _i17;
 import '../../presentation/pages/fgr/write_statement_fgr/write_statement_fgr_page.dart'
     as _i5;
 
@@ -117,11 +116,6 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return _i16.ServicesFgrPage();
-        }),
-    InfoFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return _i17.InfoFgrPage();
         })
   };
 
@@ -145,8 +139,7 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(MainFgrPageRoute.name, path: 'fgr', children: [
           _i1.RouteConfig('#redirect',
               path: '', redirectTo: 'servicios-fgr', fullMatch: true),
-          _i1.RouteConfig(ServicesFgrPageRoute.name, path: 'servicios-fgr'),
-          _i1.RouteConfig(InfoFgrPageRoute.name, path: 'info-fgr')
+          _i1.RouteConfig(ServicesFgrPageRoute.name, path: 'servicios-fgr')
         ]),
         _i1.RouteConfig(WriteStatementFgrPageRoute.name,
             path: 'redactar-planteamiento-fgr'),
@@ -175,7 +168,7 @@ class MainFgrPageRoute extends _i1.PageRouteInfo {
 
 class WriteStatementFgrPageRoute
     extends _i1.PageRouteInfo<WriteStatementFgrPageRouteArgs> {
-  WriteStatementFgrPageRoute({required _i18.WriteStatementFgrCubit bloc})
+  WriteStatementFgrPageRoute({required _i17.WriteStatementFgrCubit bloc})
       : super(name,
             path: 'redactar-planteamiento-fgr',
             args: WriteStatementFgrPageRouteArgs(bloc: bloc));
@@ -186,12 +179,12 @@ class WriteStatementFgrPageRoute
 class WriteStatementFgrPageRouteArgs {
   const WriteStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i18.WriteStatementFgrCubit bloc;
+  final _i17.WriteStatementFgrCubit bloc;
 }
 
 class ListStatementFgrPageRoute
     extends _i1.PageRouteInfo<ListStatementFgrPageRouteArgs> {
-  ListStatementFgrPageRoute({required _i19.ListStatementFgrCubit bloc})
+  ListStatementFgrPageRoute({required _i18.ListStatementFgrCubit bloc})
       : super(name,
             path: 'planteamientos-fgr',
             args: ListStatementFgrPageRouteArgs(bloc: bloc));
@@ -202,7 +195,7 @@ class ListStatementFgrPageRoute
 class ListStatementFgrPageRouteArgs {
   const ListStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i19.ListStatementFgrCubit bloc;
+  final _i18.ListStatementFgrCubit bloc;
 }
 
 class ShowStatementFgrPageRoute
@@ -223,7 +216,7 @@ class ShowStatementFgrPageRouteArgs {
 
 class ConsultStateFgrPageRoute
     extends _i1.PageRouteInfo<ConsultStateFgrPageRouteArgs> {
-  ConsultStateFgrPageRoute({required _i20.ConsultStateFgrCubit bloc})
+  ConsultStateFgrPageRoute({required _i19.ConsultStateFgrCubit bloc})
       : super(name,
             path: 'consultar-estado-fgr',
             args: ConsultStateFgrPageRouteArgs(bloc: bloc));
@@ -234,7 +227,7 @@ class ConsultStateFgrPageRoute
 class ConsultStateFgrPageRouteArgs {
   const ConsultStateFgrPageRouteArgs({required this.bloc});
 
-  final _i20.ConsultStateFgrCubit bloc;
+  final _i19.ConsultStateFgrCubit bloc;
 }
 
 class InstitutionsListPageRoute extends _i1.PageRouteInfo {
@@ -284,10 +277,4 @@ class ServicesFgrPageRoute extends _i1.PageRouteInfo {
   const ServicesFgrPageRoute() : super(name, path: 'servicios-fgr');
 
   static const String name = 'ServicesFgrPageRoute';
-}
-
-class InfoFgrPageRoute extends _i1.PageRouteInfo {
-  const InfoFgrPageRoute() : super(name, path: 'info-fgr');
-
-  static const String name = 'InfoFgrPageRoute';
 }

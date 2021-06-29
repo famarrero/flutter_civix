@@ -24,19 +24,20 @@ class ShowStatementFgrPage extends StatelessWidget {
       data: ThemeData(
           primaryColor: kFgrPrimaryColor,
           accentColor: kFgrSecondaryColor,
-          primarySwatch: kFgrPrimaryMaterialColor),
+          primarySwatch: kFgrSecondaryMaterialColor),
       child: Scaffold(
           appBar: _buildAppBar(context),
           body: BlocProvider(
-              create: (context) => injector<ShowStatementFgrCubit>()..getStatementFGRById(id),
+              create: (context) =>
+                  injector<ShowStatementFgrCubit>()..getStatementFGRById(id),
               child: BlocBuilder<ShowStatementFgrCubit, ShowStatementFgrState>(
                   builder: (context, state) {
                 if (state.error != null) {
                   return Container();
                 } else if (state.statementsFgr != null) {
-                  return _buildFutureStatement(state.statementsFgr);
+                  return _buildFutureStatement(context, state.statementsFgr);
                 } else
-                  return Center(child: Text('Something wrong'));
+                  return Center(child: Text(S.of(context).somethingWrong));
               }))),
     );
   }
@@ -48,7 +49,8 @@ class ShowStatementFgrPage extends StatelessWidget {
         children: [
           Text(S.of(context).statement),
           SizedBox(height: 4),
-          Text(S.of(context).fgr, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
+          Text(S.of(context).fgr,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300)),
         ],
       ),
       actions: [
@@ -61,7 +63,7 @@ class ShowStatementFgrPage extends StatelessWidget {
     );
   }
 
-  _buildFutureStatement(StatementFGR? statementsFgr) {
+  _buildFutureStatement(BuildContext context, StatementFGR? statementsFgr) {
     Color colorState = Colors.green;
     String textState = 'En tramitación';
     AssetGenImage institutionLogo = Assets.images.marcaAguaFgr;
@@ -69,14 +71,19 @@ class ShowStatementFgrPage extends StatelessWidget {
     if (statementsFgr != null) {
       return ListView(
         children: [
-          _firstCard(colorState, textState, statementsFgr, institutionLogo),
-          _secondCard(statementsFgr),
-          if (statementsFgr.promoters != null && statementsFgr.promoters!.isNotEmpty)
-            ShowPromoters(promoters: statementsFgr.promoters!, colorIcons: kFgrSecondaryColor),
-          _responseCard(statementsFgr),
+          _firstCard(
+              context, colorState, textState, statementsFgr, institutionLogo),
+          _secondCard(context, statementsFgr),
+          if (statementsFgr.promoters != null &&
+              statementsFgr.promoters!.isNotEmpty)
+            ShowPromoters(
+                promoters: statementsFgr.promoters!,
+                colorIcons: Theme.of(context).accentColor),
+          _responseCard(context, statementsFgr),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: ShowFiles(files: statementsFgr.files!, buttonDeleteIsVisible: false),
+            child: ShowFiles(
+                files: statementsFgr.files!, buttonDeleteIsVisible: false),
           ),
         ],
       );
@@ -87,15 +94,15 @@ class ShowStatementFgrPage extends StatelessWidget {
           children: [
             Icon(FontAwesomeIcons.sadTear, size: 50, color: Colors.black45),
             SizedBox(height: 20),
-            Text('Upss, no hay planteamiento!', style: TextStyle(fontSize: 16))
+            Text(S.of(context).noStatementToShow, style: TextStyle(fontSize: 16))
           ],
         ),
       );
     }
   }
 
-  _firstCard(
-      Color colorState, String textState, StatementFGR statement, AssetGenImage institutionLogo) {
+  _firstCard(BuildContext context, Color colorState, String textState,
+      StatementFGR statement, AssetGenImage institutionLogo) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: CustomCardTopRightCorner(
@@ -115,12 +122,13 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.vpn_key,
-                            color: kFgrSecondaryColor,
+                            color: Theme.of(context).accentColor,
                           ),
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(statement.ticked!,
-                                style: TextStyle(color: Colors.black, fontSize: 16)),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16)),
                           ),
                           // Icon(
                           //   Icons.copy,
@@ -135,10 +143,12 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.date_range,
-                            color: kFgrSecondaryColor,
+                            color: Theme.of(context).accentColor,
                           ),
                           SizedBox(width: 10),
-                          Text('07/06/21', style: TextStyle(color: Colors.black, fontSize: 16)),
+                          Text('07/06/21',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 16)),
                         ],
                       ),
                       SizedBox(height: 16),
@@ -147,12 +157,13 @@ class ShowStatementFgrPage extends StatelessWidget {
                           SizedBox(width: 10),
                           Icon(
                             Icons.phone_android,
-                            color: kFgrSecondaryColor,
+                            color: Theme.of(context).accentColor,
                           ),
                           SizedBox(width: 10),
                           Expanded(
                             child: Text('Reception way  Civix',
-                                style: TextStyle(color: Colors.black, fontSize: 16)),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16)),
                           ),
                         ],
                       ),
@@ -170,7 +181,7 @@ class ShowStatementFgrPage extends StatelessWidget {
     );
   }
 
-  _secondCard(StatementFGR statement) {
+  _secondCard(BuildContext context, StatementFGR statement) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: CustomCard(
@@ -181,7 +192,7 @@ class ShowStatementFgrPage extends StatelessWidget {
             SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text('Subject',
+              child: Text(S.of(context).subject,
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.7),
                       fontSize: 16,
@@ -194,12 +205,12 @@ class ShowStatementFgrPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(
                   Icons.short_text,
-                  color: kFgrSecondaryColor,
+                  color: Theme.of(context).accentColor,
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child:
-                      Text(statement.subject!, style: TextStyle(color: Colors.black, fontSize: 16)),
+                  child: Text(statement.subject!,
+                      style: TextStyle(color: Colors.black, fontSize: 16)),
                 ),
                 SizedBox(width: 10),
               ],
@@ -207,7 +218,7 @@ class ShowStatementFgrPage extends StatelessWidget {
             SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text('Statement',
+              child: Text(S.of(context).statement,
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.7),
                       fontSize: 16,
@@ -220,7 +231,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(
                   Icons.wrap_text,
-                  color: kFgrSecondaryColor,
+                  color: Theme.of(context).accentColor,
                 ),
                 SizedBox(width: 10),
                 Expanded(
@@ -237,7 +248,7 @@ class ShowStatementFgrPage extends StatelessWidget {
     );
   }
 
-  _responseCard(StatementFGR statement) {
+  _responseCard(BuildContext context, StatementFGR statement) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: CustomCard(
@@ -248,7 +259,7 @@ class ShowStatementFgrPage extends StatelessWidget {
             SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Text('Response',
+              child: Text(S.of(context).response,
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.7),
                       fontSize: 16,
@@ -261,7 +272,7 @@ class ShowStatementFgrPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Icon(
                   Icons.wrap_text,
-                  color: kFgrSecondaryColor,
+                  color: Theme.of(context).accentColor,
                 ),
                 SizedBox(width: 10),
                 Expanded(
@@ -279,54 +290,3 @@ class ShowStatementFgrPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-  // _buildStreamStatement(Stream<StatementFGR?> statementsFgr) {
-  //   Color colorState = Colors.green;
-  //   String textState = 'En tramitación';
-  //   AssetGenImage institutionLogo = Assets.images.marcaAguaFgr;
-  //   return StreamBuilder(
-  //     stream: statementsFgr,
-  //     builder: (context, AsyncSnapshot<StatementFGR?> snapshot) {
-  //       if (snapshot.hasData) {
-  //         StatementFGR? statement = snapshot.data;
-  //         if (statement != null) {
-  //           return ListView(
-  //             children: [
-  //               _firstCard(colorState, textState, statement, institutionLogo),
-  //               _secondCard(statement),
-  //               _responseCard(statement),
-  //               ShowFiles(files: statement.files!, buttonDeleteIsVisible: false),
-  //               // FutureBuilder<List<File>>(
-  //               //   future: _checkIfFilesExists(statement.files!),
-  //               //   builder: (BuildContext context,
-  //               //       AsyncSnapshot<List<File>> snapshot) {
-  //               //     if (snapshot.data != null)
-  //               //       return ShowFiles(
-  //               //           files: snapshot.data!, buttonDeleteIsVisible: false);
-  //               //     else
-  //               //       return Container();
-  //               //   },
-  //               // ),
-  //             ],
-  //           );
-  //         } else {
-  //           return Center(
-  //             child: Column(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(FontAwesomeIcons.sadTear, size: 50, color: Colors.black45),
-  //                 SizedBox(height: 20),
-  //                 Text('Upss, no hay planteamiento!', style: TextStyle(fontSize: 16))
-  //               ],
-  //             ),
-  //           );
-  //         }
-  //       } else {
-  //         return Center(child: CircularProgressIndicator());
-  //       }
-  //     },
-  //   );
-  // }

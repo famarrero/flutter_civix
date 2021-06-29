@@ -1,4 +1,3 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,18 +7,10 @@ import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
-import 'package:flutter_civix/src/presentation/pages/civix/main_civix/components/sidebar.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart';
-import 'package:flutter_civix/src/presentation/pages/fgr/info_fgr/info_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/components/navbar_fgr.dart';
-import 'package:flutter_civix/src/presentation/pages/fgr/services_fgr/services_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
-import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';
-import 'package:flutter_civix/src/presentation/widgets/custom_carousel_slider.dart';
-import 'package:flutter_civix/src/presentation/widgets/custom_grid_institution_options.dart';
-import 'package:flutter_civix/src/domain/entities/institution_menu_item.dart';
-import 'package:flutter_civix/src/presentation/widgets/custom_institution_menu_item.dart';
 import 'package:flutter_civix/src/presentation/widgets/headers.dart';
 
 import 'components/sidebar_fgr.dart';
@@ -54,30 +45,19 @@ class _ScaffoldMainFGRPage extends StatefulWidget {
 
 class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
   bool? checkboxValue = false;
-  int _bottomNavBarIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData(
-        primaryColor: kFgrPrimaryColor,
-        primarySwatch: kFgrPrimaryMaterialColor
-      ),
+          primaryColor: kFgrPrimaryColor,
+          accentColor: kFgrSecondaryColor,
+          primarySwatch: kFgrSecondaryMaterialColor),
       child: Container(
-        color: kFgrSecondaryColor,
+        color: kFgrPrimaryColor,
         child: SafeArea(
           child: Scaffold(
             key: context.read<SideBarFgrCubit>().scaffoldKey,
-            // appBar: AppBar(
-            //   elevation: 0,
-            //   // title: Text('Servicios'),
-            //   actions: [
-            //     IconButton(
-            //         onPressed: () {}, icon: const Icon(Icons.notifications)),
-            //     IconButton(onPressed: () {}, icon: const Icon(Icons.sync)),
-            //     IconButton(icon: Icon(Icons.qr_code_scanner), onPressed: () {})
-            //   ],
-            // ),
             endDrawer: SideBarFgr(),
             body: Column(
               children: [
@@ -86,30 +66,6 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
                 Expanded(child: AutoRouter()),
               ],
             ),
-            // bottomNavigationBar: AnimatedContainer(
-            //     duration: const Duration(milliseconds: 300),
-            //     height: showBottomNavBar ? kToolbarHeight : 0,
-            //     width: double.infinity,
-            //     child: Wrap(children: [
-            //       AnimatedBottomNavigationBar(
-            //         icons: [Icons.dashboard_outlined, Icons.info_outline],
-            //         activeColor: Colors.blue,
-            //         inactiveColor: Colors.blueGrey,
-            //         gapLocation: GapLocation.center,
-            //         notchSmoothness: NotchSmoothness.softEdge,
-            //         leftCornerRadius: 32,
-            //         rightCornerRadius: 32,
-            //         activeIndex: _iAmAlreadyInThisPage(
-            //                 context, ServicesFgrPageRoute.name)
-            //             ? 0
-            //             : 1,
-            //         onTap: (index) => setState(() {
-            //           print(index);
-            //           _bottomNavBarIndex = index;
-            //           _onPressedBottomNavItem(context, index);
-            //         }),
-            //       ),
-            //     ]))
           ),
         ),
       ),
@@ -136,30 +92,30 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
         routeName;
   }
 
-  void _onPressedBottomNavItem(BuildContext context, int index) {
-    if (index == 0) {
-      if (!_iAmAlreadyInThisPage(context, ServicesFgrPageRoute.name))
-        _navigateBottomNavBar(context, ServicesFgrPageRoute());
-    } else if (index == 1) {
-      _navigateBottomNavBar(context, InfoFgrPageRoute());
-    }
-  }
+  // void _onPressedBottomNavItem(BuildContext context, int index) {
+  //   if (index == 0) {
+  //     if (!_iAmAlreadyInThisPage(context, ServicesFgrPageRoute.name))
+  //       _navigateBottomNavBar(context, ServicesFgrPageRoute());
+  //   } else if (index == 1) {
+  //     _navigateBottomNavBar(context, InfoFgrPageRoute());
+  //   }
+  // }
 
-  void _navigateBottomNavBar(BuildContext context, PageRouteInfo routeInfo) {
-    final currentRouteName =
-        AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)?.current.name;
-    if (currentRouteName == ServicesFgrPageRoute.name) {
-      AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!.push(routeInfo);
-    } else {
-      if (routeInfo.routeName != ServicesFgrPageRoute.name) {
-        AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!
-            .replace(routeInfo);
-      } else {
-        AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!.pop();
-      }
-    }
-  }
-}
+//   void _navigateBottomNavBar(BuildContext context, PageRouteInfo routeInfo) {
+//     final currentRouteName =
+//         AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)?.current.name;
+//     if (currentRouteName == ServicesFgrPageRoute.name) {
+//       AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!.push(routeInfo);
+//     } else {
+//       if (routeInfo.routeName != ServicesFgrPageRoute.name) {
+//         AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!
+//             .replace(routeInfo);
+//       } else {
+//         AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!.pop();
+//       }
+//     }
+//   }
+ }
 
 class InstitutionHeader extends StatelessWidget {
   const InstitutionHeader({
@@ -175,7 +131,7 @@ class InstitutionHeader extends StatelessWidget {
         // color: Color(0xff1f2749),
         child: Stack(
           children: [
-            HeaderWave(context, kFgrPrimaryColor),
+            HeaderWave(context, Theme.of(context).primaryColor),
             Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

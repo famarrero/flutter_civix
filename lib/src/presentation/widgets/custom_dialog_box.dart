@@ -46,56 +46,54 @@ class CustomDialogBox extends StatelessWidget {
   _contentBox(context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 28),
-      child: Expanded(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 30),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(width: 37),
-                Expanded(
-                  child: Text(
-                    title.toUpperCase(),
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                  ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 30),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width: 37),
+              Expanded(
+                child: Text(
+                  title.toUpperCase(),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
-                Icon(icon,
-                    color: (colorIcon != null) ? colorIcon : Colors.blue,
-                    size: (sizeIcon != null) ? sizeIcon : 45),
-                SizedBox(width: 25)
-              ],
-            ),
-            SizedBox(height: 26),
-            body,
-            SizedBox(height: 26),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Visibility(
-                  visible: (buttonNegativeName != null),
-                  child: CustomElevatedButton(
-                    onPressed: () => (buttonNegativeAction != null)
-                        ? buttonNegativeAction!
-                        : {Navigator.of(context).pop()},
-                    buttonText: (buttonNegativeName != null) ? buttonNegativeName! : '',
-                  ),
-                ),
-                SizedBox(width: 20),
-                CustomElevatedButton(
-                  onPressed: () => (buttonPositiveAction != null)
-                      ? buttonPositiveAction!
+              ),
+              Icon(icon,
+                  color: (colorIcon != null) ? colorIcon : Colors.blue,
+                  size: (sizeIcon != null) ? sizeIcon : 45),
+              SizedBox(width: 25)
+            ],
+          ),
+          SizedBox(height: 26),
+          body,
+          SizedBox(height: 26),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Visibility(
+                visible: (buttonNegativeName != null),
+                child: CustomElevatedButton(
+                  onPressed: () => (buttonNegativeAction != null)
+                      ? buttonNegativeAction!
                       : {Navigator.of(context).pop()},
-                  buttonText: buttonPositiveName,
+                  buttonText: (buttonNegativeName != null) ? buttonNegativeName! : '',
                 ),
-              ],
-            ),
-            SizedBox(height: 24)
-          ],
-        ),
+              ),
+              SizedBox(width: 20),
+              CustomElevatedButton(
+                onPressed: () => (buttonPositiveAction != null)
+                    ? buttonPositiveAction!
+                    : {Navigator.of(context).pop()},
+                buttonText: buttonPositiveName,
+              ),
+            ],
+          ),
+          SizedBox(height: 24)
+        ],
       ),
     );
   }
@@ -170,6 +168,7 @@ class CustomDialogs {
     Color? colorIcon,
     double? sizeIcon,
     required String message,
+    required String messageCheck,
     required String buttonPositiveName,
     Function? buttonPositiveAction,
     String? buttonNegativeName,
@@ -192,7 +191,7 @@ class CustomDialogs {
                   Text(message, style: TextStyle(fontSize: 16)),
                   SizedBox(height: 12),
                   CheckboxListTile(
-                    title: Text('Checked this option', style: TextStyle(fontSize: 16)),
+                    title: Text(messageCheck, style: TextStyle(fontSize: 16)),
                     value: checkboxValue,
                     onChanged: (value) {
                       setState(() {

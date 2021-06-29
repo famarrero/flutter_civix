@@ -4,8 +4,8 @@ import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
-import 'package:flutter_civix/src/presentation/pages/civix/main_civix/components/sidebar_menu_item.dart';
-import 'package:flutter_civix/src/presentation/pages/civix/main_civix/components/sidebar_text_separator.dart';
+import '../../../../widgets/sidebar_menu_item.dart';
+import '../../../../widgets/sidebar_text_separator.dart';
 import 'package:flutter_civix/src/presentation/pages/civix/main_civix/cubit/sidebar_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/cubit/sidebar_fgr_cubit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -29,11 +29,11 @@ class SideBarFgr extends StatelessWidget {
           const SizedBox(height: 30),
           _buildLogoAndName(context),
           const SizedBox(height: 50),
-          SideBarTextSeparator(text: S.of(context).info),
+          SideBarTextSeparator(text: S.of(context).main),
           SideBarMenuItem(
               isActive:
                   routeName == const ServicesFgrPageRoute().routeName,
-              text: 'Servicios',
+              text: S.of(context).services,
               icon: Icons.dashboard_outlined,
               onPressed: () {
                 _onPressedItem(context, const ServicesFgrPageRoute());
@@ -51,7 +51,7 @@ class SideBarFgr extends StatelessWidget {
           SideBarMenuItem(
               isActive:
                   routeName == const FrequentQuestionsPageRoute().routeName,
-              text: 'Historia',
+              text: S.of(context).history,
               icon: Icons.history_edu_outlined,
               onPressed: () {
                 _onPressedItem(context, const FrequentQuestionsPageRoute());
@@ -59,7 +59,7 @@ class SideBarFgr extends StatelessWidget {
           SideBarMenuItem(
               isActive:
                   routeName == const FrequentQuestionsPageRoute().routeName,
-              text: 'Mision y Funciones',
+              text: S.of(context).missionAndFunctions,
               icon: Icons.workspaces_outline,
               onPressed: () {
                 _onPressedItem(context, const FrequentQuestionsPageRoute());
@@ -67,7 +67,7 @@ class SideBarFgr extends StatelessWidget {
           SideBarMenuItem(
               isActive:
                   routeName == const FrequentQuestionsPageRoute().routeName,
-              text: 'Estructura',
+              text: S.of(context).structure,
               icon: Icons.format_align_center_outlined,
               onPressed: () {
                 _onPressedItem(context, const FrequentQuestionsPageRoute());
@@ -75,7 +75,7 @@ class SideBarFgr extends StatelessWidget {
           SideBarMenuItem(
               isActive:
                   routeName == const FrequentQuestionsPageRoute().routeName,
-              text: 'Contactenos',
+              text: S.of(context).contactUs,
               icon: Icons.quick_contacts_dialer_outlined,
               onPressed: () {
                 _onPressedItem(context, const FrequentQuestionsPageRoute());

@@ -13,11 +13,7 @@ class InstitutionOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
-    return
-        // Column(
-        // children: [
-        //   SizedBox(height: Constants.defaultPadding),
-        Responsive(
+    return Responsive(
       mobile: InstitutionOptionsGrid(
         items: items,
         crossAxisCount: _size.width < 650 ? 2 : 4,
@@ -60,13 +56,7 @@ class InstitutionOptionsGrid extends StatelessWidget {
         mainAxisSpacing: 8,
         // childAspectRatio: childAspectRatio,
       ),
-      itemBuilder: (context, index) => Material(
-        color: Colors.transparent,
-        child: InkWell(
-          child: CustomInstitutionMenuItem(info: items[index]),
-          onTap: items[index].onTap,
-        ),
-      ),
+      itemBuilder: (context, index) => CustomInstitutionMenuItem(info: items[index], onTap: items[index].onTap),
     );
   }
 }

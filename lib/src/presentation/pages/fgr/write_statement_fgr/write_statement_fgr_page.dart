@@ -53,7 +53,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
         data: ThemeData(
             primaryColor: kFgrPrimaryColor,
             accentColor: kFgrSecondaryColor,
-            primarySwatch: kFgrPrimaryMaterialColor),
+            primarySwatch: kFgrSecondaryMaterialColor),
         child: Scaffold(appBar: _buildAppBar(), body: _buildBody(context)));
   }
 
@@ -89,7 +89,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                 context: context,
                 barrierDismissible: false,
                 builder: (BuildContext dialogContext) =>
-                    DialogProgressWidget('Sending statement'));
+                    DialogProgressWidget(S.of(context).sendingStatement));
           }
           if (state.stateSendStatement.done) {
             Navigator.of(context).pop();
@@ -103,7 +103,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                 context: context,
                 barrierDismissible: false,
                 builder: (BuildContext dialogContext) =>
-                    DialogProgressWidget('Processing image'));
+                    DialogProgressWidget(S.of(context).processingImage));
           }
           if (state.stateOfFiles.done) {
             Navigator.of(context).pop();
@@ -168,7 +168,7 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
                         ),
                         SizedBox(height: 20),
                         if (state.stateOfPromoters.promoters.isNotEmpty)
-                          ShowPromoters(state.stateOfPromoters.promoters),
+                          ShowPromoters(state.stateOfPromoters.promoters, Theme.of(context).primaryColor),
                         SizedBox(height: 20),
                         CustomElevatedButton(
                             color: Theme.of(context).accentColor,

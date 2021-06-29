@@ -7,7 +7,6 @@ import 'package:flutter_civix/src/presentation/pages/civix/profile/profile_page.
 import 'package:flutter_civix/src/presentation/pages/civix/quick_access/quick_access_page.dart';
 import 'package:flutter_civix/src/presentation/pages/civix/settings/settings_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/consult_state_fgr_page.dart';
-import 'package:flutter_civix/src/presentation/pages/fgr/info_fgr/info_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/list_statement_fgr_page.dart';
 import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/services_fgr/services_fgr_page.dart';
@@ -35,7 +34,6 @@ import 'package:flutter_civix/src/presentation/pages/civix/institutions_list/ins
     AutoRoute<dynamic>(page: MainFgrPage, path: 'fgr', children: [
       AutoRoute<dynamic>(initial: true,
           page: ServicesFgrPage, path: 'servicios-fgr'),
-      AutoRoute<dynamic>(page: InfoFgrPage, path: 'info-fgr'),
     ]),
     AutoRoute<dynamic>(
         page: WriteStatementFgrPage, path: 'redactar-planteamiento-fgr'),
