@@ -8,15 +8,14 @@ import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
 import 'package:flutter_civix/src/core/utils/utils.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:flutter_civix/src/data/models/municipality_model.dart';
-import 'package:flutter_civix/src/data/models/province_model.dart';
+import 'package:flutter_civix/src/data/models/general/municipality_model.dart';
+import 'package:flutter_civix/src/data/models/general/province_model.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/domain/repositories/database_fgr_repository.dart';
 import 'package:flutter_civix/src/domain/repositories/preferences_fgr_repository.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:uuid/uuid.dart';
 
 part 'write_statement_fgr_state.dart';
 
@@ -369,17 +368,6 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
   Future<void> deletePromoter(int index) async {
     _promoters = (_promoters.toBuilder()..removeAt(index)).build();
     _emitInitialsStates();
-  }
-
-  Future<BuiltList<File>> _checkIfFilesExists(BuiltList<File> files) async {
-    var builder = files.toBuilder();
-
-    for (var file in files) {
-      if (await file.exists() == false) {
-        builder.remove(file);
-      }
-    }
-    return builder.build();
   }
 }
 

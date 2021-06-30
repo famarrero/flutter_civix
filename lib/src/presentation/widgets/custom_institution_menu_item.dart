@@ -26,7 +26,7 @@ class CustomInstitutionMenuItem extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
               ),
               // child: Image(image: Assets.images.marcaAguaFgr, color: info.color)),
-              child: Icon(info.imagSrc, color: info.color)),
+              child: Icon(info.imageSrc, color: info.color)),
           SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.all(4.0),

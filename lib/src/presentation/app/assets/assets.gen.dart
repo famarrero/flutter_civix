@@ -42,6 +42,12 @@ class $AssetsImagesGen {
 class $AssetsJsonsGen {
   const $AssetsJsonsGen();
 
+  String get dependencyOnbc => 'assets/jsons/dependency_onbc.json';
+  String get faqCivix => 'assets/jsons/faq_civix.json';
+  String get faqFgr => 'assets/jsons/faq_fgr.json';
+  String get historyFgr => 'assets/jsons/history_fgr.json';
+  String get missionAndFunctionsFgr =>
+      'assets/jsons/mission_and_functions_fgr.json';
   String get provinces => 'assets/jsons/provinces.json';
 }
 

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
@@ -38,12 +39,17 @@ class SideBarCivix extends StatelessWidget {
                 _onPressedItem(context, const InstitutionsListPageRoute());
               }),
           SideBarMenuItem(
-              isActive:
-                  routeName == const FrequentQuestionsPageRoute().routeName,
+              isActive: routeName == FrequentQuestionsPageRoute.name,
               text: S.of(context).frequentQuestions,
               icon: Icons.question_answer_outlined,
               onPressed: () {
-                _onPressedItem(context, const FrequentQuestionsPageRoute());
+                AutoRouter.of(context).push(FrequentQuestionsPageRoute(
+                    primaryColor: kCivixPrimaryColor,
+                    secondaryColor: kCivixSecondaryColor,
+                    primarySwatch: kCivixPrimaryMaterialColor,
+                    jsonFaq: Assets.jsons.faqCivix,
+                    subtitle: S.of(context).appName));
+                context.read<SideBarCubit>().closeMobileDrawable();
               }),
           const SizedBox(height: 30),
           SideBarTextSeparator(text: S.of(context).more),

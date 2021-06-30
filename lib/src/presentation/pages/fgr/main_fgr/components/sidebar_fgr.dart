@@ -6,9 +6,7 @@ import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import '../../../../widgets/sidebar_menu_item.dart';
 import '../../../../widgets/sidebar_text_separator.dart';
-import 'package:flutter_civix/src/presentation/pages/civix/main_civix/cubit/sidebar_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/cubit/sidebar_fgr_cubit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:provider/provider.dart';
 
@@ -17,9 +15,8 @@ class SideBarFgr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeName = AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)
-        ?.current
-        .name;
+    final routeName =
+        AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)?.current.name;
     return Container(
       width: 250,
       height: double.infinity,
@@ -31,8 +28,7 @@ class SideBarFgr extends StatelessWidget {
           const SizedBox(height: 50),
           SideBarTextSeparator(text: S.of(context).main),
           SideBarMenuItem(
-              isActive:
-                  routeName == const ServicesFgrPageRoute().routeName,
+              isActive: routeName == const ServicesFgrPageRoute().routeName,
               text: S.of(context).services,
               icon: Icons.dashboard_outlined,
               onPressed: () {
@@ -41,44 +37,63 @@ class SideBarFgr extends StatelessWidget {
           const SizedBox(height: 30),
           SideBarTextSeparator(text: S.of(context).info),
           SideBarMenuItem(
-              isActive:
-                  routeName == const FrequentQuestionsPageRoute().routeName,
+              isActive: routeName == FrequentQuestionsPageRoute.name,
               text: S.of(context).frequentQuestions,
               icon: Icons.question_answer_outlined,
               onPressed: () {
-                _onPressedItem(context, const FrequentQuestionsPageRoute());
+                AutoRouter.of(context).push(FrequentQuestionsPageRoute(
+                    primaryColor: kFgrPrimaryColor,
+                    secondaryColor: kFgrSecondaryColor,
+                    primarySwatch: kFgrSecondaryMaterialColor,
+                    jsonFaq: Assets.jsons.faqFgr,
+                    subtitle: S.of(context).fgr));
+                context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
               isActive:
-                  routeName == const FrequentQuestionsPageRoute().routeName,
+              routeName ==  InformativeTextsPageRoute.name,
               text: S.of(context).history,
               icon: Icons.history_edu_outlined,
               onPressed: () {
-                _onPressedItem(context, const FrequentQuestionsPageRoute());
+                AutoRouter.of(context).push(InformativeTextsPageRoute(
+                    primaryColor: kFgrPrimaryColor,
+                    secondaryColor: kFgrSecondaryColor,
+                    primarySwatch: kFgrSecondaryMaterialColor,
+                    subtitle: S.of(context).fgr,
+                    jsonInformativeText: Assets.jsons.historyFgr,
+                    iconHeader: Icons.history_edu_outlined));
+                context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
               isActive:
-                  routeName == const FrequentQuestionsPageRoute().routeName,
+              routeName ==  InformativeTextsPageRoute.name,
               text: S.of(context).missionAndFunctions,
               icon: Icons.workspaces_outline,
               onPressed: () {
-                _onPressedItem(context, const FrequentQuestionsPageRoute());
+                AutoRouter.of(context).push(InformativeTextsPageRoute(
+                    primaryColor: kFgrPrimaryColor,
+                    secondaryColor: kFgrSecondaryColor,
+                    primarySwatch: kFgrSecondaryMaterialColor,
+                    subtitle: S.of(context).fgr,
+                    jsonInformativeText: Assets.jsons.missionAndFunctionsFgr,
+                    iconHeader: Icons.workspaces_outline));
+                context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
-              isActive:
-                  routeName == const FrequentQuestionsPageRoute().routeName,
+              // isActive:
+              // routeName ==  FrequentQuestionsPageRoute().routeName,
               text: S.of(context).structure,
               icon: Icons.format_align_center_outlined,
               onPressed: () {
-                _onPressedItem(context, const FrequentQuestionsPageRoute());
+                // _onPressedItem(context,  FrequentQuestionsPageRoute());
               }),
           SideBarMenuItem(
-              isActive:
-                  routeName == const FrequentQuestionsPageRoute().routeName,
+              // isActive:
+              //     routeName ==  FrequentQuestionsPageRoute().routeName,
               text: S.of(context).contactUs,
               icon: Icons.quick_contacts_dialer_outlined,
               onPressed: () {
-                _onPressedItem(context, const FrequentQuestionsPageRoute());
+                // _onPressedItem(context,  FrequentQuestionsPageRoute());
               }),
         ],
       ),

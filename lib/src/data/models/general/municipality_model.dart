@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:flutter_civix/src/core/serialaizers/serializers.dart';
+import 'package:flutter_civix/src/core/serializers/serializers.dart';
 
 part 'municipality_model.g.dart';
 

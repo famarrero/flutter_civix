@@ -7,34 +7,36 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../presentation/pages/civix/about_us/about_us_page.dart' as _i12;
-import '../../presentation/pages/civix/frequent_questions/frequent_questions_page.dart'
-    as _i13;
+import '../../presentation/pages/civix/about_us/about_us_page.dart' as _i14;
 import '../../presentation/pages/civix/institutions_list/institutions_list_page.dart'
-    as _i9;
+    as _i11;
 import '../../presentation/pages/civix/main_civix/main_civix_page.dart' as _i3;
 import '../../presentation/pages/civix/my_shipments/my_shipments_page.dart'
-    as _i11;
-import '../../presentation/pages/civix/profile/profile_page.dart' as _i14;
+    as _i13;
+import '../../presentation/pages/civix/profile/profile_page.dart' as _i15;
 import '../../presentation/pages/civix/quick_access/quick_access_page.dart'
-    as _i10;
-import '../../presentation/pages/civix/settings/settings_page.dart' as _i15;
+    as _i12;
+import '../../presentation/pages/civix/settings/settings_page.dart' as _i16;
 import '../../presentation/pages/fgr/consult_state_fgr/consult_state_fgr_page.dart'
-    as _i8;
+    as _i10;
 import '../../presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart'
-    as _i19;
+    as _i20;
 import '../../presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart'
-    as _i18;
+    as _i19;
 import '../../presentation/pages/fgr/list_statement_fgr/list_statement_fgr_page.dart'
-    as _i6;
-import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart' as _i4;
+    as _i8;
+import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart' as _i6;
 import '../../presentation/pages/fgr/services_fgr/services_fgr_page.dart'
-    as _i16;
-import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
-    as _i7;
-import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
     as _i17;
+import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
+    as _i9;
+import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+    as _i18;
 import '../../presentation/pages/fgr/write_statement_fgr/write_statement_fgr_page.dart'
+    as _i7;
+import '../../presentation/pages/general/frequent_questions/frequent_questions_page.dart'
+    as _i4;
+import '../../presentation/pages/general/informative_texts/informative_texts_page.dart'
     as _i5;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -48,74 +50,94 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i3.MainCivixPage();
         }),
+    FrequentQuestionsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<FrequentQuestionsPageRouteArgs>();
+          return _i4.FrequentQuestionsPage(
+              key: args.key,
+              primaryColor: args.primaryColor,
+              secondaryColor: args.secondaryColor,
+              primarySwatch: args.primarySwatch,
+              jsonFaq: args.jsonFaq,
+              subtitle: args.subtitle);
+        }),
+    InformativeTextsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<InformativeTextsPageRouteArgs>();
+          return _i5.InformativeTextsPage(
+              key: args.key,
+              primaryColor: args.primaryColor,
+              secondaryColor: args.secondaryColor,
+              primarySwatch: args.primarySwatch,
+              jsonInformativeText: args.jsonInformativeText,
+              subtitle: args.subtitle,
+              iconHeader: args.iconHeader);
+        }),
     MainFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i4.MainFgrPage();
+          return _i6.MainFgrPage();
         }),
     WriteStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<WriteStatementFgrPageRouteArgs>();
-          return _i5.WriteStatementFgrPage(bloc: args.bloc);
+          return _i7.WriteStatementFgrPage(bloc: args.bloc);
         }),
     ListStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ListStatementFgrPageRouteArgs>();
-          return _i6.ListStatementFgrPage(bloc: args.bloc);
+          return _i8.ListStatementFgrPage(bloc: args.bloc);
         }),
     ShowStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ShowStatementFgrPageRouteArgs>();
-          return _i7.ShowStatementFgrPage(id: args.id);
+          return _i9.ShowStatementFgrPage(id: args.id);
         }),
     ConsultStateFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ConsultStateFgrPageRouteArgs>();
-          return _i8.ConsultStateFgrPage(bloc: args.bloc);
+          return _i10.ConsultStateFgrPage(bloc: args.bloc);
         }),
     InstitutionsListPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i9.InstitutionsListPage();
+          return const _i11.InstitutionsListPage();
         }),
     QuickAccessPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i10.QuickAccessPage();
+          return const _i12.QuickAccessPage();
         }),
     MyShipmentsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i11.MyShipmentsPage();
+          return const _i13.MyShipmentsPage();
         }),
     AboutUsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i12.AboutUsPage();
-        }),
-    FrequentQuestionsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i13.FrequentQuestionsPage();
+          return const _i14.AboutUsPage();
         }),
     ProfilePageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i14.ProfilePage();
+          return const _i15.ProfilePage();
         }),
     SettingsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i15.SettingsPage();
+          return const _i16.SettingsPage();
         }),
     ServicesFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i16.ServicesFgrPage();
+          return _i17.ServicesFgrPage();
         })
   };
 
@@ -131,11 +153,12 @@ class AppRouter extends _i1.RootStackRouter {
           _i1.RouteConfig(QuickAccessPageRoute.name, path: 'acceso-rapido'),
           _i1.RouteConfig(MyShipmentsPageRoute.name, path: 'mis-envios'),
           _i1.RouteConfig(AboutUsPageRoute.name, path: 'acerca-de'),
-          _i1.RouteConfig(FrequentQuestionsPageRoute.name,
-              path: 'preguntas-frequentes'),
           _i1.RouteConfig(ProfilePageRoute.name, path: 'perfil'),
           _i1.RouteConfig(SettingsPageRoute.name, path: 'ajustes')
         ]),
+        _i1.RouteConfig(FrequentQuestionsPageRoute.name,
+            path: 'preguntas-frequentes'),
+        _i1.RouteConfig(InformativeTextsPageRoute.name, path: 'informacion'),
         _i1.RouteConfig(MainFgrPageRoute.name, path: 'fgr', children: [
           _i1.RouteConfig('#redirect',
               path: '', redirectTo: 'servicios-fgr', fullMatch: true),
@@ -159,6 +182,99 @@ class MainCivixPageRoute extends _i1.PageRouteInfo {
   static const String name = 'MainCivixPageRoute';
 }
 
+class FrequentQuestionsPageRoute
+    extends _i1.PageRouteInfo<FrequentQuestionsPageRouteArgs> {
+  FrequentQuestionsPageRoute(
+      {_i2.Key? key,
+      required _i2.Color primaryColor,
+      required _i2.Color secondaryColor,
+      required _i2.MaterialColor primarySwatch,
+      required String jsonFaq,
+      required String subtitle})
+      : super(name,
+            path: 'preguntas-frequentes',
+            args: FrequentQuestionsPageRouteArgs(
+                key: key,
+                primaryColor: primaryColor,
+                secondaryColor: secondaryColor,
+                primarySwatch: primarySwatch,
+                jsonFaq: jsonFaq,
+                subtitle: subtitle));
+
+  static const String name = 'FrequentQuestionsPageRoute';
+}
+
+class FrequentQuestionsPageRouteArgs {
+  const FrequentQuestionsPageRouteArgs(
+      {this.key,
+      required this.primaryColor,
+      required this.secondaryColor,
+      required this.primarySwatch,
+      required this.jsonFaq,
+      required this.subtitle});
+
+  final _i2.Key? key;
+
+  final _i2.Color primaryColor;
+
+  final _i2.Color secondaryColor;
+
+  final _i2.MaterialColor primarySwatch;
+
+  final String jsonFaq;
+
+  final String subtitle;
+}
+
+class InformativeTextsPageRoute
+    extends _i1.PageRouteInfo<InformativeTextsPageRouteArgs> {
+  InformativeTextsPageRoute(
+      {_i2.Key? key,
+      required _i2.Color primaryColor,
+      required _i2.Color secondaryColor,
+      required _i2.MaterialColor primarySwatch,
+      required String jsonInformativeText,
+      required String subtitle,
+      required _i2.IconData iconHeader})
+      : super(name,
+            path: 'informacion',
+            args: InformativeTextsPageRouteArgs(
+                key: key,
+                primaryColor: primaryColor,
+                secondaryColor: secondaryColor,
+                primarySwatch: primarySwatch,
+                jsonInformativeText: jsonInformativeText,
+                subtitle: subtitle,
+                iconHeader: iconHeader));
+
+  static const String name = 'InformativeTextsPageRoute';
+}
+
+class InformativeTextsPageRouteArgs {
+  const InformativeTextsPageRouteArgs(
+      {this.key,
+      required this.primaryColor,
+      required this.secondaryColor,
+      required this.primarySwatch,
+      required this.jsonInformativeText,
+      required this.subtitle,
+      required this.iconHeader});
+
+  final _i2.Key? key;
+
+  final _i2.Color primaryColor;
+
+  final _i2.Color secondaryColor;
+
+  final _i2.MaterialColor primarySwatch;
+
+  final String jsonInformativeText;
+
+  final String subtitle;
+
+  final _i2.IconData iconHeader;
+}
+
 class MainFgrPageRoute extends _i1.PageRouteInfo {
   const MainFgrPageRoute({List<_i1.PageRouteInfo>? children})
       : super(name, path: 'fgr', initialChildren: children);
@@ -168,7 +284,7 @@ class MainFgrPageRoute extends _i1.PageRouteInfo {
 
 class WriteStatementFgrPageRoute
     extends _i1.PageRouteInfo<WriteStatementFgrPageRouteArgs> {
-  WriteStatementFgrPageRoute({required _i17.WriteStatementFgrCubit bloc})
+  WriteStatementFgrPageRoute({required _i18.WriteStatementFgrCubit bloc})
       : super(name,
             path: 'redactar-planteamiento-fgr',
             args: WriteStatementFgrPageRouteArgs(bloc: bloc));
@@ -179,12 +295,12 @@ class WriteStatementFgrPageRoute
 class WriteStatementFgrPageRouteArgs {
   const WriteStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i17.WriteStatementFgrCubit bloc;
+  final _i18.WriteStatementFgrCubit bloc;
 }
 
 class ListStatementFgrPageRoute
     extends _i1.PageRouteInfo<ListStatementFgrPageRouteArgs> {
-  ListStatementFgrPageRoute({required _i18.ListStatementFgrCubit bloc})
+  ListStatementFgrPageRoute({required _i19.ListStatementFgrCubit bloc})
       : super(name,
             path: 'planteamientos-fgr',
             args: ListStatementFgrPageRouteArgs(bloc: bloc));
@@ -195,7 +311,7 @@ class ListStatementFgrPageRoute
 class ListStatementFgrPageRouteArgs {
   const ListStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i18.ListStatementFgrCubit bloc;
+  final _i19.ListStatementFgrCubit bloc;
 }
 
 class ShowStatementFgrPageRoute
@@ -216,7 +332,7 @@ class ShowStatementFgrPageRouteArgs {
 
 class ConsultStateFgrPageRoute
     extends _i1.PageRouteInfo<ConsultStateFgrPageRouteArgs> {
-  ConsultStateFgrPageRoute({required _i19.ConsultStateFgrCubit bloc})
+  ConsultStateFgrPageRoute({required _i20.ConsultStateFgrCubit bloc})
       : super(name,
             path: 'consultar-estado-fgr',
             args: ConsultStateFgrPageRouteArgs(bloc: bloc));
@@ -227,7 +343,7 @@ class ConsultStateFgrPageRoute
 class ConsultStateFgrPageRouteArgs {
   const ConsultStateFgrPageRouteArgs({required this.bloc});
 
-  final _i19.ConsultStateFgrCubit bloc;
+  final _i20.ConsultStateFgrCubit bloc;
 }
 
 class InstitutionsListPageRoute extends _i1.PageRouteInfo {
@@ -252,13 +368,6 @@ class AboutUsPageRoute extends _i1.PageRouteInfo {
   const AboutUsPageRoute() : super(name, path: 'acerca-de');
 
   static const String name = 'AboutUsPageRoute';
-}
-
-class FrequentQuestionsPageRoute extends _i1.PageRouteInfo {
-  const FrequentQuestionsPageRoute()
-      : super(name, path: 'preguntas-frequentes');
-
-  static const String name = 'FrequentQuestionsPageRoute';
 }
 
 class ProfilePageRoute extends _i1.PageRouteInfo {

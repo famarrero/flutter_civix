@@ -19,6 +19,8 @@ import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/cubit
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/general/frequent_questions/cubit/frequent_questions_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/general/informative_texts/cubit/informative_texts_cubit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart';
@@ -71,6 +73,8 @@ Future<void> initializeDependencies() async {
   injector.registerFactory<ListStatementFgrCubit>(() => ListStatementFgrCubit(injector()));
   injector.registerFactory<ShowStatementFgrCubit>(() => ShowStatementFgrCubit(injector()));
   injector.registerFactory<ConsultStateFgrCubit>(() => ConsultStateFgrCubit());
+  injector.registerFactory<FrequentQuestionsCubit>(() => FrequentQuestionsCubit(injector()));
+  injector.registerFactory<InformativeTextsCubit>(() => InformativeTextsCubit(injector()));
 
   // UseCases
   // injector.registerSingleton<GetRemotePostsUseCase>(

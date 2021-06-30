@@ -58,7 +58,7 @@ class _ServicesFgrPageState extends State<ServicesFgrPage> {
   List<InstitutionMenuItem> _getItemsInstitutionOptions(BuildContext context) {
     return [
       InstitutionMenuItem(
-          imagSrc: Icons.edit_outlined,
+          imageSrc: Icons.edit_outlined,
           title: S.of(context).writeStatement,
           color: kFgrPrimaryColor,
           onTap: () {
@@ -66,7 +66,7 @@ class _ServicesFgrPageState extends State<ServicesFgrPage> {
             AutoRouter.of(context).push(WriteStatementFgrPageRoute(bloc: bloc));
           }),
       InstitutionMenuItem(
-          imagSrc: Icons.folder_outlined,
+          imageSrc: Icons.folder_outlined,
           title: S.of(context).statementsList,
           color: kFgrPrimaryColor,
           onTap: () {
@@ -74,7 +74,7 @@ class _ServicesFgrPageState extends State<ServicesFgrPage> {
             AutoRouter.of(context).push(ListStatementFgrPageRoute(bloc: bloc));
           }),
       InstitutionMenuItem(
-          imagSrc: Icons.search_outlined,
+          imageSrc: Icons.search_outlined,
           title: S.of(context).consultState,
           color: kFgrPrimaryColor,
           onTap: () {

@@ -5,7 +5,8 @@ class StatementResponseConsult {
   final String? state;
   final String? response;
 
-  StatementResponseConsult({required this.ticked, required this.state, required this.response});
+  StatementResponseConsult(
+      {required this.ticked, required this.state, required this.response});
 
   StatementResponseConsult copyWith({
     String? ticked,
@@ -29,7 +30,7 @@ class StatementResponseConsult {
 
   factory StatementResponseConsult.fromMap(Map<String, dynamic> map) {
     return new StatementResponseConsult(
-        ticked: map['tiked'] as String?,
+        ticked: map['ticked'] as String?,
         state: map['state'] as String?,
         response: map['response'] as String?);
   }
@@ -37,7 +38,7 @@ class StatementResponseConsult {
   Map<String, dynamic> toMap() {
     // ignore: unnecessary_cast
     return {
-      'tiked': this.ticked,
+      'ticked': this.ticked,
       'state': this.state,
       'response': this.response,
     } as Map<String, dynamic>;
@@ -45,6 +46,6 @@ class StatementResponseConsult {
 
   @override
   String toString() {
-    return 'StatementFRG{tiked: $ticked, state: $state, response: $response}';
+    return 'StatementFRG{ticked: $ticked, state: $state, response: $response}';
   }
 }

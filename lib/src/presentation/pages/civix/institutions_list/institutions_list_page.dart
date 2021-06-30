@@ -23,39 +23,39 @@ class InstitutionsListPage extends StatelessWidget {
   List<InstitutionItem> _getItemsInstitutionOptions(BuildContext context) {
     return [
       InstitutionItem(
-          imagSrc: Assets.images.logoFgr.path,
+          imageSrc: Assets.images.logoFgr.path,
           title: S.of(context).fgr,
           color: Colors.blue,
           onTap: () {
             AutoRouter.of(context).push(MainFgrPageRoute());
           }),
       InstitutionItem(
-          imagSrc: Assets.images.logoTsp.path,
+          imageSrc: Assets.images.logoTsp.path,
           title: "Tribunal Supremo Popular",
           color: Colors.blue,
           onTap: () {}),
       InstitutionItem(
-          imagSrc: Assets.images.logoAnpp.path,
+          imageSrc: Assets.images.logoAnpp.path,
           title: "Organización Nacional de Bufetes Colectivos",
           color: Colors.blue,
           onTap: () {}),
       InstitutionItem(
-          imagSrc: Assets.images.logoMinjus.path,
+          imageSrc: Assets.images.logoMinjus.path,
           title: "Ministerio de Justicia",
           color: Colors.blue,
           onTap: () {}),
       InstitutionItem(
-          imagSrc: Assets.images.logoFgr.path,
+          imageSrc: Assets.images.logoFgr.path,
           title: "Ministerio de Educación Popular",
           color: Colors.blue,
           onTap: () {}),
       InstitutionItem(
-          imagSrc: Assets.images.logoAnpp.path,
+          imageSrc: Assets.images.logoAnpp.path,
           title: "Asamblea Nacional del Poder Popular",
           color: Colors.blue,
           onTap: () {}),
       InstitutionItem(
-          imagSrc: Assets.images.logoInder.path,
+          imageSrc: Assets.images.logoInder.path,
           title: "Instituto Nacional de Deporte y Recreación",
           color: Colors.blue,
           onTap: () {}),
@@ -133,7 +133,7 @@ class InstitutionsListOptionsGrid extends StatelessWidget {
                   //   color: items[index].color.withOpacity(0.1),
                   //   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   // ),
-                  child: Image.asset(items[index].imagSrc)),
+                  child: Image.asset(items[index].imageSrc)),
               SizedBox(height: 12),
               Padding(
                 padding: const EdgeInsets.all(4.0),

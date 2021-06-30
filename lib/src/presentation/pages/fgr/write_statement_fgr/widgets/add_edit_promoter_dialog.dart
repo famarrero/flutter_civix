@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_civix/src/data/models/municipality_model.dart';
-import 'package:flutter_civix/src/data/models/province_model.dart';
+import 'package:flutter_civix/src/data/models/general/municipality_model.dart';
+import 'package:flutter_civix/src/data/models/general/province_model.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/manager/provinces_list_cubit/provinces_list_cubit.dart';
@@ -143,7 +143,7 @@ class AddEditPromoterDialog extends StatelessWidget {
                       label: S.of(context).province,
                       mandatory: true,
                       suffixIcon: Icons.location_city,
-                      itemBuilder: (item) => Text(item.provinceName),
+                      itemBuilder: (item) => Text(item.provinceName!),
                       loadFunction: () => _provincesList,
                     ),
                     SizedBox(height: 24),
@@ -160,7 +160,7 @@ class AddEditPromoterDialog extends StatelessWidget {
                           suffixIcon: Icons.location_city,
                           itemBuilder: (item) => Text(item.municipalityName),
                           loadFunction: () => valueProvince.value != null
-                              ? valueProvince.value!.municipalitiesList.toList()
+                              ? valueProvince.value!.municipalitiesList!.toList()
                               : [],
                         );
                       },

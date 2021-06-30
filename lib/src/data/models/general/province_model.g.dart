@@ -18,21 +18,45 @@ class _$ProvinceModelSerializer implements StructuredSerializer<ProvinceModel> {
   @override
   Iterable<Object?> serialize(Serializers serializers, ProvinceModel object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'province_name',
-      serializers.serialize(object.provinceName,
-          specifiedType: const FullType(String)),
-      'province_abbreviation',
-      serializers.serialize(object.provinceAbbreviation,
-          specifiedType: const FullType(String)),
-      'id',
-      serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'municipalities_list',
-      serializers.serialize(object.municipalitiesList,
-          specifiedType: const FullType(
-              BuiltList, const [const FullType(MunicipalityModel)])),
-    ];
-
+    final result = <Object?>[];
+    Object? value;
+    value = object.provinceName;
+    if (value != null) {
+      result
+        ..add('province_name')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.provinceAbbreviation;
+    if (value != null) {
+      result
+        ..add('province_abbreviation')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.municipalitiesList;
+    if (value != null) {
+      result
+        ..add('municipalities_list')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                BuiltList, const [const FullType(MunicipalityModel)])));
+    }
+    value = object.entitiesList;
+    if (value != null) {
+      result
+        ..add('entities_list')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                BuiltList, const [const FullType(EntityModel)])));
+    }
     return result;
   }
 
@@ -66,6 +90,12 @@ class _$ProvinceModelSerializer implements StructuredSerializer<ProvinceModel> {
                       BuiltList, const [const FullType(MunicipalityModel)]))!
               as BuiltList<Object>);
           break;
+        case 'entities_list':
+          result.entitiesList.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(EntityModel)]))!
+              as BuiltList<Object>);
+          break;
       }
     }
 
@@ -75,31 +105,26 @@ class _$ProvinceModelSerializer implements StructuredSerializer<ProvinceModel> {
 
 class _$ProvinceModel extends ProvinceModel {
   @override
-  final String provinceName;
+  final String? provinceName;
   @override
-  final String provinceAbbreviation;
+  final String? provinceAbbreviation;
   @override
-  final String id;
+  final String? id;
   @override
-  final BuiltList<MunicipalityModel> municipalitiesList;
+  final BuiltList<MunicipalityModel>? municipalitiesList;
+  @override
+  final BuiltList<EntityModel>? entitiesList;
 
   factory _$ProvinceModel([void Function(ProvinceModelBuilder)? updates]) =>
       (new ProvinceModelBuilder()..update(updates)).build();
 
   _$ProvinceModel._(
-      {required this.provinceName,
-      required this.provinceAbbreviation,
-      required this.id,
-      required this.municipalitiesList})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        provinceName, 'ProvinceModel', 'provinceName');
-    BuiltValueNullFieldError.checkNotNull(
-        provinceAbbreviation, 'ProvinceModel', 'provinceAbbreviation');
-    BuiltValueNullFieldError.checkNotNull(id, 'ProvinceModel', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        municipalitiesList, 'ProvinceModel', 'municipalitiesList');
-  }
+      {this.provinceName,
+      this.provinceAbbreviation,
+      this.id,
+      this.municipalitiesList,
+      this.entitiesList})
+      : super._();
 
   @override
   ProvinceModel rebuild(void Function(ProvinceModelBuilder) updates) =>
@@ -115,15 +140,20 @@ class _$ProvinceModel extends ProvinceModel {
         provinceName == other.provinceName &&
         provinceAbbreviation == other.provinceAbbreviation &&
         id == other.id &&
-        municipalitiesList == other.municipalitiesList;
+        municipalitiesList == other.municipalitiesList &&
+        entitiesList == other.entitiesList;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, provinceName.hashCode), provinceAbbreviation.hashCode),
-            id.hashCode),
-        municipalitiesList.hashCode));
+        $jc(
+            $jc(
+                $jc($jc(0, provinceName.hashCode),
+                    provinceAbbreviation.hashCode),
+                id.hashCode),
+            municipalitiesList.hashCode),
+        entitiesList.hashCode));
   }
 
   @override
@@ -132,7 +162,8 @@ class _$ProvinceModel extends ProvinceModel {
           ..add('provinceName', provinceName)
           ..add('provinceAbbreviation', provinceAbbreviation)
           ..add('id', id)
-          ..add('municipalitiesList', municipalitiesList))
+          ..add('municipalitiesList', municipalitiesList)
+          ..add('entitiesList', entitiesList))
         .toString();
   }
 }
@@ -160,6 +191,12 @@ class ProvinceModelBuilder
   set municipalitiesList(ListBuilder<MunicipalityModel>? municipalitiesList) =>
       _$this._municipalitiesList = municipalitiesList;
 
+  ListBuilder<EntityModel>? _entitiesList;
+  ListBuilder<EntityModel> get entitiesList =>
+      _$this._entitiesList ??= new ListBuilder<EntityModel>();
+  set entitiesList(ListBuilder<EntityModel>? entitiesList) =>
+      _$this._entitiesList = entitiesList;
+
   ProvinceModelBuilder();
 
   ProvinceModelBuilder get _$this {
@@ -168,7 +205,8 @@ class ProvinceModelBuilder
       _provinceName = $v.provinceName;
       _provinceAbbreviation = $v.provinceAbbreviation;
       _id = $v.id;
-      _municipalitiesList = $v.municipalitiesList.toBuilder();
+      _municipalitiesList = $v.municipalitiesList?.toBuilder();
+      _entitiesList = $v.entitiesList?.toBuilder();
       _$v = null;
     }
     return this;
@@ -191,20 +229,18 @@ class ProvinceModelBuilder
     try {
       _$result = _$v ??
           new _$ProvinceModel._(
-              provinceName: BuiltValueNullFieldError.checkNotNull(
-                  provinceName, 'ProvinceModel', 'provinceName'),
-              provinceAbbreviation: BuiltValueNullFieldError.checkNotNull(
-                  provinceAbbreviation,
-                  'ProvinceModel',
-                  'provinceAbbreviation'),
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, 'ProvinceModel', 'id'),
-              municipalitiesList: municipalitiesList.build());
+              provinceName: provinceName,
+              provinceAbbreviation: provinceAbbreviation,
+              id: id,
+              municipalitiesList: _municipalitiesList?.build(),
+              entitiesList: _entitiesList?.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'municipalitiesList';
-        municipalitiesList.build();
+        _municipalitiesList?.build();
+        _$failedField = 'entitiesList';
+        _entitiesList?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'ProvinceModel', _$failedField, e.toString());

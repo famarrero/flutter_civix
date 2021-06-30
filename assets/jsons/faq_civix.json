@@ -1,0 +1,107 @@
+{
+  "questions_list": [
+    {
+      "question": "¿Qué es Civix?",
+      "responses_list": [
+        {
+          "text": "Civix es una aplicación móvil cubana desarrollada con el objetivo de que los ciudadanos cubanos puedan hacer uso de los servicios \"en línea\" prestados por las instituciones de Cuba."
+        }
+      ]
+    },
+    {
+      "question": "¿Por qué el nombre de Civix?",
+      "responses_list": [
+        {
+          "text": "Del latín \"civis\", cuya traducción al español es \"ciudadano\". La \"x\" al final se aplica para cumplir con la identidad comercial de la Universidad de las Ciencias Informáticas, relacionada con el principio de soberanía tecnológica y el software libre, teniéndose en cuenta además que fonéticamente no se hace ningún cambio radical respecto a la palabra original."
+        }
+      ]
+    },
+    {
+      "question": "¿Qué utilidad tiene el uso de Civix?",
+      "responses_list": [
+        {
+          "text": "Civix llega para permitir y facilitar a los ciudadanos cubanos el consumo de los servicios \"en línea\" prestados por las instituciones cubanas, mitigando las incomodidades que para algunos significa consumirlos de manera presencial."
+        }
+      ]
+    },
+    {
+      "question": "¿Qué objetivos persigue Civix?",
+      "responses_list": [
+        {
+          "text": "Dentro de los objetivos de Civix están:"
+        },
+        {
+          "text": "1. La disminución de esfuerzos tanto para quienes prestan los servicios como para quienes los consumen."
+        },
+        {
+          "text": "2. La rapidez y comodidad en la recepción de las solicitudes o planteamientos por parte de las instituciones."
+        },
+        {
+          "text": "3. La rapidez, comodidad y la calidad en la recepción de respuestas a sus solicitudes por parte de los ciudadanos."
+        }
+      ]
+    },
+    {
+      "question": "¿De cuáles instituciones puedo consumir servicios en esta versión?",
+      "responses_list": [
+        {
+          "text": "Por el momento solamente de:"
+        },
+        {
+          "text": "1- Organización Nacional de Bufetes Colectivos"
+        },
+        {
+          "text": "2- Tribunal Supremo Popular"
+        },
+        {
+          "text": "3- Fiscalía General de la República"
+        },
+        {
+          "text": "Paulatinamente se sumarán nuevas instituciones."
+        }
+      ]
+    },
+    {
+      "question": "¿Qué es un comprobante?",
+      "responses_list": [
+        {
+          "text": "Un comprobante en Civix es un conjunto pequeño de caracteres con el cual se identifica su solicitud a una institución."
+        }
+      ]
+    },
+    {
+      "question": "¿Le permite Civix mantener un seguimiento de sus solicitudes a una institución?",
+      "responses_list": [
+        {
+          "text": "Sí. Para ello se le asigna a cada solicitud algo que llamamos COMPROBANTE (Ver \"¿Qué es un comprobante?\")."
+        },
+        {
+          "text": "Este se muestra después de enviar satisfactoriamente su solicitud a la institución. (Ver \"¿Cómo mantener un seguimiento de su solicitud a través del comprobante?\")"
+        }
+      ]
+    },
+    {
+      "question": "¿Cómo mantener un seguimiento de su solicitud a través del comprobante?",
+      "responses_list": [
+        {
+          "text": "Civix permite mantener el seguimiento de su solicitud enviada a una institución a través del comprobante de varias maneras:"
+        },
+        {
+          "text": "1. Desde la pantalla de la institución puede ver el cuadro \"Consultar estado\". El mismo le permitirá consultar uno a uno sus comprobantes, copiándolo en el cuadro de text o escaneando el código QR correspondiente, obtenido por alguna de las vías establecidas en la institución."
+        },
+        {
+          "text": "2. Desde la pantalla de la institución puede ver el cuadro que se asocia a su tipo de solicitud. Por ejemplo, \"Planteamientos\" en el caso del TSP y la FGR; o \"Preguntas\" para el caso de la ONBC. Haciendo clic verá el listado de solicitudes enviadas o guardadas, cada una con su comprobante asociado. En esta pantalla puede hacer uso del botón con \"flechas en forma de círculo\", en el menú superior, o arrastrar el dedo hacia abajo sobre la pantalla, para actualizar el estado de su(s) comprobante(s) según el tratamiento dado por la institución al mismo. Esta opción le permite actualizar los estados de todos sus comprobantes a la vez."
+        },
+        {
+          "text": "3. Desde la pantalla inicial de la aplicación también puede hacer algo similar a lo anterior a través del cuadro \"Mis planteamientos\", pero tenga en cuenta que en la misma se mostrarán los planteamientos correspondientes a todas las instituciones. Puede hacer uso del botón de \"filtros\" para tener una mejor experiencia."
+        },
+        {
+          "text": "IMPORTANTE: Tenga en cuenta que cada institución tiene sus propios plazos de tiempo (términos) para atender una solicitud."
+        },
+        {
+          "text": "Esta información esta sujeta a cambios en nuevas versiones de la aplicación."
+        }
+      ]
+    }
+  ]
+}

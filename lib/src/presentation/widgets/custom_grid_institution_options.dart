@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/constants/constants.dart';
 import 'package:flutter_civix/src/core/utils/responsive.dart';
 import 'package:flutter_civix/src/domain/entities/institution_menu_item.dart';
 

@@ -2,9 +2,10 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:flutter_civix/src/core/serialaizers/serializers.dart';
-import 'package:flutter_civix/src/data/models/municipality_model.dart';
+import 'package:flutter_civix/src/core/serializers/serializers.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:flutter_civix/src/data/models/entity/entity_model.dart';
+import 'package:flutter_civix/src/data/models/general/municipality_model.dart';
 
 part 'province_model.g.dart';
 
@@ -16,16 +17,19 @@ abstract class ProvinceModel
       _$ProvinceModel;
 
   @BuiltValueField(wireName: 'province_name')
-  String get provinceName;
+  String? get provinceName;
 
   @BuiltValueField(wireName: 'province_abbreviation')
-  String get provinceAbbreviation;
+  String? get provinceAbbreviation;
 
   @BuiltValueField(wireName: 'id')
-  String get id;
+  String? get id;
 
   @BuiltValueField(wireName: 'municipalities_list')
-  BuiltList<MunicipalityModel> get municipalitiesList;
+  BuiltList<MunicipalityModel>? get municipalitiesList;
+
+  @BuiltValueField(wireName: 'entities_list')
+  BuiltList<EntityModel>? get entitiesList;
 
   String toJson() {
     return json

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_civix/src/data/models/municipality_model.dart';
-import 'package:flutter_civix/src/data/models/province_model.dart';
+import 'package:flutter_civix/src/data/models/general/municipality_model.dart';
+import 'package:flutter_civix/src/data/models/general/province_model.dart';
 
 class PromoterFRG {
   final String? firstName;

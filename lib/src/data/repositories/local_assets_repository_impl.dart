@@ -1,5 +1,7 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_civix/src/data/models/provinces_response_model.dart';
+import 'package:flutter_civix/src/data/models/faq/faq_response_model.dart';
+import 'package:flutter_civix/src/data/models/general/provinces_response_model.dart';
+import 'package:flutter_civix/src/data/models/informative_texts/informative_texts_response_model.dart';
 import 'package:flutter_civix/src/domain/repositories/local_assets_repository.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 
@@ -9,5 +11,19 @@ class LocalAssetsRepositoryImpl implements LocalAssetsRepository {
      String provincesJsonString = await rootBundle.loadString(Assets.jsons.provinces);
      ProvincesResponseModel  provincesResponseModel =  ProvincesResponseModel.fromJson(provincesJsonString)!;
      return provincesResponseModel;
+  }
+
+  @override
+  Future<FaqResponseModel> loadFaqJson(String faqJson) async {
+    String jsonString = await rootBundle.loadString(faqJson);
+    FaqResponseModel  faqResponseModel =  FaqResponseModel.fromJson(jsonString)!;
+    return faqResponseModel;
+  }
+
+  @override
+  Future<InformativeTextsResponseModel> loadInformativeTextsJson(String informativeTextsJson) async {
+    String jsonString = await rootBundle.loadString(informativeTextsJson);
+    InformativeTextsResponseModel  informativeTextsResponseModel =  InformativeTextsResponseModel.fromJson(jsonString)!;
+    return informativeTextsResponseModel;
   }
 }

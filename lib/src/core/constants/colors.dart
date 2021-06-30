@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 
 ///////Civix colors///////
+const kCivixPrimary = 0xff055bab;
 const kCivixPrimaryColor = Color(0xff055bab);
+const MaterialColor kCivixPrimaryMaterialColor = MaterialColor(
+    kFgrPrimary,
+    <int, Color>{
+      50: Color(0xff0d86f5),
+      100: Color(0xff087be5),
+      200: Color(0xff0773d7),
+      300: Color(0xff076cc9),
+      400: Color(0xff0663ba),
+      500: Color(kCivixPrimary),
+      600: Color(0xff0555a0),
+      700: Color(0xff054c8e),
+      800: Color(0xff064580),
+      900: Color(0xff053d71),
+    },
+);
+
 const kCivixSecondaryColor = Color(0xff1A73C6);
 
 ///////FGR colors///////
