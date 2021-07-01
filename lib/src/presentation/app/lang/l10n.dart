@@ -1289,6 +1289,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No coordinates available`
+  String get noCoordinatesAvailable {
+    return Intl.message(
+      'No coordinates available',
+      name: 'noCoordinatesAvailable',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -5,7 +5,6 @@ import 'package:built_value/serializer.dart';
 import 'package:flutter_civix/src/core/serializers/serializers.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_civix/src/data/models/entity/entity_model.dart';
-import 'package:flutter_civix/src/data/models/general/province_model.dart';
 
 part 'entities_response_model.g.dart';
 

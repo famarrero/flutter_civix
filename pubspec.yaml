@@ -95,7 +95,11 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/jsons/
+    - assets/jsons/general/
+    - assets/jsons/civix/
+    - assets/jsons/fgr/
+    - assets/jsons/tsp/
+    - assets/jsons/onbc/
     - assets/svgs/
 
 flutter_intl:

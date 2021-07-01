@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_civix/src/core/constants/dimens.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/statement_fgr.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
@@ -55,7 +56,7 @@ class StatementItemListWidget extends StatelessWidget {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(statement.ticked!,
-                                style: TextStyle(color: Colors.black, fontSize: 16)),
+                                style: TextStyle(color: Colors.black, fontSize: kNormalTextSize)),
                           ),
                           SizedBox(width: 10),
                         ],
@@ -72,7 +73,7 @@ class StatementItemListWidget extends StatelessWidget {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(statement.subject!,
-                                style: TextStyle(color: Colors.black, fontSize: 16)),
+                                style: TextStyle(color: Colors.black, fontSize: kNormalTextSize)),
                           ),
                           SizedBox(width: 10),
                         ],
@@ -89,7 +90,7 @@ class StatementItemListWidget extends StatelessWidget {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text('07/06/21',
-                                style: TextStyle(color: Colors.black, fontSize: 16)),
+                                style: TextStyle(color: Colors.black, fontSize: kNormalTextSize)),
                           ),
                         ],
                       ),

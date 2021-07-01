@@ -1,0 +1,25 @@
+{
+  "province": "La Habana",
+  "municipality": "Playa",
+  "address": "Avenida 1ra, No. 1801 e/ 18 y 20. Reparto Miramar.",
+  "postal_code": "11 300",
+  "coordinates": {
+    "latitude": "23.126185",
+    "longitude": "-82.42275"
+  },
+  "emails_list": [
+    "atencionciudadano@fgr.gob.cu"
+  ],
+  "phones_list": [
+    "72 069073",
+    "72 069077",
+    "72 069088",
+    "802 12345"
+  ],
+  "links": [
+    "http://www.fgr.gob.cu/es"
+  ],
+  "facebook": "https://www.facebook.com/FGRCuba",
+  "twitter": "https://www.twitter/FGR_Cuba",
+  "youtube": "https://www.youtube.com"
+}

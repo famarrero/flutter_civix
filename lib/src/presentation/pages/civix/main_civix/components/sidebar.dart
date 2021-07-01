@@ -47,7 +47,7 @@ class SideBarCivix extends StatelessWidget {
                     primaryColor: kCivixPrimaryColor,
                     secondaryColor: kCivixSecondaryColor,
                     primarySwatch: kCivixPrimaryMaterialColor,
-                    jsonFaq: Assets.jsons.faqCivix,
+                    jsonFaq: Assets.jsons.civix.faqCivix,
                     subtitle: S.of(context).appName));
                 context.read<SideBarCubit>().closeMobileDrawable();
               }),

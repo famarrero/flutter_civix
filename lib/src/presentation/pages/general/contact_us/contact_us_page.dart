@@ -7,20 +7,20 @@ import 'package:flutter_civix/src/presentation/pages/general/informative_texts/c
 import 'package:flutter_civix/src/presentation/widgets/appbar_title.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
 
-class InformativeTextsPage extends StatelessWidget {
+class ContactUsPage extends StatelessWidget {
   final Color primaryColor;
   final Color secondaryColor;
   final MaterialColor primarySwatch;
-  final String jsonInformativeText;
+  final String jsonContactUs;
   final String subtitle;
   final IconData iconHeader;
 
-  InformativeTextsPage(
+  ContactUsPage(
       {Key? key,
       required this.primaryColor,
       required this.secondaryColor,
       required this.primarySwatch,
-      required this.jsonInformativeText,
+      required this.jsonContactUs,
       required this.subtitle,
       required this.iconHeader})
       : super(key: key);
@@ -29,7 +29,7 @@ class InformativeTextsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => injector<InformativeTextsCubit>()
-          ..getInformativeText(jsonInformativeText),
+          ..getInformativeText(jsonContactUs),
         child: Theme(
           data: ThemeData(
               primaryColor: primaryColor,

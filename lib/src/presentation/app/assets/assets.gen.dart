@@ -42,13 +42,11 @@ class $AssetsImagesGen {
 class $AssetsJsonsGen {
   const $AssetsJsonsGen();
 
-  String get dependencyOnbc => 'assets/jsons/dependency_onbc.json';
-  String get faqCivix => 'assets/jsons/faq_civix.json';
-  String get faqFgr => 'assets/jsons/faq_fgr.json';
-  String get historyFgr => 'assets/jsons/history_fgr.json';
-  String get missionAndFunctionsFgr =>
-      'assets/jsons/mission_and_functions_fgr.json';
-  String get provinces => 'assets/jsons/provinces.json';
+  $AssetsJsonsCivixGen get civix => const $AssetsJsonsCivixGen();
+  $AssetsJsonsFgrGen get fgr => const $AssetsJsonsFgrGen();
+  $AssetsJsonsGeneralGen get general => const $AssetsJsonsGeneralGen();
+  $AssetsJsonsOnbcGen get onbc => const $AssetsJsonsOnbcGen();
+  $AssetsJsonsTspGen get tsp => const $AssetsJsonsTspGen();
 }
 
 class $AssetsSvgsGen {
@@ -88,6 +86,43 @@ class $AssetsSvgsGen {
   SvgGenImage get soundFile => const SvgGenImage('assets/svgs/sound_file.svg');
   SvgGenImage get unknown => const SvgGenImage('assets/svgs/unknown.svg');
   SvgGenImage get xdFile => const SvgGenImage('assets/svgs/xd_file.svg');
+}
+
+class $AssetsJsonsCivixGen {
+  const $AssetsJsonsCivixGen();
+
+  String get faqCivix => 'assets/jsons/civix/faq_civix.json';
+}
+
+class $AssetsJsonsFgrGen {
+  const $AssetsJsonsFgrGen();
+
+  String get contactUsFgr => 'assets/jsons/fgr/contact_us_fgr.json';
+  String get dependencyFgr => 'assets/jsons/fgr/dependency_fgr.json';
+  String get faqFgr => 'assets/jsons/fgr/faq_fgr.json';
+  String get historyFgr => 'assets/jsons/fgr/history_fgr.json';
+  String get missionAndFunctionsFgr =>
+      'assets/jsons/fgr/mission_and_functions_fgr.json';
+  String get structureFgr => 'assets/jsons/fgr/structure_fgr.json';
+}
+
+class $AssetsJsonsGeneralGen {
+  const $AssetsJsonsGeneralGen();
+
+  String get provinces => 'assets/jsons/general/provinces.json';
+}
+
+class $AssetsJsonsOnbcGen {
+  const $AssetsJsonsOnbcGen();
+
+  String get contactUsOnbc => 'assets/jsons/onbc/contact_us_onbc.json';
+  String get dependencyOnbc => 'assets/jsons/onbc/dependency_onbc.json';
+}
+
+class $AssetsJsonsTspGen {
+  const $AssetsJsonsTspGen();
+
+  String get contactUsTsp => 'assets/jsons/tsp/contact_us_tsp.json';
 }
 
 class Assets {

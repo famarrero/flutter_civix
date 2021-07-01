@@ -7,33 +7,35 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../presentation/pages/civix/about_us/about_us_page.dart' as _i14;
+import '../../presentation/pages/civix/about_us/about_us_page.dart' as _i15;
 import '../../presentation/pages/civix/institutions_list/institutions_list_page.dart'
-    as _i11;
+    as _i12;
 import '../../presentation/pages/civix/main_civix/main_civix_page.dart' as _i3;
 import '../../presentation/pages/civix/my_shipments/my_shipments_page.dart'
-    as _i13;
-import '../../presentation/pages/civix/profile/profile_page.dart' as _i15;
+    as _i14;
+import '../../presentation/pages/civix/profile/profile_page.dart' as _i16;
 import '../../presentation/pages/civix/quick_access/quick_access_page.dart'
-    as _i12;
-import '../../presentation/pages/civix/settings/settings_page.dart' as _i16;
+    as _i13;
+import '../../presentation/pages/civix/settings/settings_page.dart' as _i17;
 import '../../presentation/pages/fgr/consult_state_fgr/consult_state_fgr_page.dart'
-    as _i10;
+    as _i11;
 import '../../presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart'
-    as _i20;
+    as _i21;
 import '../../presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart'
-    as _i19;
+    as _i20;
 import '../../presentation/pages/fgr/list_statement_fgr/list_statement_fgr_page.dart'
-    as _i8;
-import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart' as _i6;
-import '../../presentation/pages/fgr/services_fgr/services_fgr_page.dart'
-    as _i17;
-import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
     as _i9;
-import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart' as _i7;
+import '../../presentation/pages/fgr/services_fgr/services_fgr_page.dart'
     as _i18;
+import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
+    as _i10;
+import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+    as _i19;
 import '../../presentation/pages/fgr/write_statement_fgr/write_statement_fgr_page.dart'
-    as _i7;
+    as _i8;
+import '../../presentation/pages/general/entities_by_province/entities_by_province_page.dart'
+    as _i6;
 import '../../presentation/pages/general/frequent_questions/frequent_questions_page.dart'
     as _i4;
 import '../../presentation/pages/general/informative_texts/informative_texts_page.dart'
@@ -75,69 +77,82 @@ class AppRouter extends _i1.RootStackRouter {
               subtitle: args.subtitle,
               iconHeader: args.iconHeader);
         }),
+    EntitiesByProvincePageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EntitiesByProvincePageRouteArgs>();
+          return _i6.EntitiesByProvincePage(
+              key: args.key,
+              primaryColor: args.primaryColor,
+              secondaryColor: args.secondaryColor,
+              primarySwatch: args.primarySwatch,
+              entitiesByProvinceJson: args.entitiesByProvinceJson,
+              title: args.title,
+              subtitle: args.subtitle);
+        }),
     MainFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i6.MainFgrPage();
+          return _i7.MainFgrPage();
         }),
     WriteStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<WriteStatementFgrPageRouteArgs>();
-          return _i7.WriteStatementFgrPage(bloc: args.bloc);
+          return _i8.WriteStatementFgrPage(bloc: args.bloc);
         }),
     ListStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ListStatementFgrPageRouteArgs>();
-          return _i8.ListStatementFgrPage(bloc: args.bloc);
+          return _i9.ListStatementFgrPage(bloc: args.bloc);
         }),
     ShowStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ShowStatementFgrPageRouteArgs>();
-          return _i9.ShowStatementFgrPage(id: args.id);
+          return _i10.ShowStatementFgrPage(id: args.id);
         }),
     ConsultStateFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ConsultStateFgrPageRouteArgs>();
-          return _i10.ConsultStateFgrPage(bloc: args.bloc);
+          return _i11.ConsultStateFgrPage(bloc: args.bloc);
         }),
     InstitutionsListPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i11.InstitutionsListPage();
+          return const _i12.InstitutionsListPage();
         }),
     QuickAccessPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i12.QuickAccessPage();
+          return const _i13.QuickAccessPage();
         }),
     MyShipmentsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i13.MyShipmentsPage();
+          return const _i14.MyShipmentsPage();
         }),
     AboutUsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i14.AboutUsPage();
+          return const _i15.AboutUsPage();
         }),
     ProfilePageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i15.ProfilePage();
+          return const _i16.ProfilePage();
         }),
     SettingsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i16.SettingsPage();
+          return const _i17.SettingsPage();
         }),
     ServicesFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i17.ServicesFgrPage();
+          return _i18.ServicesFgrPage();
         })
   };
 
@@ -159,6 +174,7 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(FrequentQuestionsPageRoute.name,
             path: 'preguntas-frequentes'),
         _i1.RouteConfig(InformativeTextsPageRoute.name, path: 'informacion'),
+        _i1.RouteConfig(EntitiesByProvincePageRoute.name, path: 'entidades'),
         _i1.RouteConfig(MainFgrPageRoute.name, path: 'fgr', children: [
           _i1.RouteConfig('#redirect',
               path: '', redirectTo: 'servicios-fgr', fullMatch: true),
@@ -275,6 +291,55 @@ class InformativeTextsPageRouteArgs {
   final _i2.IconData iconHeader;
 }
 
+class EntitiesByProvincePageRoute
+    extends _i1.PageRouteInfo<EntitiesByProvincePageRouteArgs> {
+  EntitiesByProvincePageRoute(
+      {_i2.Key? key,
+      required _i2.Color primaryColor,
+      required _i2.Color secondaryColor,
+      required _i2.MaterialColor primarySwatch,
+      required String entitiesByProvinceJson,
+      required String title,
+      required String subtitle})
+      : super(name,
+            path: 'entidades',
+            args: EntitiesByProvincePageRouteArgs(
+                key: key,
+                primaryColor: primaryColor,
+                secondaryColor: secondaryColor,
+                primarySwatch: primarySwatch,
+                entitiesByProvinceJson: entitiesByProvinceJson,
+                title: title,
+                subtitle: subtitle));
+
+  static const String name = 'EntitiesByProvincePageRoute';
+}
+
+class EntitiesByProvincePageRouteArgs {
+  const EntitiesByProvincePageRouteArgs(
+      {this.key,
+      required this.primaryColor,
+      required this.secondaryColor,
+      required this.primarySwatch,
+      required this.entitiesByProvinceJson,
+      required this.title,
+      required this.subtitle});
+
+  final _i2.Key? key;
+
+  final _i2.Color primaryColor;
+
+  final _i2.Color secondaryColor;
+
+  final _i2.MaterialColor primarySwatch;
+
+  final String entitiesByProvinceJson;
+
+  final String title;
+
+  final String subtitle;
+}
+
 class MainFgrPageRoute extends _i1.PageRouteInfo {
   const MainFgrPageRoute({List<_i1.PageRouteInfo>? children})
       : super(name, path: 'fgr', initialChildren: children);
@@ -284,7 +349,7 @@ class MainFgrPageRoute extends _i1.PageRouteInfo {
 
 class WriteStatementFgrPageRoute
     extends _i1.PageRouteInfo<WriteStatementFgrPageRouteArgs> {
-  WriteStatementFgrPageRoute({required _i18.WriteStatementFgrCubit bloc})
+  WriteStatementFgrPageRoute({required _i19.WriteStatementFgrCubit bloc})
       : super(name,
             path: 'redactar-planteamiento-fgr',
             args: WriteStatementFgrPageRouteArgs(bloc: bloc));
@@ -295,12 +360,12 @@ class WriteStatementFgrPageRoute
 class WriteStatementFgrPageRouteArgs {
   const WriteStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i18.WriteStatementFgrCubit bloc;
+  final _i19.WriteStatementFgrCubit bloc;
 }
 
 class ListStatementFgrPageRoute
     extends _i1.PageRouteInfo<ListStatementFgrPageRouteArgs> {
-  ListStatementFgrPageRoute({required _i19.ListStatementFgrCubit bloc})
+  ListStatementFgrPageRoute({required _i20.ListStatementFgrCubit bloc})
       : super(name,
             path: 'planteamientos-fgr',
             args: ListStatementFgrPageRouteArgs(bloc: bloc));
@@ -311,7 +376,7 @@ class ListStatementFgrPageRoute
 class ListStatementFgrPageRouteArgs {
   const ListStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i19.ListStatementFgrCubit bloc;
+  final _i20.ListStatementFgrCubit bloc;
 }
 
 class ShowStatementFgrPageRoute
@@ -332,7 +397,7 @@ class ShowStatementFgrPageRouteArgs {
 
 class ConsultStateFgrPageRoute
     extends _i1.PageRouteInfo<ConsultStateFgrPageRouteArgs> {
-  ConsultStateFgrPageRoute({required _i20.ConsultStateFgrCubit bloc})
+  ConsultStateFgrPageRoute({required _i21.ConsultStateFgrCubit bloc})
       : super(name,
             path: 'consultar-estado-fgr',
             args: ConsultStateFgrPageRouteArgs(bloc: bloc));
@@ -343,7 +408,7 @@ class ConsultStateFgrPageRoute
 class ConsultStateFgrPageRouteArgs {
   const ConsultStateFgrPageRouteArgs({required this.bloc});
 
-  final _i20.ConsultStateFgrCubit bloc;
+  final _i21.ConsultStateFgrCubit bloc;
 }
 
 class InstitutionsListPageRoute extends _i1.PageRouteInfo {

@@ -122,5 +122,6 @@
   "subject": "Subject",
   "somethingWrong": "Something wrong!",
   "sendingStatement": "Sending statement",
-  "processingImage": "Processing image"
+  "processingImage": "Processing image",
+  "noCoordinatesAvailable": "No coordinates available"
 }

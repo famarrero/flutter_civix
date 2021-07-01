@@ -45,13 +45,12 @@ class SideBarFgr extends StatelessWidget {
                     primaryColor: kFgrPrimaryColor,
                     secondaryColor: kFgrSecondaryColor,
                     primarySwatch: kFgrSecondaryMaterialColor,
-                    jsonFaq: Assets.jsons.faqFgr,
+                    jsonFaq: Assets.jsons.fgr.faqFgr,
                     subtitle: S.of(context).fgr));
                 context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
-              isActive:
-              routeName ==  InformativeTextsPageRoute.name,
+              isActive: routeName == InformativeTextsPageRoute.name,
               text: S.of(context).history,
               icon: Icons.history_edu_outlined,
               onPressed: () {
@@ -60,13 +59,12 @@ class SideBarFgr extends StatelessWidget {
                     secondaryColor: kFgrSecondaryColor,
                     primarySwatch: kFgrSecondaryMaterialColor,
                     subtitle: S.of(context).fgr,
-                    jsonInformativeText: Assets.jsons.historyFgr,
+                    jsonInformativeText: Assets.jsons.fgr.historyFgr,
                     iconHeader: Icons.history_edu_outlined));
                 context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
-              isActive:
-              routeName ==  InformativeTextsPageRoute.name,
+              isActive: routeName == InformativeTextsPageRoute.name,
               text: S.of(context).missionAndFunctions,
               icon: Icons.workspaces_outline,
               onPressed: () {
@@ -75,17 +73,38 @@ class SideBarFgr extends StatelessWidget {
                     secondaryColor: kFgrSecondaryColor,
                     primarySwatch: kFgrSecondaryMaterialColor,
                     subtitle: S.of(context).fgr,
-                    jsonInformativeText: Assets.jsons.missionAndFunctionsFgr,
+                    jsonInformativeText: Assets.jsons.fgr.missionAndFunctionsFgr,
                     iconHeader: Icons.workspaces_outline));
                 context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
-              // isActive:
-              // routeName ==  FrequentQuestionsPageRoute().routeName,
+              isActive:
+              routeName ==  InformativeTextsPageRoute.name,
               text: S.of(context).structure,
               icon: Icons.format_align_center_outlined,
               onPressed: () {
-                // _onPressedItem(context,  FrequentQuestionsPageRoute());
+                AutoRouter.of(context).push(InformativeTextsPageRoute(
+                    primaryColor: kFgrPrimaryColor,
+                    secondaryColor: kFgrSecondaryColor,
+                    primarySwatch: kFgrSecondaryMaterialColor,
+                    subtitle: S.of(context).fgr,
+                    jsonInformativeText: Assets.jsons.fgr.structureFgr,
+                    iconHeader: Icons.format_align_center_outlined));
+                context.read<SideBarFgrCubit>().closeMobileDrawable();
+              }),
+          SideBarMenuItem(
+              isActive: routeName == EntitiesByProvincePageRoute.name,
+              text: 'Fiscalías',
+              icon: Icons.account_balance_outlined,
+              onPressed: () {
+                AutoRouter.of(context).push(EntitiesByProvincePageRoute(
+                    primaryColor: kFgrPrimaryColor,
+                    secondaryColor: kFgrSecondaryColor,
+                    primarySwatch: kFgrSecondaryMaterialColor,
+                    title: 'Fiscalías',
+                    subtitle: S.of(context).fgr,
+                    entitiesByProvinceJson: Assets.jsons.fgr.dependencyFgr));
+                context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
               // isActive:

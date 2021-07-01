@@ -109,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "myShipments": MessageLookupByLibrary.simpleMessage("Mis envíos"),
         "name": MessageLookupByLibrary.simpleMessage("Nombre"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noCoordinatesAvailable": MessageLookupByLibrary.simpleMessage(
+            "No hay coordenadas disponibles"),
         "noFileSelected": MessageLookupByLibrary.simpleMessage(
             "No se seleccionó ningun archivo"),
         "noImageSelected": MessageLookupByLibrary.simpleMessage(

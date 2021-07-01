@@ -59,14 +59,6 @@ class FrequentQuestionsPage extends StatelessWidget {
                         height: 200,
                         child: Center(child: CircularProgressIndicator())),
                   if (state.faqList.isNotEmpty)
-                    // ExpansionPanelList(
-                    //   animationDuration: Duration(milliseconds: 300),
-                    //   dividerColor: Colors.transparent,
-                    //   elevation: 0,
-                    //   children: [
-                    //
-                    //   ],
-                    // )
                     ListView.builder(
                         shrinkWrap: true,
                         physics: ScrollPhysics(),
@@ -88,32 +80,35 @@ class FrequentQuestionsPage extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 6),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),
-        child: ExpansionTile(
-          collapsedTextColor: Colors.transparent,
-          leading: Icon(Icons.question_answer_outlined,
-              color: Theme.of(context).accentColor, size: 25),
-          title: Text(
-            state.faqList[indexFather].question,
-            style: TextStyle(
-                fontSize: kNormalTextSize,
-                color: Theme.of(context).accentColor,
-                fontWeight: FontWeight.w500),
+        child: Theme(
+          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+          child: ExpansionTile(
+            collapsedTextColor: Colors.transparent,
+            leading: Icon(Icons.question_answer_outlined,
+                color: Theme.of(context).accentColor, size: 25),
+            title: Text(
+              state.faqList[indexFather].question,
+              style: TextStyle(
+                  fontSize: kNormalTextSize,
+                  color: Theme.of(context).accentColor,
+                  fontWeight: FontWeight.w500),
+            ),
+            children: [
+              ListView.builder(
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  itemCount: state.faqList[indexFather].responsesList.length,
+                  itemBuilder: (context, indexSon) {
+                    return Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                      child: Text(
+                          state.faqList[indexFather].responsesList[indexSon].text,
+                          style: TextStyle(fontSize: kNormalTextSize)),
+                    );
+                  })
+            ],
           ),
-          children: [
-            ListView.builder(
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                itemCount: state.faqList[indexFather].responsesList.length,
-                itemBuilder: (context, indexSon) {
-                  return Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-                    child: Text(
-                        state.faqList[indexFather].responsesList[indexSon].text,
-                        style: TextStyle(fontSize: kNormalTextSize)),
-                  );
-                })
-          ],
         ),
       ),
     );

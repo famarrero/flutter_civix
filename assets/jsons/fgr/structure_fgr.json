@@ -1,0 +1,21 @@
+{
+  "title": "Estructura",
+  "texts_list": [
+    {
+      "text": "La FGR cuenta con la siguiente estructura:",
+      "is_header": true
+    },
+    {
+      "text": "Fiscalía General"
+    },
+    {
+      "text": "Fiscalías provinciales"
+    },
+    {
+      "text": "Fiscalías municipales"
+    },
+    {
+      "text": "Fiscalía Militar"
+    }
+  ]
+}
