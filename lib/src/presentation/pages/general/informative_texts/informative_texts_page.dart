@@ -70,7 +70,7 @@ class InformativeTextsPage extends StatelessWidget {
                   if (state.loading)
                     Container(
                         height: 200,
-                        child: Center(child: CircularProgressIndicator())),
+                        child: Center(child: CircularProgressIndicator(color: Theme.of(context).primaryColor))),
                   if (state.informativeText != null)
                     CustomCard(
                       child: ListView.builder(

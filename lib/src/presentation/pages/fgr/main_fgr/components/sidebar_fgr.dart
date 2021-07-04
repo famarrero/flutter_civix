@@ -94,14 +94,14 @@ class SideBarFgr extends StatelessWidget {
               }),
           SideBarMenuItem(
               isActive: routeName == EntitiesByProvincePageRoute.name,
-              text: 'Fiscalías',
+              text: S.of(context).provincialProsecutors,
               icon: Icons.account_balance_outlined,
               onPressed: () {
                 AutoRouter.of(context).push(EntitiesByProvincePageRoute(
                     primaryColor: kFgrPrimaryColor,
                     secondaryColor: kFgrSecondaryColor,
                     primarySwatch: kFgrSecondaryMaterialColor,
-                    title: 'Fiscalías',
+                    title: S.of(context).provincialProsecutors,
                     subtitle: S.of(context).fgr,
                     entitiesByProvinceJson: Assets.jsons.fgr.dependencyFgr));
                 context.read<SideBarFgrCubit>().closeMobileDrawable();

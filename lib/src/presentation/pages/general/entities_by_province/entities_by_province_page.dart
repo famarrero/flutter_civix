@@ -61,12 +61,12 @@ class _EntitiesByProvincePageState extends State<EntitiesByProvincePage> {
                     width: double.infinity,
                     color: Theme.of(context).primaryColor,
                     child: Icon(Icons.account_balance_outlined,
-                        color: Colors.white, size: 90),
+                        color: Colors.white, size: 60),
                   ),
                   if (state.loading)
                     Container(
                         height: 200,
-                        child: Center(child: CircularProgressIndicator())),
+                        child: Center(child: CircularProgressIndicator(color: Theme.of(context).primaryColor))),
                   if (state.entitiesByProvince.isNotEmpty)
                     ListView.builder(
                         shrinkWrap: true,

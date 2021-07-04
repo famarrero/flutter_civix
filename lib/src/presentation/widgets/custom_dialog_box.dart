@@ -62,9 +62,14 @@ class CustomDialogBox extends StatelessWidget {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
               ),
-              Icon(icon,
-                  color: (colorIcon != null) ? colorIcon : Colors.blue,
-                  size: (sizeIcon != null) ? sizeIcon : 45),
+              CircleAvatar(
+                  backgroundColor:
+                      (colorIcon != null) ? colorIcon : Colors.blue,
+                  radius: 23,
+                  child: Icon(icon, color: Colors.white)),
+              // Icon(icon,
+              //     color: (colorIcon != null) ? colorIcon : Colors.blue,
+              //     size: (sizeIcon != null) ? sizeIcon : 45),
               SizedBox(width: 25)
             ],
           ),

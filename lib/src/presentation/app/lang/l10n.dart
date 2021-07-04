@@ -1459,6 +1459,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Provincial prosecutors`
+  String get provincialProsecutors {
+    return Intl.message(
+      'Provincial prosecutors',
+      name: 'provincialProsecutors',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

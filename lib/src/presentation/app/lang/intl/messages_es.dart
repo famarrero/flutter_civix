@@ -166,6 +166,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("La provincia es requerida"),
         "provincialCourts":
             MessageLookupByLibrary.simpleMessage("Tribunales provinciales"),
+        "provincialProsecutors":
+            MessageLookupByLibrary.simpleMessage("Fiscalías provinciales"),
         "quickAccess": MessageLookupByLibrary.simpleMessage("Acceso rápido"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "response": MessageLookupByLibrary.simpleMessage("Respuesta"),
