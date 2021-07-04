@@ -27,7 +27,7 @@ class WriteStatementFgrState extends Equatable {
       stateSendStatement: stateSendStatement ?? this.stateSendStatement,
       stateOfFiles: stateOfFiles ?? this.stateOfFiles,
       stateOfPromoters: stateOfPromoters ?? this.stateOfPromoters,
-      showMessage: showMessage ?? this.showMessage,
+      showMessage: showMessage ?? null, ///Si el mensaje no se pasa entonces el mensaje debe de ser nulo
     );
   }
 
@@ -68,35 +68,35 @@ class FileListState extends Equatable {
   final bool isLoading;
   final BuiltList<File> pickedFiles;
   final bool done;
-  final String? error;
+  final Failure? failure;
 
   const FileListState(
-      {required this.isLoading, required this.pickedFiles, required this.done, this.error});
+      {required this.isLoading, required this.pickedFiles, required this.done, this.failure});
 
   // factory FileListState.initial() => FileListState(
   //     isLoading: false, pickedFiles: BuiltList([]), done: false, error: null);
 
   factory FileListState.initial(
-          {bool? isLoading, BuiltList<File>? pickedFiles, bool? done, String? error}) =>
+          {bool? isLoading, BuiltList<File>? pickedFiles, bool? done, Failure? failure}) =>
       FileListState(
         isLoading: isLoading ?? false,
         pickedFiles: pickedFiles ?? BuiltList([]),
         done: done ?? false,
-        error: error ?? null,
+        failure: failure ?? null,
       );
 
   FileListState copyWith(
-      {bool? isLoading, BuiltList<File>? pickedFiles, bool? done, String? error}) {
+      {bool? isLoading, BuiltList<File>? pickedFiles, bool? done, Failure? failure}) {
     return FileListState(
       isLoading: isLoading ?? this.isLoading,
       pickedFiles: pickedFiles ?? this.pickedFiles,
       done: done ?? this.done,
-      error: error ?? this.error,
+      failure: failure ?? this.failure,
     );
   }
 
   @override
-  List<Object?> get props => [isLoading, pickedFiles, done, error];
+  List<Object?> get props => [isLoading, pickedFiles, done, failure];
 }
 
 class PromoterListState extends Equatable {

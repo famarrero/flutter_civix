@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_civix/src/core/constants/dimens.dart';
-import 'package:flutter_civix/src/core/services_manager/url_launcher.dart';
+import 'package:flutter_civix/src/core/services_manager/url_launcher_manager.dart';
 import 'package:flutter_civix/src/injector.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_dialog_box.dart';

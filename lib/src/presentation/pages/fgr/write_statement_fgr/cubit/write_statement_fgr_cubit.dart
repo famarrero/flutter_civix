@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_civix/src/core/failure/failures.dart';
 import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
 import 'package:flutter_civix/src/core/utils/utils.dart';
@@ -39,7 +40,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
 
   void _emitInitialsStates() {
     emit(state.copyWith(
-        showMessage: '',
+        showMessage: null,
         stateSendStatement: SendStatementState.initial(),
         stateOfPromoters: PromoterListState(promoters: _promoters),
         stateOfFiles: FileListState.initial(pickedFiles: _files)));
@@ -173,7 +174,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     final String _newDirectory = '${_directory.path}/AppPictures';
     await Directory(_newDirectory).create(recursive: true);
 
-    final Either<String, File> response;
+    final Either<Failure, File> response;
     if (source == 'camera') {
       response = await _imagePicker.getImageFromCamera();
     } else {
@@ -183,7 +184,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     response.fold(
       (errorOrCancel) {
         emit(state.copyWith(
-            stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
+            stateOfFiles: state.stateOfFiles.copyWith(failure: errorOrCancel)));
       },
       (file) async {
         emit(state.copyWith(
@@ -203,7 +204,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         imageCompressResponse.fold((error) {
           emit(state.copyWith(
               stateOfFiles:
-                  state.stateOfFiles.copyWith(isLoading: false, error: error)));
+                  state.stateOfFiles.copyWith(isLoading: false, failure: error)));
         }, (imageCompress) async {
           _files = (_files.toBuilder()..add(imageCompress)).build();
 
@@ -230,7 +231,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
     response.fold(
       (errorOrCancel) {
         emit(state.copyWith(
-            stateOfFiles: state.stateOfFiles.copyWith(error: errorOrCancel)));
+            stateOfFiles: state.stateOfFiles.copyWith(failure: errorOrCancel)));
       },
       (file) async {
         if (_documentsSupportedList.contains(file.path.split('.').last)) {
@@ -246,7 +247,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         } else {
           emit(state.copyWith(
               stateOfFiles: state.stateOfFiles.copyWith(
-                  isLoading: false, error: S.current.documentNotSupported)));
+                  isLoading: false, failure: DocumentNoSupportedFailure(S.current.documentNotSupported))));
         }
       },
     );

@@ -79,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter statement"),
         "enterSubject": MessageLookupByLibrary.simpleMessage("Enter subject"),
         "enterTiked": MessageLookupByLibrary.simpleMessage("Statements"),
+        "errorCompressingImage":
+            MessageLookupByLibrary.simpleMessage("Error compressing image"),
         "expire": MessageLookupByLibrary.simpleMessage("Expire"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "General Prosecutor of the Republic"),

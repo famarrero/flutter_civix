@@ -84,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Introduzca asunto"),
         "enterTiked":
             MessageLookupByLibrary.simpleMessage("Introduzca comprobante"),
+        "errorCompressingImage":
+            MessageLookupByLibrary.simpleMessage("Error comprimiendo imagen"),
         "expire": MessageLookupByLibrary.simpleMessage("Vence"),
         "fgr": MessageLookupByLibrary.simpleMessage(
             "Fiscalía General de la República"),

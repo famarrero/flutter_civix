@@ -108,13 +108,13 @@ class _WriteStatementFgrPageState extends State<WriteStatementFgrPage> {
           if (state.stateOfFiles.done) {
             Navigator.of(context).pop();
           }
-          if (state.stateOfFiles.error != null) {
-            showToast(state.stateOfFiles.error!,
+          if (state.stateOfFiles.failure != null) {
+            showToast(state.stateOfFiles.failure!.message,
                 duration: Duration(seconds: 3),
                 position: ToastPosition.bottom,
                 backgroundColor: Colors.black.withOpacity(0.7));
           }
-          if (state.showMessage != null && state.showMessage != '') {
+          if (state.showMessage != null) {
             showToast(state.showMessage!,
                 duration: Duration(seconds: 3),
                 position: ToastPosition.bottom,

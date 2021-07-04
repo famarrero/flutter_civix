@@ -2,10 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart';
-import 'package:flutter_civix/src/core/services_manager/file_picker_manager_impl.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
-import 'package:flutter_civix/src/core/services_manager/image_picker_manager_impl.dart';
-import 'package:flutter_civix/src/core/services_manager/url_launcher.dart';
+import 'package:flutter_civix/src/core/services_manager/url_launcher_manager.dart';
 import 'package:flutter_civix/src/data/data_sources/local_data/local_database/daos/statement_fgr_dao.dart';
 import 'package:flutter_civix/src/data/data_sources/local_data/local_database/moor_database.dart';
 import 'package:flutter_civix/src/data/data_sources/local_data/shared_preferences/shared_preferences_fgr.dart';

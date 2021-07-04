@@ -22,7 +22,8 @@ class UrlLauncherManagerImpl extends UrlLauncherManager {
   }
 
   Future<SendEmailFailure?> sendEmail(String emailAddress) async {
-    String fullUrl = 'mailto:$emailAddress?body=\n\n\n\nEnviado a través de la aplicación Civix';
+    String fullUrl =
+        'mailto:$emailAddress?body=\n\n\n\nEnviado a través de la aplicación Civix';
     if (await UrlLauncher.canLaunch(fullUrl)) {
       await UrlLauncher.launch(fullUrl);
     } else {
@@ -32,11 +33,7 @@ class UrlLauncherManagerImpl extends UrlLauncherManager {
 
   Future<OpenUrlFailure?> openUrl(String url) async {
     if (await UrlLauncher.canLaunch(url)) {
-      await UrlLauncher.launch(
-        url,
-        forceWebView: false,
-        forceSafariVC: false
-      );
+      await UrlLauncher.launch(url, forceWebView: false, forceSafariVC: false);
     } else {
       return OpenUrlFailure(S.current.urlCouldNotBeOpen);
     }

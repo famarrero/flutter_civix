@@ -134,5 +134,6 @@
   "urlCouldNotBeOpen": "No se puede abrir la url",
   "doYouWantCallThisNumber": "¿Desea llamar a este número?",
   "doYouWantSendEmailToThisAddress": "¿Desea enviar un correo electrónico a esta dirección?",
-  "doYouWantOpenThisLink": "¿Desea abrir este enlace?"
+  "doYouWantOpenThisLink": "¿Desea abrir este enlace?",
+  "errorCompressingImage": "Error comprimiendo imagen"
 }

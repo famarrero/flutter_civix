@@ -1409,6 +1409,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Error compressing image`
+  String get errorCompressingImage {
+    return Intl.message(
+      'Error compressing image',
+      name: 'errorCompressingImage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

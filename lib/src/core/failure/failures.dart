@@ -42,6 +42,12 @@ class DioRequestFailure extends NetWorkFailure {
   List<Object?> get props => [message, errorType];
 }
 
+class ImageCompressFailure extends Failure {
+  const ImageCompressFailure(String message) : super(message);
+  @override
+  List<Object?> get props => [message];
+}
+
 class FilePickerFailure extends Failure {
   const FilePickerFailure(String message) : super(message);
   @override
@@ -54,8 +60,8 @@ class CancelFilePickerFailure extends Failure {
   List<Object?> get props => [message];
 }
 
-class CancelImageCropFailure extends Failure {
-  const CancelImageCropFailure(String message) : super(message);
+class DocumentNoSupportedFailure extends Failure {
+  const DocumentNoSupportedFailure(String message) : super(message);
   @override
   List<Object?> get props => [message];
 }
