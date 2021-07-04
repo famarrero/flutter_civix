@@ -12,6 +12,7 @@ import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubi
 import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/components/navbar_fgr.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/widgets/headers.dart';
+import 'package:flutter_civix/src/presentation/widgets/intitution_header.dart';
 
 import 'components/sidebar_fgr.dart';
 import 'cubit/sidebar_fgr_cubit.dart';
@@ -62,7 +63,11 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
             body: Column(
               children: [
                 NavBarFgr(),
-                InstitutionHeader(),
+                InstitutionHeader(
+                  institutionName: S.of(context).fgr,
+                  color: kFgrPrimaryColor,
+                  image: Assets.images.marcaAguaFgr.path,
+                ),
                 Expanded(child: AutoRouter()),
               ],
             ),
@@ -92,14 +97,14 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
         routeName;
   }
 
-  // void _onPressedBottomNavItem(BuildContext context, int index) {
-  //   if (index == 0) {
-  //     if (!_iAmAlreadyInThisPage(context, ServicesFgrPageRoute.name))
-  //       _navigateBottomNavBar(context, ServicesFgrPageRoute());
-  //   } else if (index == 1) {
-  //     _navigateBottomNavBar(context, InfoFgrPageRoute());
-  //   }
-  // }
+// void _onPressedBottomNavItem(BuildContext context, int index) {
+//   if (index == 0) {
+//     if (!_iAmAlreadyInThisPage(context, ServicesFgrPageRoute.name))
+//       _navigateBottomNavBar(context, ServicesFgrPageRoute());
+//   } else if (index == 1) {
+//     _navigateBottomNavBar(context, InfoFgrPageRoute());
+//   }
+// }
 
 //   void _navigateBottomNavBar(BuildContext context, PageRouteInfo routeInfo) {
 //     final currentRouteName =
@@ -115,86 +120,35 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
 //       }
 //     }
 //   }
- }
-
-class InstitutionHeader extends StatelessWidget {
-  const InstitutionHeader({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 140,
-        alignment: Alignment.center,
-        color: Colors.transparent,
-        // color: Color(0xff1f2749),
-        child: Stack(
-          children: [
-            HeaderWave(context, Theme.of(context).primaryColor),
-            Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // SizedBox(height: 8),
-                  Row(
-                    children: [
-                      SizedBox(width: 24),
-                      Image(
-                          height: 90,
-                          width: 90,
-                          color: Colors.white,
-                          image: Assets.images.marcaAguaFgr),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Text(
-                            S.of(context).fgr,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w300),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
-  }
 }
 
-class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final double minheight;
-  final double maxheight;
-  final Widget child;
-
-  SliverCustomHeaderDelegate(
-      {required this.minheight, required this.maxheight, required this.child});
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox.expand(child: child);
-  }
-
-  @override
-  double get maxExtent => maxheight;
-
-  @override
-  double get minExtent => minheight;
-
-  @override
-  bool shouldRebuild(SliverCustomHeaderDelegate oldDelegate) {
-    return maxheight != oldDelegate.maxheight ||
-        minheight != oldDelegate.minheight ||
-        child != oldDelegate.child;
-  }
-}
+// class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
+//   final double minheight;
+//   final double maxheight;
+//   final Widget child;
+//
+//   SliverCustomHeaderDelegate(
+//       {required this.minheight, required this.maxheight, required this.child});
+//
+//   @override
+//   Widget build(
+//       BuildContext context, double shrinkOffset, bool overlapsContent) {
+//     return SizedBox.expand(child: child);
+//   }
+//
+//   @override
+//   double get maxExtent => maxheight;
+//
+//   @override
+//   double get minExtent => minheight;
+//
+//   @override
+//   bool shouldRebuild(SliverCustomHeaderDelegate oldDelegate) {
+//     return maxheight != oldDelegate.maxheight ||
+//         minheight != oldDelegate.minheight ||
+//         child != oldDelegate.child;
+//   }
+// }
 
 // CustomCarouselSlider(items: _getItemsCarousel()),
 // List<ItemCarouselSlider> _getItemsCarousel() {

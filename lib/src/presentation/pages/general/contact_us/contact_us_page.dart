@@ -57,7 +57,7 @@ class ContactUsPage extends StatelessWidget {
                       height: 150,
                       width: double.infinity,
                       color: Colors.white,
-                      child: Image.asset(imageHeader)),
+                      child: Image.asset(imageHeader, fit: BoxFit.cover,)),
                   if (state.loading)
                     Container(
                         height: 200,
@@ -251,7 +251,8 @@ class ContactUsPage extends StatelessWidget {
                                       icon: Icon(FontAwesomeIcons.facebook,
                                           color: Theme.of(context).accentColor),
                                       onPressed: () {
-                                        injector<UrlLauncherManager>()..openUrl(state.contactUs!.facebook!);
+                                        injector<UrlLauncherManager>()
+                                          ..openUrl(state.contactUs!.facebook!);
                                       },
                                     ),
                                   ),
@@ -263,7 +264,8 @@ class ContactUsPage extends StatelessWidget {
                                       icon: Icon(FontAwesomeIcons.twitter,
                                           color: Theme.of(context).accentColor),
                                       onPressed: () {
-                                        injector<UrlLauncherManager>()..openUrl(state.contactUs!.twitter!);
+                                        injector<UrlLauncherManager>()
+                                          ..openUrl(state.contactUs!.twitter!);
                                       },
                                     ),
                                   ),
@@ -275,7 +277,8 @@ class ContactUsPage extends StatelessWidget {
                                       icon: Icon(FontAwesomeIcons.youtube,
                                           color: Theme.of(context).accentColor),
                                       onPressed: () {
-                                        injector<UrlLauncherManager>()..openUrl(state.contactUs!.youtube!);
+                                        injector<UrlLauncherManager>()
+                                          ..openUrl(state.contactUs!.youtube!);
                                       },
                                     ),
                                   ),
@@ -287,7 +290,8 @@ class ContactUsPage extends StatelessWidget {
                                       icon: Icon(FontAwesomeIcons.telegram,
                                           color: Theme.of(context).accentColor),
                                       onPressed: () {
-                                        injector<UrlLauncherManager>()..openUrl(state.contactUs!.telegram!);
+                                        injector<UrlLauncherManager>()
+                                          ..openUrl(state.contactUs!.telegram!);
                                       },
                                     ),
                                   )
@@ -349,12 +353,7 @@ class ContactUsPage extends StatelessWidget {
                 Expanded(
                     child: TextEmail(
                         email: emailsList[index],
-                        colorAccent: Theme.of(context).accentColor)
-
-                    // Text(emailsList[0],
-                    //     style: TextStyle(
-                    //         color: Colors.black, fontSize: kNormalTextSize)),
-                    ),
+                        colorAccent: Theme.of(context).accentColor)),
               ],
             ),
           );
@@ -381,9 +380,6 @@ class ContactUsPage extends StatelessWidget {
                 TextPhoneNumber(
                     phoneNumber: phonesList[index],
                     colorAccent: Theme.of(context).accentColor)
-                // Text(phonesList[index],
-                //     style: TextStyle(
-                //         color: Colors.black, fontSize: kNormalTextSize)),
               ],
             ),
           );
@@ -408,14 +404,10 @@ class ContactUsPage extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child: TextUrl(
-                    url: linksList[0],
-                    colorAccent: Theme.of(context).accentColor,
-                  )
-                  // Text(linksList[0],
-                  //     style: TextStyle(
-                  //         color: Colors.black, fontSize: kNormalTextSize)),
-                ),
+                    child: TextUrl(
+                  url: linksList[0],
+                  colorAccent: Theme.of(context).accentColor,
+                )),
               ],
             ),
           );

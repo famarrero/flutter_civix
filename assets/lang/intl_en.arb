@@ -135,5 +135,9 @@
   "doYouWantCallThisNumber": "Do you want call this number?",
   "doYouWantSendEmailToThisAddress": "Do you want send email to this address?",
   "doYouWantOpenThisLink": "Do you want open this link?",
-  "errorCompressingImage": "Error compressing image"
+  "errorCompressingImage": "Error compressing image",
+  "tsp": "Supreme court",
+  "missionAndVision": "Mission and vision",
+  "courtRooms": "Court rooms",
+  "provincialCourts": "Provincial courts"
 }

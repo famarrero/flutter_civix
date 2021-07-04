@@ -1,23 +1,24 @@
 {
-  "province": "",
-  "municipality": "",
-  "address": "",
-  "postal_code": "",
+  "province": "La Habana",
+  "municipality": "La Habana Vieja",
+  "address": "Calle Aguiar No. 367 e/ Obrapía y Obispo.",
+  "postal_code": "10 100",
   "coordinates": {
-    "latitude": "",
-    "longitude": ""
+    "latitude": "23.138241",
+    "longitude": "-82.352573"
   },
   "emails_list": [
-    ""
+    "poblacion@tsp.gob.cu"
   ],
   "phones_list": [
-    "72069073"
+    "78698748",
+    "78698879"
   ],
   "links": [
-    ""
+    "http://www.tsp.gob.cu/es"
   ],
-  "facebook": "",
-  "twitter": "",
-  "youtube": "",
-  "telegram": ""
+  "facebook": "https://www.facebook.com/tribunalsupremopopular",
+  "twitter": "https://www.twitter/TSupremoCU",
+  "youtube": "https://m.youtube.com/channel/UChy0IgwF-jqDuAaP3ZaCxhg",
+  "telegram": "https://www.t.me/TribunalSupremoPopularCuba"
 }

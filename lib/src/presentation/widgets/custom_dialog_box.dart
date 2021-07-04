@@ -77,6 +77,7 @@ class CustomDialogBox extends StatelessWidget {
               Visibility(
                 visible: (buttonNegativeName != null),
                 child: CustomElevatedButton(
+                  color: colorIcon,
                   onPressed: (buttonNegativeAction != null)
                       ? buttonNegativeAction!
                       : () => Navigator.of(context).pop(),
@@ -86,6 +87,7 @@ class CustomDialogBox extends StatelessWidget {
               ),
               SizedBox(width: 20),
               CustomElevatedButton(
+                color: colorIcon,
                 onPressed: (buttonPositiveAction != null)
                     ? buttonPositiveAction!
                     : () => Navigator.of(context).pop(),

@@ -10,17 +10,20 @@ import 'package:flutter/services.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  AssetGenImage get fgrMarcaPais =>
-      const AssetGenImage('assets/images/fgr_marca_pais.png');
-  AssetGenImage get icoCivixImagenLetrasOscuro =>
-      const AssetGenImage('assets/images/ico_civix_imagen_letras_oscuro.png');
-  AssetGenImage get icoCivixImagenLetrasOscuroContorneadoAcrecaDe =>
-      const AssetGenImage(
-          'assets/images/ico_civix_imagen_letras_oscuro_contorneado_acreca_de.png');
-  AssetGenImage get imagenLogoCegel =>
-      const AssetGenImage('assets/images/imagen_logo_cegel.png');
+  AssetGenImage get contactenosFgr =>
+      const AssetGenImage('assets/images/contactenos_fgr.png');
+  AssetGenImage get contactenosOnbc =>
+      const AssetGenImage('assets/images/contactenos_onbc.jpg');
+  AssetGenImage get contactenosTsp =>
+      const AssetGenImage('assets/images/contactenos_tsp.jpg');
+  AssetGenImage get icoCivixImagenLetras =>
+      const AssetGenImage('assets/images/ico_civix_imagen_letras.png');
+  AssetGenImage get icoCivixImagenLetrasContorneado => const AssetGenImage(
+      'assets/images/ico_civix_imagen_letras_contorneado.png');
   AssetGenImage get logoAnpp =>
       const AssetGenImage('assets/images/logo_anpp.jpg');
+  AssetGenImage get logoCegel =>
+      const AssetGenImage('assets/images/logo_cegel.png');
   AssetGenImage get logoFgr =>
       const AssetGenImage('assets/images/logo_fgr.png');
   AssetGenImage get logoInder =>
@@ -123,6 +126,12 @@ class $AssetsJsonsTspGen {
   const $AssetsJsonsTspGen();
 
   String get contactUsTsp => 'assets/jsons/tsp/contact_us_tsp.json';
+  String get courtroomsTsp => 'assets/jsons/tsp/courtrooms_tsp.json';
+  String get dependencyTsp => 'assets/jsons/tsp/dependency_tsp.json';
+  String get faqTsp => 'assets/jsons/tsp/faq_tsp.json';
+  String get historyTsp => 'assets/jsons/tsp/history_tsp.json';
+  String get missionAndVisionTsp =>
+      'assets/jsons/tsp/mission_and_vision_tsp.json';
 }
 
 class Assets {

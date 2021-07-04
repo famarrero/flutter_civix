@@ -1419,6 +1419,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Supreme court`
+  String get tsp {
+    return Intl.message(
+      'Supreme court',
+      name: 'tsp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mission and vision`
+  String get missionAndVision {
+    return Intl.message(
+      'Mission and vision',
+      name: 'missionAndVision',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Court rooms`
+  String get courtRooms {
+    return Intl.message(
+      'Court rooms',
+      name: 'courtRooms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provincial courts`
+  String get provincialCourts {
+    return Intl.message(
+      'Provincial courts',
+      name: 'provincialCourts',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,0 +1,69 @@
+{
+  "questions_list": [
+    {
+      "question": "¿Cuándo procede y dónde solicitar el beneficio de libertad condicional?",
+      "responses_list": [
+        {
+          "text": "El beneficio de libertad condicional, procede siempre que se haya extinguido, por lo menos uno de los términos siguientes."
+        },
+        {
+          "text": "-La tercera parte de la sanción impuesta, cuando se trate de sancionados que no hayan arribado a los 20 años de edad al comenzar a cumplir la sanción."
+        },
+        {
+          "text": "-La mitad del término de la sanción impuesta, cuando se trate de sancionados primarios."
+        },
+        {
+          "text": "-Las dos terceras partes de la sanción impuesta cuando se trate de sancionados reincidentes o multirreincidentes."
+        },
+        {
+          "text": "El referido beneficio se solicita ante la Sala de Incidentes del Tribunal Provincial Popular del lugar donde el sancionado cumple la sanción."
+        },
+        {
+          "text": "Se requiere para ello, haber mantenido buen comportamiento durante el tiempo de su reclusión."
+        }
+      ]
+    },
+    {
+      "question": "¿Qué es el Procedimiento de Revisión y cuándo procede?",
+      "responses_list": [
+        {
+          "text": "El Procedimiento de Revisión, es el único que posibilita el examen de las sentencias firmes dictadas por los tribunales."
+        },
+        {
+          "text": "En dependencia de la materia de que se trate, se establecen determinados supuestos para que el mismo pueda proceder."
+        },
+        {
+          "text": "Le sugerimos, dadas las exigencias establecidas para que el mismo pueda proceder, consultar un abogado en cualquier Bufete Colectivo del país, que le pueda orientar sobre las posibilidades de que en su caso pueda ser interesado."
+        }
+      ]
+    },
+    {
+      "question": "¿Cómo proceder ante la inconformidad con la sentencia dictada en el proceso en que usted es parte?",
+      "responses_list": [
+        {
+          "text": "Las sentencias y demás resoluciones dictadas por los tribunales, sólo pueden ser modificadas por los jueces y salas o tribunales que conocen el asunto, en razón de haber utilizado los medios de impugnación establecidos en la ley."
+        },
+        {
+          "text": "De manera general, los de mayor reiteración resultar ser la apelación que procede contra las sentencias dictadas en las diferentes materias por los tribunales municipales, y el de casación que procede contra las sentencias dictadas por los tribunales provinciales."
+        },
+        {
+          "text": "Según la materia y el tipo de recurso se establecen unos plazos, que vencido los mismos sin hacer uso de ellos, el recurso resulta improcedente."
+        },
+        {
+          "text": "En algunos casos se necesita dirección letrada para su interposición."
+        }
+      ]
+    },
+    {
+      "question": "¿Cómo proceder para plantear alguna queja o inquietud sobre el actuar de jueces o personal auxiliar de Tribunales?",
+      "responses_list": [
+        {
+          "text": "En el Tribunal Supremo Popular y en  todos los Tribunales Provinciales Populares del país, existen oficinas de atención a la población donde laboran especialistas calificados, todos los días laborables, encargados de tramitar y ofrecer respuestas a las quejas, planteamientos y peticiones de la población."
+        },
+        {
+          "text": "También puede utilizar el correo electrónico población@tsp.gob.cu y recibirá por esta misma vía la correspondiente respuesta."
+        }
+      ]
+    }
+  ]
+}

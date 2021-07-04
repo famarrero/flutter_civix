@@ -135,5 +135,9 @@
   "doYouWantCallThisNumber": "¿Desea llamar a este número?",
   "doYouWantSendEmailToThisAddress": "¿Desea enviar un correo electrónico a esta dirección?",
   "doYouWantOpenThisLink": "¿Desea abrir este enlace?",
-  "errorCompressingImage": "Error comprimiendo imagen"
+  "errorCompressingImage": "Error comprimiendo imagen",
+  "tsp": "Tribunal Supremo Popular",
+  "missionAndVision": "Misión y visión",
+  "courtRooms": "Salas de justicia",
+  "provincialCourts": "Tribunales provinciales"
 }

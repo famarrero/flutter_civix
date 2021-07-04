@@ -31,9 +31,11 @@ class InstitutionsListPage extends StatelessWidget {
           }),
       InstitutionItem(
           imageSrc: Assets.images.logoTsp.path,
-          title: "Tribunal Supremo Popular",
+          title: S.of(context).tsp,
           color: Colors.blue,
-          onTap: () {}),
+          onTap: () {
+            AutoRouter.of(context).push(MainTspPageRoute());
+          }),
       InstitutionItem(
           imageSrc: Assets.images.logoAnpp.path,
           title: "Organización Nacional de Bufetes Colectivos",

@@ -118,7 +118,7 @@ class SideBarFgr extends StatelessWidget {
                     primarySwatch: kFgrSecondaryMaterialColor,
                     subtitle: S.of(context).fgr,
                     jsonContactUs: Assets.jsons.fgr.contactUsFgr,
-                    imageHeader: Assets.images.fgrMarcaPais.path));
+                    imageHeader: Assets.images.contactenosFgr.path));
                 context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
         ],

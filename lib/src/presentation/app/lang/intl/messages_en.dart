@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "consultState": MessageLookupByLibrary.simpleMessage("Consult state"),
         "consulting": MessageLookupByLibrary.simpleMessage("Consulting..."),
         "contactUs": MessageLookupByLibrary.simpleMessage("Contact us"),
+        "courtRooms": MessageLookupByLibrary.simpleMessage("Court rooms"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "creating": MessageLookupByLibrary.simpleMessage("Creating"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -111,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainFGR": MessageLookupByLibrary.simpleMessage("Main FGR"),
         "missionAndFunctions":
             MessageLookupByLibrary.simpleMessage("Mission and functions"),
+        "missionAndVision":
+            MessageLookupByLibrary.simpleMessage("Mission and vision"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipality"),
         "municipalityRequiredValidator": MessageLookupByLibrary.simpleMessage(
@@ -155,6 +158,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "province": MessageLookupByLibrary.simpleMessage("Province"),
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("The province is required"),
+        "provincialCourts":
+            MessageLookupByLibrary.simpleMessage("Provincial courts"),
         "quickAccess": MessageLookupByLibrary.simpleMessage("Quick access"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "response": MessageLookupByLibrary.simpleMessage("Response"),
@@ -195,6 +200,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "themeLight": MessageLookupByLibrary.simpleMessage("Light Theme"),
         "tikedCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The tiked must be a correct tiked"),
+        "tsp": MessageLookupByLibrary.simpleMessage("Supreme court"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updating": MessageLookupByLibrary.simpleMessage("Updating"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade"),

@@ -1,0 +1,1914 @@
+{
+  "provinces_list": [
+    {
+      "province_name": "Pinar del Río",
+      "entities_list": [
+        {
+          "entity": "TRIBUNAL PROVINCIAL POPULAR DE PINAR DEL RÍO",
+          "address": "Máximo Gómez y Antonio Maceo s/n, Pinar del Río",
+          "phones_list": [
+            "48755160"
+          ],
+          "emails_list": [
+            "gobierno@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Consolación del Sur",
+          "address": "Calle 53 No. 6413, e/ 64 y 66",
+          "phones_list": [
+            "48812149"
+          ],
+          "emails_list": [
+            "tmpcdelsur@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Guane",
+          "address": "Isabel Rubio No. 84, Guane",
+          "phones_list": [
+            "48497247"
+          ],
+          "emails_list": [
+            "tmpguane@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular La Palma",
+          "address": "Comandante Cruz, altos del correo",
+          "phones_list": [
+            "48732265"
+          ],
+          "emails_list": [
+            "tmppalma@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Los Palacios",
+          "address": "Calle 23 s/n, e/ 28 y 30",
+          "phones_list": [
+            "tmppalacios@pr.tsp.gob.cu"
+          ],
+          "emails_list": [
+            "48547208"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Mantua",
+          "address": "José Martí No. 146",
+          "phones_list": [
+            "48495193"
+          ],
+          "emails_list": [
+            "tmpmantua@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Minas de Matahambre",
+          "address": "Calle Hospital s/n",
+          "phones_list": [
+            "48646307"
+          ],
+          "emails_list": [
+            "tmpminas@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Pinar del Río",
+          "address": "Microdistrito No. 5, calle C final, e/ Vial Colón y calle A, Hermanos Cruz",
+          "phones_list": [
+            "48755543"
+          ],
+          "emails_list": [
+            "tmpprio@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular San Juan y Martínez",
+          "address": "Libertad No. 59",
+          "phones_list": [
+            "48798243"
+          ],
+          "emails_list": [
+            "tmpsanjuan@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular San Luis",
+          "address": "Máximo Gómez No. 35",
+          "phones_list": [
+            "48797308"
+          ],
+          "emails_list": [
+            "tmpsanluis@pr.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Sandino",
+          "address": "Zona N s/n, ciudad Sandino",
+          "phones_list": [
+            "tmpsandino@pr.tsp.gob.cu"
+          ],
+          "emails_list": [
+            "48422472"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Viñales",
+          "address": "Salvador Cisneros No. 103",
+          "phones_list": [
+            "48793180"
+          ],
+          "emails_list": [
+            "tmpvinales@pr.tsp.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Artemisa",
+      "entities_list": [
+        {
+          "entity": "TRIBUNAL PROVINCIAL POPULAR DE ARTEMISA",
+          "address": "Avenida 26, e/ 33 y 41, Artemisa",
+          "phones_list": [
+            "47366767"
+          ],
+          "emails_list": [
+            "gobierno@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Alquízar",
+          "address": "Calle 74 No. 8901, e/ 89 y 91",
+          "phones_list": [
+            "47418418"
+          ],
+          "emails_list": [
+            "tmpalquizar@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Artemisa",
+          "address": "Calle 26 No. 3305, e/ 33 y 41",
+          "phones_list": [
+            "47366774"
+          ],
+          "emails_list": [
+            "tmpartemisa@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Bahía Honda",
+          "address": "Calle 32 No. 2104, e/ 23 y 21",
+          "phones_list": [
+            "48668797"
+          ],
+          "emails_list": [
+            "tmpbahia@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Bauta",
+          "address": "Calle 150 No. 24711, e/ 247 y 249",
+          "phones_list": [
+            "47352529"
+          ],
+          "emails_list": [
+            "tmpbauta@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Bejucal",
+          "address": "Calle 22 No. 2203, e/ 22 y 24",
+          "phones_list": [
+            "47681280"
+          ],
+          "emails_list": [
+            "madelyn@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Caimito",
+          "address": "Avenida 41 No. 3654, e/ 36 y 38",
+          "phones_list": [
+            "47319103"
+          ],
+          "emails_list": [
+            "tmpcaimito@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Candelaria",
+          "address": "Calle 34 No. 3111, e/ 31 y 33",
+          "phones_list": [
+            "48598445"
+          ],
+          "emails_list": [
+            "tmpcandelaria@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Guanajay",
+          "address": "Calle 52 s/n, e/ 63 y 65",
+          "phones_list": [
+            "47306515"
+          ],
+          "emails_list": [
+            "tmpguanajay@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Güira de Melena",
+          "address": "Calle 84 No. 9304, e/ 93 y 95",
+          "phones_list": [
+            "47424596"
+          ],
+          "emails_list": [
+            "tmpguira@ar.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular San Antonio de los Baños",
+          "address": "Calle 70 s/n, esquina a 23",
+          "phones_list": [
+            "tmpsanantonio@ar.tsp.gob.cu"
+          ],
+          "emails_list": [
+            "47382514"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular San Cristóbal",
+          "address": "Reparto Noel Camaño, La Micro",
+          "phones_list": [
+            "Reparto Noel Camaño, La Micro"
+          ],
+          "emails_list": [
+            "tmpsancristobal@ar.tsp.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "La Habana",
+      "entities_list": [
+        {
+          "entity": "TRIBUNAL PROVINCIAL POPULAR DE LA HABANA",
+          "address": "Teniente Rey No. 605, e/ Prado y Zulueta, La Habana Vieja",
+          "phones_list": [
+            "78604254"
+          ],
+          "emails_list": [
+            "keilang@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Sala de lo Económico Tribunal Provincial Popular La Habana",
+          "address": "Juan Delgado No. 262, esquina a Vista Alegre, Víbora, Diez de Octubre",
+          "phones_list": [
+            "76411930"
+          ],
+          "emails_list": [
+            "salaecon@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Arroyo Naranjo",
+          "address": "Calzada de Managua No. 56, esquina a Hatuey",
+          "phones_list": [
+            "76444639"
+          ],
+          "emails_list": [
+            "tmparroyo@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Boyeros",
+          "address": "Calle 2, e/ 5 y 7, Santiago de las Vegas",
+          "phones_list": [
+            "76832761"
+          ],
+          "emails_list": [
+            "tmpboyeros@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Centro Habana",
+          "address": "Zanja s/n, e/ Infanta y San Francisco",
+          "phones_list": [
+            "78708638"
+          ],
+          "emails_list": [
+            "tmpch@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Cerro",
+          "address": "Blanquita No. 1306, e/ Avenida del Este y Entrada",
+          "phones_list": [
+            "76405019"
+          ],
+          "emails_list": [
+            "tmpcerro@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Cotorro",
+          "address": "Calle 101 No. 2816, e/ 28 y 30",
+          "phones_list": [
+            "76822613"
+          ],
+          "emails_list": [
+            "tmpcotorro@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Diez de Octubre",
+          "address": "Carmen No. 501, e/ Juan Delgado y Goicuría",
+          "phones_list": [
+            "76400497"
+          ],
+          "emails_list": [
+            "tmp10oct@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Guanabacoa",
+          "address": "Molino No. 8, e/ Calzada Vieja de Regla y Rotaria",
+          "phones_list": [
+            "77970234"
+          ],
+          "emails_list": [
+            "tmpgbcoa@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular La Habana del Este",
+          "address": "Calle 28 s/n, e/ Real y Final, Cojímar",
+          "phones_list": [
+            "77663929"
+          ],
+          "emails_list": [
+            "tmphe@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular La Habana Vieja",
+          "address": "Teniente Rey s/n esquina a Cristo",
+          "phones_list": [
+            "78631564"
+          ],
+          "emails_list": [
+            "tmphv@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular La Lisa",
+          "address": "Calle 180 No. 40702, e/ 47 y 48",
+          "phones_list": [
+            "72677808"
+          ],
+          "emails_list": [
+            "tmplisa@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Marianao",
+          "address": "Calle 100 y 33",
+          "phones_list": [
+            "72671329"
+          ],
+          "emails_list": [
+            "tmpmarianao@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Playa",
+          "address": "Calle 94 y 5 B",
+          "phones_list": [
+            "72095982"
+          ],
+          "emails_list": [
+            "tmpplaya@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Plaza de la Revolución",
+          "address": "Calle 23 No. 666, e/ D y E, Vedado",
+          "phones_list": [
+            "78300137"
+          ],
+          "emails_list": [
+            "tmpplaza@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Regla",
+          "address": "Ambrón No. 3, e/ Benito Anido y Calixto García",
+          "phones_list": [
+            "77979753"
+          ],
+          "emails_list": [
+            "tmpregla@ch.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular San Miguel del Padrón",
+          "address": "Garrido No. 19903, e/ Santa Isabel y Vista",
+          "phones_list": [
+            "76910066"
+          ],
+          "emails_list": [
+            "tmpsmp@ch.tsp.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Mayabeque",
+      "entities_list": [
+        {
+          "entity": "TRIBUNAL PROVINCIAL POPULAR DE MAYABEQUE",
+          "address": "Calle 80, esquina a 47, San José de las Lajas, Mayabeque",
+          "phones_list": [
+            "47861252"
+          ],
+          "emails_list": [
+            "regla@my.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Batabanó ",
+          "address": "Calle 68 No. 1528, e/ 15 y 17",
+          "phones_list": [
+            "47588518"
+          ],
+          "emails_list": [
+            "teresa@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular Bejucal ",
+          "address": "Calle 22 No. 2203, e/ 22 y 24",
+          "phones_list": [
+            "47681280"
+          ],
+          "emails_list": [
+            "madelyn@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular Güines ",
+          "address": "Avenida 41 s/n, e/ 72 y 74",
+          "phones_list": [
+            "47523384"
+          ],
+          "emails_list": [
+            "katywska@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular Jaruco ",
+          "address": "Calle 2 s/n, e/ 25 y Final",
+          "phones_list": [
+            "47873568"
+          ],
+          "emails_list": [
+            "mylene@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular Madruga ",
+          "address": "Avenida 29 s/n, e/ 42 y 44",
+          "phones_list": [
+            "47815482"
+          ],
+          "emails_list": [
+            "yaneilis@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular Melena del Sur ",
+          "address": "Calle 30 No. 3515, e/ 37 y 39",
+          "phones_list": [
+            "47505174"
+          ],
+          "emails_list": [
+            " yamile@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular Nueva Paz ",
+          "address": "Calle 12 No. 1720, e/ 17 y 19",
+          "phones_list": [
+            "47544747"
+          ],
+          "emails_list": [
+            "yaima@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular Quivicán",
+          "address": "Avenida 21 No. 1418, e/ 14 y 16",
+          "phones_list": [
+            "47425464"
+          ],
+          "emails_list": [
+            "yulietfr@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular San José de las Lajas",
+          "address": "Avenida 47 No. 7422, e/ 74 y 80",
+          "phones_list": [
+            "47862403"
+          ],
+          "emails_list": [
+            "teresita@my.tsp.gob.cu"
+          ]
+        },
+
+        {
+          "entity": "Tribunal Municipal Popular San Nicolás de Bari",
+          "address": "Calle 34 No. 3908, e/ 39 y 46",
+          "phones_list": [
+            "47563547"
+          ],
+          "emails_list": [
+            "carlos@my.tsp.gob.cu"
+          ]
+        },
+        {
+          "entity": "Tribunal Municipal Popular Santa Cruz del Norte ",
+          "address": "Calle 4 No. 702, e/ 7 y 9",
+          "phones_list": [
+            "47293240"
+          ],
+          "emails_list": [
+            "sergio@my.tsp.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Matanzas",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Matanzas",
+          "address": "Contreras No. 28209 e/n Ayuntamiento y Jovellanos ",
+          "phones_list": [
+            "45 288900",
+            "45 285228",
+            "45 243121",
+            "45 289662",
+            "45 263514",
+            "45 245646",
+            "45 243727"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpmz.fgr.fob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Matanzas",
+          "address": "Dos de Mayo No. 6508 e/n Santa Isabel y Jáuregui. Matanzas ",
+          "phones_list": [
+            "45 242194",
+            "45 243962",
+            "45 283953"
+          ],
+          "emails_list": [
+            "fmmatanzas@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Jovellanos",
+          "address": "Calle 11 No. 094 e/n 0 y 2 Jovellanos ",
+          "phones_list": [
+            "45 812517",
+            "45 813928"
+          ],
+          "emails_list": [
+            "fmjovellanos@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Pedro Betancourt ",
+          "address": "Calle 26 No. 2517 e/n25 y 27 P.Betancourt ",
+          "phones_list": [
+            "45 898243",
+            "45 898769"
+          ],
+          "emails_list": [
+            "fmbetancourt.fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Cárdenas",
+          "address": "Línea 667 e/n Cristina y Velázquez",
+          "phones_list": [
+            "45 524740",
+            "45 521670"
+          ],
+          "emails_list": [
+            "fmcardenas@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Jagüey Grande",
+          "address": "Calle 11 s/n e/t 58 y 60 Jagüey Grande",
+          "phones_list": [
+            "45 912395",
+            "45 913958"
+          ],
+          "emails_list": [
+            "fmjaguey@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Limonar",
+          "address": "Calle Máximo Gómez No. 79A e/t Nelson Fernández y General Betancourt",
+          "phones_list": [
+            "45 235247"
+          ]
+        },
+        {
+          "entity": "Fiscalía Especial de Varadero",
+          "address": "Calle 36 e/ 1era. y Autopista ",
+          "phones_list": [
+            "45 612882",
+            "45 612725",
+            "45 613926"
+          ],
+          "emails_list": [
+            "atencionciudadano@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Martí",
+          "address": "Calle Maceo Interior",
+          "phones_list": [
+            "45 569285"
+          ],
+          "emails_list": [
+            "fmmarti@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Calimete",
+          "address": "Calle Varona No. 36 e/n Peatonal 1 y Peatonal 4 ",
+          "phones_list": [
+            "45 375192"
+          ],
+          "emails_list": [
+            "fmcalimete@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Unión de Reyes",
+          "address": "Álvaro Reynoso No. 69 e/n Antonio Maceo y Máximo Gómez",
+          "phones_list": [
+            "45 412695",
+            "45 412502"
+          ],
+          "emails_list": [
+            "fmunion@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Arabos",
+          "address": "Juan Clemente Zenea No. 5 e/n Maceo y José María Duarte ",
+          "phones_list": [
+            "45 379395"
+          ],
+          "emails_list": [
+            "fmarabos@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Colón",
+          "address": "Calle Mario Muñoz No 260 entre Marta Abreu y Glotilde García ",
+          "phones_list": [
+            "45 316245",
+            "45 316919"
+          ],
+          "emails_list": [
+            "fmcolon@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Perico",
+          "address": "aniel No. 132 e/n Maceo y Gonzáles",
+          "phones_list": [
+            "45 377392"
+          ],
+          "emails_list": [
+            "fmperico@fpmz.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Ciénaga de Zapata",
+          "address": "Entronque de Playa Larga",
+          "phones_list": [
+            "45 987204"
+          ],
+          "emails_list": [
+            "fmcienaga@fpmz.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Cienfuegos",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Cienfuegos",
+          "address": "Calle 37 No 1402 % 14 y 16",
+          "phones_list": [
+            "43 526697",
+            "43 513001"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Cienfuegos",
+          "address": "Avenida 58 no 2713 entre 27 y 29 ",
+          "phones_list": [
+            "43 513475",
+            "43 519866"
+          ],
+          "emails_list": [
+            "fmcienfuegos@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Abreus",
+          "address": "Calle José Martí no 68 e/t Serafín Sánchez y Joaquín Rodríguez ",
+          "phones_list": [
+            "43 540623",
+            "43 540598"
+          ],
+          "emails_list": [
+            "fmabreus@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Aguada",
+          "address": "Calle Flor Crombet, No. 38, entre Maceo y Martí ",
+          "phones_list": [
+            "43 263898",
+            "43 56 25 17 "
+          ],
+          "emails_list": [
+            "fmaguada@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Cruces",
+          "address": "Calle Montalvo no 702d e/t Padres Las Casas y Serafín Sánchez ",
+          "phones_list": [
+            "43 572783"
+          ],
+          "emails_list": [
+            "fmcruces@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Cumanayagua",
+          "address": "Calle Orlando Gómez no 81a entre Napoleón Diego y Línea ",
+          "phones_list": [
+            "43 433501"
+          ],
+          "emails_list": [
+            "fmcumanayagua@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "fmcumanayagua@fpcf.fgr.gob.cu",
+          "address": "Calle nueva No 2c entre Goytisolo y Calixto García ",
+          "phones_list": [
+            "43 579284"
+          ],
+          "emails_list": [
+            "fmlajas@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Palmira",
+          "address": "Calle Estrada palma no 40 entre Portela y Camilo Cienfuegos ",
+          "phones_list": [
+            "43 546280",
+            "43 544321"
+          ],
+          "emails_list": [
+            "fmpalmira@fpcf.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Rodas",
+          "address": "Calle Independencia n 56 entre Maceo y Calixto García ",
+          "phones_list": [
+            "43 549368",
+            "43 549561"
+          ],
+          "emails_list": [
+            "fmrodas@fpcf.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Villa Clara",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Villa Clara",
+          "address": "Carretera Central No. Esquina Avenida del Sandino y 1ra.",
+          "phones_list": [
+            "42 203692",
+            "42 205631",
+            "42 210275",
+            "42 203681"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Santa Clara",
+          "address": "Central y Paseo de la Paz. 3er Piso",
+          "phones_list": [
+            "42 202536",
+            "42 206439",
+            "42 207922",
+            "42 212571"
+          ],
+          "emails_list": [
+            "fmsantaclara@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Corralillo",
+          "address": "Céspedes # 9 e/ Independencia y Leoncio Vidal ",
+          "phones_list": [
+            "42 686339"
+          ],
+          "emails_list": [
+            "fmcorralillo@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Quemado de Güines",
+          "address": "Ave. Central norte #1 e/ 1ra y 3ra del Este ",
+          "phones_list": [
+            "42 697269"
+          ],
+          "emails_list": [
+            "fmquemado@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Sagua La Grande",
+          "address": "Solís # 182 e/Maceo y M. Abreu ",
+          "phones_list": [
+            "42 663246",
+            "42 663110",
+            "42 665520"
+          ],
+          "emails_list": [
+            "fmsagua@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Santo Domingo",
+          "address": "Serafín Sánchez s/n E/ J.M. Sánchez y Campo",
+          "phones_list": [
+            "42 402496"
+          ],
+          "emails_list": [
+            "fmstodomingo@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Manicaragua",
+          "address": "M. Piti Fajardo No.17 ",
+          "phones_list": [
+            "42 491205",
+            "42 491492"
+          ],
+          "emails_list": [
+            "fmmanicaragua@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Ranchuelo",
+          "address": "Rafael Salgueiro altos e/Federico Escobar e Ignacio Agramonte",
+          "phones_list": [
+            "42 451519",
+            "42 452014"
+          ],
+          "emails_list": [
+            "fmranchuelo@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Camajuaní",
+          "address": "Agramonte No.79 e/Gral Maya y Maceo ",
+          "phones_list": [
+            "42 481987"
+          ],
+          "emails_list": [
+            "fmcabaiguani@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Caibarién",
+          "address": "Ave. 11 No.182 e/ 18 y 20",
+          "phones_list": [
+            "42 363313"
+          ],
+          "emails_list": [
+            "fmcaibarien@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Remedios",
+          "address": "C. Cienfuegos No.7 altos e/ Montalbán y A. del Río",
+          "phones_list": [
+            "42 395243"
+          ],
+          "emails_list": [
+            "fmremedios@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Placetas",
+          "address": "Segunda del Norte No.20 e/1ra y 2da del Este ",
+          "phones_list": [
+            "42 882495",
+            "42 885958"
+          ],
+          "emails_list": [
+            "fmplacetas@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Encrucijada",
+          "address": "Central Oeste No.1e/ J. Martí y 1ra del Este",
+          "phones_list": [
+            "42 892232"
+          ],
+          "emails_list": [
+            "fmencrucijada@fpvc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Cifuentes",
+          "address": "M. Gómez # 10 y C.MN. Céspedes",
+          "phones_list": [
+            "42 695489",
+            "42 694632"
+          ],
+          "emails_list": [
+            "fmcifuentes@fpvc.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Sancti Spíritus",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Sancti Spíritus",
+          "address": "Independencia Norte No. 102 / Frank País y Cruz Pérez",
+          "phones_list": [
+            "41 324702",
+            "41 324724"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpss.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Sancti Spíritus",
+          "address": "Olivos S/N. Esquina Ampliación Comandante Fajardo",
+          "phones_list": [
+            "41 322838",
+            "41 327243"
+          ],
+          "emails_list": [
+            "fmss@fpss.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Trinidad",
+          "address": "José Martí No. 312/ Simón Bolívar y Francisco J. Zerquera",
+          "phones_list": [
+            "41 993004",
+            "41 993813"
+          ],
+          "emails_list": [
+            "fmtrinidad@fpss.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Yaguajay",
+          "address": "Marrero No. 83/ Carlos Roloff y Serafín Sánchez",
+          "phones_list": [
+            "41 552684",
+            "41 553514"
+          ],
+          "emails_list": [
+            "fmyaguajay@fpss.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Cabaiguán",
+          "address": "Masó No. 87 A, Cabaiguán. ",
+          "phones_list": [
+            "41 663467"
+          ],
+          "emails_list": [
+            "fmcabaiguan@fpss.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Jatibonico",
+          "address": "Calle 1ra S/N / Céspedes y Simón Reyes",
+          "phones_list": [
+            "41 882135"
+          ],
+          "emails_list": [
+            "fmjatibonico@fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Taguasco",
+          "address": "Calle 10 de Octubre No. 25 / Sindulfo García y Jorge Luis Ruiz Ramírez ",
+          "phones_list": [
+            "41 845203"
+          ],
+          "emails_list": [
+            "fmtaguasco@fpss.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Fomento",
+          "address": "José Martí No. 18 / Ramiro Capablanca y Maceo",
+          "phones_list": [
+            "41 461503"
+          ],
+          "emails_list": [
+            "fmfomento@fpss.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de La Sierpe",
+          "address": "Avenida 2 S/N",
+          "phones_list": [
+            "41 434210",
+            "41 434586"
+          ],
+          "emails_list": [
+            "fmsierpe@fpss.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Ciego de Ávila",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Ciego de Ávila",
+          "address": "Avenida de los Deportes S/N",
+          "phones_list": [
+            "33 227334",
+            "33 225376",
+            "33 203591"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Ciego de Ávila",
+          "address": "Calle Independencia Esquina Fernando Callejas",
+          "phones_list": [
+            "33 225460",
+            "33 204529"
+          ],
+          "emails_list": [
+            "fmca@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Morón",
+          "address": "Calle Martí No 408 altos entre Carlos M. de Cespedes y Felipe Puey ",
+          "phones_list": [
+            "33 504606",
+            "33 503827"
+          ],
+          "emails_list": [
+            "fmm@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Baraguá",
+          "address": "Calle 2da S/N entre A y B, Gaspar ",
+          "phones_list": [
+            "33 435466"
+          ],
+          "emails_list": [
+            "fmb@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Bolivia",
+          "address": "Calle Tamara Bunke No. 5 Reparto los Pinos",
+          "phones_list": [
+            "33 659294"
+          ],
+          "emails_list": [
+            "fmbl@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Venezuela",
+          "address": "Calle 7 No. 5 entre 34 y 36, Reparto Militar ",
+          "phones_list": [
+            "33 491163"
+          ],
+          "emails_list": [
+            "fmv@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Ciro Redondo",
+          "address": "Avenida Los Patriotas,Interior",
+          "phones_list": [
+            "33 536117"
+          ],
+          "emails_list": [
+            "fmcr@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Primero de Enero",
+          "address": "Calle 7 No. 2 entre I y H, Primero de Enero ",
+          "phones_list": [
+            "33 622414"
+          ],
+          "emails_list": [
+            "fmpde@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Florencia",
+          "address": "Calle Delfin Luis Paz No. 26, Florencia ",
+          "phones_list": [
+            "33 559462"
+          ],
+          "emails_list": [
+            "fmf@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Majagua",
+          "address": "Calle Justo Sánches No. 18 esquina Simón Reyes ",
+          "phones_list": [
+            "33 399388"
+          ],
+          "emails_list": [
+            "fmmj@fpca.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Chambas",
+          "address": "Calle Martí No. 128A entre Enrique Varona y Simón Reyes, municipio Chambas, Provincia de Ciego de Ávila",
+          "phones_list": [
+            "33 57 8108"
+          ],
+          "emails_list": [
+            "fmch@fpca.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Camagüey",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Camagüey",
+          "address": "Calle República No. 213 e/ Calle Ignacio Agramonte y Calle General Gómez",
+          "phones_list": [
+            "32 221133",
+            "32 221134",
+            "32 256625"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Camagüey",
+          "address": "Avenida de la Libertad No. 162 e/ Calle Pancha Agramonte y Calle Arrieta ",
+          "phones_list": [
+            "33 298417",
+            "33 291032"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Minas",
+          "address": "Calle Moralitos No. 225 e/ Calle Ayesterán y Calle Agüero",
+          "phones_list": [
+            "32 696239"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Esmeralda",
+          "address": "Calle José Martí No. 137 e/ Calle Quintín Bandera y Calle Joaquín de Agüero",
+          "phones_list": [
+            "32 673485",
+            "32 674991"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Vertientes",
+          "address": "Calle E No. 59 e/ Calle 4ta y Calle 5ta Paralela",
+          "phones_list": [
+            "32 307480",
+            "32 306118"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Carlos Manuel de Céspedes",
+          "address": "Calle 17 No. 529 e/ Calle 16 y Calle 18. Carlos Manuel de Céspedes",
+          "phones_list": [
+            "32 569161",
+            "32 568139"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Nuevitas",
+          "address": "Calle Maceo No. 2 e/ Calle Oscar Primelles y Calle Máximo Gómez",
+          "phones_list": [
+            "32 412473"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Florida",
+          "address": "Calle Enrique Recio No. 501 e/ Carretera Central y Calle Moncada",
+          "phones_list": [
+            "32 515451",
+            "32 513270"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Guáimaro",
+          "address": "Calle Irene Muñoz No. 74 e/ Calle Gabriel García y Calle Victoria",
+          "phones_list": [
+            "32 812572",
+            "32 812082"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Sierra de Cubitas",
+          "address": "Calle Maceo No. 2 e/ Calle Martí y Calle Ignacio Agramonte ",
+          "phones_list": [
+            "32 615291"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Sibanicú",
+          "address": "Carretera Central No. 119 e/ Calle Marcelino Castañeda y Calle Camilo Cienfuegos ",
+          "phones_list": [
+            "32 380590"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Santa Cruz del Sur",
+          "address": "Calle 1ra No. 224 e/ Calle G y Calle J",
+          "phones_list": [
+            "32 852601"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Jimaguay",
+          "address": "Calle 4ta No. s/n 5ta y 6ta",
+          "phones_list": [
+            "32 399186"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Najasa",
+          "address": "Carretera de Cubanacan No. 7 Barrio MININT. Cuatro Camino ",
+          "phones_list": [
+            "32 364209"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Las Tunas",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Las Tunas",
+          "address": "Calle Colón No. 221 entre 24 de febrero y Ramón Ortuño. Rpto. Primero",
+          "phones_list": [
+            "31 349836"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Las Tunas",
+          "address": "Avenida Vicente García No. 49 entre 24 de febrero y Ramón Ortuño. Rpto Primero",
+          "phones_list": [
+            "31 345388"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Manatí",
+          "address": "Calle 29 No. 2A, municipio Manatí",
+          "phones_list": [
+            "31 221736"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Majibacoa",
+          "address": "Calle 1ra No. 56, entre 4ta A y 4ta B, Calixto",
+          "phones_list": [
+            "31 288463"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Puerto Padre",
+          "address": "Calle Ignacio Agramonte No. 1",
+          "phones_list": [
+            "31 515243"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Jesús Menéndez",
+          "address": "Calle 6, s/n Rpto. Pueblo Viejo",
+          "phones_list": [
+            "31 582889"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Jobabo",
+          "address": "Calle 86 No. 2, Reparto VietNam ",
+          "phones_list": [
+            "31 627330"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Colombia",
+          "address": "Calle 20 No. 54 entre 21 y 23 Reparto Progreso",
+          "phones_list": [
+            "31 627787"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Amancio",
+          "address": "Avenida Sindicato S/N. Reparto Batey",
+          "phones_list": [
+            "31 692187"
+          ],
+          "emails_list": [
+            "atencionciudadano@fplt.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Holguín",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Holguín",
+          "address": "Calle Martí, No. 47, entre Fomento y Gral Feria",
+          "phones_list": [
+            "24 462590"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Mayarí",
+          "address": "Calle Emilio Núñez s/n casa 1, entre Máximo Gómez y Avenida Maceo",
+          "phones_list": [
+            "24 503465",
+            "24 502865"
+          ],
+          "emails_list": [
+            "fmmayari@fphg.fgr.gob.cu "
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Antilla",
+          "address": "Calle: Ave. 28 de Enero No. 88-F, e/ Frank País y Antonio Maceo ",
+          "phones_list": [
+            "24 888388"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Cacocum",
+          "address": "Calle Prolongación de Frank País Nro 19 F, El Elevado",
+          "phones_list": [
+            "24 327692",
+            "24 327427"
+          ],
+          "emails_list": [
+            "fmcacocum@fphg.fgr.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Báguanos",
+          "address": "Calle F No 39 Altos",
+          "phones_list": [
+            "24 377186"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Banes",
+          "address": "Calle Capitán Capdevila No. 4 entre H y N, Honduras ",
+          "phones_list": [
+            "24 802108",
+            "24 802323"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Calixto García",
+          "address": "Calle 26 de Julio No 24, Buena Ventura ",
+          "phones_list": [
+            "24 357519"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Cueto",
+          "address": "Avenida 26 de Julio No. 12, Entre: Luis Beltrán y Ángel Rodríguez ",
+          "phones_list": [
+            "24 298239",
+            "24 298719"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Frank País",
+          "address": "Calle Martí No 16 Altos",
+          "phones_list": [
+            "24 588538"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Rafael Freyre",
+          "address": "Calle Calle 6, No 64, entre Prolongación de calle 11 y 13 ",
+          "phones_list": [
+            "24 850366"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Gibara",
+          "address": "Calle Cuba No. 95 Entre Narciso López y Donato Mármol",
+          "phones_list": [
+            "24 844543"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Municipio Holguín",
+          "address": "Calle Garayalde No 222 entre Maceo y Libertad. ",
+          "phones_list": [
+            "24 451617",
+            "24 422577"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Sagua de Tánamo",
+          "address": "Calle Los Maceo No.40 ",
+          "phones_list": [
+            "24 5877315",
+            "24 587723"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fphg.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Urbano Noris",
+          "address": "Calle 1ra entre 1ra y 18, No. 1610",
+          "phones_list": [
+            "24 381367"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Moa",
+          "address": "Calle Tamara Bunque No. 9",
+          "phones_list": [
+            "24 607963",
+            "24 606221"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Granma",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Granma",
+          "address": "Calle: José Martí # 54 entre Parada y Canducha Figueredo",
+          "phones_list": [
+            "23 424664"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Guisa",
+          "address": "Calle: Víctor Ramos # 52 / Vantroy y Maceo",
+          "phones_list": [
+            "23 391348 "
+          ],
+          "emails_list": [
+            "fmguisa@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Jiguani",
+          "address": "Calle Gelacio Gómez s/n entre Gonzálo de Quesada y Otto Parellada",
+          "phones_list": [
+            "23 366414",
+            "23 366034"
+          ],
+          "emails_list": [
+            "fmjiguani@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Río Cauto",
+          "address": "Calle: Antonio Maceo # 2",
+          "phones_list": [
+            "23 825241"
+          ],
+          "emails_list": [
+            "fmrcauto@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Cauto Cristo",
+          "address": "Calle: Camilo Cienfuegos # 14 / NguynVantroyy Irreal Oliva",
+          "phones_list": [
+            "23 327163"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Buey Arriba",
+          "address": "Calle: Celia Aguilar Edif.1 Apto. 6",
+          "phones_list": [
+            "23 343465",
+            "23 34 3421"
+          ],
+          "emails_list": [
+            "fmarriba@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Yara",
+          "address": "Calle: Ignacio Agramante # 97 e/t Perucho Figueredo y 10 de Octubre",
+          "phones_list": [
+            "23 588132",
+            "23 588869",
+            "23 588871"
+          ],
+          "emails_list": [
+            "fmyara@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Bartolomé Maso",
+          "address": "Calle: Antonio Maceo No. 9ª / Rubén Martínez Villenas y René Ramos, Rpto. Calcio Gutiérrez",
+          "phones_list": [
+            "23 565426",
+            "23 565194"
+          ],
+          "emails_list": [
+            "fmbmaso@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Manzanillo",
+          "address": "Calle: Quintín Bandera # 33 Esquina Sariol",
+          "phones_list": [
+            "23 575541",
+            "23 574622",
+            "23 572117"
+          ],
+          "emails_list": [
+            "fmmzllo@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Campechuela",
+          "address": "Calle: Libertad # 6 / Máximo Gómez y Patricio Lomumba",
+          "phones_list": [
+            "23 587336"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Bayamo",
+          "address": "Calle: Capote # 9 / Martí y Cisneros, Reparto El Cristo",
+          "phones_list": [
+            "23 424511",
+            "23 411630"
+          ],
+          "emails_list": [
+            "fmbayamo@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Pilón",
+          "address": "Calle 3ra No.13 La Pesquera",
+          "phones_list": [
+            "23 59441"
+          ],
+          "emails_list": [
+            "fmpilon@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía municipal de Media Luna",
+          "address": "Calle Máximo Gómez No. 15 e/ Eugenio Basterrechea y Elio Trincado. Reparto Pueblo nuevo.",
+          "phones_list": [
+            "23 59 3229"
+          ],
+          "emails_list": [
+            "fmmluna@fpgr.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Niquero",
+          "address": "Calle Martí No. 110",
+          "phones_list": [
+            "23 592538",
+            "23 992910"
+          ],
+          "emails_list": [
+            "fmniquero@fpgr.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Santiago de Cuba",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Santiago de Cuba",
+          "address": "Calle 7 Santa Bárbara, Esq. Garzón, Altos del Wamby",
+          "phones_list": [
+            "22 626008",
+            "22 625265"
+          ],
+          "emails_list": [
+            "dgc@fmstgo.fpsc.fgr.cu "
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Santiago de Cuba",
+          "address": "Calle 7 Santa Bárbara, Esq. Garzón, Altos del Wamby",
+          "phones_list": [
+            "22 626008",
+            "22 625265"
+          ],
+          "emails_list": [
+            "dgc@fmstgo.fpsc.fgr.cu "
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Palma Soriano",
+          "address": "Villuenda # 101 % Calixto García y Aguilera.",
+          "phones_list": [
+            "502121"
+          ],
+          "emails_list": [
+            "dgc@fmps.fpsc.fgr.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Contramaestre",
+          "address": "Avenida 6 #42 % 7 y 9, Frank País ",
+          "phones_list": [
+            "22 587113",
+            "22 589249",
+            "22 587801"
+          ],
+          "emails_list": [
+            "dgc@fmctre.fpsc.fgr.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal San Luis",
+          "address": "Crombet s/n % Prolongación de Miró y Carretera de Chile. ",
+          "phones_list": [
+            "22 482335",
+            "22 482595"
+          ],
+          "emails_list": [
+            "dgc@fmsl.fpsc.fgr.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Songo La Maya",
+          "address": "Martí oeste #44 ½ ",
+          "phones_list": [
+            "22 378642"
+          ],
+          "emails_list": [
+            "dgc@fpsc.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Segundo Frente",
+          "address": "Ave de los Mártires s/n Mayarí Arriba ",
+          "phones_list": [
+            "22 425593",
+            "22 425164"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Mella",
+          "address": "Calle Central # 66ª ",
+          "phones_list": [
+            "22 457294",
+            "22 457696"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Tercer Frente",
+          "address": "Calle 7 #3 Reparto Las Flores. Cruce de los Baños. ",
+          "phones_list": [
+            "22 566438"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Guantánamo",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Provincial de Guantánamo",
+          "address": "Calle Los Maceo e/ Aguilera y Crombet",
+          "phones_list": [
+            "21 35 1472"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpgt.fgr.gob.cu",
+            "atenciongtmo@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Guantánamo",
+          "address": "Calle 13 norte esquina a San Lino CP:97 200 ",
+          "phones_list": [
+            "21 382201",
+            "ext 108"
+          ],
+          "emails_list": [
+            "fmguantanamo@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Baracoa",
+          "address": "Calle Flor Crombet No.236, % Roberto Reyes y Limbano Sánchez",
+          "phones_list": [
+            "21642251",
+            "ext 106"
+          ],
+          "emails_list": [
+            "fmbaracoa@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Imias",
+          "address": "Calle C ",
+          "phones_list": [
+            "21 880192"
+          ],
+          "emails_list": [
+            "fmimias@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal San Antonio del Sur",
+          "address": "Calle 22 No. 191 – A Reparto Mincín ",
+          "phones_list": [
+            "21 877315"
+          ],
+          "emails_list": [
+            "fmsanantonio@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal de Maisí",
+          "address": "La Máquina",
+          "phones_list": [
+            "21 689323"
+          ],
+          "emails_list": [
+            "fmmaisi@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Yateras",
+          "address": "Palenque Centro No. 57 ",
+          "phones_list": [
+            "21 835514"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Manuel Tames",
+          "address": "Calle Camilo Cienfuegos No. 310 ",
+          "phones_list": [
+            "21 476160"
+          ],
+          "emails_list": [
+            "fmtames@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Niceto Pérez",
+          "address": "Edificio 4 Apto 36-B La Yaya ",
+          "phones_list": [
+            "21 593286"
+          ],
+          "emails_list": [
+            "fmniceto@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal El Salvador",
+          "address": "Calle 23 Carretera Guantánamo",
+          "phones_list": [
+            "21 29 4268"
+          ],
+          "emails_list": [
+            "fmsalvador@fpgt.fgr.gob.cu"
+          ]
+        },
+        {
+          "entity": "Fiscalía Municipal Caimanera",
+          "address": "Calle Correo esquina Carril ",
+          "phones_list": [
+            "21 499012 "
+          ],
+          "emails_list": [
+            "fmcaimanera@fpgt.fgr.gob.cu"
+          ]
+        }
+      ]
+    },
+    {
+      "province_name": "Isla de la Juventud",
+      "entities_list": [
+        {
+          "entity": "Fiscalía Municipal de la Isla de la Juventud",
+          "address": "Calle 24 e/ 41 y 43 No. 4119, Nueva Gerona ",
+          "phones_list": [
+            "46 311010"
+          ],
+          "emails_list": [
+            "atencionalciudadano@fpij.fgr.gob.cu"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Salas de Justicia",
+  "texts_list": [
+    {
+      "text": "Sala de lo Penal:",
+      "is_header": true
+    },
+    {
+      "text": "Tramita, en primera instancia, los asuntos que, conforme a lo establecido en la ley, se someten a su consideración, y resuelve los recursos de casación y apelación que se interponen contra sentencias definitivas y otras resoluciones que ponen término al proceso haciendo imposible su continuación, dictadas en la materia penal por las salas de los tribunales provinciales populares."
+    },
+    {
+      "text": "Sala de los Delitos Contra la Seguridad y el Estado:",
+      "is_header": true
+    },
+    {
+      "text": "Tramita, en primera instancia, los asuntos que, conforme a lo establecido en la ley, se someten a su consideración, y resuelve los recursos de casación y apelación que se interponen contra sentencias definitivas y otras resoluciones que ponen término al proceso haciendo imposible su continuación, dictadas en la materia penal por las salas de los tribunales provinciales populares."
+    },
+    {
+      "text": "Sala de lo Civil y Administrativo:",
+      "is_header": true
+    },
+    {
+      "text": "Tramita, en primera instancia, los asuntos que, conforme a lo establecido en la ley, se someten a su consideración, y resuelve los recursos de casación y apelación que se interponen contra sentencias definitivas y otras resoluciones que ponen término al proceso haciendo imposible su continuación, dictadas en las materias civil y admistrativa por las salas de los tribunales provinciales populares."
+    },
+    {
+      "text": "Sala de lo Económico:",
+      "is_header": true
+    },
+    {
+      "text": "Tramita, en primera instancia, los asuntos que, conforme a lo establecido en la ley, se someten a su consideración, y resuelve los recursos de casación y apelación que se interponen contra sentencias definitivas y otras resoluciones que ponen término al proceso haciendo imposible su continuación, dictadas en la materia económica por las salas de los tribunales provinciales populares."
+    },
+    {
+      "text": "Sala de lo Laboral:",
+      "is_header": true
+    },
+    {
+      "text": "Conoce de los recursos de apelación interpuestos contra las sentencias en materia de seguridad social a largo plazo, dictadas por los tribunales provinciales populares; asimismo, de los procesos de revisión promovidos contra las referidas sentencias y las dictadas por los restantes tribunales populares, en procesos laborales comunes, en los supuestos previstos en la ley."
+    },
+    {
+      "text": "Sala de lo Militar:",
+      "is_header": true
+    },
+    {
+      "text": "Conoce, en primera instancia, aquellos asuntos que de su competencia; en casación de los recursos interpuestos contra las sentencias dictadas por los tribunales militares territoriales, y en Inspección Judicial o Revisión de las sentencias y resoluciones firmes de los tribunales militares.\n"
+    }
+  ]
+}

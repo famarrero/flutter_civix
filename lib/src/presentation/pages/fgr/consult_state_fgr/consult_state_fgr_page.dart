@@ -110,7 +110,6 @@ class ConsultStateFgrPage extends StatelessWidget {
                       SizedBox(width: 4),
                     ],
                   ),
-                SizedBox(height: 25),
                 _buildResponse(context, state)
               ],
             ),

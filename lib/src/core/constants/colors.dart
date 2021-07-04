@@ -61,7 +61,24 @@ const MaterialColor kFgrSecondaryMaterialColor = MaterialColor(
 
 ///////TSP colors///////
 const kTspPrimaryColor = Color(0xff6a1623);
+
+const kTspSecondary = 0xff892736;
 const kTspSecondaryColor = Color(0xff892736);
+const MaterialColor kTspSecondaryMaterialColor = MaterialColor(
+  kFgrPrimary,
+  <int, Color>{
+    50: Color(0xffde475e),
+    100: Color(0xffc93d52),
+    200: Color(0xffb83549),
+    300: Color(0xffa82f42),
+    400: Color(0xff992b3c),
+    500: Color(kTspSecondary),
+    600: Color(0xff7d2230),
+    700: Color(0xff761e2b),
+    800: Color(0xff661823),
+    900: Color(0xff5c131d),
+  },
+);
 
 ///////ONBC colors///////
 const kOnbcPrimaryColor = Color(0xffb80000);

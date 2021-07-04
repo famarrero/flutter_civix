@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Consultar estado"),
         "consulting": MessageLookupByLibrary.simpleMessage("Consultando..."),
         "contactUs": MessageLookupByLibrary.simpleMessage("Contáctenos"),
+        "courtRooms": MessageLookupByLibrary.simpleMessage("Salas de justicia"),
         "create": MessageLookupByLibrary.simpleMessage("Crear"),
         "creating": MessageLookupByLibrary.simpleMessage("Creando"),
         "delete": MessageLookupByLibrary.simpleMessage("Borrar"),
@@ -116,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mainFGR": MessageLookupByLibrary.simpleMessage("Principal FGR"),
         "missionAndFunctions":
             MessageLookupByLibrary.simpleMessage("Misión y funciones"),
+        "missionAndVision":
+            MessageLookupByLibrary.simpleMessage("Misión y visión"),
         "more": MessageLookupByLibrary.simpleMessage("Más"),
         "municipality": MessageLookupByLibrary.simpleMessage("Municipio"),
         "municipalityRequiredValidator":
@@ -161,6 +164,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "province": MessageLookupByLibrary.simpleMessage("Provincia"),
         "provinceRequiredValidator":
             MessageLookupByLibrary.simpleMessage("La provincia es requerida"),
+        "provincialCourts":
+            MessageLookupByLibrary.simpleMessage("Tribunales provinciales"),
         "quickAccess": MessageLookupByLibrary.simpleMessage("Acceso rápido"),
         "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "response": MessageLookupByLibrary.simpleMessage("Respuesta"),
@@ -201,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "themeLight": MessageLookupByLibrary.simpleMessage("Tema claro"),
         "tikedCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El comprobante debe ser válido"),
+        "tsp": MessageLookupByLibrary.simpleMessage("Tribunal Supremo Popular"),
         "update": MessageLookupByLibrary.simpleMessage("Actualizar"),
         "updating": MessageLookupByLibrary.simpleMessage("Actualizando"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Mejorar"),

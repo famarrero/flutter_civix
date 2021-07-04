@@ -99,7 +99,7 @@ class SideBarCivix extends StatelessWidget {
       children: [
         // const Icon(Icons.admin_panel_settings_outlined, size: 50, color: Color(0xff7A6BF5)),
         Image(
-          image: Assets.images.icoCivixImagenLetrasOscuro,
+          image: Assets.images.icoCivixImagenLetras,
           height: 70,
           width: 70,
         ),
