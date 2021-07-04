@@ -1,5 +1,6 @@
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
+import 'package:flutter_civix/src/data/models/contact_us/contact_us_response_model.dart';
 import 'package:flutter_civix/src/data/models/entity/coordinates_model.dart';
 import 'package:flutter_civix/src/data/models/entity/entities_response_model.dart';
 import 'package:flutter_civix/src/data/models/entity/entity_model.dart';
@@ -26,7 +27,8 @@ part 'serializers.g.dart';
   TextsModel,
   EntityModel,
   CoordinatesModel,
-  EntitiesResponseModel
+  EntitiesResponseModel,
+  ContactUsResponseModel
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addPlugin(StandardJsonPlugin())

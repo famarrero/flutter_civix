@@ -123,5 +123,16 @@
   "somethingWrong": "¡Hay algo mal!",
   "sendingStatement": "Enviando planteamiento",
   "processingImage": "Procesando imagen",
-  "noCoordinatesAvailable": "No hay coordenadas disponibles"
+  "noCoordinatesAvailable": "No hay coordenadas disponibles",
+  "whereWeAre": "¿Dónde estamos?",
+  "phones": "Teléfonos",
+  "emails": "Correos electrónicos",
+  "links": "Enlaces",
+  "postalCodeAbbr": "CP",
+  "callCouldNotBeMade": "No se puede realizar la llamada",
+  "emailCouldNotBeSend": "El correo electrónico no se puede enviar",
+  "urlCouldNotBeOpen": "No se puede abrir la url",
+  "doYouWantCallThisNumber": "¿Desea llamar a este número?",
+  "doYouWantSendEmailToThisAddress": "¿Desea enviar un correo electrónico a esta dirección?",
+  "doYouWantOpenThisLink": "¿Desea abrir este enlace?"
 }

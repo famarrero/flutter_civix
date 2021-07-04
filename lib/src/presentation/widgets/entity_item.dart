@@ -4,6 +4,8 @@ import 'package:flutter_civix/src/data/models/entity/coordinates_model.dart';
 import 'package:flutter_civix/src/data/models/entity/entity_model.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
+import 'package:flutter_civix/src/presentation/widgets/text_email.dart';
+import 'package:flutter_civix/src/presentation/widgets/text_phone_number.dart';
 import 'package:oktoast/oktoast.dart';
 
 class EntityItem extends StatelessWidget {
@@ -104,11 +106,17 @@ class EntityItem extends StatelessWidget {
                       color: colorIcons,
                     ),
                     SizedBox(width: 10),
-                    Expanded(
-                      child: Text(entity.postalCode!,
-                          style: TextStyle(
-                              color: Colors.black, fontSize: kNormalTextSize)),
-                    ),
+                    Text('${S.of(context).postalCodeAbbr}:',
+                        style: TextStyle(
+                            color: Theme.of(context)
+                                .accentColor,
+                            fontSize: kNormalTextSize,
+                            fontWeight: FontWeight.bold)),
+                    SizedBox(width: 10),
+                    Text(entity.postalCode!,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: kNormalTextSize)),
                     SizedBox(width: 10),
                   ],
                 ),
@@ -167,9 +175,12 @@ class EntityItem extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child: Text(emailsList[0],
-                      style: TextStyle(
-                          color: Colors.black, fontSize: kNormalTextSize)),
+                  child: TextEmail(
+                      email: emailsList[index],
+                      colorAccent: colorIcons)
+                  // Text(emailsList[0],
+                  //     style: TextStyle(
+                  //         color: Colors.black, fontSize: kNormalTextSize)),
                 ),
               ],
             ),
@@ -194,9 +205,12 @@ class EntityItem extends StatelessWidget {
                   color: colorIcons,
                 ),
                 SizedBox(width: 10),
-                Text(phonesList[index],
-                    style: TextStyle(
-                        color: Colors.black, fontSize: kNormalTextSize)),
+                TextPhoneNumber(
+                    phoneNumber: phonesList[index],
+                    colorAccent: colorIcons)
+                // Text(phonesList[index],
+                //     style: TextStyle(
+                //         color: Colors.black, fontSize: kNormalTextSize)),
               ],
             ),
           );

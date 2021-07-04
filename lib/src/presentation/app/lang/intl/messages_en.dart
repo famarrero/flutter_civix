@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Do you want save this statement in the application?"),
         "attachments": MessageLookupByLibrary.simpleMessage("Attachments"),
         "call": MessageLookupByLibrary.simpleMessage("Call"),
+        "callCouldNotBeMade":
+            MessageLookupByLibrary.simpleMessage("The call could not be made"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cancel2": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -51,6 +53,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "doYouWantCallThisNumber": MessageLookupByLibrary.simpleMessage(
+            "Do you want call this number?"),
+        "doYouWantOpenThisLink":
+            MessageLookupByLibrary.simpleMessage("Do you want open this link?"),
+        "doYouWantSendEmailToThisAddress": MessageLookupByLibrary.simpleMessage(
+            "Do you want send email to this address?"),
         "document": MessageLookupByLibrary.simpleMessage("Document"),
         "documentNotSupported": MessageLookupByLibrary.simpleMessage(
             "The file selected is not a document or is not supported"),
@@ -60,8 +68,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "emailCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The email must be a correct email"),
+        "emailCouldNotBeSend":
+            MessageLookupByLibrary.simpleMessage("The email could not be send"),
         "emailValidator":
             MessageLookupByLibrary.simpleMessage("Email is invalid"),
+        "emails": MessageLookupByLibrary.simpleMessage("Emails"),
         "emptyValidator":
             MessageLookupByLibrary.simpleMessage("A value is required"),
         "enterStatement":
@@ -92,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Institutions list"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Language"),
         "later": MessageLookupByLibrary.simpleMessage("Later"),
+        "links": MessageLookupByLibrary.simpleMessage("Links"),
         "location": MessageLookupByLibrary.simpleMessage("Location"),
         "main": MessageLookupByLibrary.simpleMessage("Main"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Main FGR"),
@@ -128,6 +140,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phoneCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The phone must be a correct phone"),
+        "phones": MessageLookupByLibrary.simpleMessage("Phones"),
+        "postalCodeAbbr": MessageLookupByLibrary.simpleMessage("PC"),
         "pressAgainToExit":
             MessageLookupByLibrary.simpleMessage("Press again to exit"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
@@ -182,8 +196,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updating": MessageLookupByLibrary.simpleMessage("Updating"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade"),
+        "urlCouldNotBeOpen":
+            MessageLookupByLibrary.simpleMessage("The url could not be open"),
         "warning": MessageLookupByLibrary.simpleMessage("Warning!!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
+        "whereWeAre": MessageLookupByLibrary.simpleMessage("Where we are?"),
         "writeStatement":
             MessageLookupByLibrary.simpleMessage("Write statement"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")

@@ -107,12 +107,19 @@ class SideBarFgr extends StatelessWidget {
                 context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
-              // isActive:
-              //     routeName ==  FrequentQuestionsPageRoute().routeName,
+              isActive:
+                  routeName ==  ContactUsPageRoute.name,
               text: S.of(context).contactUs,
               icon: Icons.quick_contacts_dialer_outlined,
               onPressed: () {
-                // _onPressedItem(context,  FrequentQuestionsPageRoute());
+                AutoRouter.of(context).push(ContactUsPageRoute(
+                    primaryColor: kFgrPrimaryColor,
+                    secondaryColor: kFgrSecondaryColor,
+                    primarySwatch: kFgrSecondaryMaterialColor,
+                    subtitle: S.of(context).fgr,
+                    jsonContactUs: Assets.jsons.fgr.contactUsFgr,
+                    imageHeader: Assets.images.fgrMarcaPais.path));
+                context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
         ],
       ),

@@ -11,9 +11,9 @@ class CustomDialogBox extends StatelessWidget {
   final double? sizeIcon;
   final Widget body;
   final String buttonPositiveName;
-  final Function? buttonPositiveAction;
+  final Function()? buttonPositiveAction;
   final String? buttonNegativeName;
-  final Function? buttonNegativeAction;
+  final Function()? buttonNegativeAction;
 
   CustomDialogBox(
       {required this.title,
@@ -77,17 +77,18 @@ class CustomDialogBox extends StatelessWidget {
               Visibility(
                 visible: (buttonNegativeName != null),
                 child: CustomElevatedButton(
-                  onPressed: () => (buttonNegativeAction != null)
+                  onPressed: (buttonNegativeAction != null)
                       ? buttonNegativeAction!
-                      : {Navigator.of(context).pop()},
-                  buttonText: (buttonNegativeName != null) ? buttonNegativeName! : '',
+                      : () => Navigator.of(context).pop(),
+                  buttonText:
+                      (buttonNegativeName != null) ? buttonNegativeName! : '',
                 ),
               ),
               SizedBox(width: 20),
               CustomElevatedButton(
-                onPressed: () => (buttonPositiveAction != null)
+                onPressed: (buttonPositiveAction != null)
                     ? buttonPositiveAction!
-                    : {Navigator.of(context).pop()},
+                    : () => Navigator.of(context).pop(),
                 buttonText: buttonPositiveName,
               ),
             ],
@@ -109,9 +110,9 @@ class CustomDialogs {
       double? sizeIcon,
       required String message,
       required String buttonPositiveName,
-      Function? buttonPositiveAction,
+      Function()? buttonPositiveAction,
       String? buttonNegativeName,
-      Function? buttonNegativeAction}) {
+      Function()? buttonNegativeAction}) {
     return showDialog<void>(
         context: context,
         barrierDismissible: (isDismissible != null) ? isDismissible : true,
@@ -122,7 +123,8 @@ class CustomDialogs {
               sizeIcon: sizeIcon,
               body: Row(
                 children: [
-                  Expanded(child: Text(message, style: TextStyle(fontSize: 16))),
+                  Expanded(
+                      child: Text(message, style: TextStyle(fontSize: 16))),
                 ],
               ),
               buttonPositiveName: buttonPositiveName,
@@ -141,9 +143,9 @@ class CustomDialogs {
       double? sizeIcon,
       required Widget body,
       required String buttonPositiveName,
-      Function? buttonPositiveAction,
+      Function()? buttonPositiveAction,
       String? buttonNegativeName,
-      Function? buttonNegativeAction}) {
+      Function()? buttonNegativeAction}) {
     return showDialog<void>(
         context: context,
         barrierDismissible: (isDismissible != null) ? isDismissible : true,
@@ -170,9 +172,9 @@ class CustomDialogs {
     required String message,
     required String messageCheck,
     required String buttonPositiveName,
-    Function? buttonPositiveAction,
+    Function()? buttonPositiveAction,
     String? buttonNegativeName,
-    Function? buttonNegativeAction,
+    Function()? buttonNegativeAction,
     required bool checkboxValue,
     required void Function(bool?) checkboxFunction,
   }) {

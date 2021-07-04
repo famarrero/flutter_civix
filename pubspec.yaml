@@ -62,6 +62,8 @@ dependencies:
   animated_bottom_navigation_bar: ^0.3.2
   curved_navigation_bar: ^1.0.0
 
+  url_launcher: ^6.0.8
+  scroll_to_index: 2.0.0
   device_info: ^2.0.2
   device_preview: ^0.7.3
   uuid: ^3.0.4

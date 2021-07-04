@@ -7,6 +7,7 @@ import 'package:flutter_civix/src/presentation/pages/civix/quick_access/quick_ac
 import 'package:flutter_civix/src/presentation/pages/civix/settings/settings_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/consult_state_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/list_statement_fgr_page.dart';
+import 'package:flutter_civix/src/presentation/pages/general/contact_us/contact_us_page.dart';
 import 'package:flutter_civix/src/presentation/pages/general/entities_by_province/entities_by_province_page.dart';
 import 'package:flutter_civix/src/presentation/pages/general/frequent_questions/frequent_questions_page.dart';
 import 'package:flutter_civix/src/presentation/pages/general/informative_texts/informative_texts_page.dart';
@@ -40,6 +41,7 @@ import 'package:flutter_civix/src/presentation/pages/civix/institutions_list/ins
         page: FrequentQuestionsPage, path: 'preguntas-frequentes'),
     AutoRoute<dynamic>(page: InformativeTextsPage, path: 'informacion'),
     AutoRoute<dynamic>(page: EntitiesByProvincePage, path: 'entidades'),
+    AutoRoute<dynamic>(page: ContactUsPage, path: 'contactenos'),
 
     //Fgr
     AutoRoute<dynamic>(page: MainFgrPage, path: 'fgr', children: [

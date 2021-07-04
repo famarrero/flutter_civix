@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_civix/src/data/models/contact_us/contact_us_response_model.dart';
 import 'package:flutter_civix/src/data/models/entity/entities_response_model.dart';
 import 'package:flutter_civix/src/data/models/faq/faq_response_model.dart';
 import 'package:flutter_civix/src/data/models/general/provinces_response_model.dart';
@@ -48,5 +49,13 @@ class LocalAssetsRepositoryImpl implements LocalAssetsRepository {
     EntitiesResponseModel entitiesList =
         EntitiesResponseModel.fromJson(jsonString)!;
     return entitiesList;
+  }
+
+  @override
+  Future<ContactUsResponseModel> loadContactUsJson(String contactUsJson) async {
+    String jsonString = await rootBundle.loadString(contactUsJson);
+    ContactUsResponseModel contactUsResponseModel =
+    ContactUsResponseModel.fromJson(jsonString)!;
+    return contactUsResponseModel;
   }
 }

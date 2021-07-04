@@ -33,6 +33,8 @@ class EntitiesByProvincePage extends StatefulWidget {
 }
 
 class _EntitiesByProvincePageState extends State<EntitiesByProvincePage> {
+  int selected = -1;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -73,7 +75,7 @@ class _EntitiesByProvincePageState extends State<EntitiesByProvincePage> {
                         itemCount: state.entitiesByProvince.length,
                         itemBuilder: (context, index) {
                           return _buildEntitiesListByProvince(
-                              context, state.entitiesByProvince[index]);
+                              context, state.entitiesByProvince[index], index);
                         }),
                 ],
               );
@@ -83,12 +85,15 @@ class _EntitiesByProvincePageState extends State<EntitiesByProvincePage> {
   }
 
   _buildEntitiesListByProvince(
-      BuildContext context, ProvinceModel provinceModel) {
+      BuildContext context, ProvinceModel provinceModel, int index) {
+    final GlobalKey expansionTileKey = GlobalKey();
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
+          key: expansionTileKey,
+          initiallyExpanded: index == selected,
           collapsedTextColor: Colors.transparent,
           leading: Icon(Icons.account_balance_outlined,
               color: Theme.of(context).accentColor, size: 25),
@@ -110,6 +115,16 @@ class _EntitiesByProvincePageState extends State<EntitiesByProvincePage> {
                       colorIcons: Theme.of(context).accentColor);
                 })
           ],
+          onExpansionChanged: ((newState) {
+            if (newState)
+              setState(() {
+                selected = index;
+              });
+            else
+              setState(() {
+                selected = -1;
+              });
+          }),
         ),
       ),
     );

@@ -123,5 +123,16 @@
   "somethingWrong": "Something wrong!",
   "sendingStatement": "Sending statement",
   "processingImage": "Processing image",
-  "noCoordinatesAvailable": "No coordinates available"
+  "noCoordinatesAvailable": "No coordinates available",
+  "whereWeAre": "Where we are?",
+  "phones": "Phones",
+  "emails": "Emails",
+  "links": "Links",
+  "postalCodeAbbr": "PC",
+  "callCouldNotBeMade": "The call could not be made",
+  "emailCouldNotBeSend": "The email could not be send",
+  "urlCouldNotBeOpen": "The url could not be open",
+  "doYouWantCallThisNumber": "Do you want call this number?",
+  "doYouWantSendEmailToThisAddress": "Do you want send email to this address?",
+  "doYouWantOpenThisLink": "Do you want open this link?"
 }

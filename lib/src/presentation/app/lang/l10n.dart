@@ -1299,6 +1299,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Where we are?`
+  String get whereWeAre {
+    return Intl.message(
+      'Where we are?',
+      name: 'whereWeAre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phones`
+  String get phones {
+    return Intl.message(
+      'Phones',
+      name: 'phones',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Emails`
+  String get emails {
+    return Intl.message(
+      'Emails',
+      name: 'emails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Links`
+  String get links {
+    return Intl.message(
+      'Links',
+      name: 'links',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PC`
+  String get postalCodeAbbr {
+    return Intl.message(
+      'PC',
+      name: 'postalCodeAbbr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The call could not be made`
+  String get callCouldNotBeMade {
+    return Intl.message(
+      'The call could not be made',
+      name: 'callCouldNotBeMade',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email could not be send`
+  String get emailCouldNotBeSend {
+    return Intl.message(
+      'The email could not be send',
+      name: 'emailCouldNotBeSend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The url could not be open`
+  String get urlCouldNotBeOpen {
+    return Intl.message(
+      'The url could not be open',
+      name: 'urlCouldNotBeOpen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want call this number?`
+  String get doYouWantCallThisNumber {
+    return Intl.message(
+      'Do you want call this number?',
+      name: 'doYouWantCallThisNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want send email to this address?`
+  String get doYouWantSendEmailToThisAddress {
+    return Intl.message(
+      'Do you want send email to this address?',
+      name: 'doYouWantSendEmailToThisAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want open this link?`
+  String get doYouWantOpenThisLink {
+    return Intl.message(
+      'Do you want open this link?',
+      name: 'doYouWantOpenThisLink',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

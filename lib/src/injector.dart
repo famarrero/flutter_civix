@@ -5,6 +5,7 @@ import 'package:flutter_civix/src/core/services_manager/file_picker_manager.dart
 import 'package:flutter_civix/src/core/services_manager/file_picker_manager_impl.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager.dart';
 import 'package:flutter_civix/src/core/services_manager/image_picker_manager_impl.dart';
+import 'package:flutter_civix/src/core/services_manager/url_launcher.dart';
 import 'package:flutter_civix/src/data/data_sources/local_data/local_database/daos/statement_fgr_dao.dart';
 import 'package:flutter_civix/src/data/data_sources/local_data/local_database/moor_database.dart';
 import 'package:flutter_civix/src/data/data_sources/local_data/shared_preferences/shared_preferences_fgr.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/cubit
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubit/show_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/general/contact_us/cubit/contact_us_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/general/entities_by_province/cubit/entities_by_province_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/general/frequent_questions/cubit/frequent_questions_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/general/informative_texts/cubit/informative_texts_cubit.dart';
@@ -63,6 +65,9 @@ Future<void> initializeDependencies() async {
   injector.registerLazySingleton<FilePickerManager>(
     () => FilePickerManagerImpl(),
   );
+  injector.registerLazySingleton<UrlLauncherManager>(
+        () => UrlLauncherManagerImpl(),
+  );
 
   // Blocs/Cubits
   //**
@@ -77,6 +82,7 @@ Future<void> initializeDependencies() async {
   injector.registerFactory<FrequentQuestionsCubit>(() => FrequentQuestionsCubit(injector()));
   injector.registerFactory<InformativeTextsCubit>(() => InformativeTextsCubit(injector()));
   injector.registerFactory<EntitiesByProvinceCubit>(() => EntitiesByProvinceCubit(injector()));
+  injector.registerFactory<ContactUsCubit>(() => ContactUsCubit(injector()));
 
   // UseCases
   // injector.registerSingleton<GetRemotePostsUseCase>(

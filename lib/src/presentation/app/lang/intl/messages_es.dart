@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "¿Desea guardar este planteamiento en la aplicación?"),
         "attachments": MessageLookupByLibrary.simpleMessage("Adjuntos"),
         "call": MessageLookupByLibrary.simpleMessage("Llamar"),
+        "callCouldNotBeMade": MessageLookupByLibrary.simpleMessage(
+            "No se puede realizar la llamada"),
         "camera": MessageLookupByLibrary.simpleMessage("Camara"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "cancel2": MessageLookupByLibrary.simpleMessage("Anular"),
@@ -53,6 +55,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Borrar"),
         "deleting": MessageLookupByLibrary.simpleMessage("Borrando"),
         "description": MessageLookupByLibrary.simpleMessage("Descripción"),
+        "doYouWantCallThisNumber": MessageLookupByLibrary.simpleMessage(
+            "¿Desea llamar a este número?"),
+        "doYouWantOpenThisLink":
+            MessageLookupByLibrary.simpleMessage("¿Desea abrir este enlace?"),
+        "doYouWantSendEmailToThisAddress": MessageLookupByLibrary.simpleMessage(
+            "¿Desea enviar un correo electrónico a esta dirección?"),
         "document": MessageLookupByLibrary.simpleMessage("Documento"),
         "documentNotSupported": MessageLookupByLibrary.simpleMessage(
             "El archivo seleccionado no es un documento o es un formato no soportado"),
@@ -63,8 +71,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
         "emailCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El correo electrónico de ser un correo válido"),
+        "emailCouldNotBeSend": MessageLookupByLibrary.simpleMessage(
+            "El correo electrónico no se puede enviar"),
         "emailValidator": MessageLookupByLibrary.simpleMessage(
             "El correo electrónico no es válido"),
+        "emails": MessageLookupByLibrary.simpleMessage("Correos electrónicos"),
         "emptyValidator":
             MessageLookupByLibrary.simpleMessage("Se requiere un valor"),
         "enterStatement":
@@ -97,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lista de instituciones"),
         "languageSelect": MessageLookupByLibrary.simpleMessage("Idioma"),
         "later": MessageLookupByLibrary.simpleMessage("Después"),
+        "links": MessageLookupByLibrary.simpleMessage("Enlaces"),
         "location": MessageLookupByLibrary.simpleMessage("Ubicación"),
         "main": MessageLookupByLibrary.simpleMessage("Principal"),
         "mainFGR": MessageLookupByLibrary.simpleMessage("Principal FGR"),
@@ -134,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
         "phoneCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El teléfono debe ser un teléfono válido"),
+        "phones": MessageLookupByLibrary.simpleMessage("Teléfonos"),
+        "postalCodeAbbr": MessageLookupByLibrary.simpleMessage("CP"),
         "pressAgainToExit": MessageLookupByLibrary.simpleMessage(
             "Presione nuevamente para salir"),
         "price": MessageLookupByLibrary.simpleMessage("Precio"),
@@ -188,8 +202,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Actualizar"),
         "updating": MessageLookupByLibrary.simpleMessage("Actualizando"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Mejorar"),
+        "urlCouldNotBeOpen":
+            MessageLookupByLibrary.simpleMessage("No se puede abrir la url"),
         "warning": MessageLookupByLibrary.simpleMessage("Alerta!!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Bienvenido"),
+        "whereWeAre": MessageLookupByLibrary.simpleMessage("¿Dónde estamos?"),
         "writeStatement":
             MessageLookupByLibrary.simpleMessage("Redactar planteamiento"),
         "yes": MessageLookupByLibrary.simpleMessage("Si")

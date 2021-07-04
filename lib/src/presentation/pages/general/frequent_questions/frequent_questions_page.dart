@@ -9,7 +9,7 @@ import 'package:flutter_civix/src/presentation/pages/general/frequent_questions/
 import 'package:flutter_civix/src/presentation/widgets/appbar_title.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_card.dart';
 
-class FrequentQuestionsPage extends StatelessWidget {
+class FrequentQuestionsPage extends StatefulWidget {
   final Color primaryColor;
   final Color secondaryColor;
   final MaterialColor primarySwatch;
@@ -26,23 +26,29 @@ class FrequentQuestionsPage extends StatelessWidget {
       : super(key: key);
 
   @override
+  _FrequentQuestionsPageState createState() => _FrequentQuestionsPageState();
+}
+
+class _FrequentQuestionsPageState extends State<FrequentQuestionsPage> {
+  int selected = -1;
+
+  @override
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) =>
-            injector<FrequentQuestionsCubit>()..getFaq(jsonFaq),
+            injector<FrequentQuestionsCubit>()..getFaq(widget.jsonFaq),
         child: Theme(
           data: ThemeData(
-            primaryColor: primaryColor,
-            accentColor: secondaryColor,
-            primarySwatch: primarySwatch
-          ),
+              primaryColor: widget.primaryColor,
+              accentColor: widget.secondaryColor,
+              primarySwatch: widget.primarySwatch),
           child: Scaffold(
             appBar: AppBar(
-                elevation: 0,
-                title: AppBarTitleSubtitle(
+              elevation: 0,
+              title: AppBarTitleSubtitle(
                   title: S.of(context).frequentQuestions,
-                  subtitle: subtitle,
-                )),
+                  subtitle: widget.subtitle),
+            ),
             body: BlocBuilder<FrequentQuestionsCubit, FrequentQuestionsState>(
                 builder: (context, state) {
               return ListView(
@@ -76,6 +82,8 @@ class FrequentQuestionsPage extends StatelessWidget {
 
   _buildListFaq(
       BuildContext context, FrequentQuestionsState state, int indexFather) {
+    final GlobalKey expansionTileKey = GlobalKey();
+
     return CustomCard(
       margin: EdgeInsets.symmetric(vertical: 6),
       child: Padding(
@@ -83,6 +91,8 @@ class FrequentQuestionsPage extends StatelessWidget {
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
+            key: expansionTileKey,
+            initiallyExpanded: indexFather == selected,
             collapsedTextColor: Colors.transparent,
             leading: Icon(Icons.question_answer_outlined,
                 color: Theme.of(context).accentColor, size: 25),
@@ -100,14 +110,25 @@ class FrequentQuestionsPage extends StatelessWidget {
                   itemCount: state.faqList[indexFather].responsesList.length,
                   itemBuilder: (context, indexSon) {
                     return Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 18, vertical: 8),
                       child: Text(
-                          state.faqList[indexFather].responsesList[indexSon].text,
+                          state.faqList[indexFather].responsesList[indexSon]
+                              .text,
                           style: TextStyle(fontSize: kNormalTextSize)),
                     );
                   })
             ],
+            onExpansionChanged: ((isExpanded) {
+              if (isExpanded)
+                setState(() {
+                  selected = indexFather;
+                });
+              else
+                setState(() {
+                  selected = -1;
+                });
+            }),
           ),
         ),
       ),
