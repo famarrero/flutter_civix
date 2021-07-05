@@ -13,27 +13,33 @@ class TextPhoneNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          CustomDialogs().customDialogInformation(
-            context: context,
-            title: S.of(context).info,
-            message: S.of(context).doYouWantCallThisNumber,
-            icon: Icons.call,
-            colorIcon: colorAccent,
-            sizeIcon: 35,
-            buttonPositiveName: S.of(context).yes,
-            buttonPositiveAction: () {
-              injector<UrlLauncherManager>()..callPhone(phoneNumber);
-              Navigator.of(context).pop();
-            },
-            buttonNegativeName: S.of(context).no,
-            // buttonNegativeAction: () => Navigator.of(context).pop()
-          );
-        },
-        child: Text(
-          phoneNumber,
-          style: TextStyle(fontSize: kNormalTextSize, color: colorAccent),
-        ));
+    if (phoneNumber.contains('ext'))
+      return Text(
+        phoneNumber,
+        style: TextStyle(fontSize: kNormalTextSize),
+      );
+    else
+      return InkWell(
+          onTap: () {
+            CustomDialogs().customDialogInformation(
+              context: context,
+              title: S.of(context).info,
+              message: S.of(context).doYouWantCallThisNumber,
+              icon: Icons.call,
+              colorIcon: colorAccent,
+              sizeIcon: 35,
+              buttonPositiveName: S.of(context).yes,
+              buttonPositiveAction: () {
+                injector<UrlLauncherManager>()..callPhone(phoneNumber);
+                Navigator.of(context).pop();
+              },
+              buttonNegativeName: S.of(context).no,
+              // buttonNegativeAction: () => Navigator.of(context).pop()
+            );
+          },
+          child: Text(
+            phoneNumber,
+            style: TextStyle(fontSize: kNormalTextSize, color: colorAccent),
+          ));
   }
 }

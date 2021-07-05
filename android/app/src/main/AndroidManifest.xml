@@ -31,8 +31,8 @@
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION"/>  
 
     <application
-        android:icon="@mipmap/ic_launcher"
-        android:label="flutter_civix"
+        android:icon="@mipmap/ico_civix_imagen"
+        android:label="Civix"
         android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"

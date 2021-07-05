@@ -1,11 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_civix/src/core/constants/colors.dart';
-import 'package:flutter_civix/src/core/routes/routes.gr.dart';
-import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/cubit/sidebar_fgr_cubit.dart';
 import 'package:provider/provider.dart';
-
 
 class NavBarFgr extends StatefulWidget {
   const NavBarFgr();
@@ -16,44 +12,11 @@ class NavBarFgr extends StatefulWidget {
 
 class _NavBarFgrState extends State<NavBarFgr> {
   bool get showNab {
-    final _currentPage =
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)
-            ?.current
-            .name;
-    if (_currentPage == FrequentQuestionsPageRoute.name ||
-        _currentPage == AboutUsPageRoute.name) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  String getLocalizedTitleForRoute(BuildContext context, String routeName) {
-    final localized = S.of(context);
-    switch (routeName) {
-      case InstitutionsListPageRoute.name:
-        return localized.home;
-      case QuickAccessPageRoute.name:
-        return localized.quickAccess;
-      case MyShipmentsPageRoute.name:
-        return localized.myShipments;
-      case FrequentQuestionsPageRoute.name:
-        return localized.frequentQuestions;
-      case SettingsPageRoute.name:
-        return localized.settings;
-      case ProfilePageRoute.name:
-        return localized.profile;
-      case AboutUsPageRoute.name:
-        return localized.aboutUs;
-      default:
-        return localized.mainFGR;
-    }
+    return true;
   }
 
   @override
   Widget build(BuildContext context) {
-    final data =
-        AutoRouter.innerRouterOf(context, MainCivixPageRoute.name)?.current;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       height: showNab ? kToolbarHeight : 0,
@@ -87,8 +50,7 @@ class _NavBarFgrState extends State<NavBarFgr> {
     );
   }
 
-  BoxDecoration _buildBoxDecoration() => BoxDecoration(
-      color: kFgrPrimaryColor, //Color fgr
-      // gradient: LinearGradient(colors: [Color(0xff092044), Color(0xff092042)]),
+  BoxDecoration _buildBoxDecoration() => BoxDecoration(color: kFgrPrimaryColor,
+      //Color fgr
       boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 5)]);
 }

@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/dimens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomCarouselSlider extends StatefulWidget {
@@ -77,7 +77,7 @@ class ItemCarouselSlider extends StatelessWidget {
                   child: Text(
                 text!,
                 style: TextStyle(
-                  fontSize: Constants.normalTextSize,
+                  fontSize: kNormalTextSize,
                   fontWeight: FontWeight.w400,
                 ),
                 textAlign: TextAlign.center,

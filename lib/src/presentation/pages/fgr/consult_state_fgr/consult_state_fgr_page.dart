@@ -81,9 +81,9 @@ class ConsultStateFgrPage extends StatelessWidget {
                               formControlName: FormConsultStateFgr.tiked,
                               validationMessages: (control) => {
                                 ValidationMessage.required:
-                                    S.of(context).tikedCorrectValidator
+                                    S.of(context).ticketCorrectValidator
                               },
-                              label: S.of(context).enterTiked,
+                              label: S.of(context).enterTicket,
                               icon: Icons.vpn_key_outlined,
                               textInputAction: TextInputAction.next,
                               textCapitalization: TextCapitalization.none,

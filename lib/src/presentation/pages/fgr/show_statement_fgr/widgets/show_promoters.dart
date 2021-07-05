@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/dimens.dart';
 import 'package:flutter_civix/src/domain/entities/fgr/promoter_fgr.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/widgets/show_promoter_dialg.dart';
@@ -56,7 +56,7 @@ class ShowPromoters extends StatelessWidget {
                           children: [
                             if (title != '')
                               Text(title, style: TextStyle(
-                                  fontSize: Constants.normalTextSize,
+                                  fontSize: kNormalTextSize,
                                   color: Colors.black54)),
                             SizedBox(height: 2),
                             Text(
@@ -64,7 +64,7 @@ class ShowPromoters extends StatelessWidget {
                                     .municipalityName}, ${promoters[index]
                                     .provinceName}',
                                 style: TextStyle(
-                                    fontSize: Constants.normalTextSize,
+                                    fontSize: kNormalTextSize,
                                     color: Colors.black54)),
                           ],
                         ),

@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
+import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/tsp/main_tsp/components/navbar_tsp.dart';
-import 'package:flutter_civix/src/presentation/widgets/intitution_header.dart';
-
-import 'components/sidebar_tsp.dart';
-import 'cubit/sidebar_tsp_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/tsp/main_tsp/components/sidebar_tsp.dart';
+import 'package:flutter_civix/src/presentation/pages/tsp/main_tsp/cubit/sidebar_tsp_cubit.dart';
+import 'package:flutter_civix/src/presentation/widgets/institution_header.dart';
 
 class MainTspPage extends StatefulWidget {
   MainTspPage();
@@ -27,17 +27,17 @@ class _MainTspPageState extends State<MainTspPage> {
         // BlocProvider(create: (context) => injector<ListStatementFgrCubit>()),
         // BlocProvider(create: (context) => injector<ConsultStateFgrCubit>()),
       ],
-      child: _ScaffoldMainFGRPage(),
+      child: _ScaffoldMainTspPage(),
     );
   }
 }
 
-class _ScaffoldMainFGRPage extends StatefulWidget {
+class _ScaffoldMainTspPage extends StatefulWidget {
   @override
-  __ScaffoldMainFGRPageState createState() => __ScaffoldMainFGRPageState();
+  _ScaffoldMainTspPageState createState() => _ScaffoldMainTspPageState();
 }
 
-class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
+class _ScaffoldMainTspPageState extends State<_ScaffoldMainTspPage> {
   bool? checkboxValue = false;
 
   @override
@@ -57,7 +57,7 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
               children: [
                 NavBarTsp(),
                 InstitutionHeader(
-                  institutionName: 'Tribunal Supremo Popular',
+                  institutionName: S.of(context).tsp,
                   color: kTspPrimaryColor,
                   image: Assets.images.marcaAguaTsp.path,
                 ),
@@ -69,7 +69,4 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
       ),
     );
   }
- }
-
-
-
+}

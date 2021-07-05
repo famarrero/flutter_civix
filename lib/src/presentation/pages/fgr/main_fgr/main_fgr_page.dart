@@ -10,12 +10,10 @@ import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/components/navbar_fgr.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/components/sidebar_fgr.dart';
+import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/cubit/sidebar_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
-import 'package:flutter_civix/src/presentation/widgets/headers.dart';
-import 'package:flutter_civix/src/presentation/widgets/intitution_header.dart';
-
-import 'components/sidebar_fgr.dart';
-import 'cubit/sidebar_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/widgets/institution_header.dart';
 
 class MainFgrPage extends StatefulWidget {
   MainFgrPage();
@@ -89,79 +87,4 @@ class __ScaffoldMainFGRPageState extends State<_ScaffoldMainFGRPage> {
       return true;
     }
   }
-
-  bool _iAmAlreadyInThisPage(BuildContext context, String routeName) {
-    return AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)
-            ?.current
-            .name ==
-        routeName;
-  }
-
-// void _onPressedBottomNavItem(BuildContext context, int index) {
-//   if (index == 0) {
-//     if (!_iAmAlreadyInThisPage(context, ServicesFgrPageRoute.name))
-//       _navigateBottomNavBar(context, ServicesFgrPageRoute());
-//   } else if (index == 1) {
-//     _navigateBottomNavBar(context, InfoFgrPageRoute());
-//   }
-// }
-
-//   void _navigateBottomNavBar(BuildContext context, PageRouteInfo routeInfo) {
-//     final currentRouteName =
-//         AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)?.current.name;
-//     if (currentRouteName == ServicesFgrPageRoute.name) {
-//       AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!.push(routeInfo);
-//     } else {
-//       if (routeInfo.routeName != ServicesFgrPageRoute.name) {
-//         AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!
-//             .replace(routeInfo);
-//       } else {
-//         AutoRouter.innerRouterOf(context, MainFgrPageRoute.name)!.pop();
-//       }
-//     }
-//   }
 }
-
-// class SliverCustomHeaderDelegate extends SliverPersistentHeaderDelegate {
-//   final double minheight;
-//   final double maxheight;
-//   final Widget child;
-//
-//   SliverCustomHeaderDelegate(
-//       {required this.minheight, required this.maxheight, required this.child});
-//
-//   @override
-//   Widget build(
-//       BuildContext context, double shrinkOffset, bool overlapsContent) {
-//     return SizedBox.expand(child: child);
-//   }
-//
-//   @override
-//   double get maxExtent => maxheight;
-//
-//   @override
-//   double get minExtent => minheight;
-//
-//   @override
-//   bool shouldRebuild(SliverCustomHeaderDelegate oldDelegate) {
-//     return maxheight != oldDelegate.maxheight ||
-//         minheight != oldDelegate.minheight ||
-//         child != oldDelegate.child;
-//   }
-// }
-
-// CustomCarouselSlider(items: _getItemsCarousel()),
-// List<ItemCarouselSlider> _getItemsCarousel() {
-//   return [
-//     ItemCarouselSlider(image: 'assets/images/fgr_marca_pais.png'),
-//     ItemCarouselSlider(
-//         text: 'Sus planteamientos son atendidos de manera rápida por nustros especialistas.',
-//         image: 'assets/svgs/slide-3.svg'),
-//     ItemCarouselSlider(
-//         text: 'No estaremos prestando servicios los días 2 y 3 del presente mes.',
-//         image: 'assets/svgs/slide-4.svg'),
-//     ItemCarouselSlider(
-//         text: 'Con Civix ahora es muy fácil presentar arguemtos a nuestra institución',
-//         image: 'assets/svgs/slide-5.svg')
-//   ];
-// }

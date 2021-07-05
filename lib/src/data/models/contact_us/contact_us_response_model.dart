@@ -5,7 +5,6 @@ import 'package:built_value/serializer.dart';
 import 'package:flutter_civix/src/core/serializers/serializers.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter_civix/src/data/models/entity/coordinates_model.dart';
-import 'package:flutter_civix/src/data/models/informative_texts/texts_model.dart';
 
 part 'contact_us_response_model.g.dart';
 

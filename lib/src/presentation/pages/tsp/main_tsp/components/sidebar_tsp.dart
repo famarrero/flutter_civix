@@ -5,8 +5,8 @@ import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/pages/tsp/main_tsp/cubit/sidebar_tsp_cubit.dart';
-import '../../../../widgets/sidebar_menu_item.dart';
-import '../../../../widgets/sidebar_text_separator.dart';
+import 'package:flutter_civix/src/presentation/widgets/sidebar_menu_item.dart';
+import 'package:flutter_civix/src/presentation/widgets/sidebar_text_separator.dart';
 
 import 'package:provider/provider.dart';
 
@@ -65,7 +65,6 @@ class SideBarTsp extends StatelessWidget {
               }),
           SideBarMenuItem(
               isActive: routeName == InformativeTextsPageRoute.name,
-              // text: S.of(context).missionAndFunctions,
               text: S.of(context).missionAndVision,
               icon: Icons.workspaces_outline,
               onPressed: () {
@@ -88,7 +87,7 @@ class SideBarTsp extends StatelessWidget {
                     secondaryColor: kTspSecondaryColor,
                     primarySwatch: kTspSecondaryMaterialColor,
                     subtitle: S.of(context).tsp,
-                    jsonInformativeText: Assets.jsons.tsp.courtroomsTsp,
+                    jsonInformativeText: Assets.jsons.tsp.courtRoomsTsp,
                     iconHeader: Icons.account_tree_outlined));
                 context.read<SideBarTspCubit>().closeMobileDrawable();
               }),

@@ -1,7 +1,6 @@
 import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/dimens.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_elevated_button.dart';
 
 class CustomDialogBox extends StatelessWidget {
@@ -19,7 +18,7 @@ class CustomDialogBox extends StatelessWidget {
       {required this.title,
       this.icon,
       this.colorIcon,
-      this.sizeIcon = Constants.normalIconSize,
+      this.sizeIcon = kNormalIconSize,
       required this.body,
       required this.buttonPositiveName,
       this.buttonPositiveAction,

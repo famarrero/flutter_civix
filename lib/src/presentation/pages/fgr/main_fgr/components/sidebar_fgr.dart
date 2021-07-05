@@ -4,9 +4,9 @@ import 'package:flutter_civix/src/core/constants/colors.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/presentation/app/assets/assets.gen.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
-import '../../../../widgets/sidebar_menu_item.dart';
-import '../../../../widgets/sidebar_text_separator.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/main_fgr/cubit/sidebar_fgr_cubit.dart';
+import 'package:flutter_civix/src/presentation/widgets/sidebar_menu_item.dart';
+import 'package:flutter_civix/src/presentation/widgets/sidebar_text_separator.dart';
 
 import 'package:provider/provider.dart';
 
@@ -73,13 +73,13 @@ class SideBarFgr extends StatelessWidget {
                     secondaryColor: kFgrSecondaryColor,
                     primarySwatch: kFgrSecondaryMaterialColor,
                     subtitle: S.of(context).fgr,
-                    jsonInformativeText: Assets.jsons.fgr.missionAndFunctionsFgr,
+                    jsonInformativeText:
+                        Assets.jsons.fgr.missionAndFunctionsFgr,
                     iconHeader: Icons.workspaces_outline));
                 context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
-              isActive:
-              routeName ==  InformativeTextsPageRoute.name,
+              isActive: routeName == InformativeTextsPageRoute.name,
               text: S.of(context).structure,
               icon: Icons.format_align_center_outlined,
               onPressed: () {
@@ -107,8 +107,7 @@ class SideBarFgr extends StatelessWidget {
                 context.read<SideBarFgrCubit>().closeMobileDrawable();
               }),
           SideBarMenuItem(
-              isActive:
-                  routeName ==  ContactUsPageRoute.name,
+              isActive: routeName == ContactUsPageRoute.name,
               text: S.of(context).contactUs,
               icon: Icons.quick_contacts_dialer_outlined,
               onPressed: () {
@@ -130,7 +129,6 @@ class SideBarFgr extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // const Icon(Icons.admin_panel_settings_outlined, size: 50, color: Color(0xff7A6BF5)),
         Image(
           image: Assets.images.marcaAguaFgr,
           height: 70,

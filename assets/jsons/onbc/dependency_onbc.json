@@ -4,240 +4,148 @@
       "entity": "Junta Directiva Nacional",
       "address": "Avenida 41 #7208 esquina a 72, Playa.",
       "phones_list": [
-        {
-          "phone": "72144304"
-        },
-        {
-          "phone": "72144310"
-        },
-        {
-          "phone": "72144312"
-        },
-        {
-          "phone": "72144313"
-        },
-        {
-          "phone": "ext 101-117"
-        }
+        "72144304",
+        "72144310",
+        "72144312",
+        "72144313",
+        "ext 101-117"
       ]
     },
     {
       "entity": "Bufete de Servicios Especializados - BES",
       "address": "23 # 501 esq. J. Vedado",
       "phones_list": [
-        {
-          "phone": "78326024"
-        },
-        {
-          "phone": "78326813"
-        },
-        {
-          "phone": "78332159"
-        },
-        {
-          "phone": "78308444"
-        }
+        "78326024",
+        "78326813",
+        "78332159",
+        "78308444"
       ]
     },
     {
       "entity": "Pinar del Río",
       "address": "Máximo Gómez No. 23 e/ Recreo y Vélez C, Código Postal 20100",
       "phones_list": [
-        {
-          "phone": "42757584"
-        },
-        {
-          "phone": "42757585"
-        }
+        "42757584",
+        "42757585"
       ]
     },
     {
       "entity": "Artemisa",
       "address": "Calle 39 # 4211 entre 42 y 44, Artemisa.",
       "phones_list": [
-        {
-          "phone": "366349"
-        },
-        {
-          "phone": "366348"
-        },
-        {
-          "phone": "366351"
-        },
-        {
-          "phone": "366945"
-        }
+        "366349",
+        "366348",
+        "366351",
+        "366945"
       ]
     },
     {
       "entity": "La Habana",
       "address": "Calle 19 #667 altos % A y B. Municipio Plaza de la Revolución",
       "phones_list": [
-        {
-          "phone": "78325000"
-        },
-        {
-          "phone": "78300669"
-        }
+        "78325000",
+        "78300669"
       ]
     },
     {
       "entity": "Mayabeque",
       "address": "Avenida 29 # 6812 entre 68 y 74, San José de las Lajas, Mayabeque.",
       "phones_list": [
-        {
-          "phone": "47865090"
-        }
+        "47865090"
       ]
     },
     {
       "entity": "Matanzas",
       "address": " Contreras, 28008, entre Matanzas y Jovellanos, 40100.",
       "phones_list": [
-        {
-          "phone": "45243890"
-        },
-        {
-          "phone": "45284160"
-        },
-        {
-          "phone": "45284159"
-        },
-        {
-          "phone": "ext: 101"
-        }
+        "45243890",
+        "45284160",
+        "45284159",
+        "ext: 101"
       ]
     },
     {
       "entity": "Cienfuegos",
       "address": "Avenida 54 Nro. 3713 entre 37 y 39 Cienfuegos.",
       "phones_list": [
-        {
-          "phone": "43518450"
-        },
-        {
-          "phone": "43517557"
-        }
+        "43518450",
+        "43517557"
       ]
     },
     {
       "entity": " Villa Clara",
       "address": "Gloria, 5 Altos, entre Parque y Maceo, 50100.",
       "phones_list": [
-        {
-          "phone": "42201705"
-        },
-        {
-          "phone": "42206155"
-        },
-        {
-          "phone": "42209481"
-        }
+        "42201705",
+        "42206155",
+        "42209481"
       ]
     },
     {
       "entity": " Sancti Spiritus",
       "address": "Independencia, #58altos, entre Honorato del Castillo y Agramonte, 60100.",
       "phones_list": [
-        {
-          "phone": "41326443"
-        },
-        {
-          "phone": "41327609"
-        }
+        "41326443",
+        "41327609"
       ]
     },
     {
       "entity": "Ciego de Ávila",
       "address": " Calle Abraham Delgado, #108, entre Máximo Gómez y Serafín Sánchez código postal. 65100",
       "phones_list": [
-        {
-          "phone": "33222935 "
-        },
-        {
-          "phone": "33224217"
-        }
+        "33222935 ",
+        "33224217"
       ]
     },
     {
       "entity": "Camagüey",
       "address": "San Clemente # 2, entre Cisneros e Independencia, código postal 70100",
       "phones_list": [
-        {
-          "phone": "32291541"
-        },
-        {
-          "phone": "32298650"
-        }
+        "32291541",
+        "32298650"
       ]
     },
     {
       "entity": "Las Tunas",
       "address": "Lucas Ortiz # 272 e/ Ramón Ortuño y 24 de Febrero.",
       "phones_list": [
-        {
-          "phone": "31345696"
-        },
-        {
-          "phone": "ext 201"
-        }
+        "31345696",
+        "ext 201"
       ]
     },
     {
       "entity": "Granma",
       "address": " Calle Capotico # 71 % Lora y Figueredo, Bayamo, Granma. Código Postal 85100",
       "phones_list": [
-        {
-          "phone": "23429900"
-        },
-        {
-          "phone": "23429875"
-        },
-        {
-          "phone": "ext 101"
-        }
+        "23429900",
+        "23429875",
+        "ext 101"
       ]
     },
     {
       "entity": "Holguín",
       "address": "Carretera Central No.2, esq. Constitución, Rpto. Santiesteban, Holguín, CP 80100",
       "phones_list": [
-        {
-          "phone": "24462336"
-        },
-        {
-          "phone": "24424107"
-        },
-        {
-          "phone": "ext 106"
-        }
+        "24462336",
+        "24424107",
+        "ext 106"
       ]
     },
     {
       "entity": "Santiago de Cuba",
       "address": "Calle 3ra, #154, entre Calle 8 y Avenida de Manduley, Código Postal 90400.",
       "phones_list": [
-        {
-          "phone": "22643756"
-        },
-        {
-          "phone": "22643725"
-        },
-        {
-          "phone": "22640715"
-        }
+        "22643756",
+        "22643725",
+        "22640715"
       ]
     },
     {
       "entity": "Guantánamo",
       "address": "Ahogados No.3114 e/ 14 y 15, Código Postal 95200",
       "phones_list": [
-        {
-          "phone": "21381704"
-        },
-        {
-          "phone": "21381701"
-        }
+        "21381704",
+        "21381701"
       ]
     }
   ]

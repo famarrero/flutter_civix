@@ -37,7 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("The call could not be made"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "cancel2": MessageLookupByLibrary.simpleMessage("Cancel"),
         "choose": MessageLookupByLibrary.simpleMessage("Choose"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "congrats": MessageLookupByLibrary.simpleMessage("Congratulation!"),
@@ -53,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "creating": MessageLookupByLibrary.simpleMessage("Creating"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
+        "dependencies": MessageLookupByLibrary.simpleMessage("Dependencies"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "doYouWantCallThisNumber": MessageLookupByLibrary.simpleMessage(
             "Do you want call this number?"),
@@ -79,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterStatement":
             MessageLookupByLibrary.simpleMessage("Enter statement"),
         "enterSubject": MessageLookupByLibrary.simpleMessage("Enter subject"),
-        "enterTiked": MessageLookupByLibrary.simpleMessage("Statements"),
+        "enterTicket": MessageLookupByLibrary.simpleMessage("Enter ticket"),
         "errorCompressingImage":
             MessageLookupByLibrary.simpleMessage("Error compressing image"),
         "expire": MessageLookupByLibrary.simpleMessage("Expire"),
@@ -127,7 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No file selected"),
         "noImageSelected":
             MessageLookupByLibrary.simpleMessage("No image selected"),
-        "noImageTaked": MessageLookupByLibrary.simpleMessage("No image taked"),
+        "noImageTaken": MessageLookupByLibrary.simpleMessage("No image taken"),
         "noStatementToShow":
             MessageLookupByLibrary.simpleMessage("Ups, no statement to show!"),
         "noStatementsToShow": MessageLookupByLibrary.simpleMessage(
@@ -135,6 +135,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nothingToSave":
             MessageLookupByLibrary.simpleMessage("Nothing to save"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "onbc": MessageLookupByLibrary.simpleMessage(
+            "National Organization of Collective Law Firms"),
         "options": MessageLookupByLibrary.simpleMessage("Options"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -162,8 +164,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Provincial courts"),
         "provincialProsecutors":
             MessageLookupByLibrary.simpleMessage("Provincial prosecutors"),
+        "questionsList": MessageLookupByLibrary.simpleMessage("Questions list"),
         "quickAccess": MessageLookupByLibrary.simpleMessage("Quick access"),
-        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "response": MessageLookupByLibrary.simpleMessage("Response"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Save eraser"),
@@ -181,7 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "services": MessageLookupByLibrary.simpleMessage("Services"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
-        "showingSadevStatement":
+        "showingSavedStatement":
             MessageLookupByLibrary.simpleMessage("Showing saved statement"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "somethingWrong":
@@ -200,9 +202,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("The subject must o be null"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Dark Theme"),
         "themeLight": MessageLookupByLibrary.simpleMessage("Light Theme"),
-        "tikedCorrectValidator": MessageLookupByLibrary.simpleMessage(
-            "The tiked must be a correct tiked"),
-        "tsp": MessageLookupByLibrary.simpleMessage("Supreme court"),
+        "ticketCorrectValidator": MessageLookupByLibrary.simpleMessage(
+            "The ticket must be a correct ticket"),
+        "tsp": MessageLookupByLibrary.simpleMessage("Supreme Court"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updating": MessageLookupByLibrary.simpleMessage("Updating"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade"),
@@ -211,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "warning": MessageLookupByLibrary.simpleMessage("Warning!!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
         "whereWeAre": MessageLookupByLibrary.simpleMessage("Where we are?"),
+        "writeQuestion": MessageLookupByLibrary.simpleMessage("Write question"),
         "writeStatement":
             MessageLookupByLibrary.simpleMessage("Write statement"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes")

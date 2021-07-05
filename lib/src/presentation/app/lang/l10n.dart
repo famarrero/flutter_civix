@@ -70,6 +70,36 @@ class S {
     );
   }
 
+  /// `General Prosecutor of the Republic`
+  String get fgr {
+    return Intl.message(
+      'General Prosecutor of the Republic',
+      name: 'fgr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Supreme Court`
+  String get tsp {
+    return Intl.message(
+      'Supreme Court',
+      name: 'tsp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `National Organization of Collective Law Firms`
+  String get onbc {
+    return Intl.message(
+      'National Organization of Collective Law Firms',
+      name: 'onbc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Search..`
   String get searchHint {
     return Intl.message(
@@ -190,31 +220,11 @@ class S {
     );
   }
 
-  /// `Reset`
-  String get reset {
-    return Intl.message(
-      'Reset',
-      name: 'reset',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Cancel`
   String get cancel {
     return Intl.message(
       'Cancel',
       name: 'cancel',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cancel`
-  String get cancel2 {
-    return Intl.message(
-      'Cancel',
-      name: 'cancel2',
       desc: '',
       args: [],
     );
@@ -570,16 +580,6 @@ class S {
     );
   }
 
-  /// `General Prosecutor of the Republic`
-  String get fgr {
-    return Intl.message(
-      'General Prosecutor of the Republic',
-      name: 'fgr',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Enter subject`
   String get enterSubject {
     return Intl.message(
@@ -901,10 +901,10 @@ class S {
   }
 
   /// `Showing saved statement`
-  String get showingSadevStatement {
+  String get showingSavedStatement {
     return Intl.message(
       'Showing saved statement',
-      name: 'showingSadevStatement',
+      name: 'showingSavedStatement',
       desc: '',
       args: [],
     );
@@ -940,11 +940,11 @@ class S {
     );
   }
 
-  /// `No image taked`
-  String get noImageTaked {
+  /// `No image taken`
+  String get noImageTaken {
     return Intl.message(
-      'No image taked',
-      name: 'noImageTaked',
+      'No image taken',
+      name: 'noImageTaken',
       desc: '',
       args: [],
     );
@@ -970,21 +970,21 @@ class S {
     );
   }
 
-  /// `Statements`
-  String get enterTiked {
+  /// `Enter ticket`
+  String get enterTicket {
     return Intl.message(
-      'Statements',
-      name: 'enterTiked',
+      'Enter ticket',
+      name: 'enterTicket',
       desc: '',
       args: [],
     );
   }
 
-  /// `The tiked must be a correct tiked`
-  String get tikedCorrectValidator {
+  /// `The ticket must be a correct ticket`
+  String get ticketCorrectValidator {
     return Intl.message(
-      'The tiked must be a correct tiked',
-      name: 'tikedCorrectValidator',
+      'The ticket must be a correct ticket',
+      name: 'ticketCorrectValidator',
       desc: '',
       args: [],
     );
@@ -1420,16 +1420,6 @@ class S {
     );
   }
 
-  /// `Supreme court`
-  String get tsp {
-    return Intl.message(
-      'Supreme court',
-      name: 'tsp',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Mission and vision`
   String get missionAndVision {
     return Intl.message(
@@ -1465,6 +1455,36 @@ class S {
     return Intl.message(
       'Provincial prosecutors',
       name: 'provincialProsecutors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dependencies`
+  String get dependencies {
+    return Intl.message(
+      'Dependencies',
+      name: 'dependencies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write question`
+  String get writeQuestion {
+    return Intl.message(
+      'Write question',
+      name: 'writeQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Questions list`
+  String get questionsList {
+    return Intl.message(
+      'Questions list',
+      name: 'questionsList',
       desc: '',
       args: [],
     );

@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_civix/src/data/models/contact_us/contact_us_response_model.dart';
-import 'package:flutter_civix/src/data/models/informative_texts/informative_texts_response_model.dart';
 import 'package:flutter_civix/src/domain/repositories/local_assets_repository.dart';
 
 part 'contact_us_state.dart';

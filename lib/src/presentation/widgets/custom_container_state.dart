@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/dimens.dart';
 
-//Es la barra donde se muestra el estado y el color del estado del planteamiento
+///This is the bar when shoeing the state and color of statement
 class CustomContainerState extends StatelessWidget {
   final Color colorState;
   final String textState;
@@ -15,15 +15,15 @@ class CustomContainerState extends StatelessWidget {
       decoration: BoxDecoration(
           color: colorState,
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(Constants.cornersRadius),
-              topRight: Radius.circular(Constants.differentCornerRadius))),
+              topLeft: Radius.circular(kCornersRadius),
+              topRight: Radius.circular(kDifferentCornerRadius))),
       child: Row(
         children: [
           SizedBox(width: 16),
           Text(textState,
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: Constants.normalTextSize,
+                  fontSize: kNormalTextSize,
                   fontWeight: FontWeight.bold)),
         ],
       ),

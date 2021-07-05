@@ -1,23 +1,25 @@
 {
-  "province": "",
-  "municipality": "",
-  "address": "",
-  "postal_code": "",
+  "province": "La Habana",
+  "municipality": "Playa",
+  "address": "Junta Directiva Nacional, Avenida 41 #7208 esquina a 72.",
+  "postal_code": "11 300",
   "coordinates": {
     "latitude": "",
     "longitude": ""
   },
   "emails_list": [
-    ""
+    "consultas@jdn.onbc.cu"
   ],
   "phones_list": [
-    ""
+    "72144304",
+    "72144310",
+    "72144312",
+    "72144313"
   ],
   "links_list": [
-    ""
+    "http://www.onbc.cu"
   ],
-  "facebook": "",
-  "twitter": "",
-  "youtube": "",
-  "telegram": ""
+  "facebook": "https://www.facebook.com/onbc.organizacionnacionaldebufetescolectivos",
+  "twitter": "https://www.twitter/ONBC_CUBA",
+  "youtube": "https://m.youtube.com/channel/UCnaWd9q8MaUIFRmjNceWFpA"
 }

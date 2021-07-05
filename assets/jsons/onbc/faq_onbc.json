@@ -1,0 +1,164 @@
+{
+  "questions_list": [
+    {
+      "question": "Tengo varias dudas sobre la legalización de mi vivienda y necesito saber si para orientarme a través de un abogado, con toda la documentación que poseo, debo pagar y si puedo concurrir a cualquier bufete colectivo.",
+      "responses_list": [
+        {
+          "text": "Para orientarse sobre sus inquietudes, usted puede acudir a cualquier oficina de Bufetes Colectivos en nuestro país sin que deba efectuar pago alguno, este es un servicio que se brinda de forma gratuita."
+        }
+      ]
+    },
+    {
+      "question": "¿Cuánto me cuesta contratar los servicios de un abogado para iniciar un litigio sobre una herencia dejada por mis padres?",
+      "responses_list": [
+        {
+          "text": "El valor de los servicios jurídicos que se contratan con los abogados de Bufetes Colectivos, está previamente fijado por el MINJUS. Los mismos están en correspondencia con la complejidad del proceso y otros, con el monto de los bienes a litigar."
+        }
+      ]
+    },
+    {
+      "question": "¿Qué puedo hacer ante una sentencia penal de Tribunal Municipal o Provincial, si no estoy de acuerdo?",
+      "responses_list": [
+        {
+          "text": "Si la sentencia es del Tribunal Municipal, se puede establecer recurso de apelación en el término de 3 días hábiles siguientes a la notificación de la misma. En caso del juicio ante el Tribunal Provincial, se presentará recurso de casación ante el propio tribunal, dentro de los 10 días hábiles siguientes a la notificación de la sentencia."
+        }
+      ]
+    },
+    {
+      "question": "¿Puedo legalizar los documentos correspondientes a mis estudios y certificación de nacimiento, aun estando fuera de Cuba? ¿Puede un abogado hacerme estos trámites?",
+      "responses_list": [
+        {
+          "text": "Sí. Usted puede, a través de un familiar o amigo, contratar en cualquier Bufete Colectivo los servicios de un abogado para la legalización de estos documentos. Si no los posee, también puede solicitar el servicio de obtención. Las tarifas del servicio son en CUC y no incluyen el valor de los sellos del timbre que en cada caso se requiere."
+        }
+      ]
+    },
+    {
+      "question": "¿Una persona esperando juicio que necesita un abogado, pero su familia no tiene dinero para contratarlo, cómo puede lograr contratarle o ponerle un abogado?",
+      "responses_list": [
+        {
+          "text": "Puede acogerse a la designación de un de oficio, dispuesto por el tribunal correspondiente, que es asumido por abogados de la Organización."
+        },
+        {
+          "text":"Consultar artículo: https://portal.onbc.cu/la-defensa-penal-de-oficio/"
+        }
+      ]
+    },
+    {
+      "question": "¿Qué tiempo tiene para realizar la Declaratoria de Herederos después de fallecer la persona y procesos que se requieren para solucionar conflictos entre los herederos?",
+      "responses_list": [
+        {
+          "text": "Puede promoverse en cualquier momento, luego del fallecimiento. De existir acuerdo entre los herederos, concurrir ante un Notario y en caso de discrepancias, ante el Tribunal Municipal correspondiente."
+        }
+      ]
+    },
+    {
+      "question": "¿Qué hacer para contactar a un abogado en medio de la situación epidemiológica?",
+      "responses_list": [
+        {
+          "text": "Debe comunicarse con la Dirección del Bufete Colectivo a través de los canales telefónicos establecidos o las vías telemáticas, correos electrónicos y plataforma de consultas por de la dirección https://consultas.onbc.cu/"
+        }
+      ]
+    },
+    {
+      "question": "Necesito divorciarme, tengo hijos menores de edad y vivo junto a mi esposa en la casa que es propiedad de ambos. ¿Qué debo hacer?",
+      "responses_list": [
+        {
+          "text": "Debes concurrir a un Bufete Colectivo para iniciar los trámites a través de un abogado a quien debes aportar:"
+        },
+        {
+          "text": "- Certificación de matrimonio y nacimiento de los hijos menores, que puedes solicitar a través del técnico jurídico del propio Bufete Colectivo."
+        },
+        {
+          "text": "- Título de propiedad de la vivienda."
+        },
+        {
+          "text": "- Definir cómo deseas que se establezcan las relaciones entre los padres y los hijos si no continuaran viviendo juntos, así como la propuesta del monto de la pensión alimenticia para los menores."
+        }
+      ]
+    },
+    {
+      "question": "Mi madre falleció viuda siendo propietaria de la vivienda donde resido. Somos 4 hermanos y uno de ellos murió antes que ella, dejando a su esposa y tres hijos. En este caso, ¿quiénes tienen derecho a la herencia?",
+      "responses_list": [
+        {
+          "text": "Al fallecer tu madre sin otorgar testamento debes iniciar, a través de un abogado de Bufetes Colectivos, los trámites para la Declaratoria de Herederos."
+        },
+        {
+          "text": "Se requiere:"
+        },
+        {
+          "text": "- La certificación de defunción de tu madre y de su hermano,  los certificados de nacimiento de los hijos, incluyendo al fallecido; así como los nacimientos de los hijos del fallecido."
+        },
+        {
+          "text": "- Certificación negativa del Registro Central de Actos de Ultima Voluntad y Declaratorias de Herederos de su madre (esta certificación es la constancia de que tu madre no dejó testamento)."
+        }
+      ]
+    },
+    {
+      "question": "En mi vivienda reside conmigo hace 3 años una sobrina mía. Hoy la convivencia es imposible por las malas relaciones entre ella y mi hija. ¿Qué debo hacer para que retorne a su casa con su madre?",
+      "responses_list": [
+        {
+          "text": "Debes presentar escrito ante la Dirección Municipal de la Vivienda de tu localidad, solicitando el cese de la convivencia de tu sobrina. Puedes hacerlo por tu cuenta o con la representación de un abogado de Bufetes Colectivos y debes acompañar el título de propiedad de tu vivienda con la dirección exacta del lugar para el cual tu sobrina debe retornar."
+        }
+      ]
+    },
+    {
+      "question": "Soy trabajadora en una empresa, ocupo el puesto de recepcionista y he sido sancionada disciplinariamente. No estoy de acuerdo con la medida ni con el tratamiento recibido por la administración. ¿Qué debo hacer?",
+      "responses_list": [
+        {
+          "text": "Debe presentar  una reclamación ante el Órgano de Justicia Laboral, por su propio derecho o bajo la asesoría de un abogado de Bufetes Colectivos, dentro del término de 7 días siguientes a la notificación  de la medida."
+        }
+      ]
+    },
+    {
+      "question": "¿Puede el mismo abogado representarme en la comparecencia ante el Órgano de Justicia Laboral?",
+      "responses_list": [
+        {
+          "text": "No, el abogado de Bufetes Colectivos solo puede representarte ante el Tribunal Municipal correspondiente al no estar conforme con la decisión del Órgano de Justicia Laboral, si la medida adoptada fuera separación definitiva o cambio definitivo de puesto de trabajo. No obstante, puedes recibir asesoría por parte de un abogado en cualquiera de las oficinas de Bufetes Colectivos o a través de nuestro servicio virtual de consultas https://consultas.onbc.cu/."
+        }
+      ]
+    },
+    {
+      "question": "Tengo un hijo extinguiendo sanción de privación de libertad. Necesito saber si tiene que cumplir el término completo dispuesto en la sentencia.",
+      "responses_list": [
+        {
+          "text": "El tribunal puede disponer la libertad condicional del sancionado a privación temporal de libertad, teniendo en cuenta las características individuales y su comportamiento, además valora el término extinguido de la sanción."
+        }
+      ]
+    },
+    {
+      "question": "¿Qué puedo hacer ante una sentencia penal de Tribunal Municipal o Provincial, si no estoy de acuerdo?",
+      "responses_list": [
+        {
+          "text": "Si la sentencia es de Tribunal Municipal, puedes establecer un recurso de apelación en el término de 3 días hábiles siguientes a la notificación de la sentencia. En caso del juicio ante el Tribunal Provincial, puedes establecer recurso de casación ante el propio tribunal dentro de los 10 días hábiles siguientes a la notificación."
+        }
+      ]
+    },
+    {
+      "question": "Resido fuera de Cuba y necesito legalizar los documentos correspondientes a mis estudios y certificación de nacimiento. ¿Puede un abogado hacerme estos trámites?",
+      "responses_list": [
+        {
+          "text": "Sí, puedes, a través de un familiar o amigo, contratar en cualquier Bufete Colectivo los servicios de un abogado para la legalización de estos documentos. Si no los posees, también puedes solicitar el servicio de obtención."
+        }
+      ]
+    },
+    {
+      "question": "Tengo varias dudas sobre la legalización de mi vivienda y necesito saber si para orientarme a través de un abogado, con toda la documentación que poseo, debo pagar y si puedo concurrir a cualquier Bufete Colectivo.",
+      "responses_list": [
+        {
+          "text": "Para orientarte sobre sus inquietudes, no tienes que efectuar pago alguno. Este es un servicio que se brinda de manera totalmente gratuita en todas las oficinas de Bufetes Colectivos en nuestro país. Puedes acudir a cualquier Bufete Colectivo o acceder a nuestros servicios virtuales de consulta https://consultas.onbc.cu/. También puedes descargar la aplicación para Android CIVIX en www.apklis.cu y dirigir tus preguntas a ONBC."
+        }
+      ]
+    },
+    {
+      "question": "¿Cuánto me cuesta contratar los servicios de un abogado para iniciar un litigio sobre una herencia dejada por mis padres?",
+      "responses_list": [
+        {
+          "text": "El valor de los servicios jurídicos que se contratan con los abogados de Bufetes  Colectivos, está previamente fijado por el Ministerio de Justicia (MINJUS), en correspondencia con la complejidad del proceso o con el monto de los bienes a litigar."
+        },
+        {
+          "text": "Para conocer el costo de su contrato en particular dirígete al Bufete Colectivo donde desees realizar el trámite."
+        }
+      ]
+    }
+  ]
+}

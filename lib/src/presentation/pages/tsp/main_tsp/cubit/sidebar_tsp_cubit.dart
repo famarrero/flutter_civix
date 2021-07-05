@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
-//State is bool que indica solo si esta abierto el side bar => no se usa!!
-
 class SideBarTspCubit extends Cubit<bool> {
   SideBarTspCubit() : super(false);
 
@@ -10,7 +8,7 @@ class SideBarTspCubit extends Cubit<bool> {
 
   GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;
 
-  void openMovilDrawable() {
+  void openMobilDrawable() {
     if (!_scaffoldKey.currentState!.isEndDrawerOpen) {
       _scaffoldKey.currentState!.openEndDrawer();
       emit(true);

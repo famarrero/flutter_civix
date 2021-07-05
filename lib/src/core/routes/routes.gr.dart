@@ -7,44 +7,49 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
-import '../../presentation/pages/civix/about_us/about_us_page.dart' as _i17;
+import '../../presentation/pages/civix/about_us/about_us_page.dart' as _i19;
 import '../../presentation/pages/civix/institutions_list/institutions_list_page.dart'
-    as _i14;
+    as _i16;
 import '../../presentation/pages/civix/main_civix/main_civix_page.dart' as _i3;
 import '../../presentation/pages/civix/my_shipments/my_shipments_page.dart'
-    as _i16;
-import '../../presentation/pages/civix/profile/profile_page.dart' as _i18;
+    as _i18;
+import '../../presentation/pages/civix/profile/profile_page.dart' as _i20;
 import '../../presentation/pages/civix/quick_access/quick_access_page.dart'
-    as _i15;
-import '../../presentation/pages/civix/settings/settings_page.dart' as _i19;
+    as _i17;
+import '../../presentation/pages/civix/settings/settings_page.dart' as _i21;
 import '../../presentation/pages/fgr/consult_state_fgr/consult_state_fgr_page.dart'
-    as _i12;
+    as _i13;
 import '../../presentation/pages/fgr/consult_state_fgr/cubit/consult_state_fgr_cubit.dart'
-    as _i24;
+    as _i27;
 import '../../presentation/pages/fgr/list_statement_fgr/cubit/list_statement_fgr_cubit.dart'
-    as _i23;
+    as _i26;
 import '../../presentation/pages/fgr/list_statement_fgr/list_statement_fgr_page.dart'
-    as _i10;
-import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart' as _i8;
-import '../../presentation/pages/fgr/services_fgr/services_fgr_page.dart'
-    as _i20;
-import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
     as _i11;
-import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart' as _i9;
+import '../../presentation/pages/fgr/services_fgr/services_fgr_page.dart'
     as _i22;
+import '../../presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart'
+    as _i12;
+import '../../presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart'
+    as _i25;
 import '../../presentation/pages/fgr/write_statement_fgr/write_statement_fgr_page.dart'
-    as _i9;
+    as _i10;
 import '../../presentation/pages/general/contact_us/contact_us_page.dart'
-    as _i7;
+    as _i8;
 import '../../presentation/pages/general/entities_by_province/entities_by_province_page.dart'
     as _i6;
+import '../../presentation/pages/general/entities_list/entities_list_page.dart'
+    as _i7;
 import '../../presentation/pages/general/frequent_questions/frequent_questions_page.dart'
     as _i4;
 import '../../presentation/pages/general/informative_texts/informative_texts_page.dart'
     as _i5;
-import '../../presentation/pages/tsp/main_tsp/main_tsp_page.dart' as _i13;
-import '../../presentation/pages/tsp/services_fgr/services_fgr_page.dart'
-    as _i21;
+import '../../presentation/pages/onbc/main_onbc/main_onbc_page.dart' as _i15;
+import '../../presentation/pages/onbc/services_onbc/services_onbc_page.dart'
+    as _i24;
+import '../../presentation/pages/tsp/main_tsp/main_tsp_page.dart' as _i14;
+import '../../presentation/pages/tsp/services_tsp/services_tsp_page.dart'
+    as _i23;
 
 class AppRouter extends _i1.RootStackRouter {
   AppRouter([_i2.GlobalKey<_i2.NavigatorState>? navigatorKey])
@@ -95,11 +100,24 @@ class AppRouter extends _i1.RootStackRouter {
               title: args.title,
               subtitle: args.subtitle);
         }),
+    EntitiesListPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<EntitiesListPageRouteArgs>();
+          return _i7.EntitiesListPage(
+              key: args.key,
+              primaryColor: args.primaryColor,
+              secondaryColor: args.secondaryColor,
+              primarySwatch: args.primarySwatch,
+              entitiesByProvinceJson: args.entitiesByProvinceJson,
+              title: args.title,
+              subtitle: args.subtitle);
+        }),
     ContactUsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ContactUsPageRouteArgs>();
-          return _i7.ContactUsPage(
+          return _i8.ContactUsPage(
               key: args.key,
               primaryColor: args.primaryColor,
               secondaryColor: args.secondaryColor,
@@ -111,76 +129,86 @@ class AppRouter extends _i1.RootStackRouter {
     MainFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i8.MainFgrPage();
+          return _i9.MainFgrPage();
         }),
     WriteStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<WriteStatementFgrPageRouteArgs>();
-          return _i9.WriteStatementFgrPage(bloc: args.bloc);
+          return _i10.WriteStatementFgrPage(bloc: args.bloc);
         }),
     ListStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ListStatementFgrPageRouteArgs>();
-          return _i10.ListStatementFgrPage(bloc: args.bloc);
+          return _i11.ListStatementFgrPage(bloc: args.bloc);
         }),
     ShowStatementFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ShowStatementFgrPageRouteArgs>();
-          return _i11.ShowStatementFgrPage(id: args.id);
+          return _i12.ShowStatementFgrPage(id: args.id);
         }),
     ConsultStateFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (data) {
           final args = data.argsAs<ConsultStateFgrPageRouteArgs>();
-          return _i12.ConsultStateFgrPage(bloc: args.bloc);
+          return _i13.ConsultStateFgrPage(bloc: args.bloc);
         }),
     MainTspPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i13.MainTspPage();
+          return _i14.MainTspPage();
+        }),
+    MainOnbcPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i15.MainOnbcPage();
         }),
     InstitutionsListPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i14.InstitutionsListPage();
+          return const _i16.InstitutionsListPage();
         }),
     QuickAccessPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i15.QuickAccessPage();
+          return const _i17.QuickAccessPage();
         }),
     MyShipmentsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i16.MyShipmentsPage();
+          return const _i18.MyShipmentsPage();
         }),
     AboutUsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i17.AboutUsPage();
+          return const _i19.AboutUsPage();
         }),
     ProfilePageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i18.ProfilePage();
+          return const _i20.ProfilePage();
         }),
     SettingsPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i19.SettingsPage();
+          return const _i21.SettingsPage();
         }),
     ServicesFgrPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i20.ServicesFgrPage();
+          return _i22.ServicesFgrPage();
         }),
     ServicesTspPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i21.ServicesTspPage();
+          return _i23.ServicesTspPage();
+        }),
+    ServicesOnbcPageRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (_) {
+          return _i24.ServicesOnbcPage();
         })
   };
 
@@ -203,6 +231,7 @@ class AppRouter extends _i1.RootStackRouter {
             path: 'preguntas-frequentes'),
         _i1.RouteConfig(InformativeTextsPageRoute.name, path: 'informacion'),
         _i1.RouteConfig(EntitiesByProvincePageRoute.name, path: 'entidades'),
+        _i1.RouteConfig(EntitiesListPageRoute.name, path: 'entidades'),
         _i1.RouteConfig(ContactUsPageRoute.name, path: 'contactenos'),
         _i1.RouteConfig(MainFgrPageRoute.name, path: 'fgr', children: [
           _i1.RouteConfig('#redirect',
@@ -221,6 +250,11 @@ class AppRouter extends _i1.RootStackRouter {
           _i1.RouteConfig('#redirect',
               path: '', redirectTo: 'servicios-tsp', fullMatch: true),
           _i1.RouteConfig(ServicesTspPageRoute.name, path: 'servicios-tsp')
+        ]),
+        _i1.RouteConfig(MainOnbcPageRoute.name, path: 'onbc', children: [
+          _i1.RouteConfig('#redirect',
+              path: '', redirectTo: 'servicios-onbc', fullMatch: true),
+          _i1.RouteConfig(ServicesOnbcPageRoute.name, path: 'servicios-onbc')
         ])
       ];
 }
@@ -374,6 +408,55 @@ class EntitiesByProvincePageRouteArgs {
   final String subtitle;
 }
 
+class EntitiesListPageRoute
+    extends _i1.PageRouteInfo<EntitiesListPageRouteArgs> {
+  EntitiesListPageRoute(
+      {_i2.Key? key,
+      required _i2.Color primaryColor,
+      required _i2.Color secondaryColor,
+      required _i2.MaterialColor primarySwatch,
+      required String entitiesByProvinceJson,
+      required String title,
+      required String subtitle})
+      : super(name,
+            path: 'entidades',
+            args: EntitiesListPageRouteArgs(
+                key: key,
+                primaryColor: primaryColor,
+                secondaryColor: secondaryColor,
+                primarySwatch: primarySwatch,
+                entitiesByProvinceJson: entitiesByProvinceJson,
+                title: title,
+                subtitle: subtitle));
+
+  static const String name = 'EntitiesListPageRoute';
+}
+
+class EntitiesListPageRouteArgs {
+  const EntitiesListPageRouteArgs(
+      {this.key,
+      required this.primaryColor,
+      required this.secondaryColor,
+      required this.primarySwatch,
+      required this.entitiesByProvinceJson,
+      required this.title,
+      required this.subtitle});
+
+  final _i2.Key? key;
+
+  final _i2.Color primaryColor;
+
+  final _i2.Color secondaryColor;
+
+  final _i2.MaterialColor primarySwatch;
+
+  final String entitiesByProvinceJson;
+
+  final String title;
+
+  final String subtitle;
+}
+
 class ContactUsPageRoute extends _i1.PageRouteInfo<ContactUsPageRouteArgs> {
   ContactUsPageRoute(
       {_i2.Key? key,
@@ -431,7 +514,7 @@ class MainFgrPageRoute extends _i1.PageRouteInfo {
 
 class WriteStatementFgrPageRoute
     extends _i1.PageRouteInfo<WriteStatementFgrPageRouteArgs> {
-  WriteStatementFgrPageRoute({required _i22.WriteStatementFgrCubit bloc})
+  WriteStatementFgrPageRoute({required _i25.WriteStatementFgrCubit bloc})
       : super(name,
             path: 'redactar-planteamiento-fgr',
             args: WriteStatementFgrPageRouteArgs(bloc: bloc));
@@ -442,12 +525,12 @@ class WriteStatementFgrPageRoute
 class WriteStatementFgrPageRouteArgs {
   const WriteStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i22.WriteStatementFgrCubit bloc;
+  final _i25.WriteStatementFgrCubit bloc;
 }
 
 class ListStatementFgrPageRoute
     extends _i1.PageRouteInfo<ListStatementFgrPageRouteArgs> {
-  ListStatementFgrPageRoute({required _i23.ListStatementFgrCubit bloc})
+  ListStatementFgrPageRoute({required _i26.ListStatementFgrCubit bloc})
       : super(name,
             path: 'planteamientos-fgr',
             args: ListStatementFgrPageRouteArgs(bloc: bloc));
@@ -458,7 +541,7 @@ class ListStatementFgrPageRoute
 class ListStatementFgrPageRouteArgs {
   const ListStatementFgrPageRouteArgs({required this.bloc});
 
-  final _i23.ListStatementFgrCubit bloc;
+  final _i26.ListStatementFgrCubit bloc;
 }
 
 class ShowStatementFgrPageRoute
@@ -479,7 +562,7 @@ class ShowStatementFgrPageRouteArgs {
 
 class ConsultStateFgrPageRoute
     extends _i1.PageRouteInfo<ConsultStateFgrPageRouteArgs> {
-  ConsultStateFgrPageRoute({required _i24.ConsultStateFgrCubit bloc})
+  ConsultStateFgrPageRoute({required _i27.ConsultStateFgrCubit bloc})
       : super(name,
             path: 'consultar-estado-fgr',
             args: ConsultStateFgrPageRouteArgs(bloc: bloc));
@@ -490,7 +573,7 @@ class ConsultStateFgrPageRoute
 class ConsultStateFgrPageRouteArgs {
   const ConsultStateFgrPageRouteArgs({required this.bloc});
 
-  final _i24.ConsultStateFgrCubit bloc;
+  final _i27.ConsultStateFgrCubit bloc;
 }
 
 class MainTspPageRoute extends _i1.PageRouteInfo {
@@ -498,6 +581,13 @@ class MainTspPageRoute extends _i1.PageRouteInfo {
       : super(name, path: 'tsp', initialChildren: children);
 
   static const String name = 'MainTspPageRoute';
+}
+
+class MainOnbcPageRoute extends _i1.PageRouteInfo {
+  const MainOnbcPageRoute({List<_i1.PageRouteInfo>? children})
+      : super(name, path: 'onbc', initialChildren: children);
+
+  static const String name = 'MainOnbcPageRoute';
 }
 
 class InstitutionsListPageRoute extends _i1.PageRouteInfo {
@@ -546,4 +636,10 @@ class ServicesTspPageRoute extends _i1.PageRouteInfo {
   const ServicesTspPageRoute() : super(name, path: 'servicios-tsp');
 
   static const String name = 'ServicesTspPageRoute';
+}
+
+class ServicesOnbcPageRoute extends _i1.PageRouteInfo {
+  const ServicesOnbcPageRoute() : super(name, path: 'servicios-onbc');
+
+  static const String name = 'ServicesOnbcPageRoute';
 }

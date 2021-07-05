@@ -9,3 +9,5 @@ const kNormalIconSize = 27.0;
 const kCornersRadius = 20.0;
 
 const kDifferentCornerRadius = 50.0;
+
+const kDefaultPadding = 16.0;

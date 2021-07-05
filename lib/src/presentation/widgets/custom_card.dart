@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/dimens.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
@@ -91,10 +91,10 @@ class CustomCardTopRightCorner extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomCard(
       borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(Constants.cornersRadius),
-          topRight: Radius.circular(Constants.differentCornerRadius),
-          bottomLeft: Radius.circular(Constants.cornersRadius),
-          bottomRight: Radius.circular(Constants.cornersRadius)),
+          topLeft: Radius.circular(kCornersRadius),
+          topRight: Radius.circular(kDifferentCornerRadius),
+          bottomLeft: Radius.circular(kCornersRadius),
+          bottomRight: Radius.circular(kCornersRadius)),
       child: child,
     );
   }

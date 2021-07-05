@@ -2,28 +2,29 @@ import 'package:flutter/material.dart';
 
 ///////Civix colors///////
 const kCivixPrimary = 0xff055bab;
+
 const kCivixPrimaryColor = Color(0xff055bab);
 const MaterialColor kCivixPrimaryMaterialColor = MaterialColor(
-    kFgrPrimary,
-    <int, Color>{
-      50: Color(0xff0d86f5),
-      100: Color(0xff087be5),
-      200: Color(0xff0773d7),
-      300: Color(0xff076cc9),
-      400: Color(0xff0663ba),
-      500: Color(kCivixPrimary),
-      600: Color(0xff0555a0),
-      700: Color(0xff054c8e),
-      800: Color(0xff064580),
-      900: Color(0xff053d71),
-    },
+  kFgrPrimary,
+  <int, Color>{
+    50: Color(0xff0d86f5),
+    100: Color(0xff087be5),
+    200: Color(0xff0773d7),
+    300: Color(0xff076cc9),
+    400: Color(0xff0663ba),
+    500: Color(kCivixPrimary),
+    600: Color(0xff0555a0),
+    700: Color(0xff054c8e),
+    800: Color(0xff064580),
+    900: Color(0xff053d71),
+  },
 );
 
 const kCivixSecondaryColor = Color(0xff1A73C6);
 
 ///////FGR colors///////
-//0xff151a2e original
 const kFgrPrimary = 0xff242c4e;
+
 const kFgrPrimaryColor = Color(0xff242c4e);
 const MaterialColor kFgrPrimaryMaterialColor = MaterialColor(
   kFgrPrimary,
@@ -81,5 +82,22 @@ const MaterialColor kTspSecondaryMaterialColor = MaterialColor(
 );
 
 ///////ONBC colors///////
-const kOnbcPrimaryColor = Color(0xffb80000);
+const kOnbcPrimaryColor = Color(0xffc22f2f);
+
+const kOnbcSecondary = 0xffbf3737;
 const kOnbcSecondaryColor = Color(0xffbf3737);
+const MaterialColor kOnbcSecondaryMaterialColor = MaterialColor(
+  kFgrPrimary,
+  <int, Color>{
+    50: Color(0xfff85050),
+    100: Color(0xffef4747),
+    200: Color(0xffe34141),
+    300: Color(0xffd73d3d),
+    400: Color(0xffcb3a3a),
+    500: Color(kOnbcSecondary),
+    600: Color(0xffaf3333),
+    700: Color(0xff9c2d2d),
+    800: Color(0xff8d2828),
+    900: Color(0xff782222),
+  },
+);

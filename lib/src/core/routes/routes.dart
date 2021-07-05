@@ -9,10 +9,13 @@ import 'package:flutter_civix/src/presentation/pages/fgr/consult_state_fgr/consu
 import 'package:flutter_civix/src/presentation/pages/fgr/list_statement_fgr/list_statement_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/general/contact_us/contact_us_page.dart';
 import 'package:flutter_civix/src/presentation/pages/general/entities_by_province/entities_by_province_page.dart';
+import 'package:flutter_civix/src/presentation/pages/general/entities_list/entities_list_page.dart';
 import 'package:flutter_civix/src/presentation/pages/general/frequent_questions/frequent_questions_page.dart';
 import 'package:flutter_civix/src/presentation/pages/general/informative_texts/informative_texts_page.dart';
+import 'package:flutter_civix/src/presentation/pages/onbc/main_onbc/main_onbc_page.dart';
+import 'package:flutter_civix/src/presentation/pages/onbc/services_onbc/services_onbc_page.dart';
 import 'package:flutter_civix/src/presentation/pages/tsp/main_tsp/main_tsp_page.dart';
-import 'package:flutter_civix/src/presentation/pages/tsp/services_fgr/services_fgr_page.dart';
+import 'package:flutter_civix/src/presentation/pages/tsp/services_tsp/services_tsp_page.dart';
 import '../../presentation/pages/fgr/main_fgr/main_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/services_fgr/services_fgr_page.dart';
 import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/show_statement_fgr_page.dart';
@@ -41,6 +44,7 @@ import 'package:flutter_civix/src/presentation/pages/civix/institutions_list/ins
         page: FrequentQuestionsPage, path: 'preguntas-frequentes'),
     AutoRoute<dynamic>(page: InformativeTextsPage, path: 'informacion'),
     AutoRoute<dynamic>(page: EntitiesByProvincePage, path: 'entidades'),
+    AutoRoute<dynamic>(page: EntitiesListPage, path: 'entidades'),
     AutoRoute<dynamic>(page: ContactUsPage, path: 'contactenos'),
 
     ///Fgr
@@ -58,6 +62,12 @@ import 'package:flutter_civix/src/presentation/pages/civix/institutions_list/ins
     AutoRoute<dynamic>(page: MainTspPage, path: 'tsp', children: [
       AutoRoute<dynamic>(
           initial: true, page: ServicesTspPage, path: 'servicios-tsp'),
+    ]),
+
+    ///Onbc
+    AutoRoute<dynamic>(page: MainOnbcPage, path: 'onbc', children: [
+      AutoRoute<dynamic>(
+          initial: true, page: ServicesOnbcPage, path: 'servicios-onbc'),
     ])
   ],
 )

@@ -36,9 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "call": MessageLookupByLibrary.simpleMessage("Llamar"),
         "callCouldNotBeMade": MessageLookupByLibrary.simpleMessage(
             "No se puede realizar la llamada"),
-        "camera": MessageLookupByLibrary.simpleMessage("Camara"),
+        "camera": MessageLookupByLibrary.simpleMessage("Cámara"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
-        "cancel2": MessageLookupByLibrary.simpleMessage("Anular"),
         "choose": MessageLookupByLibrary.simpleMessage("Seleccione"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
         "congrats": MessageLookupByLibrary.simpleMessage("¡Felicidades!"),
@@ -55,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "creating": MessageLookupByLibrary.simpleMessage("Creando"),
         "delete": MessageLookupByLibrary.simpleMessage("Borrar"),
         "deleting": MessageLookupByLibrary.simpleMessage("Borrando"),
+        "dependencies": MessageLookupByLibrary.simpleMessage("Dependencias"),
         "description": MessageLookupByLibrary.simpleMessage("Descripción"),
         "doYouWantCallThisNumber": MessageLookupByLibrary.simpleMessage(
             "¿Desea llamar a este número?"),
@@ -83,7 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Introduzca planteamiento"),
         "enterSubject":
             MessageLookupByLibrary.simpleMessage("Introduzca asunto"),
-        "enterTiked":
+        "enterTicket":
             MessageLookupByLibrary.simpleMessage("Introduzca comprobante"),
         "errorCompressingImage":
             MessageLookupByLibrary.simpleMessage("Error comprimiendo imagen"),
@@ -105,7 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Inicio"),
         "id": MessageLookupByLibrary.simpleMessage("Carné de identidad"),
         "idCorrectValidator": MessageLookupByLibrary.simpleMessage(
-            "El carné de indentidad debe ser un carné válido"),
+            "El carné de identidad debe ser un carné válido"),
         "info": MessageLookupByLibrary.simpleMessage("Información"),
         "institutionsList":
             MessageLookupByLibrary.simpleMessage("Lista de instituciones"),
@@ -129,10 +129,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "noCoordinatesAvailable": MessageLookupByLibrary.simpleMessage(
             "No hay coordenadas disponibles"),
         "noFileSelected": MessageLookupByLibrary.simpleMessage(
-            "No se seleccionó ningun archivo"),
+            "No se seleccionó ningún archivo"),
         "noImageSelected": MessageLookupByLibrary.simpleMessage(
             "No se seleccionó ninguna imagen"),
-        "noImageTaked":
+        "noImageTaken":
             MessageLookupByLibrary.simpleMessage("No se tomó ninguna imagen"),
         "noStatementToShow": MessageLookupByLibrary.simpleMessage(
             "¡Ups, no hay ningún planteamiento!"),
@@ -141,6 +141,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nothingToSave":
             MessageLookupByLibrary.simpleMessage("No hay nada que guardar"),
         "ok": MessageLookupByLibrary.simpleMessage("OK"),
+        "onbc": MessageLookupByLibrary.simpleMessage(
+            "Organización Nacional de Bufetes Colectivos"),
         "options": MessageLookupByLibrary.simpleMessage("Opciones"),
         "or": MessageLookupByLibrary.simpleMessage("Ó"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
@@ -168,8 +170,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tribunales provinciales"),
         "provincialProsecutors":
             MessageLookupByLibrary.simpleMessage("Fiscalías provinciales"),
+        "questionsList":
+            MessageLookupByLibrary.simpleMessage("Listado de preguntas"),
         "quickAccess": MessageLookupByLibrary.simpleMessage("Acceso rápido"),
-        "reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "response": MessageLookupByLibrary.simpleMessage("Respuesta"),
         "save": MessageLookupByLibrary.simpleMessage("Guardar"),
         "saveEraser": MessageLookupByLibrary.simpleMessage("Guardar borrador"),
@@ -187,7 +190,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "services": MessageLookupByLibrary.simpleMessage("Servicios"),
         "settings": MessageLookupByLibrary.simpleMessage("Ajustes"),
         "share": MessageLookupByLibrary.simpleMessage("Compartir"),
-        "showingSadevStatement": MessageLookupByLibrary.simpleMessage(
+        "showingSavedStatement": MessageLookupByLibrary.simpleMessage(
             "Mostrando planteamiento guardado"),
         "skip": MessageLookupByLibrary.simpleMessage("Saltar"),
         "somethingWrong":
@@ -206,7 +209,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "El asunto no puede estar vacío"),
         "themeDark": MessageLookupByLibrary.simpleMessage("Tema oscuro"),
         "themeLight": MessageLookupByLibrary.simpleMessage("Tema claro"),
-        "tikedCorrectValidator": MessageLookupByLibrary.simpleMessage(
+        "ticketCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El comprobante debe ser válido"),
         "tsp": MessageLookupByLibrary.simpleMessage("Tribunal Supremo Popular"),
         "update": MessageLookupByLibrary.simpleMessage("Actualizar"),
@@ -217,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "warning": MessageLookupByLibrary.simpleMessage("Alerta!!"),
         "welcome": MessageLookupByLibrary.simpleMessage("Bienvenido"),
         "whereWeAre": MessageLookupByLibrary.simpleMessage("¿Dónde estamos?"),
+        "writeQuestion":
+            MessageLookupByLibrary.simpleMessage("Redactar pregunta"),
         "writeStatement":
             MessageLookupByLibrary.simpleMessage("Redactar planteamiento"),
         "yes": MessageLookupByLibrary.simpleMessage("Si")

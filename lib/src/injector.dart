@@ -20,6 +20,7 @@ import 'package:flutter_civix/src/presentation/pages/fgr/show_statement_fgr/cubi
 import 'package:flutter_civix/src/presentation/pages/fgr/write_statement_fgr/cubit/write_statement_fgr_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/general/contact_us/cubit/contact_us_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/general/entities_by_province/cubit/entities_by_province_cubit.dart';
+import 'package:flutter_civix/src/presentation/pages/general/entities_list/cubit/entities_list_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/general/frequent_questions/cubit/frequent_questions_cubit.dart';
 import 'package:flutter_civix/src/presentation/pages/general/informative_texts/cubit/informative_texts_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -41,11 +42,13 @@ Future<void> initializeDependencies() async {
   injector.registerLazySingleton<Dio>(() => Dio());
 
   // Preferences
-  injector.registerLazySingleton<SharedPreferencesFGR>(() => SharedPreferencesFGR());
+  injector.registerLazySingleton<SharedPreferencesFGR>(
+      () => SharedPreferencesFGR());
 
   // Database
   injector.registerLazySingleton<AppDatabase>(() => AppDatabase());
-  injector.registerLazySingleton<StatementFGRDao>(() => StatementFGRDao(injector()));
+  injector.registerLazySingleton<StatementFGRDao>(
+      () => StatementFGRDao(injector()));
 
   // Repositories
   injector.registerLazySingleton<DataBaseFGRRepository>(
@@ -64,22 +67,30 @@ Future<void> initializeDependencies() async {
     () => FilePickerManagerImpl(),
   );
   injector.registerLazySingleton<UrlLauncherManager>(
-        () => UrlLauncherManagerImpl(),
+    () => UrlLauncherManagerImpl(),
   );
 
   // Blocs/Cubits
   //**
   // They are register like registerFactory because every time i need a new instance of the BloC/Cubit
   //**
-  injector.registerFactory<WriteStatementFgrCubit>(
-      () => WriteStatementFgrCubit(injector(), injector(), injector(), injector(), injector()));
-  injector.registerFactory<ProvincesListCubit>(() => ProvincesListCubit(injector()));
-  injector.registerFactory<ListStatementFgrCubit>(() => ListStatementFgrCubit(injector()));
-  injector.registerFactory<ShowStatementFgrCubit>(() => ShowStatementFgrCubit(injector()));
+  injector.registerFactory<WriteStatementFgrCubit>(() => WriteStatementFgrCubit(
+      injector(), injector(), injector(), injector(), injector()));
+  injector.registerFactory<ProvincesListCubit>(
+      () => ProvincesListCubit(injector()));
+  injector.registerFactory<ListStatementFgrCubit>(
+      () => ListStatementFgrCubit(injector()));
+  injector.registerFactory<ShowStatementFgrCubit>(
+      () => ShowStatementFgrCubit(injector()));
   injector.registerFactory<ConsultStateFgrCubit>(() => ConsultStateFgrCubit());
-  injector.registerFactory<FrequentQuestionsCubit>(() => FrequentQuestionsCubit(injector()));
-  injector.registerFactory<InformativeTextsCubit>(() => InformativeTextsCubit(injector()));
-  injector.registerFactory<EntitiesByProvinceCubit>(() => EntitiesByProvinceCubit(injector()));
+  injector.registerFactory<FrequentQuestionsCubit>(
+      () => FrequentQuestionsCubit(injector()));
+  injector.registerFactory<InformativeTextsCubit>(
+      () => InformativeTextsCubit(injector()));
+  injector.registerFactory<EntitiesByProvinceCubit>(
+      () => EntitiesByProvinceCubit(injector()));
+  injector
+      .registerFactory<EntitiesListCubit>(() => EntitiesListCubit(injector()));
   injector.registerFactory<ContactUsCubit>(() => ContactUsCubit(injector()));
 
   // UseCases

@@ -1,19 +1,15 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_civix/src/core/constants/colors.dart';
-import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/domain/entities/institution_menu_item.dart';
 import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 import 'package:flutter_civix/src/presentation/widgets/custom_grid_institution_options.dart';
 
-class ServicesTspPage extends StatefulWidget {
+class ServicesOnbcPage extends StatefulWidget {
   @override
-  _ServicesTspPageState createState() => _ServicesTspPageState();
+  _ServicesOnbcPageState createState() => _ServicesOnbcPageState();
 }
 
-class _ServicesTspPageState extends State<ServicesTspPage> {
+class _ServicesOnbcPageState extends State<ServicesOnbcPage> {
   double page = 0;
 
   @override
@@ -27,13 +23,13 @@ class _ServicesTspPageState extends State<ServicesTspPage> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.dashboard_outlined, color: kTspPrimaryColor),
+                  Icon(Icons.dashboard_outlined, color: kOnbcPrimaryColor),
                   SizedBox(width: 4),
                   Text(S.of(context).services,
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
-                          color: kTspPrimaryColor)),
+                          color: kOnbcPrimaryColor)),
                 ],
               ),
             ],
@@ -56,16 +52,16 @@ class _ServicesTspPageState extends State<ServicesTspPage> {
     return [
       InstitutionMenuItem(
           imageSrc: Icons.edit_outlined,
-          title: S.of(context).writeStatement,
-          color: kTspPrimaryColor,
+          title: S.of(context).writeQuestion,
+          color: kOnbcPrimaryColor,
           onTap: () {
             // var bloc = BlocProvider.of<WriteStatementFgrCubit>(context);
             // AutoRouter.of(context).push(WriteStatementFgrPageRoute(bloc: bloc));
           }),
       InstitutionMenuItem(
           imageSrc: Icons.folder_outlined,
-          title: S.of(context).statementsList,
-          color: kTspPrimaryColor,
+          title: S.of(context).questionsList,
+          color: kOnbcPrimaryColor,
           onTap: () {
             // var bloc = BlocProvider.of<ListStatementFgrCubit>(context);
             // AutoRouter.of(context).push(ListStatementFgrPageRoute(bloc: bloc));
@@ -73,7 +69,7 @@ class _ServicesTspPageState extends State<ServicesTspPage> {
       InstitutionMenuItem(
           imageSrc: Icons.search_outlined,
           title: S.of(context).consultState,
-          color: kTspPrimaryColor,
+          color: kOnbcPrimaryColor,
           onTap: () {
             // var bloc = BlocProvider.of<ConsultStateFgrCubit>(context);
             // AutoRouter.of(context).push(ConsultStateFgrPageRoute(bloc: bloc));

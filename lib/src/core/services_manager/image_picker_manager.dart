@@ -21,7 +21,7 @@ class ImagePickerManagerImpl implements ImagePickerManager {
       if (pickedFile != null) {
         return right(File(pickedFile.path));
       } else {
-        return left(CancelFilePickerFailure(S.current.noImageTaked));
+        return left(CancelFilePickerFailure(S.current.noImageTaken));
       }
     } catch (e) {
       return left(FilePickerFailure(e.toString()));

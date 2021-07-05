@@ -122,7 +122,7 @@ class WriteStatementFgrCubit extends Cubit<WriteStatementFgrState> {
         // _files = await _checkIfFilesExists(savedStatement.files!.toBuiltList());
 
       emit(state.copyWith(
-          showMessage: S.current.showingSadevStatement,
+          showMessage: S.current.showingSavedStatement,
           stateOfPromoters: PromoterListState(promoters: _promoters),
           stateOfFiles: state.stateOfFiles.copyWith(pickedFiles: _files)));
     }

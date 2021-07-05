@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_civix/src/core/constants/constants.dart';
+import 'package:flutter_civix/src/core/constants/dimens.dart';
 import 'package:flutter_civix/src/core/routes/routes.gr.dart';
 import 'package:flutter_civix/src/core/utils/responsive.dart';
 import 'package:flutter_civix/src/domain/entities/institution_item.dart';
@@ -37,10 +37,12 @@ class InstitutionsListPage extends StatelessWidget {
             AutoRouter.of(context).push(MainTspPageRoute());
           }),
       InstitutionItem(
-          imageSrc: Assets.images.logoAnpp.path,
-          title: "Organización Nacional de Bufetes Colectivos",
+          imageSrc: Assets.images.logoOnbc.path,
+          title: S.of(context).onbc,
           color: Colors.blue,
-          onTap: () {}),
+          onTap: () {
+            AutoRouter.of(context).push(MainOnbcPageRoute());
+          }),
       InstitutionItem(
           imageSrc: Assets.images.logoMinjus.path,
           title: "Ministerio de Justicia",
@@ -75,7 +77,7 @@ class InstitutionsListOptions extends StatelessWidget {
     final Size _size = MediaQuery.of(context).size;
     return Column(
       children: [
-        SizedBox(height: Constants.defaultPadding),
+        SizedBox(height: kDefaultPadding),
         Responsive(
           mobile: InstitutionsListOptionsGrid(
             items: items,
