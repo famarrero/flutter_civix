@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_civix/src/presentation/app/lang/l10n.dart';
 
 class MyShipmentsPage extends StatelessWidget {
   const MyShipmentsPage({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class MyShipmentsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('My shipments'),),
+      body: Center(child: Text(S.of(context).underConstruction.toUpperCase())),
     );
   }
 }

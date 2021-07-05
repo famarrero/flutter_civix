@@ -18,16 +18,26 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/ico_civix_imagen_letras.png');
   AssetGenImage get icoCivixImagenLetrasContorneado => const AssetGenImage(
       'assets/images/ico_civix_imagen_letras_contorneado.png');
+  AssetGenImage get logoAgr =>
+      const AssetGenImage('assets/images/logo_agr.png');
   AssetGenImage get logoAnpp =>
-      const AssetGenImage('assets/images/logo_anpp.jpg');
+      const AssetGenImage('assets/images/logo_anpp.png');
   AssetGenImage get logoCegel =>
       const AssetGenImage('assets/images/logo_cegel.png');
   AssetGenImage get logoFgr =>
       const AssetGenImage('assets/images/logo_fgr.png');
   AssetGenImage get logoInder =>
       const AssetGenImage('assets/images/logo_inder.jpg');
+  AssetGenImage get logoIpf =>
+      const AssetGenImage('assets/images/logo_ipf.png');
+  AssetGenImage get logoMes =>
+      const AssetGenImage('assets/images/logo_mes.png');
+  AssetGenImage get logoMined =>
+      const AssetGenImage('assets/images/logo_mined.png');
   AssetGenImage get logoMinjus =>
       const AssetGenImage('assets/images/logo_minjus.png');
+  AssetGenImage get logoOnat =>
+      const AssetGenImage('assets/images/logo_onat.png');
   AssetGenImage get logoOnbc =>
       const AssetGenImage('assets/images/logo_onbc.png');
   AssetGenImage get logoTsp =>

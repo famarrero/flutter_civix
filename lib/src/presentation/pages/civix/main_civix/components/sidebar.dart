@@ -74,20 +74,6 @@ class SideBarCivix extends StatelessWidget {
               onPressed: () {
                 _onPressedItem(context, const AboutUsPageRoute());
               }),
-          const SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(FontAwesomeIcons.telegram,
-                      color: Colors.white.withOpacity(0.6), size: 30)),
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(FontAwesomeIcons.facebook,
-                      color: Colors.white.withOpacity(0.6), size: 30)),
-            ],
-          )
         ],
       ),
     );

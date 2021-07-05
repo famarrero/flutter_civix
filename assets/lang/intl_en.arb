@@ -142,5 +142,6 @@
   "provincialProsecutors": "Provincial prosecutors",
   "dependencies": "Dependencies",
   "writeQuestion": "Write question",
-  "questionsList": "Questions list"
+  "questionsList": "Questions list",
+  "underConstruction": "Under construction"
 }

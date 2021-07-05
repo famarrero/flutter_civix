@@ -205,6 +205,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "The ticket must be a correct ticket"),
         "tsp": MessageLookupByLibrary.simpleMessage("Supreme Court"),
+        "underConstruction":
+            MessageLookupByLibrary.simpleMessage("Under construction"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updating": MessageLookupByLibrary.simpleMessage("Updating"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Upgrade"),

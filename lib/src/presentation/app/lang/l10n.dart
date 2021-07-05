@@ -1489,6 +1489,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Under construction`
+  String get underConstruction {
+    return Intl.message(
+      'Under construction',
+      name: 'underConstruction',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

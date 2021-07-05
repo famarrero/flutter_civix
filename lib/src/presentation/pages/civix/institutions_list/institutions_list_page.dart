@@ -44,23 +44,43 @@ class InstitutionsListPage extends StatelessWidget {
             AutoRouter.of(context).push(MainOnbcPageRoute());
           }),
       InstitutionItem(
-          imageSrc: Assets.images.logoMinjus.path,
-          title: "Ministerio de Justicia",
-          color: Colors.blue,
-          onTap: () {}),
-      InstitutionItem(
-          imageSrc: Assets.images.logoFgr.path,
-          title: "Ministerio de Educación Popular",
-          color: Colors.blue,
-          onTap: () {}),
-      InstitutionItem(
           imageSrc: Assets.images.logoAnpp.path,
           title: "Asamblea Nacional del Poder Popular",
           color: Colors.blue,
           onTap: () {}),
       InstitutionItem(
+          imageSrc: Assets.images.logoMinjus.path,
+          title: "Ministerio de Justicia",
+          color: Colors.blue,
+          onTap: () {}),
+      InstitutionItem(
+          imageSrc: Assets.images.logoMes.path,
+          title: "Ministerio de Educación Popular",
+          color: Colors.blue,
+          onTap: () {}),
+      InstitutionItem(
+          imageSrc: Assets.images.logoMined.path,
+          title: "Ministerio de Educación",
+          color: Colors.blue,
+          onTap: () {}),
+      InstitutionItem(
+          imageSrc: Assets.images.logoOnat.path,
+          title: "Organización Nacional de Administración Tributaria",
+          color: Colors.blue,
+          onTap: () {}),
+      InstitutionItem(
           imageSrc: Assets.images.logoInder.path,
           title: "Instituto Nacional de Deporte y Recreación",
+          color: Colors.blue,
+          onTap: () {}),
+      InstitutionItem(
+          imageSrc: Assets.images.logoAgr.path,
+          title: "Aduana General de la República",
+          color: Colors.blue,
+          onTap: () {}),
+      InstitutionItem(
+          imageSrc: Assets.images.logoIpf.path,
+          title: "Instituto de Planificación Física",
           color: Colors.blue,
           onTap: () {}),
     ];

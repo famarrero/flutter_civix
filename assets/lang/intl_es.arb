@@ -142,5 +142,6 @@
   "provincialProsecutors": "Fiscalías provinciales",
   "dependencies": "Dependencias",
   "writeQuestion": "Redactar pregunta",
-  "questionsList": "Listado de preguntas"
+  "questionsList": "Listado de preguntas",
+  "underConstruction": "En construcción"
 }

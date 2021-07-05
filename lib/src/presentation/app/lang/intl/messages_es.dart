@@ -212,6 +212,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ticketCorrectValidator": MessageLookupByLibrary.simpleMessage(
             "El comprobante debe ser válido"),
         "tsp": MessageLookupByLibrary.simpleMessage("Tribunal Supremo Popular"),
+        "underConstruction":
+            MessageLookupByLibrary.simpleMessage("En construcción"),
         "update": MessageLookupByLibrary.simpleMessage("Actualizar"),
         "updating": MessageLookupByLibrary.simpleMessage("Actualizando"),
         "upgrade": MessageLookupByLibrary.simpleMessage("Mejorar"),
